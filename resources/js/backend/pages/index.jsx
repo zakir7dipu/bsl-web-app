@@ -6,7 +6,7 @@ import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import {useDispatch, useSelector} from "react-redux";
 import AuthUser from "../../model/authUser.js";
-import {checkAccess, refreshLoginData} from "../../featurs/AuthAction/AuthSlice.js";
+import {checkAccess} from "../../featurs/AuthAction/AuthSlice.js";
 import {mainPath} from "../../lib/helper.js";
 
 function Index(props) {
@@ -27,7 +27,7 @@ function Index(props) {
     });
 
     useEffect(() => {
-        dispatch(refreshLoginData())
+        //dispatch(refreshLoginData())
     }, []);
 
     return (
