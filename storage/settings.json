@@ -63,18 +63,18 @@
             }
         },
         "technology": {
-            "Software": "images\/technology\/style3\/1.png",
-            "Fintech": "images\/technology\/style3\/2.png",
-            "Healthcare": "images\/technology\/style3\/3.png",
-            "Data Mining": "images\/technology\/style3\/4.png",
-            "Machine learning": "images\/technology\/style3\/5.png",
-            "Medical": "images\/technology\/style3\/6.png",
-            "Entertainment": "images\/technology\/style3\/7.png",
-            "AI": "images\/technology\/style3\/8.png",
-            "Manufacturing": "images\/technology\/style3\/9.png",
-            "Logistics": "images\/technology\/style3\/10.png"
+            "software": "images\/technology\/style3\/1.png",
+            "fintech": "images\/technology\/style3\/2.png",
+            "healthcare": "images\/technology\/style3\/3.png",
+            "dataMining": "images\/technology\/style3\/4.png",
+            "machineLearning": "images\/technology\/style3\/5.png",
+            "medical": "images\/technology\/style3\/6.png",
+            "entertainment": "images\/technology\/style3\/7.png",
+            "ai": "images\/technology\/style3\/8.png",
+            "manufacturing": "images\/technology\/style3\/9.png",
+            "logistics": "images\/technology\/style3\/10.png"
         },
-        "align-with": {
+        "alignWith": {
             "java": "images\/technology\/style2\/1.png",
             "dynamodb": "images\/technology\/style2\/2.png",
             "redshift": "images\/technology\/style2\/3.png",
