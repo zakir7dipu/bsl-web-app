@@ -25,6 +25,62 @@
                 "youtube": "https:\/\/www.youtube.com\/channel\/UCvQ2qwNbP4EZmuXDlqZwdDA",
                 "instagram": "https:\/\/www.instagram.com\/ssg.bd\/"
             }
+        },
+        "slider": {
+            "title": "We Are Digital Agency & Technology Solution",
+            "text": "We are leading technology solutions providing company all over the world doing over 40 years.",
+            "link": ""
+        },
+        "about": {
+            "title": "Over 25+ Years Helping Brands to Reach Full Potential",
+            "clients": 250,
+            "project": 100,
+            "attributes": {
+                "high-quality": {
+                    "bg": null,
+                    "icon": "images\/services\/style3\/main-img\/1.png",
+                    "hoverIcon": "images\/services\/style3\/hover-img\/1.png",
+                    "brief": "At vero eos et accusamus etiusto odio praesentium accusamus."
+                },
+                "full-stack-teams": {
+                    "bg": "gold-bg",
+                    "icon": "images\/services\/style3\/main-img\/2.png",
+                    "hoverIcon": "images\/services\/style3\/hover-img\/2.png",
+                    "brief": "At vero eos et accusamus etiusto odio praesentium accusamus."
+                },
+                "agile-approach": {
+                    "bg": "cyan-bg",
+                    "icon": "images\/services\/style3\/main-img\/3.png",
+                    "hoverIcon": "images\/services\/style3\/hover-img\/3.png",
+                    "brief": "At vero eos et accusamus etiusto odio praesentium accusamus."
+                },
+                "high-quality-code": {
+                    "bg": "blue-bg",
+                    "icon": "images\/services\/style3\/main-img\/4.png",
+                    "hoverIcon": "images\/services\/style3\/hover-img\/4.png",
+                    "brief": "At vero eos et accusamus etiusto odio praesentium accusamus."
+                }
+            }
+        },
+        "technology": {
+            "Software": "images\/technology\/style3\/1.png",
+            "Fintech": "images\/technology\/style3\/2.png",
+            "Healthcare": "images\/technology\/style3\/3.png",
+            "Data Mining": "images\/technology\/style3\/4.png",
+            "Machine learning": "images\/technology\/style3\/5.png",
+            "Medical": "images\/technology\/style3\/6.png",
+            "Entertainment": "images\/technology\/style3\/7.png",
+            "AI": "images\/technology\/style3\/8.png",
+            "Manufacturing": "images\/technology\/style3\/9.png",
+            "Logistics": "images\/technology\/style3\/10.png"
+        },
+        "align-with": {
+            "java": "images\/technology\/style2\/1.png",
+            "dynamodb": "images\/technology\/style2\/2.png",
+            "redshift": "images\/technology\/style2\/3.png",
+            "aws": "images\/technology\/style2\/4.png",
+            "storm": "images\/technology\/style2\/5.png",
+            "docker": "images\/technology\/style2\/6.png"
         }
     }
 }
