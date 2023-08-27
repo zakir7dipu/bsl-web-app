@@ -1,0 +1,30 @@
+{
+    "site": {
+        "settings": {
+            "general": {
+                "site_name": "Bizz Solutions PLC",
+                "slogan": "Technology Solution Company in BD.",
+                "site_logo": "upload\/img\/logo.png",
+                "site_favicon": "upload\/img\/favicon.png",
+                "footer_detail": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal."
+            },
+            "contact_info": {
+                "phone": "+880 295 31087",
+                "mail": "info@bizzsol.com.bd",
+                "address": "City centre 90/1, Level-25 Type-D2, Motijheel C/A, Dhaka-1000, Bangladesh."
+            },
+            "newsletter": {
+                "title": "Subscribe To Our Newsletter",
+                "text": "It is a long established fact that a reader will be distributed by the readable content of a page when looking at its layout."
+            },
+            "backlink": {
+                "qrcode": null,
+                "eshop": "https:\/\/ssgeshop.com\/",
+                "facebook": "https:\/\/www.facebook.com\/ssgbd\/",
+                "linkedin": "https:\/\/www.linkedin.com\/company\/super-star-group\/",
+                "youtube": "https:\/\/www.youtube.com\/channel\/UCvQ2qwNbP4EZmuXDlqZwdDA",
+                "instagram": "https:\/\/www.instagram.com\/ssg.bd\/"
+            }
+        }
+    }
+}
