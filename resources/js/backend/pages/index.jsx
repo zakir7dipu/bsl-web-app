@@ -20,22 +20,18 @@ function Index(props) {
 
     useEffect(() => {
         if (!auth.getAuthorisation()) {
-            // navigate('/bsl/login')
             window.location.href = `${mainPath}/bsl/login`
         }
         dispatch(checkAccess())
     });
 
-    useEffect(() => {
-        //dispatch(refreshLoginData())
-    }, []);
 
     return (
         <div id="main-wrapper" className={`show ${!isOpenBackendSideNav && 'menu-toggle'}`}>
             <NavHeader/>
             <Header/>
             <Sidebar/>
-            <div className="content-body" style={{height:'90vh', overflow: "hidden"}}>
+            <div className="content-body" style={{overflow: "hidden"}}>
                 <div className="container-fluid mt-3">
                     <Outlet/>
                 </div>

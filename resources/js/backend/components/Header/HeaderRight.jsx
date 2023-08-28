@@ -184,25 +184,13 @@ function HeaderRight(props) {
                         <div className="dropdown-content-body">
                             <ul>
                                 <li>
-                                    <Link to="app-profile.html">
+                                    <Link to="profile">
                                         <i className="icon-user"></i>
                                         <span>Profile</span>
                                     </Link>
                                 </li>
-                                <li>
-                                    <Link to="#">
-                                        <i className="icon-envelope-open"></i> <span>Inbox</span>
-                                        <div className="badge gradient-3 badge-pill gradient-1">3</div>
-                                    </Link>
-                                </li>
 
                                 <hr className="my-2"/>
-                                <li>
-                                    <Link to="page-lock.html">
-                                        <i className="icon-lock"></i>
-                                        <span>Lock Screen</span>
-                                    </Link>
-                                </li>
                                 <li>
                                     <Link to="#" onClick={logOutHandler}>
                                         <i className="icon-key"></i>

@@ -5,11 +5,9 @@ import {
     errorMessage,
     infoMessage,
     logoutUserSession,
-    mainPath,
     saveUserSession,
     successMessage
 } from "../../lib/helper.js";
-import {menuActionSlice} from "../MenuAction/MenuSlice.js";
 
 const {apiAccess} = new Api();
 
@@ -64,7 +62,8 @@ export const authSlice = createSlice({
     reducers: {
         checkAccess:(state) => {
             state.isAccess = checkAuth()
-        }
+        },
+        getAuthUser: (state) => state
     },
     extraReducers: {
         [fetchLogin.pending]: (state)=> {
@@ -73,7 +72,7 @@ export const authSlice = createSlice({
         },
         [fetchLogin.fulfilled]: (state, {payload}) => {
             const {user, authorisation} = payload
-            console.log(authorisation.token)
+
             state.isAuthLoading = false
             state.authUser = user
             state.token = authorisation.token
@@ -91,13 +90,12 @@ export const authSlice = createSlice({
         },
         [refreshLoginData.pending]: (state)=> {
             state.isAuthLoading = true
-            // infoMessage('We are processing your request.')
+            infoMessage('We are processing your request.')
         },
         [refreshLoginData.fulfilled]: (state, {payload})=> {
-            // console.log(payload)
             const {status, user} = payload
             state.isAuthLoading = false
-            state.authUser = user
+            state.user = user
             if (status !== "reject") {
                 state.isLogin = true
             } else {
@@ -108,8 +106,7 @@ export const authSlice = createSlice({
         [refreshLoginData.rejected]: (state, {payload})=> {
             state.isAuthLoading = false
             state.authErrorMessage = payload
-            errorMessage(payload)
-            // logoutUserSession()
+            //errorMessage(payload)
         },
         [fetchLogout.pending]: (state)=> {
             state.isAuthLoading= true
@@ -130,6 +127,6 @@ export const authSlice = createSlice({
     }
 })
 
-export const {checkAccess} = authSlice.actions;
+export const {checkAccess, getAuthUser} = authSlice.actions;
 
 export default authSlice.reducer;

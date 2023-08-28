@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Route, Routes} from "react-router-dom";
 import Home from "../frontend/pages/Home.jsx";
 import Login from "../auth/pages/Login.jsx";
@@ -7,8 +7,16 @@ import Backend from "./Backend.jsx";
 import Admin from "../backend/pages";
 import Dashboard from "../backend/pages/Dashboard.jsx";
 import Errors from "../auth/pages/Errors.jsx";
+import Profile from "../backend/pages/Profile/Index.jsx";
+import {refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
+import {useDispatch} from "react-redux";
 
-function Main(props) {
+function Main() {
+
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(refreshLoginData())
+    }, []);
 
     return (
         <Routes>
@@ -17,6 +25,7 @@ function Main(props) {
                 <Route path="login" element={<Login/>}/>
                 <Route path="admin" element={<Admin/>}>
                     <Route index element={<Dashboard/>}/>
+                    <Route path="profile" element={<Profile/>}/>
                 </Route>
             </Route>
             <Route path="*" element={<Errors/>}/>

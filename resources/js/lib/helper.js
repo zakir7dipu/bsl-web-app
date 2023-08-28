@@ -7,14 +7,11 @@ export const mainPath = 'http://localhost:8000'
 
 export function errorMessage(error) {
     Notify("error", error.message)
-    // clearException()
 }
 
 export function errorResponseMessage(error) {
     if (error.response) {
         if (error.response.status === 401) {
-            // sessionStorage.removeItem('token');
-            // return location.href = "/ssg-admin";
         } else {
             let errorObject = error.response.data.errors;
             let hasError = Object.getOwnPropertyNames(errorObject)
@@ -27,7 +24,6 @@ export function errorResponseMessage(error) {
             }
         }
     }
-    // clearException()
 }
 
 export function successMessage(success) {
@@ -61,4 +57,28 @@ export const checkAuth = () => {
 
 export const clearException = () => {
     console.clear()
+}
+
+export const uid = function () {
+    return Date.now().toString(36) + Math.random().toString(36).substr(2);
+}
+
+export const truncateString = (str, n) => {
+    return (str?.length > n) ? `${str.slice(0, n - 1)}...` : str;
+}
+
+export const createInputFileUrl = (file) => {
+    return window.URL.createObjectURL(file)
+}
+
+export const goToExternalLink = (path) => {
+    window.open(path, '_blank');
+}
+
+export const goToInternalLink=(path)=> {
+    window.open(mainPath + path, '_blank');
+}
+
+export const useInternalLink = (path)=> {
+    return mainPath + path
 }
