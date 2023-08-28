@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\SettingsController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,4 +13,8 @@ Route::controller(AuthController::class)->group(function () {
     Route::get("users-all/{dataPerPage?}", "allUsers");
     Route::get("user-search", "searchUser");
     Route::post("edit-user", "editUser");
+});
+
+Route::controller(SettingsController::class)->group(function (){
+    Route::get('all-settings','settings')->name('all.settings');
 });

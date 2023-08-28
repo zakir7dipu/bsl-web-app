@@ -6,12 +6,13 @@ import Preloader from "../../components/Preloader/Index.jsx";
 import MainProfile from "./MainProfile.jsx";
 import About from "./About.jsx";
 import ResetPassword from "./ResetPassword.jsx";
+import {getGeneralSettings} from "../../../featurs/Settings/SettingsSlice.js";
 
 function Index() {
     const {isAuthLoading, user, token, isAccess, errorMessage} = useSelector(state => state.authUser);
+    const {generalSetting} = useSelector(state => state.generalSettings)
 
     const dispatch = useDispatch()
-
     const [isLoading, setLoading] = useState(isAuthLoading);
 
     const checkLoading = (status) => {
@@ -30,6 +31,7 @@ function Index() {
 
     useEffect(() => {
         dispatch(getAuthUser())
+        dispatch(getGeneralSettings())
     }, [])
 
     return (
@@ -37,6 +39,7 @@ function Index() {
             {isLoading && <Preloader/>}
             {!isLoading &&
                 <>
+
                     <Breadcrumb list={breadcrumb}/>
                     <div className="container-fluid">
                         <div className="row">
