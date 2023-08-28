@@ -31,7 +31,7 @@ function Index(props) {
             <NavHeader/>
             <Header/>
             <Sidebar/>
-            <div className="content-body" style={{overflow: "hidden"}}>
+            <div className="content-body" style={{height: '90vh', overflowY: "scroll"}}>
                 <div className="container-fluid mt-3">
                     <Outlet/>
                 </div>
