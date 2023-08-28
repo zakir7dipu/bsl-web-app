@@ -60,9 +60,7 @@ export const fetchAlignSettings = createAsyncThunk("settings/fetchAlignSettings"
 export const settingsSlice = createSlice({
     name: "settings",
     initialState: initialData,
-    reducers :{
-      getGeneralSettings: state => state.generalSetting
-    },
+
     extraReducers: {
         [fetchAllSettings.pending]: (state) => {
             state.isLoading = true
@@ -79,5 +77,5 @@ export const settingsSlice = createSlice({
         },
     }
 })
-export const {getGeneralSettings} = settingsSlice.actions;
+
 export default settingsSlice.reducer;

@@ -1,12 +1,14 @@
 <?php
-function returnBack($error){
+function returnBack($error): \Illuminate\Http\JsonResponse
+{
     return response()->json([
         'status' => 'error',
         'message' => $error->getMessage()
     ], $error->getCode());
 }
 
-function getAllSettings() {
+function getAllSettings(): object
+{
     $group = 'site.settings.';
     $data = (object)[
         "general" => (object)[

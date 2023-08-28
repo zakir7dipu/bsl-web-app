@@ -6,7 +6,7 @@ import Preloader from "../../components/Preloader/Index.jsx";
 import MainProfile from "./MainProfile.jsx";
 import About from "./About.jsx";
 import ResetPassword from "./ResetPassword.jsx";
-import {getGeneralSettings} from "../../../featurs/Settings/SettingsSlice.js";
+import {fetchAllSettings} from "../../../featurs/Settings/SettingsSlice.js";
 
 function Index() {
     const {isAuthLoading, user, token, isAccess, errorMessage} = useSelector(state => state.authUser);
@@ -31,7 +31,7 @@ function Index() {
 
     useEffect(() => {
         dispatch(getAuthUser())
-        dispatch(getGeneralSettings())
+        dispatch(fetchAllSettings())
     }, [])
 
     return (
