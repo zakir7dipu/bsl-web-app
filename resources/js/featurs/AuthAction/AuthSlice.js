@@ -56,6 +56,36 @@ export const fetchLogout = createAsyncThunk('authAction/fetchLogout', async (arg
 })
 
 
+export const changePasswordData = createAsyncThunk("authAction/changePasswordData", async (data, {rejectWithValue})=>{
+    try {
+        const res = await apiAccess.post('password',data)
+        return res.data
+    } catch (error) {
+        if (!error.response) {
+            throw error
+        }
+        return rejectWithValue(error.response.data)
+    }
+})
+
+export const editUserData = createAsyncThunk("authAction/editUserData", async (data, {rejectWithValue})=>{
+    try {
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }
+
+        const res = await apiAccess.post('edit-user',data, config)
+        return res.data
+    } catch (error) {
+        if (!error.response) {
+            throw error
+        }
+        return rejectWithValue(error.response.data)
+    }
+})
+
 export const authSlice = createSlice({
     name: 'authAction',
     initialState: initialData,
@@ -72,9 +102,8 @@ export const authSlice = createSlice({
         },
         [fetchLogin.fulfilled]: (state, {payload}) => {
             const {user, authorisation} = payload
-
             state.isAuthLoading = false
-            state.authUser = user
+            state.user = user
             state.token = authorisation.token
             state.isLogin = true
             saveUserSession(user, authorisation.token)
@@ -106,7 +135,6 @@ export const authSlice = createSlice({
         [refreshLoginData.rejected]: (state, {payload})=> {
             state.isAuthLoading = false
             state.authErrorMessage = payload
-            //errorMessage(payload)
         },
         [fetchLogout.pending]: (state)=> {
             state.isAuthLoading= true
@@ -122,6 +150,35 @@ export const authSlice = createSlice({
         [fetchLogout.rejected]: (state, {payload}) => {
             state.isAuthLoading = false
             state.errorMessage = payload
+            errorMessage(payload)
+        },
+
+        [changePasswordData.pending]: (state)=> {
+            state.isAuthLoading = true
+        },
+        [changePasswordData.fulfilled]: (state, {payload})=> {
+            state.isAuthLoading = false
+            //window.location.href = window.location.origin
+            logoutUserSession()
+        },
+        [changePasswordData.rejected]: (state, {payload})=> {
+            state.isAuthLoading = false
+            state.authErrorMessage = payload
+            errorMessage(payload)
+        },
+        [editUserData.pending]: (state)=> {
+            state.isAuthLoading = true
+            infoMessage("Please wait a while, We are processing your request.")
+        },
+        [editUserData.fulfilled]: (state, {payload})=> {
+            const user = payload
+            state.isAuthLoading = false
+            state.user = user
+            successMessage(`${user.name} successfully edited your profile.`);
+        },
+        [editUserData.rejected]: (state, {payload})=> {
+            state.isAuthLoading = false
+            state.authErrorMessage = payload
             errorMessage(payload)
         }
     }

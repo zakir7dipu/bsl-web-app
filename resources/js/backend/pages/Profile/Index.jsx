@@ -39,13 +39,12 @@ function Index() {
             {isLoading && <Preloader/>}
             {!isLoading &&
                 <>
-
                     <Breadcrumb list={breadcrumb}/>
                     <div className="container-fluid">
                         <div className="row">
                             <MainProfile user={user}/>
                             <div className="col-lg-8 col-xl-9">
-                                <About user={user}/>
+                                <About/>
                                 <ResetPassword/>
                             </div>
                         </div>

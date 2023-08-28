@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class AuthController extends Controller
 {
@@ -89,7 +90,7 @@ class AuthController extends Controller
     {
         if (Auth::check()) {
             $user = Auth::user();
-            $user->avatar = get_gravatar($user->email);
+            $user->avatar = $user->avatar? config('app.url').'/'.$user->avatar : get_gravatar($user->email);
             return response()->json([
                 'status' => 'success',
                 'user' => $user,
@@ -99,6 +100,50 @@ class AuthController extends Controller
                 'status' => 'reject',
                 'user' => [],
             ]);
+        }
+    }
+
+    public function passwordSet(Request $request)
+    {
+        $request->validate([
+            'new_password' => 'required|string|min:6',
+        ]);
+        Auth::user()->update(["password" => Hash::make($request->new_password)]);
+        Auth::logout();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Successfully password changed. Please login again.',
+        ]);
+    }
+
+    public function editUser(Request $request)
+    {
+        $user = Auth::user();
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+            'avatar' => 'required'
+        ]);
+
+        try {
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->phone = $request->phone;
+            $user->abouts = $request->abouts;
+
+            if ($request->hasFile("avatar")) {
+                $filename = time() . '-' . 'avatar.' . fileInfo($request->avatar)['extension'];
+                $path = 'uploads/users';
+                fileUpload($request->avatar, $path, $filename);
+                $img = $path . '/' . $filename;
+                $user->avatar = $img;
+            }
+
+            $user->save();
+
+            return response()->json($user);
+        } catch (\Throwable $th) {
+            return response()->json($th);
         }
     }
 

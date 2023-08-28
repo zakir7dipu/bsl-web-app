@@ -25,6 +25,35 @@ class SettingsController extends Controller
         ]);
     }
 
+    public function aboutSetting()
+    {
+        $settings = aboutInfo();
+        return response()->json([
+            'data' => $settings,
+        ]);
+    }
+    public function sliderSetting()
+    {
+        $settings = sliderInfo();
+        return response()->json([
+            'data' => $settings,
+        ]);
+    }
+    public function technologySetting()
+    {
+        $settings = technology();
+        return response()->json([
+            'data' => $settings,
+        ]);
+    }
+    public function alignWithSetting()
+    {
+        $settings = alignWith();
+        return response()->json([
+            'data' => $settings,
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      */

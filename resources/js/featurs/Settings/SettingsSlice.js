@@ -75,6 +75,62 @@ export const settingsSlice = createSlice({
             state.isLoading = false
             state.errorMess = payload
         },
+
+        [fetchAboutSettings.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchAboutSettings.fulfilled]: (state, {payload}) => {
+            const {data} = payload
+            state.isLoading = false
+            state.aboutSetting = data
+            state.errorMess = null
+        },
+        [fetchAboutSettings.rejected]: (state, {payload}) => {
+            state.isLoading = false
+            state.errorMess = payload
+        },
+
+        [fetchSliderSettings.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchSliderSettings.fulfilled]: (state, {payload}) => {
+            const {data} = payload
+            state.isLoading = false
+            state.sliderSetting = data
+            state.errorMess = null
+        },
+        [fetchSliderSettings.rejected]: (state, {payload}) => {
+            state.isLoading = false
+            state.errorMess = payload
+        },
+
+        [fetchTechnologySettings.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchTechnologySettings.fulfilled]: (state, {payload}) => {
+            const {data} = payload
+            state.isLoading = false
+            state.technologySetting = data
+            state.errorMess = null
+        },
+        [fetchTechnologySettings.rejected]: (state, {payload}) => {
+            state.isLoading = false
+            state.errorMess = payload
+        },
+
+        [fetchAlignSettings.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchAlignSettings.fulfilled]: (state, {payload}) => {
+            const {data} = payload
+            state.isLoading = false
+            state.alignSetting = data
+            state.errorMess = null
+        },
+        [fetchAlignSettings.rejected]: (state, {payload}) => {
+            state.isLoading = false
+            state.errorMess = payload
+        },
     }
 })
 

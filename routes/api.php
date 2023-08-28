@@ -17,4 +17,8 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::controller(SettingsController::class)->group(function (){
     Route::get('all-settings','settings')->name('all.settings');
+    Route::get('about-settings','aboutSetting');
+    Route::get('slider-settings','sliderSetting');
+    Route::get('technology-settings','technologySetting');
+    Route::get('align-with-settings','alignWithSetting');
 });

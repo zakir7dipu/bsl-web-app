@@ -75,7 +75,7 @@ export const goToExternalLink = (path) => {
     window.open(path, '_blank');
 }
 
-export const goToInternalLink=(path)=> {
+export const goToInternalLink = (path)=> {
     window.open(mainPath + path, '_blank');
 }
 

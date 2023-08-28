@@ -1,0 +1,32 @@
+.controller {
+    width: 100%;
+    font-size: .85rem;
+    line-height: 2rem;
+    border: 1px solid #cccc;
+    padding: 6px 20px;
+    border-radius: 10px;
+}
+
+.file {
+    display: none;
+}
+
+.btn {
+    width: 120px;
+    height: auto;
+    background-color: midnightblue;
+    color: white;
+    border: 1px solid black;
+    font-size: .95rem;
+    font-weight: bold;
+    line-height: 2.5rem;
+    text-transform: capitalize;
+    border-radius: 25px;
+}
+.anchor {
+    color: blue;
+    font-weight: bold;
+}
+.anchor:hover {
+    color: paleturquoise;
+}

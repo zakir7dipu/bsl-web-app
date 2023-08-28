@@ -9,17 +9,13 @@ import Dashboard from "../backend/pages/Dashboard.jsx";
 import Errors from "../auth/pages/Errors.jsx";
 import Profile from "../backend/pages/Profile/Index.jsx";
 import {refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchAllSettings} from "../featurs/Settings/SettingsSlice.js";
+import {useDispatch} from "react-redux";
 
 function Main() {
 
-    const {isLoading, generalSetting, errorMess} = useSelector(state => state.generalSettings);
     const dispatch = useDispatch()
-
     useEffect(() => {
         dispatch(refreshLoginData())
-        dispatch(fetchAllSettings())
     }, []);
 
     return (
