@@ -106,9 +106,9 @@ class AuthController extends Controller
     public function passwordSet(Request $request)
     {
         $request->validate([
-            'new_password' => 'required|string|min:6',
+            'confirm_password' => 'required|string|min:6',
         ]);
-        Auth::user()->update(["password" => Hash::make($request->new_password)]);
+        Auth::user()->update(["password" => Hash::make($request->confirm_password)]);
         Auth::logout();
         return response()->json([
             'status' => 'success',
