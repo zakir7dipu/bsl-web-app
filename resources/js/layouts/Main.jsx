@@ -14,6 +14,7 @@ import SEO from "../backend/pages/Settings/SEO/Index.jsx";
 import {refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
 import {useDispatch} from "react-redux";
 import {fetchAllSettings} from "../featurs/Settings/SettingsSlice.js";
+import TestPage from "../backend/pages/TestPage.jsx";
 
 function Main() {
 
@@ -31,6 +32,7 @@ function Main() {
                 <Route path="admin" element={<Admin/>}>
                     <Route index element={<Dashboard/>}/>
                     <Route path="profile" element={<Profile/>}/>
+                    <Route path="test" element={<TestPage/>}/>
                     <Route path="settings">
                         <Route index element={<SettingsMain/>}/>
                         <Route path="seo" element={<SEO/>}/>
