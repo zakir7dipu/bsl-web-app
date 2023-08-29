@@ -2,7 +2,7 @@ import React from 'react';
 
 function MainProfile({user}) {
     return (
-        <div className="col-lg-4 col-xl-3">
+        <div className="col-lg-5 col-xl-4">
             <div className="card">
                 <div className="card-body">
                     <div className="media align-items-center mb-4">

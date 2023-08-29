@@ -32,7 +32,7 @@ function Index(props) {
                                 menuIcon={<i className="icon-globe-alt menu-icon"></i>}
                             >
                                 <ul aria-expanded="false" className="collapse">
-                                    <li><Link to="#">link</Link></li>
+                                    <li><Link to="settings">Settings</Link></li>
                                 </ul>
                             </NavBarLink>
 

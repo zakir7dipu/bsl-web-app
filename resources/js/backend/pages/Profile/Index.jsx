@@ -43,7 +43,7 @@ function Index() {
                     <div className="container-fluid">
                         <div className="row">
                             <MainProfile user={user}/>
-                            <div className="col-lg-8 col-xl-9">
+                            <div className="col-lg-7 col-xl-8">
                                 <About/>
                                 <ResetPassword/>
                             </div>

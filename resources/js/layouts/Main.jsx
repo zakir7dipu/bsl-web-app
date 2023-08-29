@@ -8,6 +8,9 @@ import Admin from "../backend/pages";
 import Dashboard from "../backend/pages/Dashboard.jsx";
 import Errors from "../auth/pages/Errors.jsx";
 import Profile from "../backend/pages/Profile/Index.jsx";
+import SettingsMain from "../backend/pages/Settings/Index.jsx";
+import SEO from "../backend/pages/Settings/SEO/Index.jsx";
+
 import {refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
 import {useDispatch} from "react-redux";
 import {fetchAllSettings} from "../featurs/Settings/SettingsSlice.js";
@@ -28,6 +31,10 @@ function Main() {
                 <Route path="admin" element={<Admin/>}>
                     <Route index element={<Dashboard/>}/>
                     <Route path="profile" element={<Profile/>}/>
+                    <Route path="settings">
+                        <Route index element={<SettingsMain/>}/>
+                        <Route path="seo" element={<SEO/>}/>
+                    </Route>
                 </Route>
             </Route>
             <Route path="*" element={<Errors/>}/>
