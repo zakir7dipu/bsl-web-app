@@ -36,7 +36,5 @@ class SEOGenerator extends Model
         $group = 'seo.' . $page . ".";
         setting([$group . 'meta' => $seo]);
         return setting($group . 'meta');
-//        $jsonData = json_encode($seo);
-//        setting([$group . 'site_logo' => $logo]);
     }
 }

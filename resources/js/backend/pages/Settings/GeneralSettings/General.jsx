@@ -4,7 +4,7 @@ import {errorMessage} from "../../../../lib/helper.js";
 import {saveSettings} from "../../../../featurs/Settings/SettingsSlice.js";
 import FileInput from "../../../components/inputFile/Index.jsx";
 
-function General(props) {
+function General() {
     const {generalSetting} = useSelector(state => state.generalSettings);
     const dispatch = useDispatch()
 
@@ -54,6 +54,7 @@ function General(props) {
         if (siteFavicon) {
             formData.append("site_favicon", siteFavicon);
         }
+        formData.append("type", 'general');
 
         if (siteName && slogan && footerDetails) {
             dispatch(saveSettings(formData))
@@ -61,11 +62,11 @@ function General(props) {
     }
 
     useEffect(() => {
-        setSiteName(generalSetting?.site_name)
-        setSlogan(generalSetting?.slogan)
-        setSiteLogo(`/${generalSetting?.site_logo}`)
-        setSiteFavicon(`/${generalSetting?.site_favicon}`)
-        setFooterDetails(generalSetting?.footer_detail)
+        setSiteName(generalSetting?.general?.site_name)
+        setSlogan(generalSetting?.general?.slogan)
+        setSiteLogo(`/${generalSetting?.general?.site_logo}`)
+        setSiteFavicon(`/${generalSetting?.general?.site_favicon}`)
+        setFooterDetails(generalSetting?.general?.footer_detail)
     }, [generalSetting])
 
     return (

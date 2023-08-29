@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\SettingsGenerator;
-
 function returnBack($error): \Illuminate\Http\JsonResponse
 {
     return response()->json([
@@ -90,10 +88,10 @@ function aboutInfo()
     return $data;
 }
 
-function storeGeneralData($generalSetting, $global, $request) {
-    $global = $global."general.";
-    $currentFile = $generalSetting->findSetting($global . '.site_logo');
-    $currentIcon = $generalSetting->findSetting($global . '.site_favicon');
+function storeGeneralData($generalSetting, $global, $request)
+{
+    $currentFile = $generalSetting->findSetting($global . 'general.site_logo');
+    $currentIcon = $generalSetting->findSetting($global . 'general.site_favicon');
     if ($request->hasFile("site_logo")) {
         $filename = time() . '-' . 'logo.' . fileInfo($request->site_logo)['extension'];
         $path = 'uploads/settings';
@@ -120,18 +118,20 @@ function storeGeneralData($generalSetting, $global, $request) {
         "site_favicon" => $request->hasFile("site_favicon") ? $site_favicon : $currentIcon,
         "footer_detail" => $request->footer_detail,
     ];
-    $savedData = $generalSetting->saveSetting($global, $data);
+
+    $savedData = setting([$global . "general" => $data]);
     return $savedData;
 }
 
-function storeContactInfoData($generalSetting, $global, $request) {
-    $global = $global."contact_info.";
+function storeContactInfoData($global, $request) {
+
     $data = [
         "phone" => $request->phone,
         "mail" => $request->mail,
         "address" => $request->address
     ];
-    $savedData = $generalSetting->saveSetting($global, $data);
+
+    $savedData = setting([$global . "contact_info" => $data]);
     return $savedData;
 }
 

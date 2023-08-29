@@ -18,14 +18,14 @@ function Index({label, id, fileName, file, handler}) {
 
     return (
         <>
-            <label htmlFor={id}>{label}  <small>{fileName?(<Link onClick={(e)=>{
+            <label htmlFor={id}>{label}  <small>{fileName?(<Link to="#" onClick={(e)=>{
                 e.preventDefault();
                 goToInternalLink(fileName)
             }} className={style.anchor}>See File</Link>):''}</small></label>
             <div className="row">
                 <div className="col-6">
                     <input type="text" className={`${style.controller} form-file-show`}
-                           placeholder="select file" value={file ? file.name:""} readOnly={true}/>
+                           placeholder="select file" value={file ? file.name:" "} readOnly={true}/>
                 </div>
                 <div className="col-6">
                     <button onClick={buttonOnClick} type="button" className={`${style.btn} form-file-cover`}>

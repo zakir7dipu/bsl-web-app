@@ -2,11 +2,11 @@
     "site": {
         "settings": {
             "general": {
-                "site_name": "Bizz Solutions PLC as",
+                "site_name": "Bizz Solutions PLC",
                 "slogan": "Technology Solution Company in BD.",
-                "site_logo": "uploads\/settings\/1693298764-logo.png",
-                "site_favicon": "uploads\/settings\/1693298764-icon.png",
-                "footer_detail": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal. sadasd"
+                "site_logo": "uploads\/settings\/1693305624-logo.png",
+                "site_favicon": "uploads\/settings\/1693305624-icon.png",
+                "footer_detail": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal."
             },
             "contact_info": {
                 "phone": "+880 295 31087",
@@ -62,10 +62,5 @@
                 }
             }
         }
-    },
-    "site_name": "Bizz Solutions PLC",
-    "slogan": "Technology Solution Company in BD.",
-    "site_logo": "uploads\/settings\/logo.png",
-    "site_favicon": "uploads\/settings\/icon.png",
-    "footer_detail": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal dsdfadsfafafsf."
+    }
 }

@@ -9,8 +9,8 @@ function HeaderMeta({title = '', robots = "", keywords = "", description = '', n
     const [siteFavicon, setSiteFavicon] = useState("");
 
     useEffect(()=>{
-        setSiteName(`${generalSetting?.site_name} | ${title}`)
-        setSiteFavicon(`/${generalSetting?.site_favicon}`)
+        setSiteName(`${generalSetting?.general?.site_name} | ${title}`)
+        setSiteFavicon(`/${generalSetting?.general?.site_favicon}`)
     },[generalSetting])
     return (
         <Helmet>

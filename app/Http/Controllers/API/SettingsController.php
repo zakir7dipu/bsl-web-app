@@ -19,7 +19,7 @@ class SettingsController extends Controller
 
     public function settings()
     {
-        $settings = getAllSettings()->general;
+        $settings = getAllSettings();
         return response()->json([
             'allSettings' => $settings,
         ]);
@@ -81,13 +81,13 @@ class SettingsController extends Controller
             $global = "site.settings.";
             $data = match ($request->type) {
                 "general" => storeGeneralData($generalSetting, $global, $request),
-                "contact_info" => storeContactInfoData($generalSetting, $global, $request),
+                "contact_info" => storeContactInfoData($global, $request),
                 "newsletter" => storeNewsletterData($generalSetting, $global, $request),
                 "backlink" => storeBacklinkData($generalSetting, $global, $request),
                 default => "no Data Found",
             };
 
-            return response()->json($data);
+            return response()->json(setting($global));
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), $th->getCode());
         }
