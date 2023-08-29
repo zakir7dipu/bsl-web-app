@@ -10,6 +10,7 @@ import Errors from "../auth/pages/Errors.jsx";
 import Profile from "../backend/pages/Profile/Index.jsx";
 import SettingsMain from "../backend/pages/Settings/Index.jsx";
 import SEO from "../backend/pages/Settings/SEO/Index.jsx";
+import GeneralSetting from "../backend/pages/Settings/GeneralSettings/Index.jsx";
 
 import {refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
 import {useDispatch} from "react-redux";
@@ -36,6 +37,7 @@ function Main() {
                     <Route path="settings">
                         <Route index element={<SettingsMain/>}/>
                         <Route path="seo" element={<SEO/>}/>
+                        <Route path="general" element={<GeneralSetting/>}/>
                     </Route>
                 </Route>
             </Route>

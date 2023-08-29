@@ -2,32 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class SEOGenerator extends Model
 {
-//    use HasFactory;
-
-//    public $page;
-//    public $robots;
-//    public $author;
-//    public $keywords;
-//    public $description;
-//    public $type;
-//    public $url;
-
-//    public function __construct($page, $robots, $author, $keywords, $description, $type, $url)
-//    {
-//        $this->page = $page;
-//        $this->robots = $robots;
-//        $this->author = $author;
-//        $this->keywords = $keywords;
-//        $this->description = $description;
-//        $this->type = $type;
-//        $this->url = $url;
-//    }
-
     public function findSeo($page)
     {
         $group = 'seo.' . $page . ".";

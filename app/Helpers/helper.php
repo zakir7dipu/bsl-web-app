@@ -87,34 +87,3 @@ function aboutInfo()
     return $data;
 }
 
-function technology()
-{
-    $group = 'site.technology.';
-    $data = (object)[
-        "software" => setting($group . 'software'),
-        "fintech" => setting($group . 'fintech'),
-        "healthcare" => setting($group . 'healthcare'),
-        "dataMining" => setting($group . 'dataMining'),
-        "machineLearning" => setting($group . 'machineLearning'),
-        "medical" => setting($group . 'medical'),
-        "entertainment" => setting($group . 'entertainment'),
-        "ai" => setting($group . 'ai'),
-        "manufacturing" => setting($group . 'manufacturing'),
-        "logistics" => setting($group . 'logistics'),
-    ];
-    return $data;
-}
-
-function alignWith()
-{
-    $group = 'site.alignWith.';
-    $data = (object)[
-        "java" => setting($group . 'java'),
-        "dynamodb" => setting($group . 'dynamodb'),
-        "redshift" => setting($group . 'redshift'),
-        "aws" => setting($group . 'aws'),
-        "storm" => setting($group . 'storm'),
-        "docker" => setting($group . 'docker'),
-    ];
-    return $data;
-}

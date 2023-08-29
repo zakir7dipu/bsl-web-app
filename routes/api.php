@@ -22,6 +22,7 @@ Route::controller(SettingsController::class)->group(function (){
     Route::get('slider-settings','sliderSetting');
     Route::get('technology-settings','technologySetting');
     Route::get('align-with-settings','alignWithSetting');
+    Route::post('store-settings','storeSettings');
 });
 
 Route::controller(SEOController::class)->group(function (){

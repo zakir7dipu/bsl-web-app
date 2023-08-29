@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import {Helmet} from "react-helmet-async";
 import {useSelector} from "react-redux";
+import {useInternalLink} from "../lib/helper.js";
 
 function HeaderMeta({title = '', robots = "", keywords = "", description = '', name = '', type = 'article', url = '/'}) {
     const {generalSetting} = useSelector(state => state.generalSettings);
     const [siteName, setSiteName] = useState("Bizz Solution Plc")
+    const [siteFavicon, setSiteFavicon] = useState("");
 
     useEffect(()=>{
         setSiteName(`${generalSetting?.site_name} | ${title}`)
+        setSiteFavicon(`/${generalSetting?.site_favicon}`)
     },[generalSetting])
     return (
         <Helmet>
@@ -23,6 +26,7 @@ function HeaderMeta({title = '', robots = "", keywords = "", description = '', n
             <meta name="twitter:title" content={title}/>
             <meta name="twitter:description" content={description}/>
             <link rel="canonical" href={url}/>
+            <link rel="icon" type="image/png" href={useInternalLink(siteFavicon)}/>
         </Helmet>
     )
 }
