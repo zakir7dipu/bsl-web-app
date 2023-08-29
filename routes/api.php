@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\SettingsController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SEOController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(AuthController::class)->group(function () {
@@ -21,4 +22,9 @@ Route::controller(SettingsController::class)->group(function (){
     Route::get('slider-settings','sliderSetting');
     Route::get('technology-settings','technologySetting');
     Route::get('align-with-settings','alignWithSetting');
+});
+
+Route::controller(SEOController::class)->group(function (){
+    Route::get('seo','getSeo');
+    Route::post('store-seo','storeSeo');
 });

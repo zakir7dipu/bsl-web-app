@@ -9,53 +9,53 @@ class SEOGenerator extends Model
 {
 //    use HasFactory;
 
-    public $page;
-    public $robots;
-    public $author;
-    public $keywords;
-    public $description;
-    public $type;
-    public $url;
+//    public $page;
+//    public $robots;
+//    public $author;
+//    public $keywords;
+//    public $description;
+//    public $type;
+//    public $url;
 
-    public function __construct($page, $robots, $author, $keywords, $description, $type, $url)
-    {
-        $this->page = $page;
-        $this->robots = $robots;
-        $this->author = $author;
-        $this->keywords = $keywords;
-        $this->description = $description;
-        $this->type = $type;
-        $this->url = $url;
-    }
+//    public function __construct($page, $robots, $author, $keywords, $description, $type, $url)
+//    {
+//        $this->page = $page;
+//        $this->robots = $robots;
+//        $this->author = $author;
+//        $this->keywords = $keywords;
+//        $this->description = $description;
+//        $this->type = $type;
+//        $this->url = $url;
+//    }
 
     public function findSeo($page)
     {
-        $group = 'seo.' . $this->page . ".";
+        $group = 'seo.' . $page . ".";
         return setting($group . 'meta');
     }
 
-    public function saveSeo()
+    public function saveSeo($page, $robots, $author, $keywords, $description, $type, $url)
     {
-        $is_robots = match ($this->robots) {
+        $is_robots = match ($robots) {
             "allow" => "index, follow",
             "link_only" => "noindex, follow",
             "denay" => "noindex, nofollow",
             default => "index, follow",
         };
         $seo = [
-            "keywords" => $this->keywords,
+            "keywords" => $keywords,
             "robots" => $is_robots,
-            "description" => $this->description,
-            "og_type" => $this->type,
-            "og_title" => $this->page,
-            "og_description" => $this->description,
-            "twitter_creator" => $this->author,
-            "twitter_card" => $this->type,
-            "twitter_title" => $this->page,
-            "twitter_description" => $this->description,
-            "canonical" => $this->url
+            "description" => $description,
+            "og_type" => $type,
+            "og_title" => $page,
+            "og_description" => $description,
+            "twitter_creator" => $author,
+            "twitter_card" => $type,
+            "twitter_title" => $page,
+            "twitter_description" => $description,
+            "canonical" => $url
         ];
-        $group = 'seo.' . $this->page . ".";
+        $group = 'seo.' . $page . ".";
         setting([$group . 'meta' => $seo]);
         return setting($group . 'meta');
 //        $jsonData = json_encode($seo);
