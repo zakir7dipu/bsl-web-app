@@ -111,9 +111,7 @@ class SettingsController extends Controller
                 "footer_detail" => $request->footer_detail,
             ];
 
-            //$setting = $generalSetting->saveSetting($page, $data);
-            setting([$page.'.footer_detail' => $request->footer_detail]);
-            setting([$page => $data]);
+            $generalSetting->saveSetting($page, $data);
 
             return response()->json(setting($page));
         } catch (\Throwable $th) {
