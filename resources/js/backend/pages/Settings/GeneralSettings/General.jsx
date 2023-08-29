@@ -82,53 +82,58 @@ function General() {
                                 <div className="col-md-6">
                                     <div className="form-group">
                                         <label>Site Name</label>
-                                        <input className="form-control" value={siteName}
-                                               onChange={(e) => {
-                                                   setSiteName(e.target.value)
-                                               }} placeholder="Website Name" type="text"/>
+                                        <input
+                                            className="form-control"
+                                            value={siteName}
+                                            onChange={(e) => {
+                                                setSiteName(e.target.value)
+                                            }}
+                                            placeholder="Website Name"
+                                            type="text"/>
                                     </div>
                                 </div>
 
                                 <div className="col-md-6">
                                     <div className="form-group">
                                         <label>Slogan</label>
-                                        <input className="form-control" value={slogan}
-                                               onChange={(e) => {
-                                                   setSlogan(e.target.value)
-                                               }} placeholder="Slogan Name" type="text"/>
+                                        {/*<input className="form-control" value={slogan}*/}
+                                        {/*       onChange={(e) => {*/}
+                                        {/*           setSlogan(e.target.value)*/}
+                                        {/*       }} placeholder="Slogan Name" type="text"/>*/}
                                     </div>
                                 </div>
 
                                 <div className="col-md-6">
                                     <div className="form-group">
-                                        <FileInput label={"Site Logo"} file={siteLogo} id={"siteLogo"}
-                                                   fileName={siteLogo}
-                                                   handler={inputLogoHandler}/>
+                                        {/*<FileInput label={"Site Logo"} file={siteLogo} id={"siteLogo"}*/}
+                                        {/*           fileName={siteLogo}*/}
+                                        {/*           handler={inputLogoHandler}/>*/}
                                     </div>
                                 </div>
 
                                 <div className="col-md-6">
                                     <div className="form-group">
-                                        <FileInput label={"Site Favicon"} file={siteFavicon} id={"siteFavtion"}
-                                                   fileName={siteFavicon}
-                                                   handler={inputFavIconHandler}/>
+                                        {/*<FileInput label={"Site Favicon"} file={siteFavicon} id={"siteFavtion"}*/}
+                                        {/*           fileName={siteFavicon}*/}
+                                        {/*           handler={inputFavIconHandler}/>*/}
                                     </div>
                                 </div>
 
                                 <div className="col-md-12">
                                     <div className="form-group">
                                         <label>Footer Details</label>
-                                        <textarea className="form-control" name="textarea" id="textarea" cols="30"
-                                                  rows="2"
-                                                  placeholder="Footer details" value={footerDetails}
-                                                  onChange={(e) => {
-                                                      setFooterDetails(e.target.value)
-                                                  }}></textarea>
+                                        {/*<textarea className="form-control" name="textarea" id="textarea" cols="30"*/}
+                                        {/*          rows="2"*/}
+                                        {/*          placeholder="Footer details" value={footerDetails}*/}
+                                        {/*          onChange={(e) => {*/}
+                                        {/*              setFooterDetails(e.target.value)*/}
+                                        {/*          }}></textarea>*/}
                                     </div>
                                 </div>
                                 <div className="col-md-12">
                                     <div className="d-flex align-items-center">
-                                        <button className="btn btn-primary px-3 float-right" type={"submit"}>Save</button>
+                                        <button className="btn btn-primary px-3 float-right" type={"submit"}>Save
+                                        </button>
                                     </div>
                                 </div>
                             </div>
