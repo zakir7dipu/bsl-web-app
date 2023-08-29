@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import Api from "../../lib/api.js";
+import {errorMessage, infoMessage, successMessage} from "../../lib/helper.js";
 
 const {apiAccess} = new Api();
 const initialData = {
@@ -39,21 +40,22 @@ export const fetchSliderSettings = createAsyncThunk("settings/fetchSliderSetting
     }
 })
 
-export const fetchTechnologySettings = createAsyncThunk("settings/fetchTechnologySettings", async (args, {rejectedWithValue}) => {
-    try {
-        const res = await apiAccess.get(`technology-settings`)
-        return res.data
-    } catch (error) {
-        return rejectedWithValue(error.response.message)
-    }
-})
 
-export const fetchAlignSettings = createAsyncThunk("settings/fetchAlignSettings", async (args, {rejectedWithValue}) => {
+
+export const saveSettings = createAsyncThunk("settings/saveSettings", async (data, {rejectWithValue}) => {
     try {
-        const res = await apiAccess.get(`align-with-settings`)
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }
+        const res = await apiAccess.post('store-settings', data, config)
         return res.data
     } catch (error) {
-        return rejectedWithValue(error.response.message)
+        if (!error.response) {
+            throw error
+        }
+        return rejectWithValue(error.response.data)
     }
 })
 
@@ -104,33 +106,20 @@ export const settingsSlice = createSlice({
             state.errorMess = payload
         },
 
-        [fetchTechnologySettings.pending]: (state) => {
+        [saveSettings.pending]: (state) => {
             state.isLoading = true
+            infoMessage('We are processing your request.')
         },
-        [fetchTechnologySettings.fulfilled]: (state, {payload}) => {
-            const {data} = payload
+        [saveSettings.fulfilled]: (state, {payload}) => {
             state.isLoading = false
-            state.technologySetting = data
-            state.errorMess = null
+            state.generalSetting = payload
+            successMessage(`Data Saved Successfully.`);
         },
-        [fetchTechnologySettings.rejected]: (state, {payload}) => {
+        [saveSettings.rejected]: (state, {payload}) => {
             state.isLoading = false
-            state.errorMess = payload
-        },
-
-        [fetchAlignSettings.pending]: (state) => {
-            state.isLoading = true
-        },
-        [fetchAlignSettings.fulfilled]: (state, {payload}) => {
-            const {data} = payload
-            state.isLoading = false
-            state.alignSetting = data
-            state.errorMess = null
-        },
-        [fetchAlignSettings.rejected]: (state, {payload}) => {
-            state.isLoading = false
-            state.errorMess = payload
-        },
+            state.errorMessage = payload
+            errorMessage(payload)
+        }
     }
 })
 

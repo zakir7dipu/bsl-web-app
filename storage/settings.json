@@ -61,26 +61,6 @@
                     "brief": "At vero eos et accusamus etiusto odio praesentium accusamus."
                 }
             }
-        },
-        "technology": {
-            "software": "images\/technology\/style3\/1.png",
-            "fintech": "images\/technology\/style3\/2.png",
-            "healthcare": "images\/technology\/style3\/3.png",
-            "dataMining": "images\/technology\/style3\/4.png",
-            "machineLearning": "images\/technology\/style3\/5.png",
-            "medical": "images\/technology\/style3\/6.png",
-            "entertainment": "images\/technology\/style3\/7.png",
-            "ai": "images\/technology\/style3\/8.png",
-            "manufacturing": "images\/technology\/style3\/9.png",
-            "logistics": "images\/technology\/style3\/10.png"
-        },
-        "alignWith": {
-            "java": "images\/technology\/style2\/1.png",
-            "dynamodb": "images\/technology\/style2\/2.png",
-            "redshift": "images\/technology\/style2\/3.png",
-            "aws": "images\/technology\/style2\/4.png",
-            "storm": "images\/technology\/style2\/5.png",
-            "docker": "images\/technology\/style2\/6.png"
         }
     }
 }

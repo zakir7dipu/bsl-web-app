@@ -60,7 +60,7 @@ export const SEOSlice = createSlice({
             successMessage(`Data Saved Successfully.`);
         },
         [saveSeoData.rejected]: (state, {payload}) => {
-            state.isLoading = false,
+            state.isLoading = false
             state.errorMessage = payload
             errorMessage(payload)
         }
