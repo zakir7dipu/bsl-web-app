@@ -15,7 +15,7 @@ function HeaderMeta({title = '', robots = "", keywords = "", description = '', n
     return (
         <Helmet>
             <title>{siteName}</title>
-            <meta name="robots" content="noindex, nofollow"/>
+            <meta name="robots" content={robots}/>
             <meta name='keywords' content={keywords}/>
             <meta name='description' content={description}/>
             <meta property="og:type" content={type}/>

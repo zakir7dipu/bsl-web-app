@@ -1,4 +1,7 @@
 <?php
+
+use App\Models\SettingsGenerator;
+
 function returnBack($error): \Illuminate\Http\JsonResponse
 {
     return response()->json([
@@ -85,5 +88,74 @@ function aboutInfo()
         ],
     ];
     return $data;
+}
+
+function storeGeneralData($generalSetting, $global, $request) {
+    $global = $global."general.";
+    $currentFile = $generalSetting->findSetting($global . '.site_logo');
+    $currentIcon = $generalSetting->findSetting($global . '.site_favicon');
+    if ($request->hasFile("site_logo")) {
+        $filename = time() . '-' . 'logo.' . fileInfo($request->site_logo)['extension'];
+        $path = 'uploads/settings';
+        if ($currentFile) {
+            fileDelete($currentFile);
+        }
+        fileUpload($request->site_logo, $path, $filename);
+        $site_logo = $path . '/' . $filename;
+    }
+
+    if ($request->hasFile("site_favicon")) {
+        $filename = time() . '-' . 'icon.' . fileInfo($request->site_favicon)['extension'];
+        $path = 'uploads/settings';
+        if ($currentIcon) {
+            fileDelete($currentIcon);
+        }
+        fileUpload($request->site_favicon, $path, $filename);
+        $site_favicon = $path . '/' . $filename;
+    }
+    $data = [
+        "site_name" => $request->site_name,
+        "slogan" => $request->slogan,
+        "site_logo" => $request->hasFile("site_logo") ? $site_logo : $currentFile,
+        "site_favicon" => $request->hasFile("site_favicon") ? $site_favicon : $currentIcon,
+        "footer_detail" => $request->footer_detail,
+    ];
+    $savedData = $generalSetting->saveSetting($global, $data);
+    return $savedData;
+}
+
+function storeContactInfoData($generalSetting, $global, $request) {
+    $global = $global."contact_info.";
+    $data = [
+        "phone" => $request->phone,
+        "mail" => $request->mail,
+        "address" => $request->address
+    ];
+    $savedData = $generalSetting->saveSetting($global, $data);
+    return $savedData;
+}
+
+function storeNewsletterData($generalSetting, $global, $request) {
+    $global = $global."newsletter.";
+    $data = [
+        "title" => $request->title,
+        "text" => $request->text
+    ];
+    $savedData = $generalSetting->saveSetting($global, $data);
+    return $savedData;
+}
+
+function storeBacklinkData($generalSetting, $global, $request) {
+    $global = $global."backlink.";
+    $data = [
+        "qrcode" => $request->qrcode,
+        "eshop" => $request->eshop,
+        "facebook" => $request->facebook,
+        "linkedin" => $request->linkedin,
+        "youtube" => $request->youtube,
+        "instagram" => $request->instagram
+    ];
+    $savedData = $generalSetting->saveSetting($global, $data);
+    return $savedData;
 }
 

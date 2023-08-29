@@ -78,44 +78,16 @@ class SettingsController extends Controller
     {
         try {
             $generalSetting = new SettingsGenerator();
+            $global = "site.settings.";
+            $data = match ($request->type) {
+                "general" => storeGeneralData($generalSetting, $global, $request),
+                "contact_info" => storeContactInfoData($generalSetting, $global, $request),
+                "newsletter" => storeNewsletterData($generalSetting, $global, $request),
+                "backlink" => storeBacklinkData($generalSetting, $global, $request),
+                default => "no Data Found",
+            };
 
-            $page = "site.settings.general";
-
-            $currentFile = $generalSetting->findSetting($page . '.site_logo');
-            $currentIcon = $generalSetting->findSetting($page . '.site_favicon');
-            if ($request->hasFile("site_logo")) {
-                $filename = time() . '-' . 'logo.' . fileInfo($request->site_logo)['extension'];
-                $path = 'uploads/settings';
-                if ($currentFile) {
-                    fileDelete($currentFile);
-                }
-                fileUpload($request->site_logo, $path, $filename);
-                $site_logo = $path . '/' . $filename;
-            }
-
-            if ($request->hasFile("site_favicon")) {
-                $filename = time() . '-' . 'icon.' . fileInfo($request->site_favicon)['extension'];
-                $path = 'uploads/settings';
-                if ($currentIcon) {
-                    fileDelete($currentIcon);
-                }
-                fileUpload($request->site_favicon, $path, $filename);
-                $site_favicon = $path . '/' . $filename;
-            }
-
-            $data = [
-                "site_name" => $request->site_name,
-                "slogan" => $request->slogan,
-                "site_logo" => $request->hasFile("site_logo") ? $site_logo : $currentFile,
-                "site_favicon" => $request->hasFile("site_favicon") ? $site_favicon : $currentIcon,
-                "footer_detail" => $request->footer_detail,
-            ];
-
-            //$setting = $generalSetting->saveSetting($page, $data);
-            setting([$page.'.footer_detail' => $request->footer_detail]);
-            setting([$page => $data]);
-
-            return response()->json(setting($page));
+            return response()->json($data);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), $th->getCode());
         }

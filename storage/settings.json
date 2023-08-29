@@ -2,16 +2,16 @@
     "site": {
         "settings": {
             "general": {
-                "site_name": "Bizz Solutions PLC",
+                "site_name": "Bizz Solutions PLC as",
                 "slogan": "Technology Solution Company in BD.",
-                "site_logo": "uploads\/settings\/logo.png",
-                "site_favicon": "uploads\/settings\/icon.png",
-                "footer_detail": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal."
+                "site_logo": "uploads\/settings\/1693298764-logo.png",
+                "site_favicon": "uploads\/settings\/1693298764-icon.png",
+                "footer_detail": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal. sadasd"
             },
             "contact_info": {
                 "phone": "+880 295 31087",
                 "mail": "info@bizzsol.com.bd",
-                "address": "City centre 90/1, Level-25 Type-D2, Motijheel C/A, Dhaka-1000, Bangladesh."
+                "address": "City centre 90\/1, Level-25 Type-D2, Motijheel C\/A, Dhaka-1000, Bangladesh."
             },
             "newsletter": {
                 "title": "Subscribe To Our Newsletter",
