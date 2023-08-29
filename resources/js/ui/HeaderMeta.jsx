@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Helmet} from "react-helmet-async";
 import {useSelector} from "react-redux";
 
-function HeaderMeta({title = '', description = '', name = '', type = 'article', url = '/'}) {
+function HeaderMeta({title = '', robots = "", keywords = "", description = '', name = '', type = 'article', url = '/'}) {
     const {generalSetting} = useSelector(state => state.generalSettings);
     const [siteName, setSiteName] = useState("Bizz Solution Plc")
 
@@ -11,8 +11,9 @@ function HeaderMeta({title = '', description = '', name = '', type = 'article', 
     },[generalSetting])
     return (
         <Helmet>
-        console.log(siteName)
             <title>{siteName}</title>
+            <meta name="robots" content="noindex, nofollow"/>
+            <meta name='keywords' content={keywords}/>
             <meta name='description' content={description}/>
             <meta property="og:type" content={type}/>
             <meta property="og:title" content={title}/>
