@@ -4,7 +4,6 @@ import {useSelector} from "react-redux";
 
 function HeaderMeta({title = '', description = '', name = '', type = 'article', url = '/'}) {
     const {generalSetting} = useSelector(state => state.generalSettings);
-    console.log(generalSetting)
     const [siteName, setSiteName] = useState("Bizz Solution Plc")
 
     useEffect(()=>{
