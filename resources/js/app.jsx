@@ -13,7 +13,6 @@ import {HelmetProvider} from "react-helmet-async";
 ReactDOM.createRoot(document.getElementById('app')).render(
     <HelmetProvider>
         <Provider store={store}>
-
             <Router>
                 <Main/>
                 <ToastContainer/>

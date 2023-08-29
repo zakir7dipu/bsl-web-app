@@ -119,7 +119,6 @@ export const authSlice = createSlice({
         },
         [refreshLoginData.pending]: (state)=> {
             state.isAuthLoading = true
-            infoMessage('We are processing your request.')
         },
         [refreshLoginData.fulfilled]: (state, {payload})=> {
             const {status, user} = payload

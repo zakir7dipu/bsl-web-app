@@ -1,10 +1,17 @@
 import React from 'react';
+import HeaderMeta from "../../ui/HeaderMeta.jsx";
 
 function Home(props) {
     return (
-        <div>
-            Home
-        </div>
+        <>
+            <HeaderMeta
+                title="Home"
+                url="/"
+            />
+            <div>
+                Home
+            </div>
+        </>
     );
 }
 
