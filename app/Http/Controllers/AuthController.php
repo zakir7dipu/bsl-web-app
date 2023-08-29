@@ -134,12 +134,17 @@ class AuthController extends Controller
             if ($request->hasFile("avatar")) {
                 $filename = time() . '-' . 'avatar.' . fileInfo($request->avatar)['extension'];
                 $path = 'uploads/users';
+                $currentFile = $user->avatar;
+                if ($currentFile) {
+                    fileDelete($currentFile);
+                }
                 fileUpload($request->avatar, $path, $filename);
                 $img = $path . '/' . $filename;
                 $user->avatar = $img;
             }
 
             $user->save();
+            $user->avatar = $user->avatar? config('app.url').'/'.$user->avatar : get_gravatar($user->email);
 
             return response()->json($user);
         } catch (\Throwable $th) {
