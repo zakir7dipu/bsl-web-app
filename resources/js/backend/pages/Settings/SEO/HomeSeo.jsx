@@ -9,6 +9,7 @@ function HomeSeo() {
 
     const dispatch = useDispatch()
 
+    const [page, setPage] = useState("home");
     const [robots, setRobots] = useState("");
     const [author, setAuthor] = useState("");
     const [keywords, setKeywords] = useState("");
@@ -20,7 +21,10 @@ function HomeSeo() {
         e.preventDefault();
         let formData = new FormData();
 
-        formData.append("page", 'home');
+
+        if (page) {
+            formData.append("page", page);
+        }
 
         if (author) {
             formData.append("author", author);
@@ -59,29 +63,44 @@ function HomeSeo() {
 
     useEffect(() => {
         if (seo) {
-            setRobots(seo?.robots)
-            setAuthor(seo?.twitter_creator)
-            setKeywords(seo?.keywords)
-            setDescription(seo?.description)
-            setType(seo?.og_type)
-            setUrl(seo?.canonical)
+            setRobots(seo?.robots || "")
+            setAuthor(seo?.twitter_creator || "")
+            setKeywords(seo?.keywords || "")
+            setDescription(seo?.description || "")
+            setType(seo?.og_type || "")
+            setUrl(seo?.canonical || "")
         }
     }, [seo])
 
     useEffect(() => {
-        dispatch(fetchSeoData('home'))
-    }, []);
+        dispatch(fetchSeoData(page))
+    }, [page]);
 
     if (!isLoading) {
         return (
-            <div className="col-lg-6 col-sm-12">
+            <div className="col-lg-8 col-sm-12 offset-2">
                 <div className="card">
                     <div className="card-header">
-                        <h4>Home Page SEO</h4>
+                        <h4>SEO</h4>
                     </div>
                     <div className="card-body">
                         <form className="form-profile" onSubmit={requestHomeHandler}>
                             <div className="row">
+                                <div className="col-md-6">
+                                    <div className="form-group">
+                                        <label>Page</label>
+                                        <select className="form-control"
+                                                name="robots"
+                                                value={page}
+                                                onChange={e => setPage(e.target.value)}>
+                                            <option value="home">Home</option>
+                                            <option value="about">About Us</option>
+                                            <option value="management">Management</option>
+                                            <option value="team">Team</option>
+                                            <option value="contact">Contact Us</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div className="col-md-6">
                                     <div className="form-group">
                                         <label>Author</label>

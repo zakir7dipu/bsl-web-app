@@ -43,6 +43,7 @@ export const SEOSlice = createSlice({
         },
         [fetchSeoData.fulfilled]: (state, {payload}) => {
             state.isLoading = false
+            console.log(payload);
             state.seo = payload
         },
         [fetchSeoData.rejected]: (state, {payload}) => {
