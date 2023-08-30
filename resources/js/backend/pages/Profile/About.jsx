@@ -116,9 +116,12 @@ function About() {
 
                         <div className="col-md-6">
                             <div className="form-group">
-                                <FileInput label={"Avatar"} file={avatar} id={"avatar"}
-                                           fileName={avatar}
-                                           handler={inputFileHandler}/>
+                                <FileInput
+                                    label={"Avatar"}
+                                    file={avatar}
+                                    id={"avatar"}
+                                    handler={inputFileHandler}
+                                />
                             </div>
                         </div>
 
