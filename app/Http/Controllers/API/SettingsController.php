@@ -62,11 +62,13 @@ class SettingsController extends Controller
         try {
             $generalSetting = new SettingsGenerator();
             $global = "site.settings.";
+            $sliderglobal = "site.";
             $data = match ($request->type) {
                 "general" => storeGeneralData($generalSetting, $global, $request),
                 "contact_info" => storeContactInfoData($global, $request),
                 "newsletter" => storeNewsletterData($global, $request),
                 "backlink" => storeBacklinkData($global, $request),
+                "slider" => storeSliderData($sliderglobal, $request),
                 default => "no Data Found",
             };
 

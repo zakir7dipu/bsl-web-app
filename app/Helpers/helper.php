@@ -159,3 +159,13 @@ function storeBacklinkData($global, $request) {
     return setting([$global . "backlink" => $data]);
 }
 
+function storeSliderData($global, $request)
+{
+    $data = [
+        "title" => $request->title,
+        "text" => $request->text,
+        "link" => $request->link,
+    ];
+    return setting([$global . "slider" => $data]);
+}
+
