@@ -3,11 +3,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {errorMessage} from "../../../../lib/helper.js";
 import {saveSettings} from "../../../../featurs/Settings/SettingsSlice.js";
 
-function Contact(props) {
+function Contact() {
 
     const {generalSetting} = useSelector(state => state.generalSettings);
     const dispatch = useDispatch()
-    console.log(generalSetting)
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
     const [address, setAddress] = useState("");
@@ -25,7 +24,7 @@ function Contact(props) {
         if (!email) {
             errorMessage("Email is required.")
         } else {
-            formData.append("email", email);
+            formData.append("mail", email);
         }
 
         if (address) {

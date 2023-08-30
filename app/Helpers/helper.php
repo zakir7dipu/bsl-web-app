@@ -135,18 +135,19 @@ function storeContactInfoData($global, $request) {
     return $savedData;
 }
 
-function storeNewsletterData($generalSetting, $global, $request) {
-    $global = $global."newsletter.";
+function storeNewsletterData($global, $request)
+{
+
     $data = [
         "title" => $request->title,
         "text" => $request->text
     ];
-    $savedData = $generalSetting->saveSetting($global, $data);
+    $savedData = setting([$global . "newsletter" => $data]);
     return $savedData;
 }
 
-function storeBacklinkData($generalSetting, $global, $request) {
-    $global = $global."backlink.";
+function storeBacklinkData($global, $request) {
+
     $data = [
         "qrcode" => $request->qrcode,
         "eshop" => $request->eshop,
@@ -155,7 +156,6 @@ function storeBacklinkData($generalSetting, $global, $request) {
         "youtube" => $request->youtube,
         "instagram" => $request->instagram
     ];
-    $savedData = $generalSetting->saveSetting($global, $data);
-    return $savedData;
+    return setting([$global . "backlink" => $data]);
 }
 
