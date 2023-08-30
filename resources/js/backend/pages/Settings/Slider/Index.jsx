@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchSliderSettings, saveSettings} from "../../../../featurs/Settings/SettingsSlice.js";
 import {errorMessage} from "../../../../lib/helper.js";
 import FileInput from "../../../components/inputFile/Index.jsx";
+import Preloader from "../../../components/Preloader/Index.jsx";
 
 function Index(props) {
     const breadcrumb = [
@@ -20,7 +21,7 @@ function Index(props) {
         }
     ];
 
-    const {sliderSetting} = useSelector(state => state.generalSettings);
+    const {isLoading, sliderSetting} = useSelector(state => state.generalSettings);
 
     const dispatch = useDispatch()
 
@@ -89,17 +90,17 @@ function Index(props) {
         dispatch(fetchSliderSettings())
     }, []);
 
-
-    return (
-        <>
-            <Breadcrumb list={breadcrumb}/>
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-lg-8 col-sm-12 offset-2">
-                        <div className="card">
-                            <div className="card-header">
-                                <h4>Slider Information</h4>
-                            </div>
+    if (!isLoading) {
+        return (
+            <>
+                <Breadcrumb list={breadcrumb}/>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-lg-8 col-sm-12 offset-2">
+                            <div className="card">
+                                <div className="card-header">
+                                    <h4>Slider Information</h4>
+                                </div>
                             <div className="card-body">
                                 <form className="form-profile" onSubmit={requestHandler}>
                                     <div className="row">
@@ -190,12 +191,15 @@ function Index(props) {
                                     </div>
                                 </form>
                             </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </>
-    );
+            </>
+        );
+    } else {
+        return <Preloader/>
+    }
 }
 
 export default Index;
