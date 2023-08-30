@@ -47,7 +47,6 @@ function About() {
         }
         if (avatar) {
             formData.append("avatar", avatar);
-            console.log(avatar)
         }
 
         if (name && email && phone) {

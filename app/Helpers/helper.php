@@ -46,7 +46,10 @@ function sliderInfo()
     $data = (object)[
         "title" => setting($group . 'title'),
         "text" => setting($group . 'text'),
+        "btn_text" => setting($group . 'btn_text'),
+        "btn_link" => setting($group . 'btn_link'),
         "link" => setting($group . 'link'),
+        "image_link" => setting($group . 'image_link'),
     ];
     return $data;
 }
@@ -161,10 +164,26 @@ function storeBacklinkData($global, $request) {
 
 function storeSliderData($global, $request)
 {
+
+    $currentFile = setting($global . 'slider.image_link');
+    $imageLink = '';
+    if ($request->hasFile("image_link")) {
+        $filename = time() . '-' . 'slider.' . fileInfo($request->image_link)['extension'];
+        $path = 'uploads/settings/slider';
+        if ($currentFile) {
+            fileDelete($currentFile);
+        }
+        fileUpload($request->image_link, $path, $filename);
+        $imageLink = $path . '/' . $filename;
+    }
+
     $data = [
         "title" => $request->title,
         "text" => $request->text,
         "link" => $request->link,
+        "btn_text" => $request->btn_text,
+        "btn_link" => $request->btn_link,
+        "image_link" => $request->hasFile("image_link") ? $imageLink : $currentFile,
     ];
     return setting([$global . "slider" => $data]);
 }

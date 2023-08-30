@@ -3,6 +3,7 @@ import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchSliderSettings, saveSettings} from "../../../../featurs/Settings/SettingsSlice.js";
 import {errorMessage} from "../../../../lib/helper.js";
+import FileInput from "../../../components/inputFile/Index.jsx";
 
 function Index(props) {
     const breadcrumb = [
@@ -26,6 +27,14 @@ function Index(props) {
     const [title, setTitle] = useState("");
     const [description, setText] = useState("");
     const [link, setLink] = useState("");
+    const [btnText, setBtnText] = useState("");
+    const [btnLink, setBtnLink] = useState("");
+
+    const [imageLink, setImageLink] = useState("");
+
+    const inputFileHandler = (file) => {
+        setImageLink(file[0])
+    }
 
     const requestHandler = (e) => {
         e.preventDefault();
@@ -46,6 +55,18 @@ function Index(props) {
             formData.append("link", link);
         }
 
+        if (btnText) {
+            formData.append("btn_text", btnText);
+        }
+
+        if (btnLink) {
+            formData.append("btn_link", btnLink);
+        }
+
+        if (imageLink) {
+            formData.append("image_link", imageLink);
+        }
+
         formData.append("type", 'slider');
 
         if (title && description) {
@@ -58,6 +79,9 @@ function Index(props) {
             setTitle(sliderSetting?.title)
             setText(sliderSetting?.text)
             setLink(sliderSetting?.link)
+            setBtnText(sliderSetting?.btn_text)
+            setBtnLink(sliderSetting?.btn_link)
+            setImageLink(sliderSetting?.image_link)
         }
     }, [sliderSetting])
 
@@ -94,13 +118,50 @@ function Index(props) {
 
                                         <div className="col-md-6">
                                             <div className="form-group">
-                                                <label>Btn Link</label>
+                                                <label>Youtube Link</label>
                                                 <input
                                                     className="form-control"
                                                     value={link}
                                                     onChange={e => setLink(e.target.value)}
-                                                    placeholder="Btn Link"
+                                                    placeholder="Youtube video link"
                                                     type="text"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div className="col-md-6">
+                                            <div className="form-group">
+                                                <label>Btn Text</label>
+                                                <input
+                                                    className="form-control"
+                                                    value={btnText}
+                                                    onChange={e => setBtnText(e.target.value)}
+                                                    placeholder="Btn Btn Text"
+                                                    type="text"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div className="col-md-6">
+                                            <div className="form-group">
+                                                <label>Btn Link</label>
+                                                <input
+                                                    className="form-control"
+                                                    value={btnLink}
+                                                    onChange={e => setBtnLink(e.target.value)}
+                                                    placeholder="Btn Btn Link"
+                                                    type="text"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div className="col-md-6">
+                                            <div className="form-group">
+                                                <FileInput
+                                                    label={"Slider Image"}
+                                                    file={imageLink}
+                                                    id={"avatar"}
+                                                    handler={inputFileHandler}
                                                 />
                                             </div>
                                         </div>
