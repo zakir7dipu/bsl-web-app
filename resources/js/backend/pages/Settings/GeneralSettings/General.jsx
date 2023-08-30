@@ -8,9 +8,9 @@ function General() {
     const {generalSetting} = useSelector(state => state.generalSettings);
     const dispatch = useDispatch()
 
-    const [siteName, setSiteName] = useState("");
-    const [slogan, setSlogan] = useState("");
-    const [siteLogo, setSiteLogo] = useState("");
+    const [siteName, setSiteName] = useState('');
+    const [slogan, setSlogan] = useState('');
+    const [siteLogo, setSiteLogo] = useState('');
     const [siteLogoLink, setSiteLogoLink] = useState("");
     const [siteFavicon, setSiteFavicon] = useState("");
     const [siteFaviconLink, setSiteFaviconLink] = useState("");
@@ -62,11 +62,14 @@ function General() {
     }
 
     useEffect(() => {
-        setSiteName(generalSetting?.general?.site_name)
-        setSlogan(generalSetting?.general?.slogan)
-        setSiteLogo(`/${generalSetting?.general?.site_logo}`)
-        setSiteFavicon(`/${generalSetting?.general?.site_favicon}`)
-        setFooterDetails(generalSetting?.general?.footer_detail)
+        if (Object.keys(generalSetting).length) {
+            const {general} = generalSetting
+            setSiteName(general?.site_name)
+            setSlogan(general?.slogan)
+            setSiteLogo(`/${general?.site_logo}`)
+            setSiteFavicon(`/${general?.site_favicon}`)
+            setFooterDetails(general?.footer_detail)
+        }
     }, [generalSetting])
 
     return (
@@ -83,51 +86,62 @@ function General() {
                                     <div className="form-group">
                                         <label>Site Name</label>
                                         <input
-                                            className="form-control"
+                                            type={`text`}
+                                            className={`form-control`}
                                             value={siteName}
-                                            onChange={(e) => {
-                                                setSiteName(e.target.value)
-                                            }}
-                                            placeholder="Website Name"
-                                            type="text"/>
+                                            onChange={e => setSiteName(e.target.value)}
+                                            placeholder={`Website Name`}
+                                        />
                                     </div>
                                 </div>
 
                                 <div className="col-md-6">
                                     <div className="form-group">
                                         <label>Slogan</label>
-                                        {/*<input className="form-control" value={slogan}*/}
-                                        {/*       onChange={(e) => {*/}
-                                        {/*           setSlogan(e.target.value)*/}
-                                        {/*       }} placeholder="Slogan Name" type="text"/>*/}
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            value={slogan}
+                                            onChange={e => setSlogan(e.target.value)}
+                                            placeholder="Slogan Name"
+                                        />
                                     </div>
                                 </div>
 
                                 <div className="col-md-6">
                                     <div className="form-group">
-                                        {/*<FileInput label={"Site Logo"} file={siteLogo} id={"siteLogo"}*/}
-                                        {/*           fileName={siteLogo}*/}
-                                        {/*           handler={inputLogoHandler}/>*/}
+                                        <FileInput
+                                            label={"Site Logo"}
+                                            file={siteLogo}
+                                            id={`siteLogo`}
+                                            handler={inputLogoHandler}
+                                        />
                                     </div>
                                 </div>
 
                                 <div className="col-md-6">
                                     <div className="form-group">
-                                        {/*<FileInput label={"Site Favicon"} file={siteFavicon} id={"siteFavtion"}*/}
-                                        {/*           fileName={siteFavicon}*/}
-                                        {/*           handler={inputFavIconHandler}/>*/}
+                                        <FileInput
+                                            label={"Site Favicon"}
+                                            file={siteFavicon}
+                                            id={"siteFavtion"}
+                                            handler={inputFavIconHandler}
+                                        />
                                     </div>
                                 </div>
 
                                 <div className="col-md-12">
                                     <div className="form-group">
                                         <label>Footer Details</label>
-                                        {/*<textarea className="form-control" name="textarea" id="textarea" cols="30"*/}
-                                        {/*          rows="2"*/}
-                                        {/*          placeholder="Footer details" value={footerDetails}*/}
-                                        {/*          onChange={(e) => {*/}
-                                        {/*              setFooterDetails(e.target.value)*/}
-                                        {/*          }}></textarea>*/}
+                                        <textarea
+                                            className="form-control"
+                                            name="textarea"
+                                            id="textarea" cols="30"
+                                            rows="2"
+                                            placeholder="Footer details"
+                                            value={footerDetails}
+                                            onChange={e => setFooterDetails(e.target.value)}
+                                        />
                                     </div>
                                 </div>
                                 <div className="col-md-12">

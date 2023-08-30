@@ -38,9 +38,12 @@ function Contact(props) {
     }
 
     useEffect(() => {
-        setPhone(generalSetting?.contact?.phone)
-        setEmail(generalSetting?.contact?.mail)
-        setAddress(generalSetting?.contact?.address)
+        if (Object.keys(generalSetting).length) {
+            const {contact} = generalSetting
+            setPhone(contact?.phone)
+            setEmail(contact?.mail)
+            setAddress(contact?.address)
+        }
     }, [generalSetting])
 
     return (
@@ -56,32 +59,41 @@ function Contact(props) {
                                 <div className="col-md-6">
                                     <div className="form-group">
                                         <label>Phone</label>
-                                        <input className="form-control" value={phone}
-                                               onChange={(e) => {
-                                                   setPhone(e.target.value)
-                                               }} placeholder="Website Name" type="text"/>
+                                        <input
+                                            className="form-control"
+                                            value={phone}
+                                            onChange={e => setPhone(e.target.value)}
+                                            placeholder="Website Name"
+                                            type="text"
+                                        />
                                     </div>
                                 </div>
 
                                 <div className="col-md-6">
                                     <div className="form-group">
                                         <label>Email</label>
-                                        <input className="form-control" value={email}
-                                               onChange={(e) => {
-                                                   setEmail(e.target.value)
-                                               }} placeholder="email" type="text"/>
+                                        <input
+                                            className="form-control"
+                                            value={email}
+                                            onChange={e => setEmail(e.target.value)}
+                                            placeholder="email"
+                                            type="text"
+                                        />
                                     </div>
                                 </div>
 
                                 <div className="col-md-12">
                                     <div className="form-group">
                                         <label>Address</label>
-                                        <textarea className="form-control" name="textarea" id="textarea" cols="30"
-                                                  rows="2"
-                                                  placeholder="Footer details" value={address}
-                                                  onChange={(e) => {
-                                                      setAddress(e.target.value)
-                                                  }}></textarea>
+                                        <textarea
+                                            className="form-control"
+                                            name="textarea"
+                                            id="textarea" cols="30"
+                                            rows="2"
+                                            placeholder="Footer details"
+                                            value={address}
+                                            onChange={e => setAddress(e.target.value)}
+                                        />
                                     </div>
                                 </div>
                                 <div className="col-md-12">

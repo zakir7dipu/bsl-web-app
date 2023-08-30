@@ -1,9 +1,10 @@
-import React, {createRef, useEffect} from 'react';
+import React, {createRef, useEffect, useState} from 'react';
 import style from "./Index.module.css";
 import {Link} from "react-router-dom";
 import {goToInternalLink} from "../../../lib/helper.js";
 
-function Index({label, id, fileName, file, handler}) {
+function Index({label, id, file, handler}) {
+    const [fileName, setFileName] = useState('')
 
     const inputFileRef = createRef();
 
@@ -16,22 +17,37 @@ function Index({label, id, fileName, file, handler}) {
         inputFileRef.current.click();
     }
 
+    useEffect(()=>{
+        setFileName(file?.name || "")
+    },[file])
+
     return (
         <>
-            <label htmlFor={id}>{label}  <small>{fileName?(<Link to="#" onClick={(e)=>{
+            <label htmlFor={id}>{label} <small>{file ? (<Link to="#" onClick={(e) => {
                 e.preventDefault();
-                goToInternalLink(fileName)
-            }} className={style.anchor}>See File</Link>):''}</small></label>
+                goToInternalLink(file)
+            }} className={style.anchor}>See File</Link>) : ''}</small></label>
             <div className="row">
                 <div className="col-6">
-                    <input type="text" className={`${style.controller} form-file-show`}
-                           placeholder="select file" value={file ? file.name:" "} readOnly={true}/>
+                    <input
+                        type="text"
+                        className={`${style.controller} form-file-show`}
+                        placeholder="select file"
+                        value={fileName}
+                        readOnly={true}
+                    />
                 </div>
                 <div className="col-6">
                     <button onClick={buttonOnClick} type="button" className={`${style.btn} form-file-cover`}>
                         upload
                     </button>
-                    <input type="file" className={`form-file ${style.file}`} id={id} ref={inputFileRef} onChangeCapture={onFileChangeCapture}/>
+                    <input
+                        type="file"
+                        className={`form-file ${style.file}`}
+                        id={id}
+                        ref={inputFileRef}
+                        onChangeCapture={onFileChangeCapture}
+                    />
                 </div>
             </div>
         </>
