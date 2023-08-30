@@ -17,7 +17,7 @@ class SEOGenerator extends Model
         $is_robots = match ($robots) {
             "allow" => "index, follow",
             "link_only" => "noindex, follow",
-            "denay" => "noindex, nofollow",
+            "deny" => "noindex, nofollow",
             default => "index, follow",
         };
         $seo = [

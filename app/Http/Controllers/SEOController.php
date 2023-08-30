@@ -22,9 +22,10 @@ class SEOController extends Controller
         }
     }
 
-    public function storeSeo($page, Request $request) {
+    public function storeSeo(Request $request) {
         try {
             $seoG = new SEOGenerator();
+            $page = $request->page;
             $robots = $request->robots;
             $author = $request->author !== ""? "Bizz Solutions":$request->author;
             $keywords = $request->keywords;

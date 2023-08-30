@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import Api from "../../lib/api.js";
 import {errorMessage, infoMessage, successMessage} from "../../lib/helper.js";
+
 const {apiAccess} = new Api();
 
 const initialData = {
@@ -9,9 +10,9 @@ const initialData = {
     errorMessage: null
 }
 
-export const fetchSeoData = createAsyncThunk("SEO/fetchSeoData", async (data,{rejectWithValue}) => {
+export const fetchSeoData = createAsyncThunk("SEO/fetchSeoData", async (page,{rejectWithValue}) => {
     try {
-        const res = await apiAccess.get('seo',data)
+        const res = await apiAccess.get(`seo/${page}`)
         return res.data
     } catch (error) {
         if (!error.response) {
@@ -23,7 +24,7 @@ export const fetchSeoData = createAsyncThunk("SEO/fetchSeoData", async (data,{re
 
 export const saveSeoData = createAsyncThunk("SEO/saveSeoData", async (data,{rejectWithValue}) => {
     try {
-        const res = await apiAccess.post('seo',data)
+        const res = await apiAccess.post('store-seo',data)
         return res.data
     } catch (error) {
         if (!error.response) {
@@ -66,3 +67,5 @@ export const SEOSlice = createSlice({
         }
     }
 })
+
+export default SEOSlice.reducer;

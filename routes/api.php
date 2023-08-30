@@ -26,6 +26,6 @@ Route::controller(SettingsController::class)->group(function (){
 });
 
 Route::controller(SEOController::class)->group(function (){
-    Route::get('seo','getSeo');
+    Route::get('seo/{page}','getSeo');
     Route::post('store-seo','storeSeo');
 });

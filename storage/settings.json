@@ -65,5 +65,22 @@
                 }
             }
         }
+    },
+    "seo": {
+        "home": {
+            "meta": {
+                "keywords": "Technology Solution Company in BD.",
+                "robots": "index, follow",
+                "description": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal.",
+                "og_type": "Home",
+                "og_title": "home",
+                "og_description": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal.",
+                "twitter_creator": "Bizz Solutions",
+                "twitter_card": "Home",
+                "twitter_title": "home",
+                "twitter_description": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal.",
+                "canonical": "https:\/\/bizzsol.com.bd\/"
+            }
+        }
     }
 }
