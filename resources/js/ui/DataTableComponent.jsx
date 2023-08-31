@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {BsSearch} from "react-icons/bs";
 import DataTable from "react-data-table-component";
 
-function DataTableComponent({columns, data, isLoading, itemPerPage, handlePageChange}) {
+function DataTableComponent({columns, data, isLoading, itemPerPage}) {
     const [rowPerPage, setRowPerPage] = useState(itemPerPage)
 
     const customStyles = {
@@ -46,8 +46,9 @@ function DataTableComponent({columns, data, isLoading, itemPerPage, handlePageCh
                 theme="light"
                 striped={true}
                 progressPending={isLoading} // Use the progressPending prop
-                progressComponent={<p>Loading...</p>} // Customize the loading indicator
-                onChangePage={handlePageChange}
+                progressComponent={<p>Loading...</p>}
+                // Customize the loading indicator
+                // onChangePage={handlePageChange && ""}
                 onChangeRowsPerPage={handlePerPageChange}
                 customStyles={customStyles} // Apply the custom styles
             />
