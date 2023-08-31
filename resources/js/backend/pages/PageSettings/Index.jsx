@@ -1,6 +1,6 @@
 import React from 'react';
-import HeaderMeta from "../../../../ui/HeaderMeta.jsx";
-import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
+import HeaderMeta from "../../../ui/HeaderMeta.jsx";
+import Breadcrumb from "../../components/Breadcrumb/Index.jsx";
 import {Tab, Tabs} from "react-bootstrap";
 import HomeTab from "./Home/Index.jsx";
 import "./style.css";
