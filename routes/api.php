@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\API\SEOController;
 use App\Http\Controllers\API\SettingsController;
+use App\Http\Controllers\API\TechnologyController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\SEOController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(AuthController::class)->group(function () {
@@ -20,12 +21,20 @@ Route::controller(SettingsController::class)->group(function (){
     Route::get('all-settings','settings')->name('all.settings');
     Route::get('about-settings','aboutSetting');
     Route::get('slider-settings','sliderSetting');
-    Route::get('technology-settings','technologySetting');
-    Route::get('align-with-settings','alignWithSetting');
-    Route::post('store-settings','storeSettings');
+    Route::get('technology-settings', 'technologySetting');
+    Route::get('align-with-settings', 'alignWithSetting');
+    Route::post('store-settings', 'storeSettings');
 });
 
-Route::controller(SEOController::class)->group(function (){
-    Route::get('seo/{page}','getSeo');
-    Route::post('store-seo','storeSeo');
+Route::controller(SEOController::class)->group(function () {
+    Route::get('seo/{page}', 'getSeo');
+    Route::post('store-seo', 'storeSeo');
+});
+
+Route::controller(TechnologyController::class)->group(function () {
+    Route::get('technology', 'index');
+    Route::post("technology-store", "store");
+    Route::get("technology/{slug}/show", "show");
+    Route::post("technology/{slug}/update", "update");
+    Route::delete("technology/{slug}/destroy", "destroy");
 });

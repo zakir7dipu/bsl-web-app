@@ -1,5 +1,6 @@
 import React from 'react';
 import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
+import HeaderMeta from "../../../../ui/HeaderMeta.jsx";
 
 function Index() {
     const breadcrumb = [
@@ -17,6 +18,10 @@ function Index() {
     ];
     return (
         <>
+            <HeaderMeta
+                title="Technology Settings"
+                url="/bsl/admin/page-settings/technology"
+            />
             <Breadcrumb list={breadcrumb}/>
             <div className="container-fluid">
                 <div className="row">

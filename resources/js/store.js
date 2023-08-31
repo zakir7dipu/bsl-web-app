@@ -4,6 +4,7 @@ import AuthReducer from "./featurs/AuthAction/AuthSlice.js";
 import SettingReducer from "./featurs/Settings/SettingsSlice.js";
 import SeoFeatures from "./featurs/SEOSlice/SEOSlice.js";
 import TestFeatures from "./featurs/TestFeatures/TestFeatures.js";
+import TechnologyFeature from "./featurs/Technology/TechnologySlice.js";
 
 const store = configureStore({
     reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
         authUser: AuthReducer,
         generalSettings : SettingReducer,
         SeoReducer : SeoFeatures,
-        testData: TestFeatures
+        testData: TestFeatures,
+        technologyReducer : TechnologyFeature
     }
 })
 
