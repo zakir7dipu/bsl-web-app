@@ -77,7 +77,6 @@ export const settingsSlice = createSlice({
             state.isLoading = false
             state.errorMess = payload
         },
-
         [fetchAboutSettings.pending]: (state) => {
             state.isLoading = true
         },

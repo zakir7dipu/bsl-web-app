@@ -5,7 +5,6 @@ import {useInternalLink} from "../../../lib/helper.js";
 
 function Top(props) {
     const {isLoading, generalSetting} = useSelector(state => state.generalSettings)
-
     return (
         <header id="rs-header" className="rs-header style3 modify2 header-transparent">
             <div className="menu-area menu-sticky">
@@ -14,8 +13,8 @@ function Top(props) {
                         <div className="col-lg-2">
                             <div className="logo-part">
                                 <Link to="/">
-                                    <img className="normal-logo" src={useInternalLink(generalSetting?.general?.site_logo)} alt="logo"/>
-                                        <img className="sticky-logo" src={generalSetting?.general?.site_logo || ""} alt="logo"/>
+                                    <img className="normal-logo" src={useInternalLink(`/${generalSetting?.general?.site_secondary_logo}`)} alt="logo"/>
+                                        <img className="sticky-logo" src={useInternalLink(`/${generalSetting?.general?.site_logo}`)} alt="logo"/>
                                 </Link>
                             </div>
                             <div className="mobile-menu">

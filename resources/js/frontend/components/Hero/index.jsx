@@ -6,7 +6,6 @@ import {useInternalLink} from "../../../lib/helper.js";
 
 function Index(props) {
     const {isLoading, sliderSetting} = useSelector(state => state.generalSettings)
-    console.log(sliderSetting)
     const dispatch = useDispatch()
 
     useEffect(()=>{
@@ -18,22 +17,23 @@ function Index(props) {
                 <div className="row">
                     <div className="col-lg-6">
                         <div className="banner-content">
-                            <div className="rs-videos">
+                            {sliderSetting?.link && <div className="rs-videos">
                                 <div className="animate-border white-color style3">
-                                    <Link className="popup-border popup-videos"
-                                       to="https://www.youtube.com/watch?v=YLN1Argi7ik">
+                                    <a className="popup-border popup-videos"
+                                          href={sliderSetting?.link}>
                                         <i className="fa fa-play"></i>
-                                    </Link>
+                                    </a>
                                 </div>
-                            </div>
-                            <h1 className="title">We Are Digital Agency & Technology Solution </h1>
-                            <p className="desc">
-                                We are leading technology solutions providing company all over the world doing over 40
-                                years.
-                            </p>
-                            <ul className="banner-btn">
-                                <li><Link className="readon started" to="about.html">Get Started</Link></li>
-                            </ul>
+                            </div>}
+
+                            {sliderSetting?.title && <h1 className="title">{sliderSetting?.title}</h1>}
+
+                            {sliderSetting?.text && <p className="desc">{sliderSetting?.text}</p>}
+
+                            {sliderSetting?.btn_text && <ul className="banner-btn">
+                                <li><a className="readon started" href={sliderSetting?.btn_link}>{sliderSetting?.btn_text}</a></li>
+                            </ul>}
+
                         </div>
                     </div>
                 </div>
