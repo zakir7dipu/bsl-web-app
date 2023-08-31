@@ -4,6 +4,8 @@ import DataTableComponent from "../../ui/DataTableComponent.jsx";
 import DataTable from 'react-data-table-component';
 import {useDispatch, useSelector} from "react-redux";
 import {fetchData} from "../../featurs/TestFeatures/TestFeatures.js";
+import RowDropDown from "../../ui/RowDropDown.jsx";
+import {Link} from "react-router-dom";
 
 function TestPage(props) {
     const {isLoading, data} = useSelector(state => state.testData)
@@ -20,11 +22,24 @@ function TestPage(props) {
             selector: row => row.title,
             sortable: true,
         },
+        {
+            name: 'Actions',
+            cell: (row) => (
+                <RowDropDown>
+                    <Link to="#" className="dropdown-item">Dropdown link</Link>
+                    <Link to="#" className="dropdown-item">Dropdown link</Link>
+                </RowDropDown>
+            ),
+        },
     ];
+
+    const handlePageChange = (e) => {
+        console.log(e)
+    }
+
     useEffect(()=>{
         dispatch(fetchData())
     },[dispatch])
-
 
 
     return (
@@ -39,6 +54,7 @@ function TestPage(props) {
                                 data={data}
                                 isLoading={isLoading}
                                 itemPerPage={10}
+                                handlePageChange={handlePageChange}
                             />
                         </div>
                     </div>
