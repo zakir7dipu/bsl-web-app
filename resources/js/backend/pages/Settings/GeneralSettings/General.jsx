@@ -14,11 +14,16 @@ function General() {
     const [siteLogoLink, setSiteLogoLink] = useState("");
     const [siteFavicon, setSiteFavicon] = useState("");
     const [siteFaviconLink, setSiteFaviconLink] = useState("");
+    const [siteSecLogo, setSiteSecLogo] = useState("");
     const [footerDetails, setFooterDetails] = useState("");
 
     const inputLogoHandler = (file) => {
         setSiteLogo(file[0])
         setSiteLogoLink(file[0])
+    }
+
+    const inputSecHandler = (file) => {
+        setSiteSecLogo(file[0])
     }
 
     const inputFavIconHandler = (file) => {
@@ -54,6 +59,10 @@ function General() {
         if (siteFavicon) {
             formData.append("site_favicon", siteFavicon);
         }
+
+        if (siteSecLogo) {
+            formData.append("site_secondary_logo", siteSecLogo);
+        }
         formData.append("type", 'general');
 
         if (siteName && slogan && footerDetails) {
@@ -68,6 +77,7 @@ function General() {
             setSlogan(general?.slogan)
             setSiteLogo(`/${general?.site_logo}`)
             setSiteFavicon(`/${general?.site_favicon}`)
+            setSiteSecLogo(`/${general?.site_secondary_logo}`)
             setFooterDetails(general?.footer_detail)
         }
     }, [generalSetting])
@@ -115,6 +125,16 @@ function General() {
                                             file={siteLogo}
                                             id={`siteLogo`}
                                             handler={inputLogoHandler}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="col-md-6">
+                                    <div className="form-group">
+                                        <FileInput
+                                            label={"Site Logo"}
+                                            file={siteSecLogo}
+                                            id={`siteSecLogo`}
+                                            handler={inputSecHandler}
                                         />
                                     </div>
                                 </div>

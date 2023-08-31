@@ -94,6 +94,7 @@ function aboutInfo()
 function storeGeneralData($generalSetting, $global, $request)
 {
     $currentFile = $generalSetting->findSetting($global . 'general.site_logo');
+    $secondaryFile = $generalSetting->findSetting($global . 'general.site_secondary_logo');
     $currentIcon = $generalSetting->findSetting($global . 'general.site_favicon');
     if ($request->hasFile("site_logo")) {
         $filename = time() . '-' . 'logo.' . fileInfo($request->site_logo)['extension'];
@@ -103,6 +104,16 @@ function storeGeneralData($generalSetting, $global, $request)
         }
         fileUpload($request->site_logo, $path, $filename);
         $site_logo = $path . '/' . $filename;
+    }
+
+    if ($request->hasFile("site_secondary_logo")) {
+        $filename = time() . '-' . 'sec-logo.' . fileInfo($request->site_secondary_logo)['extension'];
+        $path = 'uploads/settings';
+        if ($secondaryFile) {
+            fileDelete($secondaryFile);
+        }
+        fileUpload($request->site_secondary_logo, $path, $filename);
+        $site_secondary_logo = $path . '/' . $filename;
     }
 
     if ($request->hasFile("site_favicon")) {
@@ -119,6 +130,7 @@ function storeGeneralData($generalSetting, $global, $request)
         "slogan" => $request->slogan,
         "site_logo" => $request->hasFile("site_logo") ? $site_logo : $currentFile,
         "site_favicon" => $request->hasFile("site_favicon") ? $site_favicon : $currentIcon,
+        "site_secondary_logo" => $request->hasFile("site_secondary_logo") ? $site_secondary_logo : $secondaryFile,
         "footer_detail" => $request->footer_detail,
     ];
 

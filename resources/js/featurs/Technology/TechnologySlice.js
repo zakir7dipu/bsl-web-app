@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import Api from "../../lib/api.js";
-import {successMessage} from "../../lib/helper.js";
+import {errorMessage, successMessage} from "../../lib/helper.js";
 
 const {apiAccess} = new Api();
 
@@ -80,6 +80,7 @@ export const updateData = createAsyncThunk("technology/updateData", async (data,
 export const deleteData = createAsyncThunk("technology/deleteData", async (data, {rejectedWithValue}) => {
     try {
         const {slug} = data
+        console.log(data)
         const res = await apiAccess.delete(`${initialData.apiUrl}/${slug}/destroy`)
         return res.data
     } catch (error) {
@@ -151,6 +152,7 @@ export const TechnologySlice = createSlice({
         [createData.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
+            errorMessage(payload)
         },
 
         [updateData.pending]: (state) => {
@@ -172,6 +174,7 @@ export const TechnologySlice = createSlice({
         [updateData.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
+            errorMessage(payload)
         },
 
         [deleteData.pending]: (state) => {
@@ -187,6 +190,7 @@ export const TechnologySlice = createSlice({
         [deleteData.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
+            errorMessage(payload)
         },
     }
 });

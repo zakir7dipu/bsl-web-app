@@ -1,7 +1,5 @@
 import React, {useEffect} from 'react';
 import DataTableComponent from "../../ui/DataTableComponent.jsx";
-
-import DataTable from 'react-data-table-component';
 import {useDispatch, useSelector} from "react-redux";
 import {fetchData} from "../../featurs/TestFeatures/TestFeatures.js";
 import RowDropDown from "../../ui/RowDropDown.jsx";

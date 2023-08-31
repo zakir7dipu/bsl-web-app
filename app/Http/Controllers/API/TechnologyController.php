@@ -20,7 +20,7 @@ class TechnologyController extends Controller
     public function index()
     {
         try {
-            $technologies = Technology::orderBy('order_by', 'desc')->paginate(9);
+            $technologies = Technology::orderBy('order_by', 'desc')->get();
             return response()->json($technologies);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage());
@@ -43,7 +43,7 @@ class TechnologyController extends Controller
         $request->validate([
             "name" => ["required", "string", "max:128"],
             "order_by" => ["required", "max:10"],
-            'image_link' => 'image|size:2024'
+            'image_link' => 'image|max:2024'
         ]);
 
         DB::beginTransaction();
@@ -53,10 +53,10 @@ class TechnologyController extends Controller
             $technology->order_by = $request->order_by;
 
             if ($request->hasFile('image_link')) {
-                $filename = time() . '-' . 'tech.' . fileInfo($request->logo)['extension'];
-                $path = 'upload/technology';
+                $filename = time() . '-' . 'tech.' . fileInfo($request->image_link)['extension'];
+                $path = 'uploads/technology';
                 fileUpload($request->image_link, $path, $filename);
-                $img = $path . '/' . $filename;
+                $img = '/' .$path . '/' . $filename;
                 $technology->image_link = $img;
             }
             $technology->save();
@@ -102,7 +102,7 @@ class TechnologyController extends Controller
         $request->validate([
             "name" => ["required", "string", "max:128"],
             "order_by" => ["required", "max:10"],
-            'image_link' => 'image|size:2024'
+            'image_link' => 'max:2024'
         ]);
 
         DB::beginTransaction();
@@ -112,14 +112,14 @@ class TechnologyController extends Controller
             $technology->order_by = $request->order_by;
 
             if ($request->hasFile('image_link')) {
-                $filename = time() . '-' . 'tech.' . fileInfo($request->logo)['extension'];
-                $path = 'upload/technology';
+                $filename = time() . '-' . 'tech.' . fileInfo($request->image_link)['extension'];
+                $path = 'uploads/technology';
 
                 if ($technology->image_link) {
                     fileDelete($technology->image_link);
                 }
                 fileUpload($request->image_link, $path, $filename);
-                $technology->image_link = $path . '/' . $filename;
+                $technology->image_link = '/' .$path . '/' . $filename;
             }
 
             $technology->save();
