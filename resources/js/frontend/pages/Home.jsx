@@ -1,5 +1,6 @@
 import React from 'react';
 import HeaderMeta from "../../ui/HeaderMeta.jsx";
+import Hero from "../components/Hero";
 
 function Home(props) {
     return (
@@ -8,9 +9,7 @@ function Home(props) {
                 title="Home"
                 url="/"
             />
-            <div>
-                Home
-            </div>
+            <Hero/>
         </>
     );
 }

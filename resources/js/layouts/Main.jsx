@@ -19,6 +19,7 @@ import {refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
 import {useDispatch} from "react-redux";
 import {fetchAllSettings} from "../featurs/Settings/SettingsSlice.js";
 import TestPage from "../backend/pages/TestPage.jsx";
+import Frontend from "./Frontend.jsx";
 
 function Main() {
 
@@ -30,7 +31,9 @@ function Main() {
 
     return (
         <Routes>
-            <Route path="/" element={<Home/>}/>
+            <Route path="/" element={<Frontend/>}>
+                <Route index element={<Home/>}/>
+            </Route>
             <Route path="bsl" element={<Backend/>}>
                 <Route path="login" element={<Login/>}/>
                 <Route path="admin" element={<Admin/>}>
