@@ -33,6 +33,7 @@ function Index(props) {
                             >
                                 <ul aria-expanded="false" className="collapse">
                                     <li><Link to="settings">Settings</Link></li>
+                                    <li><Link to="page-settings">Page Settings</Link></li>
                                 </ul>
                             </NavBarLink>
 

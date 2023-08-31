@@ -13,8 +13,8 @@ function Index(props) {
             url: "/bsl/admin"
         },
         {
-            name: "Settings",
-            url: "/bsl/admin/settings"
+            name: "Page Settings",
+            url: "/bsl/admin/page-settings"
         }, {
             name: "Slider",
             url: null
