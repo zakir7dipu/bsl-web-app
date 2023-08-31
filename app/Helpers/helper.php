@@ -16,6 +16,7 @@ function getAllSettings(): object
             "site_name" => setting($group . 'general.site_name'),
             "site_logo" => setting($group . 'general.site_logo'),
             "site_favicon" => setting($group . 'general.site_favicon'),
+            "site_secondary_logo" => setting($group . 'general.site_secondary_logo'),
             "footer_detail" => setting($group . 'general.footer_detail'),
             "slogan" => setting($group . 'general.slogan')
         ],
