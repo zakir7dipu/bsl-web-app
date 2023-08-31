@@ -96,14 +96,14 @@ export const TechnologySlice = createSlice({
             state.isLoading = true
         },
         [fetchAllTechnology.fulfilled]: (state, {payload}) => {
-            const {data, last_page, current_page, per_page, total, path} = payload
+            //const {data, last_page, current_page, per_page, total, path} = payload
             state.isLoading = false;
-            state.technologies = data;
-            state.lastPage = last_page;
-            state.currentPage = current_page;
-            state.perPage = per_page;
-            state.total = total;
-            state.apiUrl = path;
+            state.technologies = payload;
+            // state.lastPage = last_page;
+            // state.currentPage = current_page;
+            // state.perPage = per_page;
+            // state.total = total;
+            // state.apiUrl = path;
         },
         [fetchAllTechnology.rejected]: (state, {payload}) => {
             state.isLoading = false;
@@ -113,15 +113,15 @@ export const TechnologySlice = createSlice({
             state.isLoading = true
         },
         [fetchDataByPage.fulfilled]: (state, action) => {
-            const {data, last_page, current_page, per_page, path, total} = action.payload
+            //const {data, last_page, current_page, per_page, path, total} = action.payload
             state.isLoading = false
-            state.technologies = data;
-            state.lastPage = last_page;
-            state.currentPage = current_page;
-            state.perPage = per_page;
-            state.total = total;
-            state.apiUrl = path;
-            state.errorMess = null
+            state.technologies = action.payload;
+            // state.lastPage = last_page;
+            // state.currentPage = current_page;
+            // state.perPage = per_page;
+            // state.total = total;
+            // state.apiUrl = path;
+            // state.errorMess = null
         },
         [fetchDataByPage.rejected]: (state, action) => {
             state.isLoading = false
