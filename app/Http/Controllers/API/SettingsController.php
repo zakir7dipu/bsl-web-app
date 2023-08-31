@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\SettingsGenerator;
+use App\Models\Technology;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
@@ -41,7 +42,7 @@ class SettingsController extends Controller
     }
     public function technologySetting()
     {
-        $settings = technology();
+        $settings = Technology::orderBy('order_by', 'asc')->get();
         return response()->json([
             'data' => $settings,
         ]);
