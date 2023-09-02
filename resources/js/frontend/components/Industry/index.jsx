@@ -4,6 +4,7 @@ import {fetchIndustrySettings} from "../../../featurs/Settings/SettingsSlice.js"
 import {fetchAllIndustries} from "../../../featurs/Industries/IndustriesSlice.js";
 import Items from "./Items.jsx";
 import {uid} from "../../../lib/helper.js";
+import {Row} from "react-bootstrap";
 
 function Index(props) {
     const {industry} = useSelector(state => state.generalSettings)
@@ -29,12 +30,13 @@ function Index(props) {
                     <span className="sub-text gold-color">{sub_text}</span>
                     <h2 className="title" style={{float:"none"}}>{title}</h2>
                 </div>
-                <div className="all-services">
+                <div className="all-services" style={{width:"100%"}}>
                     {isLoading && ""}
                     {industries && industries.map(item=><Items
                         info={item}
                         key={uid()}
                     />)}
+
 
                     {/*<div className="services-item">*/}
                     {/*    <div className="services-wrap">*/}
