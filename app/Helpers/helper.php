@@ -60,34 +60,10 @@ function aboutInfo()
     $group = 'site.about.';
     $data = (object)[
         "title" => setting($group . 'title'),
+        "brief" => setting($group . 'brief'),
         "clients" => setting($group . 'clients'),
         "project" => setting($group . 'project'),
-        "attributes" => (object)[
-            "high-quality" => (object)[
-                "bg" => setting($group . 'attributes.high-quality.bg'),
-                "icon" => setting($group . 'attributes.high-quality.icon'),
-                "hoverIcon" => setting($group . 'attributes.high-quality.hoverIcon'),
-                "brief" => setting($group . 'attributes.high-quality.brief'),
-            ],
-            "full-stack-teams" => (object)[
-                "bg" => setting($group . 'attributes.full-stack-teams.bg'),
-                "icon" => setting($group . 'attributes.full-stack-teams.icon'),
-                "hoverIcon" => setting($group . 'attributes.full-stack-teams.hoverIcon'),
-                "brief" => setting($group . 'attributes.full-stack-teams.brief'),
-            ],
-            "agile-approach" => (object)[
-                "bg" => setting($group . 'attributes.agile-approach.bg'),
-                "icon" => setting($group . 'attributes.agile-approach.icon'),
-                "hoverIcon" => setting($group . 'attributes.agile-approach.hoverIcon'),
-                "brief" => setting($group . 'attributes.agile-approach.brief'),
-            ],
-            "high-quality-code" => (object)[
-                "bg" => setting($group . 'attributes.high-quality-code.bg'),
-                "icon" => setting($group . 'attributes.high-quality-code.icon'),
-                "hoverIcon" => setting($group . 'attributes.high-quality-code.hoverIcon'),
-                "brief" => setting($group . 'attributes.high-quality-code.brief'),
-            ],
-        ],
+        "attributes" => setting($group . 'attributes')
     ];
     return $data;
 }
