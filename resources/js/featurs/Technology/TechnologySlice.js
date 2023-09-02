@@ -19,7 +19,6 @@ const initialData = {
 // all data get
 export const fetchAllTechnology = createAsyncThunk("technology/fetchAllTechnology", async (data, {rejectWithValue}) => {
     try {
-
         const res = await apiAccess.get(`${initialData.apiUrl}/${data}`)
         return res.data
     } catch (error) {

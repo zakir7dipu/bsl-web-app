@@ -9,8 +9,8 @@ function Items({info}) {
                 <div className="services-icon">
                     <img src={useInternalLink(image_link)} alt=""/>
                 </div>
-                <div className="services-text col-12">
-                    <h4 className="title">{name}</h4>
+                <div className="services-text">
+                    <h4 className="title" style={{float:"none"}}>{name}</h4>
                 </div>
             </div>
         </div>
