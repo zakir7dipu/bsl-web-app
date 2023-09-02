@@ -58,7 +58,6 @@ export const fetchSliderSettings = createAsyncThunk("settings/fetchSliderSetting
     }
 })
 
-
 export const saveSettings = createAsyncThunk("settings/saveSettings", async (data, {rejectWithValue}) => {
     try {
         const config = {

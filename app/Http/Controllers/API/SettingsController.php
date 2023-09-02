@@ -71,6 +71,8 @@ class SettingsController extends Controller
                 "newsletter" => storeNewsletterData($global, $request),
                 "backlink" => storeBacklinkData($global, $request),
                 "slider" => storeSliderData($sliderglobal, $request),
+                "technology" => storeTechnologyData($sliderglobal, $request),
+                "industry" => storeIndustryData($sliderglobal, $request),
                 default => "no Data Found",
             };
 

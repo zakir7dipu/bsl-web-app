@@ -191,3 +191,23 @@ function storeSliderData($global, $request)
     return setting([$global . "slider" => $data]);
 }
 
+function storeTechnologyData($global, $request)
+{
+    $data = [
+        "title" => $request->title,
+        "sub_text" => $request->sub_text,
+        "limit" => $request->limit,
+    ];
+    return setting([$global . "technology" => $data]);
+}
+
+function storeIndustryData($global, $request)
+{
+    $data = [
+        "title" => $request->title,
+        "sub_text" => $request->sub_text,
+        "limit" => $request->limit,
+    ];
+    return setting([$global . "industry" => $data]);
+}
+
