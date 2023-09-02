@@ -22,8 +22,6 @@ Route::controller(SettingsController::class)->group(function (){
     Route::get('all-settings','settings')->name('all.settings');
     Route::get('about-settings','aboutSetting');
     Route::get('slider-settings','sliderSetting');
-    Route::get('technology-settings', 'technologySetting');
-    Route::get('align-with-settings', 'alignWithSetting');
     Route::post('store-settings', 'storeSettings');
 });
 
@@ -33,7 +31,7 @@ Route::controller(SEOController::class)->group(function () {
 });
 
 Route::controller(TechnologyController::class)->group(function () {
-    Route::get('technology', 'index');
+    Route::get('technology/{items?}', 'index');
     Route::post("technology-store", "store");
     Route::get("technology/{slug}/show", "show");
     Route::post("technology/{slug}/update", "update");
@@ -41,7 +39,7 @@ Route::controller(TechnologyController::class)->group(function () {
 });
 
 Route::controller(IndustriesController::class)->group(function () {
-    Route::get('industries', 'index');
+    Route::get('industries/{items?}', 'index');
     Route::post("industries-store", "store");
     Route::get("industries/{slug}/show", "show");
     Route::post("industries/{slug}/update", "update");

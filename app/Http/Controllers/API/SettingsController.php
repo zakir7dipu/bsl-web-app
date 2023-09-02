@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Industries;
 use App\Models\SettingsGenerator;
 use App\Models\Technology;
 use Illuminate\Http\Request;
@@ -47,11 +48,11 @@ class SettingsController extends Controller
             'data' => $settings,
         ]);
     }
-    public function alignWithSetting()
+    public function industrySettings()
     {
-        $settings = alignWith();
+        $industries = Industries::orderBy('order_by', 'asc')->get();
         return response()->json([
-            'data' => $settings,
+            'data' => $industries,
         ]);
     }
 

@@ -8,8 +8,8 @@ const initialData = {
     generalSetting: [],
     aboutSetting: [],
     sliderSetting: [],
-    technologySetting: [],
-    alignSetting: [],
+    technologyLimit: 18,
+    industryLimit: 10,
     errorMess: null,
 }
 
@@ -39,7 +39,6 @@ export const fetchSliderSettings = createAsyncThunk("settings/fetchSliderSetting
         return rejectedWithValue(error.response.message)
     }
 })
-
 
 
 export const saveSettings = createAsyncThunk("settings/saveSettings", async (data, {rejectWithValue}) => {

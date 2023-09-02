@@ -23,6 +23,7 @@ function Index() {
         technologies,
         errorMess
     } = useSelector((state) => state.technologyReducer);
+
     const dispatch = useDispatch();
 
     const bizAlert = new BizAlert();
@@ -160,7 +161,7 @@ function Index() {
     }
 
     useEffect(() => {
-        dispatch(fetchAllTechnology());
+        dispatch(fetchAllTechnology(0));
     }, [dispatch]);
 
     return (

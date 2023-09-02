@@ -17,10 +17,14 @@ class IndustriesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($items)
     {
         try {
-            $industries = Industries::orderBy('order_by', 'desc')->get();
+            if ($items>0){
+                $industries = Industries::orderBy('order_by', 'desc')->take($items)->get();
+            }else{
+                $industries = Industries::orderBy('order_by', 'desc')->get();
+            }
             return response()->json($industries);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage());

@@ -17,9 +17,9 @@ const initialData = {
 }
 
 // all data get
-export const fetchAllIndustries = createAsyncThunk("industry/fetchAllIndustries", async (args, {rejectedWithValue}) => {
+export const fetchAllIndustries = createAsyncThunk("industry/fetchAllIndustries", async (data, {rejectedWithValue}) => {
     try {
-        const res = await apiAccess.get(initialData.apiUrl)
+        const res = await apiAccess.get(`${initialData.apiUrl}/${data}`)
         return res.data
     } catch (error) {
         return rejectedWithValue(error.response.message)

@@ -161,7 +161,7 @@ function Index(props) {
         }
     }
     useEffect(() => {
-        dispatch(fetchAllIndustries());
+        dispatch(fetchAllIndustries(0));
     }, [dispatch]);
 
     return (

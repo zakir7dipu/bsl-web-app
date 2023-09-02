@@ -17,10 +17,14 @@ class TechnologyController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($items)
     {
         try {
-            $technologies = Technology::orderBy('order_by', 'desc')->get();
+            if ($items>0) {
+                $technologies = Technology::orderBy('order_by', 'desc')->take($items)->get();
+            }else{
+                $technologies = Technology::orderBy('order_by', 'desc')->get();
+            }
             return response()->json($technologies);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage());
