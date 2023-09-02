@@ -1,43 +1,34 @@
 import React, {useEffect, useState} from 'react';
+import Breadcrumb from "../../components/Breadcrumb/Index.jsx";
+import HeaderMeta from "../../../ui/HeaderMeta.jsx";
 import {useDispatch, useSelector} from "react-redux";
-import BizAlert from "../../../../lib/BizAlert.js";
-import {errorMessage, infoMessage, useInternalLink} from "../../../../lib/helper.js";
-import RowDropDown from "../../../../ui/RowDropDown.jsx";
+import {createData, deleteData, fetchAllTechnology, updateData} from "../../../featurs/Technology/TechnologySlice.js";
+import RowDropDown from "../../../ui/RowDropDown.jsx";
 import {Link} from "react-router-dom";
-import {
-    createIndustriesData,
-    deleteIndustriesData,
-    fetchAllIndustries,
-    updateIndustriesData
-} from "../../../../featurs/Industries/IndustriesSlice.js";
-import HeaderMeta from "../../../../ui/HeaderMeta.jsx";
-import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
+import {errorMessage, infoMessage, useInternalLink} from "../../../lib/helper.js";
+import DataTableComponent from "../../../ui/DataTableComponent.jsx";
 import {GrFormAdd} from "react-icons/gr";
-import DataTableComponent from "../../../../ui/DataTableComponent.jsx";
-import BizModal from "../../../../ui/BizzModal.jsx";
-import FileInput from "../../../components/inputFile/Index.jsx";
+import BizAlert from "../../../lib/BizAlert.js";
+import BizModal from "../../../ui/BizzModal.jsx";
+import FileInput from "../../components/inputFile/Index.jsx";
 
-function Index(props) {
+function Index() {
     const {
         isLoading,
-        industries,
-        apiUrl,
+        technologies,
         errorMess
-    } = useSelector((state) => state.industriesReducer);
+    } = useSelector((state) => state.technologyReducer);
+
     const dispatch = useDispatch();
 
     const bizAlert = new BizAlert();
-
     const breadcrumb = [
         {
             name: "Dashboard",
             url: "/bsl/admin"
         },
         {
-            name: "Page Settings",
-            url: "/bsl/admin/page-settings"
-        }, {
-            name: "Industries",
+            name: "Technology",
             url: null
         }
     ];
@@ -69,7 +60,7 @@ function Index(props) {
             cell: (row) => (
                 <RowDropDown>
                     <Link to="#" onClick={(e) => handelEdit(row?.slug)} className="dropdown-item">Edit</Link>
-                    <Link to="#" onClick={(e) => industriesDeleteHandler(row?.slug)}
+                    <Link to="#" onClick={(e) => technologyDeleteHandler(row?.slug)}
                           className="dropdown-item">Delete</Link>
                 </RowDropDown>
             ),
@@ -80,7 +71,7 @@ function Index(props) {
     const [title, setTitle] = useState("Add New Technology");
     const [isEdit, setIsEdit] = useState(false);
 
-    const [selectedIndustry, setSelectedIndustry] = useState("");
+    const [selectedTech, setSelectedTech] = useState("");
 
     const [name, setName] = useState("");
     const [indexing, setIndexing] = useState("");
@@ -98,7 +89,6 @@ function Index(props) {
     const resetHandler = () => {
         setName('');
         setIndexing('');
-        setImageFile('');
     }
 
     const requestHandler = (e) => {
@@ -122,74 +112,75 @@ function Index(props) {
         if (name && indexing) {
             infoMessage("Please wait a while, We are processing your request.");
             if (!isEdit) {
-                dispatch(createIndustriesData(formData))
+                dispatch(createData(formData))
             } else {
                 let data = {
                     dataset: formData,
-                    slug: selectedIndustry
+                    slug: selectedTech
                 }
-                dispatch(updateIndustriesData(data))
+                dispatch(updateData(data))
             }
         }
         handleModalClose()
     }
 
     const handelEdit = (slug) => {
-        getMeta(slug)
+        getTechnologyMeta(slug)
     }
 
-    const getMeta = (slug) => {
-        setSelectedIndustry(slug)
-        let industryMeta = industries.filter((industry) => industry.slug === slug)
-        industryMeta = industryMeta[0]
-        setTitle(`Edit ${industryMeta?.name}`)
+    const getTechnologyMeta = (slug) => {
+        setSelectedTech(slug)
+        let technologyMeta = technologies.filter((technology) => technology.slug === slug)
+        technologyMeta = technologyMeta[0]
+        setTitle(`Edit ${technologyMeta?.name}`)
         setIsEdit(true)
-        setName(industryMeta?.name)
-        setIndexing(industryMeta?.order_by)
-        setImageFile(industryMeta?.image_link)
+        setName(technologyMeta?.name)
+        setIndexing(technologyMeta?.order_by)
+        setImageFile(technologyMeta?.image_link)
         setIsShow(!isShow);
     }
 
-    const industriesDeleteHandler = async (slug) => {
-        //setSelectedIndustry(slug)
+    const technologyDeleteHandler = async (slug) => {
+        //console.log(slug)
+        setSelectedTech(slug)
         let {isConfirmed} = await bizAlert.confirmAlert(`Are you sure?`, `Once you delete this you can't able to recover this data`);
         if (isConfirmed) {
             let data = {
                 slug: slug
             }
-            dispatch(deleteIndustriesData(data))
+            dispatch(deleteData(data))
         }
     }
+
     useEffect(() => {
-        dispatch(fetchAllIndustries(0));
+        dispatch(fetchAllTechnology(0));
     }, [dispatch]);
 
     return (
         <>
             <HeaderMeta
                 title="Technology Settings"
-                url="/bsl/admin/page-settings/industries"
+                url="/bsl/admin/page-settings/technology"
             />
             <Breadcrumb list={breadcrumb}/>
-
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-lg-12 col-sm-12">
                         <div className="card">
                             <div className="card-header">
-                                <h4>Industries Lists</h4>
+                                <h4>Technology Lists</h4>
                                 <button className="btn btn-info btn-mini float-right" onClick={() => {
                                     setIsShow(!isShow);
                                     setIsEdit(false)
-                                    setTitle('Add New Industries')
+                                    setTitle('Add New Technology')
                                 }}>
-                                    <GrFormAdd/>&nbsp;Add New Industries
+                                    <GrFormAdd/>&nbsp;Add New Technology
                                 </button>
                             </div>
                             <div className="card-body">
                                 <DataTableComponent
                                     columns={columns}
-                                    data={industries}
+                                    data={technologies}
                                     isLoading={isLoading}
                                     itemPerPage={10}
                                 />

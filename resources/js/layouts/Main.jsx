@@ -13,8 +13,8 @@ import SEO from "../backend/pages/Settings/SEO/Index.jsx";
 import GeneralSetting from "../backend/pages/Settings/GeneralSettings/Index.jsx";
 import Slider from "../backend/pages/PageSettings/Slider/Index.jsx";
 import PageSettings from "../backend/pages/PageSettings/Index.jsx";
-import Technology from "../backend/pages/PageSettings/Technology";
-import Industries from "../backend/pages/PageSettings/Industries/Index.jsx";
+import Technology from "../backend/pages/Technology";
+import Industries from "../backend/pages/Industries/Index.jsx";
 
 import {refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
 import {useDispatch} from "react-redux";
@@ -49,9 +49,9 @@ function Main() {
                     <Route path="page-settings">
                         <Route index element={<PageSettings/>}/>
                         <Route path="slider" element={<Slider/>}/>
-                        <Route path="technology" element={<Technology/>}/>
-                        <Route path="industries" element={<Industries/>}/>
                     </Route>
+                    <Route path="technology" element={<Technology/>}/>
+                    <Route path="industries" element={<Industries/>}/>
                 </Route>
             </Route>
             <Route path="*" element={<Errors/>}/>
