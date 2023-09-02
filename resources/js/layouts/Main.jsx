@@ -15,6 +15,8 @@ import Slider from "../backend/pages/PageSettings/Slider/Index.jsx";
 import PageSettings from "../backend/pages/PageSettings/Index.jsx";
 import IndustrySettings from "../backend/pages/PageSettings/IndustrySettings";
 import TechnologySettings from "../backend/pages/PageSettings/TechnologySettings";
+import AboutSettings from "../backend/pages/PageSettings/About";
+import ContactSettings from "../backend/pages/PageSettings/Contact";
 
 import Technology from "../backend/pages/Technology";
 import Industries from "../backend/pages/Industries/Index.jsx";
@@ -54,6 +56,8 @@ function Main() {
                         <Route path="slider" element={<Slider/>}/>
                         <Route path="industry" element={<IndustrySettings/>}/>
                         <Route path="technology" element={<TechnologySettings/>}/>
+                        <Route path="about" element={<AboutSettings/>}/>
+                        <Route path="contact" element={<ContactSettings/>}/>
                     </Route>
                     <Route path="technology" element={<Technology/>}/>
                     <Route path="industries" element={<Industries/>}/>
