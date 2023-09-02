@@ -6,6 +6,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchSeoData} from "../../featurs/SEOSlice/SEOSlice.js";
 import Industry from "../components/Industry";
 import Technology from "../components/Technology";
+import Partner from "../components/Partner";
+import Client from "../components/Client";
 
 function Home(props) {
 
@@ -16,9 +18,11 @@ function Home(props) {
                 page="Home"
             />
             <Hero/>
+            <Partner/>
             <HomeAbout/>
             <Industry/>
             <Technology/>
+            <Client/>
         </>
     );
 }

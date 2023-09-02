@@ -9,7 +9,6 @@ import {uid} from "../../../lib/helper.js";
 function Index(props) {
     const {technology} = useSelector(state => state.generalSettings)
     const {isLoading, technologies} = useSelector(state => state.technologyReducer)
-    console.log(technologies)
     const {title, sub_text, limit} = technology
     const dispatch = useDispatch()
 

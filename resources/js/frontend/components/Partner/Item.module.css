@@ -1,0 +1,19 @@
+.logoImg a {
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+.logoImg a img {
+    width: 80%;
+}
+
+.logoImg a .mainLogo {
+    filter: grayscale(0%);
+    transition: all 0.3s ease-in-out;
+}
+
+.logoImg a:hover img.mainLogo {
+    filter: grayscale(100%);
+    transition: all 0.3s ease-in-out;
+}

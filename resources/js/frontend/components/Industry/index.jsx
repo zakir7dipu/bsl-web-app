@@ -9,7 +9,6 @@ import {Row} from "react-bootstrap";
 function Index(props) {
     const {industry} = useSelector(state => state.generalSettings)
     const {isLoading, industries} = useSelector(state => state.industriesReducer)
-    console.log(industries)
     const {title, sub_text, limit} = industry
     const dispatch = useDispatch()
 
