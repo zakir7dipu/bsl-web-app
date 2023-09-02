@@ -29,9 +29,9 @@ function Index(props) {
                     </Link>
                 </div>
                 <div className="col-lg-3 col-sm-6">
-                    <Link to="align-with" className="card gradient-6">
+                    <Link to="industries" className="card gradient-6">
                         <div className="card-body">
-                            <h3 className="card-title text-white">We Align With</h3>
+                            <h3 className="card-title text-white">Industries</h3>
                             <span className="float-right display-5 opacity-5"><i className="fa fa-handshake-o"></i></span>
                         </div>
                     </Link>
