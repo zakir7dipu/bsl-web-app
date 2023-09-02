@@ -12,7 +12,7 @@ const initialData = {
 
 export const fetchSeoData = createAsyncThunk("SEO/fetchSeoData", async (page,{rejectWithValue}) => {
     try {
-        const res = await apiAccess.get(`seo/${page}`)
+        const res = await apiAccess.get(`seo/${page.toLowerCase()}`)
         return res.data
     } catch (error) {
         if (!error.response) {
@@ -43,7 +43,6 @@ export const SEOSlice = createSlice({
         },
         [fetchSeoData.fulfilled]: (state, {payload}) => {
             state.isLoading = false
-            console.log(payload);
             state.seo = payload
         },
         [fetchSeoData.rejected]: (state, {payload}) => {

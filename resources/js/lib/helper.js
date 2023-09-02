@@ -6,7 +6,7 @@ const Auth = new AuthUser();
 export const mainPath = 'http://localhost:8000'
 
 export function errorMessage(error) {
-    Notify("error", error.message)
+    Notify("error", error?.message)
 }
 
 export function errorResponseMessage(error) {
@@ -81,4 +81,8 @@ export const goToInternalLink = (path)=> {
 
 export const useInternalLink = (path)=> {
     return mainPath + path
+}
+
+export const isOdd = (number) => {
+    return number % 2 === 1;
 }

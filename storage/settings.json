@@ -37,34 +37,39 @@
         },
         "about": {
             "title": "Over 25+ Years Helping Brands to Reach Full Potential",
+            "brief": "Over 25 years working in IT services developing software applications and mobile apps for clients all over the world. From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage. Creation timelines for the standard lorem ipsum passage vary, with some citing the 15th century",
             "clients": 250,
             "project": 100,
-            "attributes": {
-                "high-quality": {
+            "attributes": [
+                {
+                    "title": "high quality",
                     "bg": null,
-                    "icon": "images\/services\/style3\/main-img\/1.png",
-                    "hoverIcon": "images\/services\/style3\/hover-img\/1.png",
+                    "icon": "uploads\/sections\/images\/main-img-1.png",
+                    "hoverIcon": "uploads\/sections\/images\/hover-img-1.png",
                     "brief": "At vero eos et accusamus etiusto odio praesentium accusamus."
                 },
-                "full-stack-teams": {
+                {
+                    "title": "full stack teams",
                     "bg": "gold-bg",
-                    "icon": "images\/services\/style3\/main-img\/2.png",
-                    "hoverIcon": "images\/services\/style3\/hover-img\/2.png",
+                    "icon": "uploads\/sections\/images\/main-img-2.png",
+                    "hoverIcon": "uploads\/sections\/images\/hover-img-2.png",
                     "brief": "At vero eos et accusamus etiusto odio praesentium accusamus."
                 },
-                "agile-approach": {
+                {
+                    "title": "agile approach",
                     "bg": "cyan-bg",
-                    "icon": "images\/services\/style3\/main-img\/3.png",
-                    "hoverIcon": "images\/services\/style3\/hover-img\/3.png",
+                    "icon": "uploads\/sections\/images\/main-img-3.png",
+                    "hoverIcon": "uploads\/sections\/images\/hover-img-3.png",
                     "brief": "At vero eos et accusamus etiusto odio praesentium accusamus."
                 },
-                "high-quality-code": {
+                {
+                    "title": "high quality code",
                     "bg": "blue-bg",
-                    "icon": "images\/services\/style3\/main-img\/4.png",
-                    "hoverIcon": "images\/services\/style3\/hover-img\/4.png",
+                    "icon": "uploads\/sections\/images\/main-img-4.png",
+                    "hoverIcon": "uploads\/sections\/images\/hover-img-4.png",
                     "brief": "At vero eos et accusamus etiusto odio praesentium accusamus."
                 }
-            }
+            ]
         }
     },
     "seo": {
