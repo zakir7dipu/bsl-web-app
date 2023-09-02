@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\IndustriesController;
 use App\Http\Controllers\API\SEOController;
 use App\Http\Controllers\API\SettingsController;
 use App\Http\Controllers\API\TechnologyController;
@@ -37,4 +38,12 @@ Route::controller(TechnologyController::class)->group(function () {
     Route::get("technology/{slug}/show", "show");
     Route::post("technology/{slug}/update", "update");
     Route::delete("technology/{slug}/destroy", "destroy");
+});
+
+Route::controller(IndustriesController::class)->group(function () {
+    Route::get('industries', 'index');
+    Route::post("industries-store", "store");
+    Route::get("industries/{slug}/show", "show");
+    Route::post("industries/{slug}/update", "update");
+    Route::delete("industries/{slug}/destroy", "destroy");
 });

@@ -6,18 +6,18 @@ const {apiAccess} = new Api();
 
 const initialData = {
     isLoading: true,
-    technologies: [],
+    industries: [],
     lastPage: 0,
     currentPage: 1,
     perPage: 0,
     total: 0,
-    apiUrl: 'technology',
+    apiUrl: 'industries',
     errorMess: null,
     metaInfo: []
 }
 
 // all data get
-export const fetchAllTechnology = createAsyncThunk("technology/fetchAllTechnology", async (args, {rejectedWithValue}) => {
+export const fetchAllIndustries = createAsyncThunk("industry/fetchAllIndustries", async (args, {rejectedWithValue}) => {
     try {
         const res = await apiAccess.get(initialData.apiUrl)
         return res.data
@@ -25,19 +25,7 @@ export const fetchAllTechnology = createAsyncThunk("technology/fetchAllTechnolog
         return rejectedWithValue(error.response.message)
     }
 })
-
-//pagination data
-export const fetchDataByPage = createAsyncThunk("technology/fetchDataByPage", async (data, {rejectedWithValue}) => {
-    try {
-        const {page} = data
-        const res = await apiAccess.get(`${initialData.apiUrl}?page=${page}`)
-        return res.data
-    } catch (error) {
-        return rejectedWithValue(error.response.message)
-    }
-})
-
-export const fetchDataBySlug = createAsyncThunk("technology/fetchDataBySlug", async (brand, {rejectedWithValue}) => {
+export const fetchIndustriesDataBySlug = createAsyncThunk("industry/fetchIndustriesDataBySlug", async (brand, {rejectedWithValue}) => {
     try {
         const res = await apiAccess.get(`${initialData.apiUrl}/${slug}/show`);
         return res.data
@@ -47,28 +35,27 @@ export const fetchDataBySlug = createAsyncThunk("technology/fetchDataBySlug", as
 })
 
 // create brand
-export const createData = createAsyncThunk("technology/createData", async (data, {rejectedWithValue}) => {
+export const createIndustriesData = createAsyncThunk("industry/createIndustriesData", async (data, {rejectedWithValue}) => {
     try {
         const config = {
             headers: {
                 'content-type': 'multipart/form-data'
             }
         }
-        const res = await apiAccess.post("technology-store", data,config)
+        const res = await apiAccess.post("industries-store", data, config)
         return res.data
     } catch (error) {
         return rejectedWithValue(error.response.message)
     }
 })
 
-export const updateData = createAsyncThunk("technology/updateData", async (data, {rejectedWithValue}) => {
+export const updateIndustriesData = createAsyncThunk("industry/updateIndustriesData", async (data, {rejectedWithValue}) => {
     try {
         const config = {
             headers: {
                 'content-type': 'multipart/form-data'
             }
         }
-
         const {slug, dataset} = data
         const res = await apiAccess.post(`${initialData.apiUrl}/${slug}/update`, dataset, config)
         return res.data
@@ -76,11 +63,10 @@ export const updateData = createAsyncThunk("technology/updateData", async (data,
         return rejectedWithValue(error.response.message)
     }
 })
-
-export const deleteData = createAsyncThunk("technology/deleteData", async (data, {rejectedWithValue}) => {
+export const deleteIndustriesData = createAsyncThunk("industry/deleteIndustriesData", async (data, {rejectedWithValue}) => {
     try {
         const {slug} = data
-        //console.log(data)
+        console.log(data)
         const res = await apiAccess.delete(`${initialData.apiUrl}/${slug}/destroy`)
         return res.data
     } catch (error) {
@@ -88,106 +74,88 @@ export const deleteData = createAsyncThunk("technology/deleteData", async (data,
     }
 })
 
-export const TechnologySlice = createSlice({
-    name: "technology",
+export const IndustriesSlice = createSlice({
+    name: "industry",
     initialState: initialData,
     extraReducers: {
-        [fetchAllTechnology.pending]: (state) => {
+        [fetchAllIndustries.pending]: (state) => {
             state.isLoading = true
         },
-        [fetchAllTechnology.fulfilled]: (state, {payload}) => {
+        [fetchAllIndustries.fulfilled]: (state, {payload}) => {
             //const {data, last_page, current_page, per_page, total, path} = payload
             state.isLoading = false;
-            state.technologies = payload;
+            state.industries = payload;
             // state.lastPage = last_page;
             // state.currentPage = current_page;
             // state.perPage = per_page;
             // state.total = total;
             // state.apiUrl = path;
         },
-        [fetchAllTechnology.rejected]: (state, {payload}) => {
-            state.isLoading = false;
-            state.message = payload;
-        },
-        [fetchDataByPage.pending]: (state) => {
-            state.isLoading = true
-        },
-        [fetchDataByPage.fulfilled]: (state, action) => {
-            //const {data, last_page, current_page, per_page, path, total} = action.payload
-            state.isLoading = false
-            state.technologies = action.payload;
-            // state.lastPage = last_page;
-            // state.currentPage = current_page;
-            // state.perPage = per_page;
-            // state.total = total;
-            // state.apiUrl = path;
-            // state.errorMess = null
-        },
-        [fetchDataByPage.rejected]: (state, action) => {
-            state.isLoading = false
-            state.technologies = []
-            state.errorMess = action.payload
-        },
-        [fetchDataBySlug.pending]: (state) => {
-            state.isLoading = true
-        },
-        [fetchDataBySlug.fulfilled]: (state, {payload}) => {
-            state.isLoading = false;
-            state.metaInfo = payload;
-        },
-        [fetchDataBySlug.rejected]: (state, {payload}) => {
+        [fetchAllIndustries.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
         },
 
-        [createData.pending]: (state) => {
+        [fetchIndustriesDataBySlug.pending]: (state) => {
             state.isLoading = true
         },
-        [createData.fulfilled]: (state, {payload}) => {
+        [fetchIndustriesDataBySlug.fulfilled]: (state, {payload}) => {
+            state.isLoading = false;
+            state.metaInfo = payload;
+        },
+        [fetchIndustriesDataBySlug.rejected]: (state, {payload}) => {
+            state.isLoading = false;
+            state.message = payload;
+        },
+
+        [createIndustriesData.pending]: (state) => {
+            state.isLoading = true
+        },
+        [createIndustriesData.fulfilled]: (state, {payload}) => {
             state.isLoading = false
-            state.technologies = [...state.technologies, payload]
+            state.industries = [...state.industries, payload]
             state.errorMess = null
             successMessage("Data Created Successfully")
         },
-        [createData.rejected]: (state, {payload}) => {
+        [createIndustriesData.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
             errorMessage(payload)
         },
 
-        [updateData.pending]: (state) => {
+        [updateIndustriesData.pending]: (state) => {
             state.isLoading = true
         },
-        [updateData.fulfilled]: (state, {payload}) => {
+        [updateIndustriesData.fulfilled]: (state, {payload}) => {
             state.isLoading = false
             const {name, order_by, image_link, slug, id} = payload
-            const updateData = state.technologies.filter((technology) => technology.slug === slug);
-            if (updateData) {
-                updateData[0].name = name;
-                updateData[0].slug = slug;
-                updateData[0].order_by = order_by;
-                updateData[0].image_link = image_link;
+            const model = state.industries.filter((industry) => industry.slug === slug);
+            if (model) {
+                model[0].name = name;
+                model[0].slug = slug;
+                model[0].order_by = order_by;
+                model[0].image_link = image_link;
             }
             state.errorMess = null
             successMessage("Data Updated Successfully")
         },
-        [updateData.rejected]: (state, {payload}) => {
+        [updateIndustriesData.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
             errorMessage(payload)
         },
 
-        [deleteData.pending]: (state) => {
+        [deleteIndustriesData.pending]: (state) => {
             state.isLoading = true
         },
-        [deleteData.fulfilled]: (state, {payload}) => {
+        [deleteIndustriesData.fulfilled]: (state, {payload}) => {
             state.isLoading = false
             const {slug} = payload
-            state.technologies = state.technologies.filter((technology) => technology.slug !== slug);
+            state.industries = state.industries.filter((industry) => industry.slug !== slug);
             state.errorMess = null
             successMessage("Data Deleted Successfully")
         },
-        [deleteData.rejected]: (state, {payload}) => {
+        [deleteIndustriesData.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
             errorMessage(payload)
@@ -195,4 +163,4 @@ export const TechnologySlice = createSlice({
     }
 });
 
-export default TechnologySlice.reducer
+export default IndustriesSlice.reducer

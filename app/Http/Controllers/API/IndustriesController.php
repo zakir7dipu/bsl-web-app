@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Technology;
+use App\Models\Industries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class TechnologyController extends Controller
+class IndustriesController extends Controller
 {
     public function __construct()
     {
@@ -20,8 +20,8 @@ class TechnologyController extends Controller
     public function index()
     {
         try {
-            $technologies = Technology::orderBy('order_by', 'desc')->get();
-            return response()->json($technologies);
+            $industries = Industries::orderBy('order_by', 'desc')->get();
+            return response()->json($industries);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage());
         }
@@ -48,20 +48,20 @@ class TechnologyController extends Controller
 
         DB::beginTransaction();
         try {
-            $technology = new Technology();
-            $technology->name = $request->name;
-            $technology->order_by = $request->order_by;
+            $industries = new Industries();
+            $industries->name = $request->name;
+            $industries->order_by = $request->order_by;
 
             if ($request->hasFile('image_link')) {
-                $filename = time() . '-' . 'tech.' . fileInfo($request->image_link)['extension'];
-                $path = 'uploads/technology';
+                $filename = time() . '-' . 'industry.' . fileInfo($request->image_link)['extension'];
+                $path = 'uploads/industries';
                 fileUpload($request->image_link, $path, $filename);
-                $img = '/' .$path . '/' . $filename;
-                $technology->image_link = $img;
+                $img = '/' . $path . '/' . $filename;
+                $industries->image_link = $img;
             }
-            $technology->save();
+            $industries->save();
             DB::commit();
-            return response()->json($technology);
+            return response()->json($industries);
         } catch (\Throwable $th) {
             DB::rollBack();
             return response()->json($th);
@@ -74,8 +74,8 @@ class TechnologyController extends Controller
     public function show(string $slug)
     {
         try {
-            $technology = Technology::where('slug', $slug)->first();
-            return response()->json($technology);
+            $industries = Industries::where('slug', $slug)->first();
+            return response()->json($industries);
         } catch (\Throwable $th) {
             return response()->json($th);
         }
@@ -87,8 +87,8 @@ class TechnologyController extends Controller
     public function edit(string $id)
     {
         try {
-            $technology = Technology::where('id', $id)->first();
-            return response()->json($technology);
+            $industries = Industries::where('id', $id)->first();
+            return response()->json($industries);
         } catch (\Throwable $th) {
             return response()->json($th);
         }
@@ -107,24 +107,24 @@ class TechnologyController extends Controller
 
         DB::beginTransaction();
         try {
-            $technology = Technology::where('slug', $slug)->first();
-            $technology->name = $request->name;
-            $technology->order_by = $request->order_by;
+            $industries = Industries::where('slug', $slug)->first();
+            $industries->name = $request->name;
+            $industries->order_by = $request->order_by;
 
             if ($request->hasFile('image_link')) {
-                $filename = time() . '-' . 'tech.' . fileInfo($request->image_link)['extension'];
-                $path = 'uploads/technology';
+                $filename = time() . '-' . 'industry.' . fileInfo($request->image_link)['extension'];
+                $path = 'uploads/industries';
 
-                if ($technology->image_link) {
-                    fileDelete($technology->image_link);
+                if ($industries->image_link) {
+                    fileDelete($industries->image_link);
                 }
                 fileUpload($request->image_link, $path, $filename);
-                $technology->image_link = '/' .$path . '/' . $filename;
+                $industries->image_link = '/' . $path . '/' . $filename;
             }
 
-            $technology->save();
+            $industries->save();
             DB::commit();
-            return response()->json($technology);
+            return response()->json($industries);
         } catch (\Throwable $th) {
             DB::rollBack();
             return response()->json($th);
@@ -136,19 +136,19 @@ class TechnologyController extends Controller
      */
     public function destroy(string $slug)
     {
-//        DB::beginTransaction();
-//        try {
+        DB::beginTransaction();
+        try {
 
-            $technology = Technology::where('slug', $slug)->first();
-            if ($technology->image_link) {
-                fileDelete($technology->image_link);
+            $industries = Industries::where('slug', $slug)->first();
+            if ($industries->image_link) {
+                fileDelete($industries->image_link);
             }
-            $technology->delete();
-            //DB::commit();
-            return response()->json($technology);
-//        } catch (\Throwable $th) {
-//            DB::rollBack();
-//            return response()->json($th);
-//        }
+            $industries->delete();
+            DB::commit();
+            return response()->json($industries);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return response()->json($th);
+        }
     }
 }
