@@ -4,6 +4,7 @@ import Hero from "../components/Hero";
 import HomeAbout from "../components/HomeAbout";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchSeoData} from "../../featurs/SEOSlice/SEOSlice.js";
+import Industry from "../components/Industry";
 
 function Home(props) {
 
@@ -15,6 +16,7 @@ function Home(props) {
             />
             <Hero/>
             <HomeAbout/>
+            <Industry/>
         </>
     );
 }

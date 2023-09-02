@@ -17,25 +17,25 @@ const initialData = {
 }
 
 // all data get
-export const fetchAllIndustries = createAsyncThunk("industry/fetchAllIndustries", async (data, {rejectedWithValue}) => {
+export const fetchAllIndustries = createAsyncThunk("industry/fetchAllIndustries", async (data, {rejectWithValue}) => {
     try {
         const res = await apiAccess.get(`${initialData.apiUrl}/${data}`)
         return res.data
     } catch (error) {
-        return rejectedWithValue(error.response.message)
+        return rejectWithValue(error.response.data)
     }
 })
-export const fetchIndustriesDataBySlug = createAsyncThunk("industry/fetchIndustriesDataBySlug", async (brand, {rejectedWithValue}) => {
+export const fetchIndustriesDataBySlug = createAsyncThunk("industry/fetchIndustriesDataBySlug", async (brand, {rejectWithValue}) => {
     try {
         const res = await apiAccess.get(`${initialData.apiUrl}/${slug}/show`);
         return res.data
     } catch (error) {
-        return rejectedWithValue(error.response.message)
+        return rejectWithValue(error.response.data)
     }
 })
 
 // create brand
-export const createIndustriesData = createAsyncThunk("industry/createIndustriesData", async (data, {rejectedWithValue}) => {
+export const createIndustriesData = createAsyncThunk("industry/createIndustriesData", async (data, {rejectWithValue}) => {
     try {
         const config = {
             headers: {
@@ -45,11 +45,11 @@ export const createIndustriesData = createAsyncThunk("industry/createIndustriesD
         const res = await apiAccess.post("industries-store", data, config)
         return res.data
     } catch (error) {
-        return rejectedWithValue(error.response.message)
+        return rejectWithValue(error.response.data)
     }
 })
 
-export const updateIndustriesData = createAsyncThunk("industry/updateIndustriesData", async (data, {rejectedWithValue}) => {
+export const updateIndustriesData = createAsyncThunk("industry/updateIndustriesData", async (data, {rejectWithValue}) => {
     try {
         const config = {
             headers: {
@@ -60,17 +60,17 @@ export const updateIndustriesData = createAsyncThunk("industry/updateIndustriesD
         const res = await apiAccess.post(`${initialData.apiUrl}/${slug}/update`, dataset, config)
         return res.data
     } catch (error) {
-        return rejectedWithValue(error.response.message)
+        return rejectWithValue(error.response.data)
     }
 })
-export const deleteIndustriesData = createAsyncThunk("industry/deleteIndustriesData", async (data, {rejectedWithValue}) => {
+export const deleteIndustriesData = createAsyncThunk("industry/deleteIndustriesData", async (data, {rejectWithValue}) => {
     try {
         const {slug} = data
         console.log(data)
         const res = await apiAccess.delete(`${initialData.apiUrl}/${slug}/destroy`)
         return res.data
     } catch (error) {
-        return rejectedWithValue(error.response.message)
+        return rejectWithValue(error.response.data)
     }
 })
 
@@ -94,6 +94,7 @@ export const IndustriesSlice = createSlice({
         [fetchAllIndustries.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
+            errorMessage(payload)
         },
 
         [fetchIndustriesDataBySlug.pending]: (state) => {

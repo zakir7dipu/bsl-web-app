@@ -11,7 +11,7 @@ class IndustriesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['index', 'show', 'edit']]);
+        $this->middleware('auth:api', ['except' => ['index']]);
     }
 
     /**
@@ -27,7 +27,7 @@ class IndustriesController extends Controller
             }
             return response()->json($industries);
         } catch (\Throwable $th) {
-            return response()->json($th->getMessage());
+            return response()->json($th->getMessage(), $th->getCode());
         }
     }
 
@@ -68,7 +68,7 @@ class IndustriesController extends Controller
             return response()->json($industries);
         } catch (\Throwable $th) {
             DB::rollBack();
-            return response()->json($th);
+            return response()->json($th,$th->getCode());
         }
     }
 
@@ -81,7 +81,7 @@ class IndustriesController extends Controller
             $industries = Industries::where('slug', $slug)->first();
             return response()->json($industries);
         } catch (\Throwable $th) {
-            return response()->json($th);
+            return response()->json($th,$th->getCode());
         }
     }
 
@@ -94,7 +94,7 @@ class IndustriesController extends Controller
             $industries = Industries::where('id', $id)->first();
             return response()->json($industries);
         } catch (\Throwable $th) {
-            return response()->json($th);
+            return response()->json($th,$th->getCode());
         }
     }
 
@@ -131,7 +131,7 @@ class IndustriesController extends Controller
             return response()->json($industries);
         } catch (\Throwable $th) {
             DB::rollBack();
-            return response()->json($th);
+            return response()->json($th,$th->getCode());
         }
     }
 
@@ -152,7 +152,7 @@ class IndustriesController extends Controller
             return response()->json($industries);
         } catch (\Throwable $th) {
             DB::rollBack();
-            return response()->json($th);
+            return response()->json($th,$th->getCode());
         }
     }
 }

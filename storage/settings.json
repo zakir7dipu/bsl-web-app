@@ -70,6 +70,16 @@
                     "brief": "At vero eos et accusamus etiusto odio praesentium accusamus."
                 }
             ]
+        },
+        "industry": {
+            "title": "Best Solutions, For All Organizations",
+            "sub_text": "WORK FOR ANY INDUSTRY",
+            "limit": 10
+        },
+        "technology": {
+            "title": "What Technology We Are Using For Our Valued Customers",
+            "sub_text": "TECHNOLOGY INDEX",
+            "limit": 18
         }
     },
     "seo": {

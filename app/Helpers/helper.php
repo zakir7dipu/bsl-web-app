@@ -68,6 +68,20 @@ function aboutInfo()
     return $data;
 }
 
+function industryInfo()
+{
+    $group = 'site.';
+    $data = setting($group . 'industry');
+    return $data;
+}
+
+function technologyInfo()
+{
+    $group = 'site.';
+    $data = setting($group . 'technology');
+    return $data;
+}
+
 function storeGeneralData($generalSetting, $global, $request)
 {
     $currentFile = $generalSetting->findSetting($global . 'general.site_logo');

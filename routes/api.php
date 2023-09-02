@@ -23,6 +23,8 @@ Route::controller(SettingsController::class)->group(function (){
     Route::get('about-settings','aboutSetting');
     Route::get('slider-settings','sliderSetting');
     Route::post('store-settings', 'storeSettings');
+    Route::get('technology-settings','technologySetting');
+    Route::get('industry-settings', 'industrySettings');
 });
 
 Route::controller(SEOController::class)->group(function () {
