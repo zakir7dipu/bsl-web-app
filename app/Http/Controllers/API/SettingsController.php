@@ -12,7 +12,7 @@ class SettingsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['settings', 'sliderSetting', 'aboutSetting']]);
+        $this->middleware('auth:api', ['except' => ['settings', 'sliderSetting', 'aboutSetting', 'technologySetting', 'industrySettings']]);
     }
 
     /**
@@ -43,14 +43,14 @@ class SettingsController extends Controller
     }
     public function technologySetting()
     {
-        $settings = Technology::orderBy('order_by', 'asc')->get();
+        $technology = technologyInfo();
         return response()->json([
-            'data' => $settings,
+            'data' => $technology,
         ]);
     }
     public function industrySettings()
     {
-        $industries = Industries::orderBy('order_by', 'asc')->get();
+        $industries = industryInfo();
         return response()->json([
             'data' => $industries,
         ]);

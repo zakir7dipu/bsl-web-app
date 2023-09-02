@@ -8,8 +8,8 @@ const initialData = {
     generalSetting: [],
     aboutSetting: [],
     sliderSetting: [],
-    technologyLimit: 18,
-    industryLimit: 10,
+    technology: [],
+    industry: [],
     errorMess: null,
 }
 
@@ -25,6 +25,24 @@ export const fetchAllSettings = createAsyncThunk("settings/fetchAllSettings", as
 export const fetchAboutSettings = createAsyncThunk("settings/fetchAboutSettings", async (args, {rejectedWithValue}) => {
     try {
         const res = await apiAccess.get(`about-settings`)
+        return res.data
+    } catch (error) {
+        return rejectedWithValue(error.response.message)
+    }
+})
+
+export const fetchTechnologySettings = createAsyncThunk("settings/fetchTechnologySettings", async (args, {rejectedWithValue}) => {
+    try {
+        const res = await apiAccess.get(`technology-settings`)
+        return res.data
+    } catch (error) {
+        return rejectedWithValue(error.response.message)
+    }
+})
+
+export const fetchIndustrySettings = createAsyncThunk("settings/fetchIndustrySettings", async (args, {rejectedWithValue}) => {
+    try {
+        const res = await apiAccess.get(`industry-settings`)
         return res.data
     } catch (error) {
         return rejectedWithValue(error.response.message)
@@ -89,7 +107,32 @@ export const settingsSlice = createSlice({
             state.isLoading = false
             state.errorMess = payload
         },
-
+        [fetchIndustrySettings.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchIndustrySettings.fulfilled]: (state, {payload}) => {
+            const {data} = payload
+            state.isLoading = false
+            state.industry = data
+            state.errorMess = null
+        },
+        [fetchIndustrySettings.rejected]: (state, {payload}) => {
+            state.isLoading = false
+            state.errorMess = payload
+        },
+        [fetchTechnologySettings.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchTechnologySettings.fulfilled]: (state, {payload}) => {
+            const {data} = payload
+            state.isLoading = false
+            state.technology = data
+            state.errorMess = null
+        },
+        [fetchTechnologySettings.rejected]: (state, {payload}) => {
+            state.isLoading = false
+            state.errorMess = payload
+        },
         [fetchSliderSettings.pending]: (state) => {
             state.isLoading = true
         },
