@@ -13,6 +13,9 @@ import SEO from "../backend/pages/Settings/SEO/Index.jsx";
 import GeneralSetting from "../backend/pages/Settings/GeneralSettings/Index.jsx";
 import Slider from "../backend/pages/PageSettings/Slider/Index.jsx";
 import PageSettings from "../backend/pages/PageSettings/Index.jsx";
+import IndustrySettings from "../backend/pages/PageSettings/IndustrySettings";
+import TechnologySettings from "../backend/pages/PageSettings/TechnologySettings";
+
 import Technology from "../backend/pages/Technology";
 import Industries from "../backend/pages/Industries/Index.jsx";
 
@@ -49,6 +52,8 @@ function Main() {
                     <Route path="page-settings">
                         <Route index element={<PageSettings/>}/>
                         <Route path="slider" element={<Slider/>}/>
+                        <Route path="industry" element={<IndustrySettings/>}/>
+                        <Route path="technology" element={<TechnologySettings/>}/>
                     </Route>
                     <Route path="technology" element={<Technology/>}/>
                     <Route path="industries" element={<Industries/>}/>

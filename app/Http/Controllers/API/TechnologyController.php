@@ -11,7 +11,7 @@ class TechnologyController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['index', 'show', 'edit']]);
+        $this->middleware('auth:api', ['except' => ['index']]);
     }
 
     /**
@@ -27,7 +27,7 @@ class TechnologyController extends Controller
             }
             return response()->json($technologies);
         } catch (\Throwable $th) {
-            return response()->json($th->getMessage());
+            return response()->json($th->getMessage(), $th->getCode());
         }
     }
 
@@ -68,7 +68,7 @@ class TechnologyController extends Controller
             return response()->json($technology);
         } catch (\Throwable $th) {
             DB::rollBack();
-            return response()->json($th);
+            return response()->json($th->getMessage(), $th->getCode());
         }
     }
 
@@ -81,7 +81,7 @@ class TechnologyController extends Controller
             $technology = Technology::where('slug', $slug)->first();
             return response()->json($technology);
         } catch (\Throwable $th) {
-            return response()->json($th);
+            return response()->json($th->getMessage(), $th->getCode());
         }
     }
 
@@ -94,7 +94,7 @@ class TechnologyController extends Controller
             $technology = Technology::where('id', $id)->first();
             return response()->json($technology);
         } catch (\Throwable $th) {
-            return response()->json($th);
+            return response()->json($th->getMessage(), $th->getCode());
         }
     }
 
@@ -131,7 +131,7 @@ class TechnologyController extends Controller
             return response()->json($technology);
         } catch (\Throwable $th) {
             DB::rollBack();
-            return response()->json($th);
+            return response()->json($th->getMessage(), $th->getCode());
         }
     }
 
@@ -140,19 +140,19 @@ class TechnologyController extends Controller
      */
     public function destroy(string $slug)
     {
-//        DB::beginTransaction();
-//        try {
+        DB::beginTransaction();
+        try {
 
             $technology = Technology::where('slug', $slug)->first();
             if ($technology->image_link) {
                 fileDelete($technology->image_link);
             }
             $technology->delete();
-            //DB::commit();
+            DB::commit();
             return response()->json($technology);
-//        } catch (\Throwable $th) {
-//            DB::rollBack();
-//            return response()->json($th);
-//        }
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return response()->json($th->getMessage(), $th->getCode());
+        }
     }
 }

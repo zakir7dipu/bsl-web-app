@@ -15,7 +15,7 @@ function Index() {
     return (<>
         <HeaderMeta
             title="Page Settings"
-            url="/bsl/admin/settings/general"
+            url="/bsl/admin/page-settings"
         />
         <Breadcrumb list={breadcrumb}/>
         <div className="container-fluid">
