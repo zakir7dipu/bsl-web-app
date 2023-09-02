@@ -1,1 +1,132 @@
-{"site":{"settings":{"general":{"site_name":"Bizz Solutions PLC","slogan":"Technology Solution Company in BD.","site_logo":"uploads\/settings\/1693305624-logo.png","site_favicon":"uploads\/settings\/1693305624-icon.png","site_secondary_logo":"uploads\/settings\/1693475251-sec-logo.png","footer_detail":"We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal."},"contact_info":{"phone":"+880 295 31087","mail":"info@bizzsol.com.bd","address":"City centre 90\/1, Level-25 Type-D2, Motijheel C\/A, Dhaka-1000, Bangladesh."},"newsletter":{"title":"Subscribe To Our Newsletter","text":"It is a long established fact that a reader will be distributed by the readable content of a page when looking at its layout."},"backlink":{"qrcode":null,"eshop":"https:\/\/ebazar.com.bd\/","facebook":"https:\/\/www.facebook.com\/bizzsolutions","linkedin":"https:\/\/www.linkedin.com\/company\/bizz-solutions-ltd\/","youtube":"https:\/\/www.youtube.com\/@bizzsolutionsplc.007","instagram":"https:\/\/www.instagram.com\/bizzsolutionsplc\/"}},"slider":{"title":"We Are Digital Agency & Technology Solution","text":"We have been a leading technology solutions-providing company all over the world doing over 40 years.","link":"https:\/\/www.youtube.com\/watch?v=hu9frpwmovM","btn_text":"Get Started","btn_link":"https:\/\/bizzsol.com.bd","image_link":"uploads\/settings\/slider\/1693375780-slider.png"},"about":{"title":"Over 25+ Years Helping Brands to Reach Full Potential","brief":"Over 25 years working in IT services developing software applications and mobile apps for clients all over the world. From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage. Creation timelines for the standard lorem ipsum passage vary, with some citing the 15th century","clients":250,"project":100,"attributes":[{"title":"high quality","bg":null,"icon":"uploads\/sections\/images\/main-img-1.png","hoverIcon":"uploads\/sections\/images\/hover-img-1.png","brief":"At vero eos et accusamus etiusto odio praesentium accusamus."},{"title":"full stack teams","bg":"gold-bg","icon":"uploads\/sections\/images\/main-img-2.png","hoverIcon":"uploads\/sections\/images\/hover-img-2.png","brief":"At vero eos et accusamus etiusto odio praesentium accusamus."},{"title":"agile approach","bg":"cyan-bg","icon":"uploads\/sections\/images\/main-img-3.png","hoverIcon":"uploads\/sections\/images\/hover-img-3.png","brief":"At vero eos et accusamus etiusto odio praesentium accusamus."},{"title":"high quality code","bg":"blue-bg","icon":"uploads\/sections\/images\/main-img-4.png","hoverIcon":"uploads\/sections\/images\/hover-img-4.png","brief":"At vero eos et accusamus etiusto odio praesentium accusamus."}]},"industry":{"title":"Best Solutions, For All Organizations","sub_text":"WORK FOR ANY INDUSTRY","limit":"10"},"technology":{"title":"What Technology We Are Using For Our Valued Customers","sub_text":"TECHNOLOGY INDEX","limit":"18"}},"seo":{"home":{"meta":{"keywords":"Technology Solution Company in BD.","robots":"index, follow","description":"We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal Hi there.","og_type":"Home","og_title":"home","og_description":"We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal Hi there.","twitter_creator":"Bizz Solutions","twitter_card":"Home","twitter_title":"home","twitter_description":"We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal Hi there.","canonical":"https:\/\/bizzsol.com.bd\/"}},"team":{"meta":{"keywords":"Team","robots":"index, follow","description":"Description","og_type":"Team","og_title":"team","og_description":"Description","twitter_creator":"Bizz Solutions","twitter_card":"Team","twitter_title":"team","twitter_description":"Description","canonical":"#"}},"about":{"meta":{"keywords":"about, info, bizz","robots":"index, follow","description":"We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal.","og_type":"Artical","og_title":"about","og_description":"We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal.","twitter_creator":"Bizz Solutions","twitter_card":"Artical","twitter_title":"about","twitter_description":"We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal.","canonical":"\/about"}}}}
+{
+    "site": {
+        "settings": {
+            "general": {
+                "site_name": "Bizz Solutions PLC",
+                "slogan": "Technology Solution Company in BD.",
+                "site_logo": "uploads\/settings\/1693305624-logo.png",
+                "site_favicon": "uploads\/settings\/1693305624-icon.png",
+                "site_secondary_logo": "uploads\/settings\/1693475251-sec-logo.png",
+                "footer_detail": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal."
+            },
+            "contact_info": {
+                "phone": "+880 295 31087",
+                "mail": "info@bizzsol.com.bd",
+                "address": "City centre 90\/1, Level-25 Type-D2, Motijheel C\/A, Dhaka-1000, Bangladesh."
+            },
+            "newsletter": {
+                "title": "Subscribe To Our Newsletter",
+                "text": "It is a long established fact that a reader will be distributed by the readable content of a page when looking at its layout."
+            },
+            "backlink": {
+                "qrcode": null,
+                "eshop": "https:\/\/ebazar.com.bd\/",
+                "facebook": "https:\/\/www.facebook.com\/bizzsolutions",
+                "linkedin": "https:\/\/www.linkedin.com\/company\/bizz-solutions-ltd\/",
+                "youtube": "https:\/\/www.youtube.com\/@bizzsolutionsplc.007",
+                "instagram": "https:\/\/www.instagram.com\/bizzsolutionsplc\/"
+            }
+        },
+        "slider": {
+            "title": "We Are Digital Agency & Technology Solution",
+            "text": "We have been a leading technology solutions-providing company all over the world doing over 40 years.",
+            "link": "https:\/\/www.youtube.com\/watch?v=hu9frpwmovM",
+            "btn_text": "Get Started",
+            "btn_link": "https:\/\/bizzsol.com.bd",
+            "image_link": "uploads\/settings\/slider\/1693375780-slider.png"
+        },
+        "about": {
+            "title": "Over 25+ Years Helping Brands to Reach Full Potential",
+            "brief": "Over 25 years working in IT services developing software applications and mobile apps for clients all over the world. From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage. Creation timelines for the standard lorem ipsum passage vary, with some citing the 15th century",
+            "clients": 250,
+            "project": 100,
+            "attributes": [
+                {
+                    "title": "high quality",
+                    "bg": null,
+                    "icon": "uploads\/sections\/images\/main-img-1.png",
+                    "hoverIcon": "uploads\/sections\/images\/hover-img-1.png",
+                    "brief": "At vero eos et accusamus etiusto odio praesentium accusamus."
+                },
+                {
+                    "title": "full stack teams",
+                    "bg": "gold-bg",
+                    "icon": "uploads\/sections\/images\/main-img-2.png",
+                    "hoverIcon": "uploads\/sections\/images\/hover-img-2.png",
+                    "brief": "At vero eos et accusamus etiusto odio praesentium accusamus."
+                },
+                {
+                    "title": "agile approach",
+                    "bg": "cyan-bg",
+                    "icon": "uploads\/sections\/images\/main-img-3.png",
+                    "hoverIcon": "uploads\/sections\/images\/hover-img-3.png",
+                    "brief": "At vero eos et accusamus etiusto odio praesentium accusamus."
+                },
+                {
+                    "title": "high quality code",
+                    "bg": "blue-bg",
+                    "icon": "uploads\/sections\/images\/main-img-4.png",
+                    "hoverIcon": "uploads\/sections\/images\/hover-img-4.png",
+                    "brief": "At vero eos et accusamus etiusto odio praesentium accusamus."
+                }
+            ]
+        },
+        "industry": {
+            "title": "Best Solutions, For All Organizations",
+            "sub_text": "WORK FOR ANY INDUSTRY",
+            "limit": "10"
+        },
+        "technology": {
+            "title": "What Technology We Are Using For Our Valued Customers",
+            "sub_text": "TECHNOLOGY INDEX",
+            "limit": "18"
+        }
+    },
+    "seo": {
+        "home": {
+            "meta": {
+                "keywords": "Technology Solution Company in BD.",
+                "robots": "index, follow",
+                "description": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal Hi there.",
+                "og_type": "Home",
+                "og_title": "home",
+                "og_description": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal Hi there.",
+                "twitter_creator": "Bizz Solutions",
+                "twitter_card": "Home",
+                "twitter_title": "home",
+                "twitter_description": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal Hi there.",
+                "canonical": "https:\/\/bizzsol.com.bd\/"
+            }
+        },
+        "team": {
+            "meta": {
+                "keywords": "Team",
+                "robots": "index, follow",
+                "description": "Description",
+                "og_type": "Team",
+                "og_title": "team",
+                "og_description": "Description",
+                "twitter_creator": "Bizz Solutions",
+                "twitter_card": "Team",
+                "twitter_title": "team",
+                "twitter_description": "Description",
+                "canonical": "#"
+            }
+        },
+        "about": {
+            "meta": {
+                "keywords": "about, info, bizz",
+                "robots": "index, follow",
+                "description": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal.",
+                "og_type": "Artical",
+                "og_title": "about",
+                "og_description": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal.",
+                "twitter_creator": "Bizz Solutions",
+                "twitter_card": "Artical",
+                "twitter_title": "about",
+                "twitter_description": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal.",
+                "canonical": "\/about"
+            }
+        }
+    }
+}
