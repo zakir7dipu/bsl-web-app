@@ -17,38 +17,38 @@ const initialData = {
 }
 
 // all data get
-export const fetchAllTechnology = createAsyncThunk("technology/fetchAllTechnology", async (data, {rejectedWithValue}) => {
+export const fetchAllTechnology = createAsyncThunk("technology/fetchAllTechnology", async (data, {rejectWithValue}) => {
     try {
 
         const res = await apiAccess.get(`${initialData.apiUrl}/${data}`)
         return res.data
     } catch (error) {
-        return rejectedWithValue(error.response.message)
+        return rejectWithValue(error.response.data)
     }
 })
 
 //pagination data
-export const fetchDataByPage = createAsyncThunk("technology/fetchDataByPage", async (data, {rejectedWithValue}) => {
+export const fetchDataByPage = createAsyncThunk("technology/fetchDataByPage", async (data, {rejectWithValue}) => {
     try {
         const {page} = data
         const res = await apiAccess.get(`${initialData.apiUrl}?page=${page}`)
         return res.data
     } catch (error) {
-        return rejectedWithValue(error.response.message)
+        return rejectWithValue(error.response.data)
     }
 })
 
-export const fetchDataBySlug = createAsyncThunk("technology/fetchDataBySlug", async (brand, {rejectedWithValue}) => {
+export const fetchDataBySlug = createAsyncThunk("technology/fetchDataBySlug", async (brand, {rejectWithValue}) => {
     try {
         const res = await apiAccess.get(`${initialData.apiUrl}/${slug}/show`);
         return res.data
     } catch (error) {
-        return rejectedWithValue(error.response.message)
+        return rejectWithValue(error.response.data)
     }
 })
 
 // create brand
-export const createData = createAsyncThunk("technology/createData", async (data, {rejectedWithValue}) => {
+export const createData = createAsyncThunk("technology/createData", async (data, {rejectWithValue}) => {
     try {
         const config = {
             headers: {
@@ -58,11 +58,11 @@ export const createData = createAsyncThunk("technology/createData", async (data,
         const res = await apiAccess.post("technology-store", data,config)
         return res.data
     } catch (error) {
-        return rejectedWithValue(error.response.message)
+        return rejectWithValue(error.response.data)
     }
 })
 
-export const updateData = createAsyncThunk("technology/updateData", async (data, {rejectedWithValue}) => {
+export const updateData = createAsyncThunk("technology/updateData", async (data, {rejectWithValue}) => {
     try {
         const config = {
             headers: {
@@ -74,18 +74,18 @@ export const updateData = createAsyncThunk("technology/updateData", async (data,
         const res = await apiAccess.post(`${initialData.apiUrl}/${slug}/update`, dataset, config)
         return res.data
     } catch (error) {
-        return rejectedWithValue(error.response.message)
+        return rejectWithValue(error.response.data)
     }
 })
 
-export const deleteData = createAsyncThunk("technology/deleteData", async (data, {rejectedWithValue}) => {
+export const deleteData = createAsyncThunk("technology/deleteData", async (data, {rejectWithValue}) => {
     try {
         const {slug} = data
         //console.log(data)
         const res = await apiAccess.delete(`${initialData.apiUrl}/${slug}/destroy`)
         return res.data
     } catch (error) {
-        return rejectedWithValue(error.response.message)
+        return rejectWithValue(error.response.data)
     }
 })
 
