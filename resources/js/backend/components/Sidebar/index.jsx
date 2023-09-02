@@ -66,7 +66,6 @@ function Index(props) {
                                     <li><Link to="#">About Us</Link></li>
                                     <li><Link to="#">Management</Link></li>
                                     <li><Link to="#">Teams</Link></li>
-                                    <li><Link to="#">Faq</Link></li>
                                 </ul>
                             </NavBarLink>
                         </li>
@@ -98,6 +97,22 @@ function Index(props) {
                                 linkName={'Blogs'}
                                 hasSubMenu={false}
                                 menuIcon={<i className="fa fa-list-alt menu-icon"></i>}
+                            />
+                        </li>
+                        <li>
+                            <NavBarLink
+                                link={'/bsl/admin/faqs'}
+                                linkName={'Faqs'}
+                                hasSubMenu={false}
+                                menuIcon={<i className="fa fa-question-circle menu-icon"></i>}
+                            />
+                        </li>
+                        <li>
+                            <NavBarLink
+                                link={'/bsl/admin/pages'}
+                                linkName={'Pages'}
+                                hasSubMenu={false}
+                                menuIcon={<i className="fa fa-th-list menu-icon"></i>}
                             />
                         </li>
                         <li>
