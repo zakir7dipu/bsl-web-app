@@ -88,7 +88,7 @@ function Index(props) {
     }
 
     useEffect(() => {
-        if (abouts) {
+        if (Object.keys(abouts).length) {
             setTitle(abouts?.title || '');
             setDescription(abouts?.description || '');
             setBtnText(abouts?.btn_text || '');
