@@ -131,11 +131,13 @@ function storeGeneralData($generalSetting, $global, $request)
         "footer_detail" => $request->footer_detail,
     ];
 
-    $savedData = setting([$global . "general" => $data]);
-    return $savedData;
+    setting([$global . ".general" => $data]);
+    $data = setting($global);
+    $data["type"] = $request->type;
 }
 
-function storeContactInfoData($global, $request) {
+function storeContactInfoData($global, $request)
+{
 
     $data = [
         "phone" => $request->phone,
@@ -149,8 +151,9 @@ function storeContactInfoData($global, $request) {
         "map" => $request->map,
     ];
 
-    $savedData = setting([$global . "contact_info" => $data]);
-    return $savedData;
+    setting([$global . ".contact_info" => $data]);
+    $data = setting($global);
+    $data["type"] = $request->type;
 }
 
 function storeNewsletterData($global, $request)
@@ -160,11 +163,13 @@ function storeNewsletterData($global, $request)
         "title" => $request->title,
         "text" => $request->text
     ];
-    $savedData = setting([$global . "newsletter" => $data]);
-    return $savedData;
+    setting([$global . ".newsletter" => $data]);
+    $data = setting($global);
+    $data["type"] = $request->type;
 }
 
-function storeBacklinkData($global, $request) {
+function storeBacklinkData($global, $request)
+{
 
     $data = [
         "qrcode" => $request->qrcode,
@@ -174,13 +179,16 @@ function storeBacklinkData($global, $request) {
         "youtube" => $request->youtube,
         "instagram" => $request->instagram
     ];
-    return setting([$global . "backlink" => $data]);
+    setting([$global . ".backlink" => $data]);
+    $data = setting($global);
+    $data["type"] = $request->type;
+    return $data;
 }
 
 function storeSliderData($global, $request)
 {
 
-    $currentFile = setting($global . 'slider.image_link');
+    $currentFile = setting($global . '.slider.image_link');
     $imageLink = '';
     if ($request->hasFile("image_link")) {
         $filename = time() . '-' . 'slider.' . fileInfo($request->image_link)['extension'];
@@ -200,7 +208,10 @@ function storeSliderData($global, $request)
         "btn_link" => $request->btn_link,
         "image_link" => $request->hasFile("image_link") ? $imageLink : $currentFile,
     ];
-    return setting([$global . "slider" => $data]);
+    setting([$global . ".slider" => $data]);
+    $data = setting($global . ".slider");
+    $data["type"] = $request->type;
+    return $data;
 }
 
 function storeTechnologyData($global, $request)
@@ -210,7 +221,10 @@ function storeTechnologyData($global, $request)
         "sub_text" => $request->sub_text,
         "limit" => $request->limit,
     ];
-    return setting([$global . "technology" => $data]);
+    setting([$global . ".technology" => $data]);
+    $data = setting($global . ".technology");
+    $data["type"] = $request->type;
+    return $data;
 }
 
 function storeIndustryData($global, $request)
@@ -220,6 +234,23 @@ function storeIndustryData($global, $request)
         "sub_text" => $request->sub_text,
         "limit" => $request->limit,
     ];
-    return setting([$global . "industry" => $data]);
+    setting([$global . ".industry" => $data]);
+    $data = setting($global . ".industry");
+    $data["type"] = $request->type;
+    return $data;
+}
+
+function storeAboutData($generalSetting, $global, $request)
+{
+    $data = setting($global . ".about");
+    $data["title"] = $request->title;
+    $data["brief"] = $request->brief;
+    $data["clients"] = $request->clients;
+    $data["project"] = $request->project;
+    setting([$global . ".about" => $data]);
+
+    $data = setting($global . ".about");
+    $data["type"] = $request->type;
+    return $data;
 }
 

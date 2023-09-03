@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {errorMessage} from "../../../../lib/helper.js";
 import {fetchAllSettings, fetchIndustrySettings, saveSettings} from "../../../../featurs/Settings/SettingsSlice.js";
 import Preloader from "../../../components/Preloader/Index.jsx";
+import {MdStar} from "react-icons/md";
 
 function Contact() {
 
@@ -54,9 +55,9 @@ function Contact() {
         }
     }
 
-    useEffect(() => {
-        if (Object.keys(generalSetting).length) {
-            const {contact} = generalSetting
+    const resetHandler = () => {
+        const {contact} = generalSetting
+        if(contact) {
             setPhone(contact?.phone || " ")
             setWhatsAppNumber(contact?.whatsapp_number || "")
             setEmail(contact?.mail || "")
@@ -67,6 +68,10 @@ function Contact() {
             setTestsTitle(contact?.testi_title || "")
             setMap(contact?.map || "")
         }
+    }
+
+    useEffect(() => {
+        resetHandler()
     }, [generalSetting]);
 
     if (!isLoading) {
@@ -82,7 +87,7 @@ function Contact() {
                             <div className="row">
                                 <div className="col-md-6">
                                     <div className="form-group">
-                                        <label>Phone</label>
+                                        <label>Phone <sup className="text-danger"><MdStar/></sup></label>
                                         <input
                                             className="form-control"
                                             value={phone}
@@ -95,7 +100,7 @@ function Contact() {
 
                                 <div className="col-md-6">
                                     <div className="form-group">
-                                        <label>Email</label>
+                                        <label>Email <sup className="text-danger"><MdStar/></sup></label>
                                         <input
                                             className="form-control"
                                             value={email}

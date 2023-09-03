@@ -2,8 +2,9 @@ import React, {createRef, useEffect, useState} from 'react';
 import style from "./Index.module.css";
 import {Link} from "react-router-dom";
 import {goToInternalLink} from "../../../lib/helper.js";
+import {MdStar} from "react-icons/md";
 
-function Index({label, id, file, handler}) {
+function Index({label, id, file, handler, required}) {
     const [fileName, setFileName] = useState('')
 
     const inputFileRef = createRef();
@@ -23,7 +24,7 @@ function Index({label, id, file, handler}) {
 
     return (
         <>
-            <label htmlFor={id}>{label} <small>{file ? (<Link to="#" onClick={(e) => {
+            <label htmlFor={id}>{label} {required && <sup className="text-danger"><MdStar/></sup>} <small>{file ? (<Link to="#" onClick={(e) => {
                 e.preventDefault();
                 goToInternalLink(file)
             }} className={style.anchor}>See File</Link>) : ''}</small></label>
