@@ -8,11 +8,13 @@ import Industry from "../components/Industry";
 import Technology from "../components/Technology";
 import Partner from "../components/Partner";
 import Client from "../components/Client";
+import Preloader from "../components/Preloader/index.jsx";
 
 function Home(props) {
-
+    const {isLoading} = useSelector(state => state.generalSettings)
     return (
         <>
+            {isLoading && <Preloader/>}
             <HeaderMeta
                 title="Home"
                 page="Home"

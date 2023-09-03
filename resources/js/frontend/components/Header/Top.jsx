@@ -1,31 +1,49 @@
-import React, {useEffect} from 'react';
+import React, {createRef, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {useInternalLink} from "../../../lib/helper.js";
+import {humburgerNavAction} from "../../../featurs/NavAction/NavSlice.js";
 
-function Top(props) {
-    const {isLoading, generalSetting} = useSelector(state => state.generalSettings)
+function Top({general}) {
+    const maiMenuRef = createRef()
+    const menuAriaRef = createRef()
+
+    const windowScroll = () => {
+        if (window.pageYOffset > 100) {
+            menuAriaRef.current.classList.add('sticky')
+        } else {
+            menuAriaRef.current.classList.remove('sticky')
+        }
+    }
+
+    window.onscroll = windowScroll
+
+    const dispatch = useDispatch()
+
     return (
         <header id="rs-header" className="rs-header style3 modify2 header-transparent">
-            <div className="menu-area menu-sticky">
+            <div ref={menuAriaRef} className="menu-area menu-sticky">
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-2">
                             <div className="logo-part">
                                 <Link to="/">
-                                    <img className="normal-logo" src={useInternalLink(`/${generalSetting?.general?.site_secondary_logo}`)} alt="logo"/>
-                                        <img className="sticky-logo" src={useInternalLink(`/${generalSetting?.general?.site_logo}`)} alt="logo"/>
+                                    <img className="normal-logo" src={useInternalLink(`/${general?.site_secondary_logo}`)} alt="logo" style={{maxHeight: "55px"}}/>
+                                        <img className="sticky-logo" src={useInternalLink(`/${general?.site_logo}`)} alt="logo" style={{maxHeight: "55px"}}/>
                                 </Link>
                             </div>
                             <div className="mobile-menu">
-                                <Link to="#" className="rs-menu-toggle rs-menu-toggle-close">
+                                <Link to="#" className="rs-menu-toggle rs-menu-toggle-close" onClick={e=>{
+                                    e.preventDefault()
+                                    maiMenuRef.current.classList.toggle("d-block")
+                                }}>
                                     <i className="fa fa-bars"></i>
                                 </Link>
                             </div>
                         </div>
                         <div className="col-lg-10 text-right">
                             <div className="rs-menu-area">
-                                <div className="main-menu">
+                                <div ref={maiMenuRef} className="main-menu">
                                     <nav className="rs-menu pr-100 lg-pr-50 md-pr-0">
                                         <ul className="nav-menu">
                                             <li className="rs-mega-menu menu-item-has-children current-menu-item">
@@ -128,14 +146,17 @@ function Top(props) {
 
                                 <div className="expand-btn-inner search-icon hidden-md">
                                     <ul>
-                                        <li className="sidebarmenu-search">
-                                            <Link className="hidden-xs rs-search" data-target=".search-modal"
-                                               data-toggle="modal" href="#">
-                                                <i className="flaticon-search"></i>
-                                            </Link>
-                                        </li>
+                                        {/*<li className="sidebarmenu-search">*/}
+                                        {/*    <Link className="hidden-xs rs-search" data-target=".search-modal"*/}
+                                        {/*       data-toggle="modal" href="#">*/}
+                                        {/*        <i className="flaticon-search"></i>*/}
+                                        {/*    </Link>*/}
+                                        {/*</li>*/}
                                         <li>
-                                            <Link id="nav-expander" className="humburger nav-expander" href="#">
+                                            <Link id="nav-expander" className="humburger nav-expander" to="#" onClick={e=>{
+                                                e.preventDefault()
+                                                dispatch(humburgerNavAction())
+                                            }}>
                                                 <span className="dot1"></span>
                                                 <span className="dot2"></span>
                                                 <span className="dot3"></span>

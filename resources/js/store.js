@@ -6,9 +6,11 @@ import SeoFeatures from "./featurs/SEOSlice/SEOSlice.js";
 import TestFeatures from "./featurs/TestFeatures/TestFeatures.js";
 import TechnologyFeature from "./featurs/Technology/TechnologySlice.js";
 import IndustriesFeature from "./featurs/Industries/IndustriesSlice.js";
+import NavReducer from "./featurs/NavAction/NavSlice.js";
 
 const store = configureStore({
     reducer: {
+        navAction: NavReducer,
         menuAction: MenuActionReducer,
         authUser: AuthReducer,
         generalSettings: SettingReducer,

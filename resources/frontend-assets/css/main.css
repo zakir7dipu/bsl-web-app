@@ -8,3 +8,26 @@
 @import url(./rs-spacing.css);
 @import url(./style.css);
 @import url(./responsive.css);
+
+.rs-header .menu-area.menu-sticky.sticky {
+    background: #fff;
+    position: fixed;
+    z-index: 999;
+    margin: 0 auto;
+    border: none;
+    padding: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
+    -webkit-animation-name: sticky-animation;
+    animation-name: sticky-animation;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}

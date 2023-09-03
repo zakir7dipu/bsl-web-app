@@ -1,0 +1,40 @@
+.copyRightMenuLi {
+    display: inline-block;
+    position: relative;
+    padding: 0px 19px 0 25px;
+}
+.copyRightMenuLi:before {
+    display: block;
+    content: "";
+    position: absolute;
+    font-size: 18px;
+    background: #106eea;
+    left: 0;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+}
+
+.copyRightMenuLi:first-child:before {
+    display: none;
+}
+
+.copyRightMenuLi a {
+    color: #454545;
+}
+
+.footerBottom {
+    padding: 20px 0;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.footerBottom p a {
+    color: #454545;
+}
+.footerBottom p a:hover {
+    text-decoration: none;
+    outline: 0 none;
+    color: #106eea;
+}

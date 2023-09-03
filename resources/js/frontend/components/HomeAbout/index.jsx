@@ -16,7 +16,8 @@ function Index(props) {
         dispatch(fetchAboutSettings())
     }, [dispatch])
     return (
-        <div id="rs-about" className="rs-about pt-120 md-pt-70">
+        <div id="rs-about" className="rs-about">
+            {/*pt-120 md-pt-70*/}
             <div className="container">
                 <div className="row align-items-center">
                     <div className="col-lg-5">

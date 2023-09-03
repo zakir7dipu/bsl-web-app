@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {ucFirst} from "../../../../lib/helper.js";
 
-function Attribute({info}) {
+function Attribute({info, handler}) {
     const {title, bg, icon, hoverIcon, brief} = info
     const [inputTitle, setTitle] = useState(title || "")
     const [inputIcon, setIcon] = useState(icon || "")
