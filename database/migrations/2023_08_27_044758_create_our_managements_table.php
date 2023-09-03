@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('designation');
             $table->string('company');
             $table->string('headshot')->nullable();
-            $table->string('biography')->nullable();
+            $table->text('biography')->nullable();
             $table->longText('about');
 
             $table->string('linkedin',64)->nullable();

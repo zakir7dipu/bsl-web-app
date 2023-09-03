@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\AboutsController;
 use App\Http\Controllers\API\IndustriesController;
+use App\Http\Controllers\API\ManagementController;
 use App\Http\Controllers\API\SEOController;
 use App\Http\Controllers\API\SettingsController;
 use App\Http\Controllers\API\TechnologyController;
@@ -50,11 +51,18 @@ Route::controller(IndustriesController::class)->group(function () {
     Route::delete("industries/{slug}/destroy", "destroy");
 });
 
-
 Route::controller(AboutsController::class)->group(function () {
     Route::get('abouts/', 'index');
     Route::post("abouts-store", "store");
     Route::get("abouts/{slug}/show", "show");
     Route::post("abouts/{slug}/update", "update");
     Route::delete("abouts/{slug}/destroy", "destroy");
+});
+
+Route::controller(ManagementController::class)->group(function () {
+    Route::get('managements/{items?}', 'index');
+    Route::post("managements-store", "store");
+    Route::get("managements/{slug}/show", "show");
+    Route::post("managements/{slug}/update", "update");
+    Route::delete("managements/{slug}/destroy", "destroy");
 });
