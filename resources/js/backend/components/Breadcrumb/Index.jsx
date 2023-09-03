@@ -11,25 +11,27 @@ function Index({list}) {
     }
 
     return (
-        <div className="row page-titles mx-0">
-            <div className="col p-md-0">
-                <ol className="breadcrumb">
-                    {list.map(item=>{
-                        if(item.url) {
-                            return (
-                                <li key={uid()} className={`breadcrumb-item`}>
-                                    <Link to={item.url}>{item.name}</Link>
-                                </li>
-                            )
-                        } else {
-                            return <li key={uid()} className={`breadcrumb-item active`}>{item.name}</li>
-                        }
-                    })}
-                </ol>
-                <button onClick={navGoBack} className={`btn btn-danger btn-sm`}><TbArrowBack/> &nbsp; Go Back
-                </button>
+
+            <div className="row page-titles mx-0 mb-3">
+                <div className="col p-md-0">
+                    <ol className="breadcrumb">
+                        {list.map(item=>{
+                            if(item.url) {
+                                return (
+                                    <li key={uid()} className={`breadcrumb-item`}>
+                                        <Link to={item.url}>{item.name}</Link>
+                                    </li>
+                                )
+                            } else {
+                                return <li key={uid()} className={`breadcrumb-item active`}>{item.name}</li>
+                            }
+                        })}
+                    </ol>
+                    <button onClick={navGoBack} className={`btn btn-danger btn-sm`}><TbArrowBack/> &nbsp; Go Back
+                    </button>
+                </div>
             </div>
-        </div>
+
     );
 }
 

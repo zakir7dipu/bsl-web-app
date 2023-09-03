@@ -3,8 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchAboutSettings} from "../../../../featurs/Settings/SettingsSlice.js";
 import HeaderMeta from "../../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
-import {ucFirst, uid} from "../../../../lib/helper.js";
-import InputFile from "../../../components/inputFile/Index.jsx"
+import {uid} from "../../../../lib/helper.js";
 import Attribute from "./Attribute.jsx";
 
 function Index(props) {
@@ -44,6 +43,7 @@ function Index(props) {
     useEffect(() => {
         dispatch(fetchAboutSettings())
     }, []);
+
     return (
         <>
             <HeaderMeta

@@ -23,7 +23,13 @@ function getAllSettings(): object
         "contact" => (object)[
             'phone' => setting($group . 'contact_info.phone'),
             'mail' => setting($group . 'contact_info.mail'),
-            'address' => setting($group . 'contact_info.address')
+            'address' => setting($group . 'contact_info.address'),
+            'sub_text' => setting($group . 'contact_info.sub_text'),
+            'title' => setting($group . 'contact_info.title'),
+            'contact_sub_text' => setting($group . 'contact_info.contact_sub_text'),
+            'testi_title' => setting($group . 'contact_info.testi_title'),
+            'map' => setting($group . 'contact_info.map'),
+            'whatsapp_number' => setting($group . 'contact_info.whatsapp_number'),
         ],
         "newsletter" => (object)[
             "title" => setting($group . 'newsletter.title'),
@@ -133,8 +139,14 @@ function storeContactInfoData($global, $request) {
 
     $data = [
         "phone" => $request->phone,
+        "whatsapp_number" => $request->whatsapp_number,
         "mail" => $request->mail,
-        "address" => $request->address
+        "address" => $request->address,
+        "sub_text" => $request->sub_text,
+        "title" => $request->title,
+        "contact_sub_text" => $request->contact_sub_text,
+        "testi_title" => $request->testi_title,
+        "map" => $request->map,
     ];
 
     $savedData = setting([$global . "contact_info" => $data]);
