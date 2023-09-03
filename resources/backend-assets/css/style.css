@@ -11465,7 +11465,7 @@ table.dataTable thead .sorting::after {
   z-index: 99999999999;
   background: #fff; }
 
-.loader {
+.preloader {
   position: absolute;
   width: 5rem;
   height: 10rem;

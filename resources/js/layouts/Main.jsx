@@ -21,6 +21,10 @@ import ContactSettings from "../backend/pages/PageSettings/Contact";
 import Technology from "../backend/pages/Technology";
 import Industries from "../backend/pages/Industries/Index.jsx";
 
+import BackendAbout from "../backend/pages/Abouts";
+import BackendManagement from "../backend/pages/Management";
+import BackendTeams from "../backend/pages/Teams";
+
 import {refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
 import {useDispatch} from "react-redux";
 import {fetchAllSettings} from "../featurs/Settings/SettingsSlice.js";
@@ -61,6 +65,10 @@ function Main() {
                     </Route>
                     <Route path="technology" element={<Technology/>}/>
                     <Route path="industries" element={<Industries/>}/>
+
+                    <Route path="about-us" element={<BackendAbout/>}/>
+                    <Route path="our-management" element={<BackendManagement/>}/>
+                    <Route path="our-teams" element={<BackendTeams/>}/>
                 </Route>
             </Route>
             <Route path="*" element={<Errors/>}/>

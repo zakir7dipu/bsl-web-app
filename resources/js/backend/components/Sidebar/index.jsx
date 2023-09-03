@@ -63,9 +63,9 @@ function Index(props) {
                                 menuIcon={<i className="fa fa-handshake-o menu-icon"></i>}
                             >
                                 <ul aria-expanded="false" className="collapse">
-                                    <li><Link to="#">About Us</Link></li>
-                                    <li><Link to="#">Management</Link></li>
-                                    <li><Link to="#">Teams</Link></li>
+                                    <li><Link to="about-us">About Us</Link></li>
+                                    <li><Link to="our-management">Management</Link></li>
+                                    <li><Link to="our-teams">Teams</Link></li>
                                 </ul>
                             </NavBarLink>
                         </li>
@@ -85,9 +85,9 @@ function Index(props) {
                                 menuIcon={<i className="fa fa-server menu-icon"></i>}
                             >
                                 <ul aria-expanded="false" className="collapse">
-                                    <li><Link to="#">Category</Link></li>
-                                    <li><Link to="#">Product</Link></li>
-                                    <li><Link to="#">Courses</Link></li>
+                                    <li><Link to="categories">Categories</Link></li>
+                                    <li><Link to="products">Products</Link></li>
+                                    <li><Link to="courses">Courses</Link></li>
                                 </ul>
                             </NavBarLink>
                         </li>

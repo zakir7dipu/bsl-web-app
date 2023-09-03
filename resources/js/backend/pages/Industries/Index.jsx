@@ -169,7 +169,7 @@ function Index(props) {
             />
             <Breadcrumb list={breadcrumb}/>
 
-            <div className="container-fluid">
+
                 <div className="row">
                     <div className="col-lg-12 col-sm-12">
                         <div className="card">
@@ -194,7 +194,7 @@ function Index(props) {
                         </div>
                     </div>
                 </div>
-            </div>
+
 
             <BizModal isShow={isShow} title={title} handleClose={handleModalClose} large={'lg'}>
                 <form className="form-profile" onSubmit={requestHandler}>
