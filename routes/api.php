@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AboutsController;
 use App\Http\Controllers\API\IndustriesController;
 use App\Http\Controllers\API\SEOController;
 use App\Http\Controllers\API\SettingsController;
@@ -46,4 +47,13 @@ Route::controller(IndustriesController::class)->group(function () {
     Route::get("industries/{slug}/show", "show");
     Route::post("industries/{slug}/update", "update");
     Route::delete("industries/{slug}/destroy", "destroy");
+});
+
+
+Route::controller(AboutsController::class)->group(function () {
+    Route::get('abouts/', 'index');
+    Route::post("abouts-store", "store");
+    Route::get("abouts/{slug}/show", "show");
+    Route::post("abouts/{slug}/update", "update");
+    Route::delete("abouts/{slug}/destroy", "destroy");
 });

@@ -6,6 +6,8 @@ import SeoFeatures from "./featurs/SEOSlice/SEOSlice.js";
 import TestFeatures from "./featurs/TestFeatures/TestFeatures.js";
 import TechnologyFeature from "./featurs/Technology/TechnologySlice.js";
 import IndustriesFeature from "./featurs/Industries/IndustriesSlice.js";
+import AboutsFeature from "./featurs/AboutUs/AboutUsSlice.js";
+
 
 const store = configureStore({
     reducer: {
@@ -16,6 +18,7 @@ const store = configureStore({
         testData: TestFeatures,
         technologyReducer: TechnologyFeature,
         industriesReducer: IndustriesFeature,
+        aboutsReducer: AboutsFeature,
     }
 })
 

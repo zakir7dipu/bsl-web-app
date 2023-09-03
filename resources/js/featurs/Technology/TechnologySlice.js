@@ -37,7 +37,7 @@ export const fetchDataByPage = createAsyncThunk("technology/fetchDataByPage", as
     }
 })
 
-export const fetchDataBySlug = createAsyncThunk("technology/fetchDataBySlug", async (brand, {rejectWithValue}) => {
+export const fetchDataBySlug = createAsyncThunk("technology/fetchDataBySlug", async (slug, {rejectWithValue}) => {
     try {
         const res = await apiAccess.get(`${initialData.apiUrl}/${slug}/show`);
         return res.data
