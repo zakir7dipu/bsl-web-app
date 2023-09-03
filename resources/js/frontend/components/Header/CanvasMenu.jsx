@@ -1,15 +1,30 @@
-import React from 'react';
+import React, {createRef, useEffect} from 'react';
 import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useInternalLink} from "../../../lib/helper.js";
+import {humburgerNavAction} from "../../../featurs/NavAction/NavSlice.js";
 
-function CanvasMenu(props) {
-    const {isLoading, generalSetting} = useSelector(state => state.generalSettings)
+function CanvasMenu({general, contact, backlink}) {
+    const body = document.querySelector("body")
+    const {humburgerNavExpander} = useSelector(state => state.navAction)
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+        if (humburgerNavExpander) {
+            body.classList.add("nav-expanded")
+        } else {
+            body.classList.remove("nav-expanded")
+        }
+    },[humburgerNavExpander])
+
     return (
-        <nav className="right_menu_togle hidden-md">
-            <div className="close-btn">
+        <nav className="right_menu_togle hidden-md" style={{height: "100%"}}>
+            <div className="close-btn" style={{padding: "35px 10px 20px"}}>
                 <div className="nav-link">
-                    <Link id="nav-close" className="humburger nav-expander" to="#">
+                    <Link id="nav-close" className="humburger nav-expander" to="#" onClick={e=>{
+                        e.preventDefault()
+                        dispatch(humburgerNavAction())
+                    }}>
                         <span className="dot1"></span>
                         <span className="dot2"></span>
                         <span className="dot3"></span>
@@ -23,12 +38,10 @@ function CanvasMenu(props) {
                 </div>
             </div>
             <div className="canvas-logo">
-                <Link to="index.html"><img src={useInternalLink(generalSetting?.general?.site_logo) || ""} alt="logo"/></Link>
+                <Link to="/"><img src={useInternalLink(`/${general?.site_logo}`) || ""} alt="logo" style={{maxHeight: "65px"}}/></Link>
             </div>
             <div className="offcanvas-text">
-                <p>Braintech quisque placerat vitae lacus ut scelerisque. Fusce luctus odio ac nibh luctus, in
-                    porttitor
-                    theo lacus egestas etiusto odio data center.</p>
+                <p>{general?.footer_detail}</p>
             </div>
             <div className="canvas-contact">
                 <div className="address-area">
@@ -37,8 +50,8 @@ function CanvasMenu(props) {
                             <i className="flaticon-location"></i>
                         </div>
                         <div className="info-content">
-                            <h4 className="title">Address</h4>
-                            <em>05 kandi BR. New York</em>
+                            <h4 className="title" style={{float:"none"}}>Address</h4>
+                            <em>{contact?.address}</em>
                         </div>
                     </div>
                     <div className="address-list">
@@ -46,8 +59,8 @@ function CanvasMenu(props) {
                             <i className="flaticon-email"></i>
                         </div>
                         <div className="info-content">
-                            <h4 className="title">Email</h4>
-                            <em><Link to="mailto:support@rstheme.com">support@rstheme.com</Link></em>
+                            <h4 className="title" style={{float:"none"}}>Email</h4>
+                            <em><a href={`mailto:${contact?.mail}`}>{contact?.mail}</a></em>
                         </div>
                     </div>
                     <div className="address-list">
@@ -55,16 +68,16 @@ function CanvasMenu(props) {
                             <i className="flaticon-call"></i>
                         </div>
                         <div className="info-content">
-                            <h4 className="title">Phone</h4>
-                            <em>+019988772</em>
+                            <h4 className="title" style={{float:"none"}}>Phone</h4>
+                            <em><a href={`tel:${contact?.phone}`}>{contact?.phone}</a></em>
                         </div>
                     </div>
                 </div>
                 <ul className="social">
-                    <li><Link to="#"><i className="fa fa-facebook"></i></Link></li>
-                    <li><Link to="#"><i className="fa fa-twitter"></i></Link></li>
-                    <li><Link to="#"><i className="fa fa-pinterest-p"></i></Link></li>
-                    <li><Link to="#"><i className="fa fa-instagram"></i></Link></li>
+                    {backlink?.facebook && <li><a href={backlink?.facebook}><i className="fa fa-facebook"></i></a></li>}
+                    {backlink?.linkedin && <li><a href={backlink?.linkedin}><i className="fa fa-linkedin"></i></a></li>}
+                    {backlink?.instagram && <li><a href={backlink?.instagram}><i className="fa fa-instagram"></i></a></li>}
+                    {backlink?.youtube && <li><a href={backlink?.youtube}><i className="fa fa-youtube"></i></a></li>}
                 </ul>
             </div>
         </nav>

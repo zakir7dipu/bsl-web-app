@@ -25,7 +25,7 @@ function Index(props) {
     const [attributes, setAttributes] = useState([]);
 
 
-    const requestHandler = (e) => {
+    const requestAttributeHandler = (e) => {
         e.preventDefault();
     }
 
@@ -121,6 +121,7 @@ function Index(props) {
                                                         <div className="col-md-6" key={uid()}>
                                                             <Attribute
                                                                 info={attrbute}
+                                                                handler={requestAttributeHandler}
                                                             />
                                                         </div>
                                                     )
