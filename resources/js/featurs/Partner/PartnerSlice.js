@@ -16,7 +16,7 @@ const initialData = {
     metaInfo: []
 }
 // all data get
-export const fetchAllPartners = createAsyncThunk("fetchAllPartners/fetchAllPartners", async (arg, {rejectWithValue}) => {
+export const fetchAllPartners = createAsyncThunk("partner/fetchAllPartners", async (arg, {rejectWithValue}) => {
     try {
         const res = await apiAccess.get(initialData.apiUrl)
         return res.data
@@ -25,7 +25,7 @@ export const fetchAllPartners = createAsyncThunk("fetchAllPartners/fetchAllPartn
     }
 })
 
-export const fetchPartnerBySlug = createAsyncThunk("OurPartners/fetchPartnerBySlug", async (id, {rejectWithValue}) => {
+export const fetchPartnerBySlug = createAsyncThunk("partner/fetchPartnerBySlug", async (id, {rejectWithValue}) => {
     try {
         const res = await apiAccess.get(`${initialData.apiUrl}/${id}/show`);
         return res.data
@@ -34,7 +34,7 @@ export const fetchPartnerBySlug = createAsyncThunk("OurPartners/fetchPartnerBySl
     }
 })
 
-export const createPartnerData = createAsyncThunk("OurPartners/createPartnerData", async (data, {rejectWithValue}) => {
+export const createPartnerData = createAsyncThunk("partner/createPartnerData", async (data, {rejectWithValue}) => {
     try {
         const config = {
             headers: {
@@ -48,7 +48,7 @@ export const createPartnerData = createAsyncThunk("OurPartners/createPartnerData
     }
 })
 
-export const updatePartnerData = createAsyncThunk("OurPartners/updatePartnerData", async (data, {rejectWithValue}) => {
+export const updatePartnerData = createAsyncThunk("partner/updatePartnerData", async (data, {rejectWithValue}) => {
     try {
         const config = {
             headers: {
@@ -63,7 +63,7 @@ export const updatePartnerData = createAsyncThunk("OurPartners/updatePartnerData
     }
 })
 
-export const deletePartnerData = createAsyncThunk("OurPartners/deletePartnerData", async (data, {rejectWithValue}) => {
+export const deletePartnerData = createAsyncThunk("partner/deletePartnerData", async (data, {rejectWithValue}) => {
     try {
         const {Partner} = data
         const res = await apiAccess.delete(`${initialData.apiUrl}/${Partner}/destroy`)
@@ -74,7 +74,7 @@ export const deletePartnerData = createAsyncThunk("OurPartners/deletePartnerData
 })
 
 export const PartnerSlice = createSlice({
-    name: 'OurPartners',
+    name: 'partner',
     initialState: initialData,
     extraReducers: {
         [fetchAllPartners.pending]: (state) => {

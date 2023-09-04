@@ -159,9 +159,9 @@ function Index(props) {
         setIsEdit(true)
         setIsShow(!isShow);
 
-        setName(modal?.name);
-        setDescription(modal?.description);
-        setIndex(modal?.index_of);
+        setName(modal?.name || '');
+        setDescription(modal?.description || '');
+        setIndex(modal?.index_of || '');
     }
 
     const deletePartnerHandler = async (id) => {
