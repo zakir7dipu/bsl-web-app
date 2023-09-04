@@ -17,6 +17,7 @@ import DataTableComponent from "../../../ui/DataTableComponent.jsx";
 import Preloader from "../../../backend/components/Preloader";
 import BizModal from "../../../ui/BizzModal.jsx";
 import FileInput from "../../components/inputFile/Index.jsx";
+import {MdStar} from "react-icons/md";
 
 function Index(props) {
     const {
@@ -242,6 +243,7 @@ function Index(props) {
         }
     }
 
+
     useEffect(() => {
         dispatch(fetchAllManagements());
     }, [dispatch]);
@@ -286,26 +288,26 @@ function Index(props) {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="form-group">
-                                    <label>Name</label>
+                                    <label>Name <sup className="text-danger"><MdStar/></sup></label>
                                     <input className="form-control" value={name}
                                            onChange={(e) => {
                                                setName(e.target.value)
-                                           }} placeholder="name" type="text"/>
+                                           }} placeholder="Name" type="text"/>
                                 </div>
                             </div>
                             <div className="col-md-6">
                                 <div className="form-group">
-                                    <label>Short Order</label>
+                                    <label>Short Order <sup className="text-danger"><MdStar/></sup></label>
                                     <input className="form-control" value={index_of}
                                            onChange={(e) => {
                                                setIndexOf(e.target.value)
-                                           }} placeholder="short order" type="number"/>
+                                           }} placeholder="Short order" type="number"/>
                                 </div>
                             </div>
 
                             <div className="col-md-6">
                                 <div className="form-group">
-                                    <label>Type</label>
+                                    <label>Type <sup className="text-danger"><MdStar/></sup></label>
                                     <select className="form-control" name="type" onChange={(e) => {
                                         setType(e.target.value)
                                     }} value={type}>
@@ -317,7 +319,7 @@ function Index(props) {
 
                             <div className="col-md-6">
                                 <div className="form-group">
-                                    <label>Designation</label>
+                                    <label>Designation <sup className="text-danger"><MdStar/></sup></label>
                                     <input className="form-control" value={designation}
                                            onChange={(e) => {
                                                setDesignation(e.target.value)

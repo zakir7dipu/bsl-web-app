@@ -21,8 +21,7 @@ class ManagementController extends Controller
     {
         try {
 
-            $managements = OurManagement::orderBy('index_of', 'desc')->get();
-
+            $managements = OurManagement::orderBy('index_of', 'asc')->get();
             return response()->json($managements);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), $th->getCode());

@@ -60,7 +60,7 @@ Route::controller(AboutsController::class)->group(function () {
 });
 
 Route::controller(ManagementController::class)->group(function () {
-    Route::get('managements/{items?}', 'index');
+    Route::get('managements', 'index');
     Route::post("managements-store", "store");
     Route::get("managements/{slug}/show", "show");
     Route::post("managements/{slug}/update", "update");
