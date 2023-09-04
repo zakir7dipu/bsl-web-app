@@ -35,44 +35,44 @@
         },
         "slider": {
             "title": "We Are Digital Agency & Technology Solution",
-            "text": "We have been a leading technology solutions-providing company all over the world doing over 40 years.",
+            "text": "We have been a leading technology solutions-providing company all over the world doing over 40 years of",
             "link": "https:\/\/www.youtube.com\/watch?v=hu9frpwmovM",
-            "btn_text": null,
-            "btn_link": null,
+            "btn_text": "Get Started",
+            "btn_link": "https:\/\/bizzsol.com.bd",
             "image_link": "uploads\/settings\/slider\/1693375780-slider.png"
         },
         "about": {
             "title": "Over 25+ Years Helping Brands to Reach Full Potential",
             "brief": "Over 25 years working in IT services developing software applications and mobile apps for clients all over the world. From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage. Creation timelines for the standard lorem ipsum passage vary, with some citing the 15th century",
-            "clients": 250,
-            "project": 100,
+            "clients": "250",
+            "project": "100",
             "attributes": [
                 {
                     "title": "high quality",
                     "bg": null,
-                    "icon": "uploads\/sections\/images\/main-img-1.png",
-                    "hoverIcon": "uploads\/sections\/images\/hover-img-1.png",
+                    "icon": "uploads\/sections\/images\/1693811768-sections-main.png",
+                    "hoverIcon": "uploads\/sections\/images\/1693811768-sections-hover.png",
                     "brief": "At vero eos et accusamus etiusto odio praesentium accusamus."
                 },
                 {
                     "title": "full stack teams",
                     "bg": "gold-bg",
-                    "icon": "uploads\/sections\/images\/main-img-2.png",
-                    "hoverIcon": "uploads\/sections\/images\/hover-img-2.png",
+                    "icon": "uploads\/sections\/images\/1693811857-sections-main.png",
+                    "hoverIcon": "uploads\/sections\/images\/1693811857-sections-hover.png",
                     "brief": "At vero eos et accusamus etiusto odio praesentium accusamus."
                 },
                 {
                     "title": "agile approach",
                     "bg": "cyan-bg",
-                    "icon": "uploads\/sections\/images\/main-img-3.png",
-                    "hoverIcon": "uploads\/sections\/images\/hover-img-3.png",
+                    "icon": "uploads\/sections\/images\/1693811899-sections-main.png",
+                    "hoverIcon": "uploads\/sections\/images\/1693811899-sections-hover.png",
                     "brief": "At vero eos et accusamus etiusto odio praesentium accusamus."
                 },
                 {
                     "title": "high quality code",
                     "bg": "blue-bg",
-                    "icon": "uploads\/sections\/images\/main-img-4.png",
-                    "hoverIcon": "uploads\/sections\/images\/hover-img-4.png",
+                    "icon": "uploads\/sections\/images\/1693811957-sections-main.png",
+                    "hoverIcon": "uploads\/sections\/images\/1693811957-sections-hover.png",
                     "brief": "At vero eos et accusamus etiusto odio praesentium accusamus."
                 }
             ]
@@ -86,16 +86,6 @@
             "title": "What Technology We Are Using For Our Valued Customers",
             "sub_text": "TECHNOLOGY INDEX",
             "limit": "18"
-        },
-        "": {
-            "slider": {
-                "title": "We Are Digital Agency & Technology Solution",
-                "text": "We have been a leading technology solutions-providing company all over the world doing over 40 years of",
-                "link": "https:\/\/www.youtube.com\/watch?v=hu9frpwmovM",
-                "btn_text": "Get Started",
-                "btn_link": "https:\/\/bizzsol.com.bd",
-                "image_link": "uploads\/settings\/slider\/1693375780-slider.png"
-            }
         }
     },
     "seo": {

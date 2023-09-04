@@ -167,7 +167,6 @@ export const settingsSlice = createSlice({
             infoMessage('We are processing your request.')
         },
         [saveSettings.fulfilled]: (state, {payload}) => {
-            console.log(payload.type)
             state.isLoading = false
             switch (payload.type) {
                 case "slider":

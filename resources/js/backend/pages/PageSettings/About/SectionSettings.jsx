@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {Col} from "react-bootstrap";
 import {warningMessage} from "../../../../lib/helper.js";
 import {useDispatch} from "react-redux";
-import {saveAboutSettings} from "../../../../featurs/Settings/SettingsSlice.js";
+import {saveAboutSettings, saveSettings} from "../../../../featurs/Settings/SettingsSlice.js";
+import {MdStar} from "react-icons/md";
 
 function SectionSettings({SecSetting}) {
     const {title, brief, clients, project} = SecSetting
@@ -42,7 +43,7 @@ function SectionSettings({SecSetting}) {
 
         formData.append("type", 'about');
         if (iTitle && iBrief && iClients && iProject) {
-            dispatch(saveAboutSettings(formData))
+            dispatch(saveSettings(formData))
         }
     }
 
@@ -58,7 +59,7 @@ function SectionSettings({SecSetting}) {
     return (
         <form className="row" onSubmit={requestHandler}>
             <Col md={12} className="form-group">
-                <label>Title</label>
+                <label>Title <sup className="text-danger"><MdStar/></sup></label>
                 <input
                     className="form-control"
                     value={iTitle || ""}
@@ -68,7 +69,7 @@ function SectionSettings({SecSetting}) {
                 />
             </Col>
             <Col md={6} className="form-group">
-                <label>Clients</label>
+                <label>Clients <sup className="text-danger"><MdStar/></sup></label>
                 <input
                     className="form-control"
                     value={iClients}
@@ -78,7 +79,7 @@ function SectionSettings({SecSetting}) {
                 />
             </Col>
             <Col md={6} className="form-group">
-                <label>Project</label>
+                <label>Project <sup className="text-danger"><MdStar/></sup></label>
                 <input
                     className="form-control"
                     value={iProject}
@@ -88,7 +89,7 @@ function SectionSettings({SecSetting}) {
                 />
             </Col>
             <Col md={12} className="form-group">
-                <label>Brief</label>
+                <label>Brief <sup className="text-danger"><MdStar/></sup></label>
                 <textarea
                     className="form-control"
                     name="textarea"
