@@ -4,6 +4,7 @@ use App\Http\Controllers\API\AboutsController;
 use App\Http\Controllers\API\ClientsController;
 use App\Http\Controllers\API\IndustriesController;
 use App\Http\Controllers\API\ManagementController;
+use App\Http\Controllers\API\PartnerController;
 use App\Http\Controllers\API\SEOController;
 use App\Http\Controllers\API\SettingsController;
 use App\Http\Controllers\API\TeamsController;
@@ -83,4 +84,12 @@ Route::controller(ClientsController::class)->group(function () {
     Route::get("clients/{slug}/show", "show");
     Route::post("clients/{slug}/update", "update");
     Route::delete("clients/{slug}/destroy", "destroy");
+});
+
+Route::controller(PartnerController::class)->group(function () {
+    Route::get('partners', 'index');
+    Route::post("partners-store", "store");
+    Route::get("partners/{slug}/show", "show");
+    Route::post("partners/{slug}/update", "update");
+    Route::delete("partners/{slug}/destroy", "destroy");
 });

@@ -7,26 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 
-class Services extends Model
+class Partner extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $table = "services";
+    protected $table = "partners";
 
     protected $fillable = [
-        'parent_id', 'title','slug', 'brief', 'description', 'image_link', 'type', 'meta_title', 'meta_keywords', 'meta_description', 'meta_image_link'
+        'name',
+        'index_of',
+        'description',
+        'image_link',
     ];
 
-
-    public function courses()
-    {
-        return $this->hasMany(Courses::class, "service_id", "id");
-    }
-
-    public function products()
-    {
-        return $this->hasMany(Products::class, "service_id", "id");
-    }
-
+    // TODO :: boot
+    // boot() function used to insert logged user_id at 'created_by' & 'updated_by'
     public static function boot(){
         parent::boot();
         static::creating(function($query){
