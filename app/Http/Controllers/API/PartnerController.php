@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Clients;
+use App\Models\Partner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ClientsController extends Controller
+class PartnerController extends Controller
 {
     public function __construct()
     {
@@ -21,8 +21,8 @@ class ClientsController extends Controller
     {
         try {
 
-            $clients = Clients::orderBy('id', 'asc')->get();
-            return response()->json($clients);
+            $partners = Partner::orderBy('id', 'asc')->get();
+            return response()->json($partners);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), $th->getCode());
         }
@@ -50,22 +50,22 @@ class ClientsController extends Controller
         DB::beginTransaction();
         try {
 
-            $client = new Clients();
-            $client->name = $request->name;
-            $client->index_of = $request->index_of;
-            $client->description = $request->description;
+            $partner = new Partner();
+            $partner->name = $request->name;
+            $partner->index_of = $request->index_of;
+            $partner->description = $request->description;
 
             if ($request->hasFile('image_link')) {
                 $filename = time() . '-' . 'client.' . fileInfo($request->image_link)['extension'];
-                $path = 'uploads/clients';
+                $path = 'uploads/partner';
                 fileUpload($request->image_link, $path, $filename);
                 $img = '/' . $path . '/' . $filename;
-                $client->image_link = $img;
+                $partner->image_link = $img;
             }
 
-            $client->save();
+            $partner->save();
             DB::commit();
-            return response()->json($client);
+            return response()->json($partner);
         } catch (\Throwable $th) {
             DB::rollBack();
             return response()->json($th->getMessage(), $th->getCode());
@@ -78,8 +78,8 @@ class ClientsController extends Controller
     public function show(string $id)
     {
         try {
-            $client = Clients::where('id', $id)->first();
-            return response()->json($client);
+            $partner = Partner::where('id', $id)->first();
+            return response()->json($partner);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), $th->getCode());
         }
@@ -107,25 +107,25 @@ class ClientsController extends Controller
         DB::beginTransaction();
         try {
 
-            $client = Clients::where('id', $id)->first();
-            $client->name = $request->name;
-            $client->index_of = $request->index_of;
-            $client->description = $request->description;
+            $partner = Partner::where('id', $id)->first();
+            $partner->name = $request->name;
+            $partner->index_of = $request->index_of;
+            $partner->description = $request->description;
 
             if ($request->hasFile('image_link')) {
                 $filename = time() . '-' . 'client.' . fileInfo($request->image_link)['extension'];
-                $path = 'uploads/clients';
-                if ($client->image_link) {
-                    fileDelete($client->image_link);
+                $path = 'uploads/partner';
+                if ($partner->image_link) {
+                    fileDelete($partner->image_link);
                 }
                 fileUpload($request->image_link, $path, $filename);
                 $img = '/' . $path . '/' . $filename;
-                $client->image_link = $img;
+                $partner->image_link = $img;
             }
 
-            $client->save();
+            $partner->save();
             DB::commit();
-            return response()->json($client);
+            return response()->json($partner);
         } catch (\Throwable $th) {
             DB::rollBack();
             return response()->json($th->getMessage(), $th->getCode());
@@ -140,13 +140,13 @@ class ClientsController extends Controller
         DB::beginTransaction();
         try {
 
-            $client = Clients::where('id', $id)->first();
-            if ($client->image_link) {
-                fileDelete($client->image_link);
+            $partner = Partner::where('id', $id)->first();
+            if ($partner->image_link) {
+                fileDelete($partner->image_link);
             }
-            $client->delete();
+            $partner->delete();
             DB::commit();
-            return response()->json($client);
+            return response()->json($partner);
         } catch (\Throwable $th) {
             DB::rollBack();
             return response()->json($th->getMessage(), $th->getCode());

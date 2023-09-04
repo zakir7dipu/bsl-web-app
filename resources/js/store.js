@@ -11,6 +11,7 @@ import AboutsFeature from "./featurs/AboutUs/AboutUsSlice.js";
 import ManagementFeature from "./featurs/Management/ManagementSlice.js";
 import TeamsFeature from "./featurs/Teams/TeamSlice.js";
 import ClientFeature from "./featurs/Clients/ClientSlice.js";
+import PartnerFeature from "./featurs/Partner/PartnerSlice.js";
 
 const store = configureStore({
     reducer: {
@@ -26,6 +27,7 @@ const store = configureStore({
         managementReducer: ManagementFeature,
         teamReducer: TeamsFeature,
         clientReducer : ClientFeature,
+        partnerReducer : PartnerFeature,
     }
 })
 

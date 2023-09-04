@@ -60,7 +60,7 @@ function Index(props) {
                                 link='#'
                                 linkName={'Abouts'}
                                 hasSubMenu={true}
-                                menuIcon={<i className="fa fa-handshake-o menu-icon"></i>}
+                                menuIcon={<i className="fa fa-globe menu-icon"></i>}
                             >
                                 <ul aria-expanded="false" className="collapse">
                                     <li><Link to="about-us">About Us</Link></li>
@@ -75,6 +75,14 @@ function Index(props) {
                                 linkName={'Clients'}
                                 hasSubMenu={false}
                                 menuIcon={<i className="fa fa-users menu-icon"></i>}
+                            />
+                        </li>
+                        <li>
+                            <NavBarLink
+                                link={'/bsl/admin/partner'}
+                                linkName={'Partner'}
+                                hasSubMenu={false}
+                                menuIcon={<i className="fa fa-handshake-o menu-icon"></i>}
                             />
                         </li>
                         <li>
@@ -99,14 +107,7 @@ function Index(props) {
                                 menuIcon={<i className="fa fa-list-alt menu-icon"></i>}
                             />
                         </li>
-                        <li>
-                            <NavBarLink
-                                link={'/bsl/admin/faqs'}
-                                linkName={'Faqs'}
-                                hasSubMenu={false}
-                                menuIcon={<i className="fa fa-question-circle menu-icon"></i>}
-                            />
-                        </li>
+
                         <li>
                             <NavBarLink
                                 link={'/bsl/admin/pages'}
