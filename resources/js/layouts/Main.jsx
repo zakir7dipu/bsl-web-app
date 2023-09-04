@@ -26,8 +26,8 @@ import BackendManagement from "../backend/pages/Management";
 import BackendTeams from "../backend/pages/Teams";
 import BackendClients from "../backend/pages/Clients";
 
-import {refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
-import {useDispatch} from "react-redux";
+import {checkAccess, refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
+import {useDispatch, useSelector} from "react-redux";
 import {fetchAllSettings} from "../featurs/Settings/SettingsSlice.js";
 import TestPage from "../backend/pages/TestPage.jsx";
 import Frontend from "./Frontend.jsx";
@@ -42,9 +42,10 @@ import Contact from "../frontend/pages/Contact.jsx";
 import Blog from "../frontend/pages/Blog/index.jsx";
 
 function Main() {
-
+    const {isAccess} = useSelector(state => state.authUser)
     const dispatch = useDispatch()
     useEffect(() => {
+        dispatch(checkAccess())
         dispatch(refreshLoginData())
         dispatch(fetchAllSettings())
     }, []);
@@ -67,9 +68,10 @@ function Main() {
                 </Route>
                 <Route path="/contact" element={<Contact/>}/>
             </Route>
-            <Route path="bsl" element={<Backend/>}>
+            <Route path="/bsl" element={<Backend/>}>
                 <Route path="login" element={<Login/>}/>
-                <Route path="admin" element={<Admin/>}>
+                {isAccess &&
+                    <Route path="admin" element={<Admin/>}>
                     <Route index element={<Dashboard/>}/>
                     <Route path="profile" element={<Profile/>}/>
                     <Route path="test" element={<TestPage/>}/>
@@ -94,6 +96,7 @@ function Main() {
                     <Route path="our-teams" element={<BackendTeams/>}/>
                     <Route path="clients" element={<BackendClients/>}/>
                 </Route>
+                }
             </Route>
             <Route path="*" element={<Errors/>}/>
         </Routes>
