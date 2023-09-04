@@ -4,7 +4,6 @@ import BizAlert from "../../../lib/BizAlert.js";
 import {errorMessage, infoMessage, ucFirst, useInternalLink} from "../../../lib/helper.js";
 import RowDropDown from "../../../ui/RowDropDown.jsx";
 import {Link} from "react-router-dom";
-import {updateManagementData} from "../../../featurs/Management/ManagementSlice.js";
 import HeaderMeta from "../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../components/Breadcrumb/Index.jsx";
 import {GrFormAdd} from "react-icons/gr";

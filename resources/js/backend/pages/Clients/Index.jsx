@@ -1,26 +1,30 @@
 import React, {useEffect, useState} from 'react';
-import Breadcrumb from "../../components/Breadcrumb/Index.jsx";
-import HeaderMeta from "../../../ui/HeaderMeta.jsx";
 import {useDispatch, useSelector} from "react-redux";
-import {createData, deleteData, fetchAllTechnology, updateData} from "../../../featurs/Technology/TechnologySlice.js";
+import BizAlert from "../../../lib/BizAlert.js";
+import {errorMessage, infoMessage, ucFirst, useInternalLink} from "../../../lib/helper.js";
 import RowDropDown from "../../../ui/RowDropDown.jsx";
 import {Link} from "react-router-dom";
-import {errorMessage, infoMessage, useInternalLink} from "../../../lib/helper.js";
-import DataTableComponent from "../../../ui/DataTableComponent.jsx";
-import {GrFormAdd} from "react-icons/gr";
-import BizAlert from "../../../lib/BizAlert.js";
-import BizModal from "../../../ui/BizzModal.jsx";
-import FileInput from "../../components/inputFile/Index.jsx";
+import {
+    createClientData,
+    deleteClientData,
+    fetchAllClients,
+    updateClientData
+} from "../../../featurs/Clients/ClientSlice.js";
 import Preloader from "../../components/Preloader/Index.jsx";
+import HeaderMeta from "../../../ui/HeaderMeta.jsx";
+import Breadcrumb from "../../components/Breadcrumb/Index.jsx";
+import {GrFormAdd} from "react-icons/gr";
+import DataTableComponent from "../../../ui/DataTableComponent.jsx";
 import {MdStar} from "react-icons/md";
+import FileInput from "../../components/inputFile/Index.jsx";
+import BizModal from "../../../ui/BizzModal.jsx";
 
-function Index() {
+function Index(props) {
     const {
         isLoading,
-        technologies,
+        clients,
         errorMess
-    } = useSelector((state) => state.technologyReducer);
-
+    } = useSelector((state) => state.clientReducer);
     const dispatch = useDispatch();
 
     const bizAlert = new BizAlert();
@@ -30,39 +34,39 @@ function Index() {
             url: "/bsl/admin"
         },
         {
-            name: "Technology",
+            name: "Clients",
             url: null
         }
     ];
 
     const columns = [
         {
-            name: 'ID',
-            selector: row => row.id,
+            name: 'SL',
+            selector: row => row?.index_of,
             sortable: true,
         },
         {
             name: 'Name',
-            selector: row => row.name,
+            selector: row => row?.name,
             sortable: true,
         },
         {
-            name: 'Indexing',
-            selector: row => row.order_by,
+            name: 'Description',
+            selector: row => row?.description,
             sortable: true,
         },
         {
             name: 'Image',
             cell: row => (
-                <img style={{height: "40px", width: "40px"}} src={useInternalLink(row.image_link)}/>
+                <img style={{height: "60px", width: "60px"}} src={useInternalLink(row.image_link)}/>
             )
         },
         {
             name: 'Actions',
             cell: (row) => (
                 <RowDropDown>
-                    <Link to="#" onClick={(e) => handelEdit(row?.slug)} className="dropdown-item">Edit</Link>
-                    <Link to="#" onClick={(e) => technologyDeleteHandler(row?.slug)}
+                    <Link to="#" onClick={(e) => handelClientEdit(row?.id)} className="dropdown-item">Edit</Link>
+                    <Link to="#" onClick={(e) => deleteClientHandler(row?.id)}
                           className="dropdown-item">Delete</Link>
                 </RowDropDown>
             ),
@@ -70,14 +74,15 @@ function Index() {
     ];
 
     const [isShow, setIsShow] = useState(false);
-    const [title, setTitle] = useState("Add New Technology");
+    const [title, setTitle] = useState("Add New Management");
     const [isEdit, setIsEdit] = useState(false);
 
-    const [selectedTech, setSelectedTech] = useState("");
+    const [selectedClient, setSelectedClient] = useState("");
 
     const [name, setName] = useState("");
-    const [indexing, setIndexing] = useState("");
-    const [imageFile, setImageFile] = useState("");
+    const [description, setDescription] = useState("");
+    const [index_of, setIndex] = useState("");
+    const [image_link, setImageFile] = useState("");
 
     const handleModalClose = () => {
         setIsShow(!isShow);
@@ -89,8 +94,10 @@ function Index() {
     }
 
     const resetHandler = () => {
-        setName('');
-        setIndexing('');
+        setName("");
+        setDescription("");
+        setIndex("");
+        setImageFile("");
     }
 
     const requestHandler = (e) => {
@@ -103,69 +110,81 @@ function Index() {
             formData.append("name", name);
         }
 
-        if (!indexing) {
+        if (!index_of) {
             errorMessage("Indexing is required.")
         } else {
-            formData.append("order_by", indexing);
+            formData.append("index_of", index_of);
         }
 
-        if (imageFile) {
-            formData.append("image_link", imageFile);
+        if (description) {
+            formData.append("description", description);
         }
 
-        if (name && indexing) {
+        if (!isEdit) {
+            if (!image_link) {
+                errorMessage("Image is required.")
+            } else {
+                formData.append("image_link", image_link);
+            }
+        } else {
+            if (image_link) {
+                formData.append("image_link", image_link);
+            }
+        }
+
+        if (name && index_of) {
             infoMessage("Please wait a while, We are processing your request.");
             if (!isEdit) {
-                dispatch(createData(formData))
+                dispatch(createClientData(formData))
             } else {
                 let data = {
                     dataset: formData,
-                    slug: selectedTech
+                    id: selectedClient
                 }
-                dispatch(updateData(data))
+                dispatch(updateClientData(data))
             }
         }
         handleModalClose()
     }
 
-    const handelEdit = (slug) => {
-        getTechnologyMeta(slug)
+    const handelClientEdit = (id) => {
+        getMeta(id)
     }
 
-    const getTechnologyMeta = (slug) => {
-        setSelectedTech(slug)
-        let technologyMeta = technologies.filter((technology) => technology.slug === slug)
-        technologyMeta = technologyMeta[0]
-        setTitle(`Edit ${technologyMeta?.name}`)
+    const getMeta = (id) => {
+        setSelectedClient(id)
+        let modal = clients.filter((client) => client.id === id)
+        modal = modal[0]
+        setTitle(`Edit ${modal?.name}`)
         setIsEdit(true)
-        setName(technologyMeta?.name)
-        setIndexing(technologyMeta?.order_by)
-        setImageFile(technologyMeta?.image_link)
         setIsShow(!isShow);
+
+        setName(modal?.name);
+        setDescription(modal?.description);
+        setIndex(modal?.index_of);
     }
 
-    const technologyDeleteHandler = async (slug) => {
-        //console.log(slug)
-        setSelectedTech(slug)
+    const deleteClientHandler = async (id) => {
+        setSelectedClient(id)
         let {isConfirmed} = await bizAlert.confirmAlert(`Are you sure?`, `Once you delete this you can't able to recover this data`);
         if (isConfirmed) {
             let data = {
-                slug: slug
+                client: id
             }
-            dispatch(deleteData(data))
+            dispatch(deleteClientData(data))
         }
     }
 
     useEffect(() => {
-        dispatch(fetchAllTechnology(0));
+        dispatch(fetchAllClients());
     }, [dispatch]);
 
     if (!isLoading) {
         return (
             <>
                 <HeaderMeta
-                    title="Technology Settings"
-                    url="/bsl/admin/page-settings/technology"
+                    title="Clients"
+                    url="/bsl/admin/clients"
                 />
                 <Breadcrumb list={breadcrumb}/>
                 <div className="container-fluid">
@@ -173,19 +192,19 @@ function Index() {
                         <div className="col-lg-12 col-sm-12">
                             <div className="card">
                                 <div className="card-header">
-                                    <h4>Technology Lists</h4>
+                                    <h4>Client Lists</h4>
                                     <button className="btn btn-info btn-mini float-right" onClick={() => {
                                         setIsShow(!isShow);
                                         setIsEdit(false)
-                                        setTitle('Add New Technology')
+                                        setTitle('Add New')
                                     }}>
-                                        <GrFormAdd/>&nbsp;Add New Technology
+                                        <GrFormAdd/>&nbsp;Add New
                                     </button>
                                 </div>
                                 <div className="card-body">
                                     <DataTableComponent
                                         columns={columns}
-                                        data={technologies}
+                                        data={clients}
                                         isLoading={isLoading}
                                         itemPerPage={10}
                                     />
@@ -204,23 +223,38 @@ function Index() {
                                     <input className="form-control" value={name}
                                            onChange={(e) => {
                                                setName(e.target.value)
-                                           }} placeholder="name" type="text"/>
+                                           }} placeholder="Name" type="text"/>
                                 </div>
                             </div>
                             <div className="col-md-6">
                                 <div className="form-group">
-                                    <label>Short Order <sup className="text-danger"><MdStar/></sup></label>
-                                    <input className="form-control" value={indexing}
+                                    <label>Indexing <sup className="text-danger"><MdStar/></sup></label>
+                                    <input className="form-control" value={index_of}
                                            onChange={(e) => {
-                                               setIndexing(e.target.value)
-                                           }} placeholder="short order" type="number"/>
+                                               setIndex(e.target.value)
+                                           }} placeholder="Indexing" type="number"/>
                                 </div>
                             </div>
+                            <div className="col-md-12">
+                                <div className="form-group">
+                                    <label>Description</label>
+                                    <textarea
+                                        className="form-control"
+                                        name="textarea"
+                                        id="textarea" cols="30"
+                                        rows="3"
+                                        placeholder="Description"
+                                        value={description}
+                                        onChange={e => setDescription(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+
                             <div className="col-md-6">
                                 <div className="form-group">
                                     <FileInput
                                         label={"Image"}
-                                        file={imageFile}
+                                        file={image_link}
                                         id={"imageFile"}
                                         handler={inputFileHandler}
                                         required="required"

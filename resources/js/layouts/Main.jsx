@@ -24,6 +24,7 @@ import Industries from "../backend/pages/Industries/Index.jsx";
 import BackendAbout from "../backend/pages/Abouts";
 import BackendManagement from "../backend/pages/Management";
 import BackendTeams from "../backend/pages/Teams";
+import BackendClients from "../backend/pages/Clients";
 
 import {checkAccess, refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
 import {useDispatch, useSelector} from "react-redux";
@@ -93,6 +94,7 @@ function Main() {
                     <Route path="about-us" element={<BackendAbout/>}/>
                     <Route path="our-management" element={<BackendManagement/>}/>
                     <Route path="our-teams" element={<BackendTeams/>}/>
+                    <Route path="clients" element={<BackendClients/>}/>
                 </Route>
                 }
             </Route>

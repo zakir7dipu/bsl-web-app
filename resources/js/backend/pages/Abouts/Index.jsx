@@ -9,6 +9,7 @@ import {errorMessage, infoMessage} from "../../../lib/helper.js";
 import FileInput from "../../components/inputFile/Index.jsx";
 import {CKEditor} from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import {MdStar} from "react-icons/md";
 
 function Index(props) {
 
@@ -120,9 +121,9 @@ function Index(props) {
                                 <div className="card-body">
                                     <form className="form-profile" onSubmit={requestHandler}>
                                         <div className="row">
-                                            <div className="col-md-6">
+                                            <div className="col-md-12">
                                                 <div className="form-group">
-                                                    <label>Title</label>
+                                                    <label>Title <sup className="text-danger"><MdStar/></sup></label>
                                                     <input
                                                         type={`text`}
                                                         className={`form-control`}
@@ -160,7 +161,7 @@ function Index(props) {
 
                                             <div className="col-md-12">
                                                 <div className="form-group">
-                                                    <label>About Description</label>
+                                                    <label>About Description <sup className="text-danger"><MdStar/></sup></label>
                                                     <CKEditor
                                                         editor={ClassicEditor}
                                                         data={description}
