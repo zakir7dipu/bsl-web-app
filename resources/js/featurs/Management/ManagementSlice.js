@@ -19,7 +19,7 @@ const initialData = {
 // all data get
 export const fetchAllManagements = createAsyncThunk("management/fetchAllManagements", async (arg, {rejectWithValue}) => {
     try {
-        const res = await apiAccess.get(`${initialData.apiUrl}`)
+        const res = await apiAccess.get(initialData.apiUrl)
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.data)
@@ -83,7 +83,7 @@ export const ManagementSlice = createSlice({
         },
         [fetchAllManagements.fulfilled]: (state, {payload}) => {
             state.isLoading = false;
-            state.technologies = payload;
+            state.managements = payload;
         },
         [fetchAllManagements.rejected]: (state, {payload}) => {
             state.isLoading = false;

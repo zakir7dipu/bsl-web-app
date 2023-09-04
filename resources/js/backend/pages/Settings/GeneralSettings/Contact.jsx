@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {errorMessage} from "../../../../lib/helper.js";
-import {fetchAllSettings, fetchIndustrySettings, saveSettings} from "../../../../featurs/Settings/SettingsSlice.js";
+import {saveSettings} from "../../../../featurs/Settings/SettingsSlice.js";
 import Preloader from "../../../components/Preloader/Index.jsx";
 import {MdStar} from "react-icons/md";
 
