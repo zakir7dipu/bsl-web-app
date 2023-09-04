@@ -23,6 +23,7 @@ Route::controller(AuthController::class)->group(function () {
 Route::controller(SettingsController::class)->group(function (){
     Route::get('all-settings','settings')->name('all.settings');
     Route::get('about-settings','aboutSetting');
+    Route::post('store-about-settings','storeAboutSettings');
     Route::get('slider-settings','sliderSetting');
     Route::post('store-settings', 'storeSettings');
     Route::get('technology-settings','technologySetting');

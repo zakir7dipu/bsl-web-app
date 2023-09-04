@@ -34,6 +34,7 @@ class SettingsController extends Controller
             'data' => $settings,
         ]);
     }
+
     public function sliderSetting()
     {
         $settings = sliderInfo();
@@ -41,6 +42,7 @@ class SettingsController extends Controller
             'data' => $settings,
         ]);
     }
+
     public function technologySetting()
     {
         $technology = technologyInfo();
@@ -48,6 +50,7 @@ class SettingsController extends Controller
             'data' => $technology,
         ]);
     }
+
     public function industrySettings()
     {
         $industries = industryInfo();
@@ -63,8 +66,8 @@ class SettingsController extends Controller
     {
         try {
             $generalSetting = new SettingsGenerator();
-            $global = "site.settings.";
-            $sliderglobal = "site.";
+            $global = "site.settings";
+            $sliderglobal = "site";
             $data = match ($request->type) {
                 "general" => storeGeneralData($generalSetting, $global, $request),
                 "contact_info" => storeContactInfoData($global, $request),
@@ -73,10 +76,11 @@ class SettingsController extends Controller
                 "slider" => storeSliderData($sliderglobal, $request),
                 "technology" => storeTechnologyData($sliderglobal, $request),
                 "industry" => storeIndustryData($sliderglobal, $request),
+                "about" => storeAboutData($generalSetting, $sliderglobal, $request),
                 default => "no Data Found",
             };
 
-            return response()->json(setting($global . 'general'));
+            return response()->json($data);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), $th->getCode());
         }

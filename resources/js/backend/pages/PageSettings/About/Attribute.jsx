@@ -24,60 +24,68 @@ function Attribute({info, handler}) {
     }
 
     return (
-        <div className="card">
-            <div className="card-header">
-                <h4>{ucFirst(title || "")}</h4>
-            </div>
-            <div className="card-body">
-                <div className="form-group">
-                    <label>Attribute Title
-                    </label>
-                    <input
-                        className="form-control"
-                        value={inputTitle}
-                        placeholder="Project count"
-                        type="text"
-                        name={`${title.replaceAll(" ", "_")}_title`}
-                        onChange={e=>handleInputChange(e)}
-                    />
+        <form>
+            <div className="card">
+                <div className="card-header">
+                    <h4>{ucFirst(title || "")}</h4>
                 </div>
-                <div className="form-group mt-2">
-                    <label>Attribute Icon
-                    </label>
-                    <input
-                        type="file"
-                        className="form-control"
-                        name={`${title.replaceAll(" ", "_")}_icon`}
-                        onChange={e=>handleInputChange(e)}
-                    />
+                <div className="card-body">
+                    <div className="form-group">
+                        <label>Attribute Title
+                        </label>
+                        <input
+                            className="form-control"
+                            value={inputTitle}
+                            placeholder="Project count"
+                            type="text"
+                            name={`${title.replaceAll(" ", "_")}_title`}
+                            onChange={e=>handleInputChange(e)}
+                        />
+                    </div>
+                    <div className="form-group mt-2">
+                        <label>Attribute Icon
+                        </label>
+                        <input
+                            type="file"
+                            className="form-control"
+                            name={`${title.replaceAll(" ", "_")}_icon`}
+                            onChange={e=>handleInputChange(e)}
+                        />
 
-                </div>
-                <div className="form-group mt-2">
-                    <label>Attribute Secondary Icon
-                    </label>
-                    <input
-                        type="file"
-                        className="form-control"
-                        name={`${title.replaceAll(" ", "_")}_secondary_icon`}
-                        onChange={e=>handleInputChange(e)}
-                    />
+                    </div>
+                    <div className="form-group mt-2">
+                        <label>Attribute Secondary Icon
+                        </label>
+                        <input
+                            type="file"
+                            className="form-control"
+                            name={`${title.replaceAll(" ", "_")}_secondary_icon`}
+                            onChange={e=>handleInputChange(e)}
+                        />
 
-                </div>
-                <div className="form-group mt-2">
-                    <label>Attribute Brief
-                    </label>
-                    <textarea
-                        className="form-control"
-                        name={`${title.replaceAll(" ", "_")}_brief`}
-                        id="textarea" cols="30"
-                        rows="3"
-                        placeholder="Brief"
-                        value={inputBrief}
-                        onChange={e=>handleInputChange(e)}
-                    />
+                    </div>
+                    <div className="form-group mt-2">
+                        <label>Attribute Brief
+                        </label>
+                        <textarea
+                            className="form-control"
+                            name={`${title.replaceAll(" ", "_")}_brief`}
+                            id="textarea" cols="30"
+                            rows="3"
+                            placeholder="Brief"
+                            value={inputBrief}
+                            onChange={e=>handleInputChange(e)}
+                        />
+                    </div>
+
+                    <div className="form-group mt-2">
+                        <button className="btn btn-primary px-3 float-right"
+                                type={"submit"}>Save
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     );
 }
 

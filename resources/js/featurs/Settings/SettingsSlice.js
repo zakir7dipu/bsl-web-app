@@ -75,6 +75,23 @@ export const saveSettings = createAsyncThunk("settings/saveSettings", async (dat
     }
 })
 
+export const saveAboutSettings = createAsyncThunk("settings/saveAboutSettings", async (data, {rejectWithValue}) => {
+    try {
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }
+        const res = await apiAccess.post('store-about-settings', data, config)
+        return res.data
+    } catch (error) {
+        if (!error.response) {
+            throw error
+        }
+        return rejectWithValue(error.response.data)
+    }
+})
+
 export const settingsSlice = createSlice({
     name: "settings",
     initialState: initialData,
@@ -145,17 +162,48 @@ export const settingsSlice = createSlice({
             state.isLoading = false
             state.errorMess = payload
         },
-
         [saveSettings.pending]: (state) => {
             state.isLoading = true
             infoMessage('We are processing your request.')
         },
         [saveSettings.fulfilled]: (state, {payload}) => {
+            console.log(payload.type)
             state.isLoading = false
-            state.generalSetting = payload
+            switch (payload.type) {
+                case "slider":
+                    state.sliderSetting = payload
+                    break;
+                case "technology":
+                    state.technology = payload
+                    break;
+                case "industry":
+                    state.industry = payload
+                    break;
+                case "about":
+                    state.aboutSetting = payload
+                    break;
+                default:
+                    state.generalSetting = payload
+            }
+
             successMessage(`Data Saved Successfully.`);
         },
         [saveSettings.rejected]: (state, {payload}) => {
+            state.isLoading = false
+            state.errorMessage = payload
+            errorMessage(payload)
+        },
+        [saveAboutSettings.pending]: (state) => {
+            state.isLoading = true
+            infoMessage('We are processing your request.')
+        },
+        [saveAboutSettings.fulfilled]: (state, {payload}) => {
+            state.isLoading = false
+            // state.generalSetting = payload
+            console.log(payload)
+            successMessage(`Data Saved Successfully.`);
+        },
+        [saveAboutSettings.rejected]: (state, {payload}) => {
             state.isLoading = false
             state.errorMessage = payload
             errorMessage(payload)
