@@ -30,6 +30,15 @@ import {useDispatch} from "react-redux";
 import {fetchAllSettings} from "../featurs/Settings/SettingsSlice.js";
 import TestPage from "../backend/pages/TestPage.jsx";
 import Frontend from "./Frontend.jsx";
+import About from "../frontend/pages/About.jsx";
+import Management from "../frontend/pages/Management.jsx";
+import Team from "../frontend/pages/Team.jsx";
+import SoftwareDevelopment from "../frontend/pages/SoftwareDevelopment.jsx";
+import WebDevelopment from "../frontend/pages/WebDevelopment.jsx";
+import AnalyticSolutions from "../frontend/pages/AnalyticSolutions.jsx";
+import Courses from "../frontend/pages/Courses";
+import Contact from "../frontend/pages/Contact.jsx";
+import Blog from "../frontend/pages/Blog/index.jsx";
 
 function Main() {
 
@@ -43,6 +52,19 @@ function Main() {
         <Routes>
             <Route path="/" element={<Frontend/>}>
                 <Route index element={<Home/>}/>
+                <Route path="/about" element={<About/>}/>
+                <Route path="/management" element={<Management/>}/>
+                <Route path="/team" element={<Team/>}/>
+                <Route path="/software-development" element={<SoftwareDevelopment/>}/>
+                <Route path="/web-development" element={<WebDevelopment/>}/>
+                <Route path="/analytic-solutions" element={<AnalyticSolutions/>}/>
+                <Route path="/courses">
+                    <Route index element={<Courses/>}/>
+                </Route>
+                <Route path="/blog">
+                    <Route index element={<Blog/>}/>
+                </Route>
+                <Route path="/contact" element={<Contact/>}/>
             </Route>
             <Route path="bsl" element={<Backend/>}>
                 <Route path="login" element={<Login/>}/>
