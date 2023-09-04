@@ -55,8 +55,8 @@ export const updateClientData = createAsyncThunk("OurClients/updateClientData", 
                 'content-type': 'multipart/form-data'
             }
         }
-        const {slug, dataset} = data
-        const res = await apiAccess.post(`${initialData.apiUrl}/${slug}/update`, dataset, config)
+        const {id, dataset} = data
+        const res = await apiAccess.post(`${initialData.apiUrl}/${id}/update`, dataset, config)
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.data)
@@ -65,8 +65,8 @@ export const updateClientData = createAsyncThunk("OurClients/updateClientData", 
 
 export const deleteClientData = createAsyncThunk("OurClients/deleteClientData", async (data, {rejectWithValue}) => {
     try {
-        const {slug} = data
-        const res = await apiAccess.delete(`${initialData.apiUrl}/${slug}/destroy`)
+        const {client} = data
+        const res = await apiAccess.delete(`${initialData.apiUrl}/${client}/destroy`)
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.data)
@@ -129,7 +129,7 @@ export const ClientSlice = createSlice({
                 id
             } = payload;
 
-            const updateData = state.clients.filter((clients) => client.id === id);
+            const updateData = state.clients.filter((client) => client.id === id);
             if (updateData) {
                 updateData[0].name = name;
                 updateData[0].index_of = index_of;
@@ -151,7 +151,7 @@ export const ClientSlice = createSlice({
         [deleteClientData.fulfilled]: (state, {payload}) => {
             state.isLoading = false
             const {id} = payload
-            state.clients = state.clients.filter((clients) => client.id !== id);
+            state.clients = state.clients.filter((client) => client.id !== id);
             state.errorMess = null
             successMessage("Data Deleted Successfully")
         },
