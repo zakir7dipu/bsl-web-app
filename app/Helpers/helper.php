@@ -243,14 +243,48 @@ function storeIndustryData($global, $request)
 function storeAboutData($generalSetting, $global, $request)
 {
     $data = setting($global . ".about");
-    $data["title"] = $request->title;
-    $data["brief"] = $request->brief;
-    $data["clients"] = $request->clients;
-    $data["project"] = $request->project;
+    if (!$request->has("section")) {
+        $data["title"] = $request->title;
+        $data["brief"] = $request->brief;
+        $data["clients"] = $request->clients;
+        $data["project"] = $request->project;
+    } else {
+        $data = storeAttributeData($data, $request);
+    }
     setting([$global . ".about" => $data]);
 
     $data = setting($global . ".about");
     $data["type"] = $request->type;
     return $data;
+}
+
+function storeAttributeData($data, $request)
+{
+    foreach ($data["attributes"] as $key => $item) {
+        if (strtolower($item['title']) === strtolower($request->topic)) {
+            $data["attributes"][$key]["title"] = $request->title;
+            if ($request->hasFile("icon")) {
+                $file = changeAttributeFile($item["icon"], $request->icon, "main");
+                $data["attributes"][$key]["icon"] = $file;
+            }
+            if ($request->hasFile("hover_icon")) {
+                $file = changeAttributeFile($item["hoverIcon"], $request->hover_icon, "hover");
+                $data["attributes"][$key]["hoverIcon"] = $file;
+            }
+            $data["attributes"][$key]["brief"] = $request->brief;
+        }
+    }
+    return $data;
+}
+
+function changeAttributeFile($currentFile, $newFile, $fileType) {
+    $filename = time() . '-' . 'sections-'.$fileType."." . fileInfo($newFile)['extension'];
+    $path = 'uploads/sections/images';
+    if ($currentFile) {
+        fileDelete($currentFile);
+    }
+    fileUpload($newFile, $path, $filename);
+    $imageLink = $path . '/' . $filename;
+    return $imageLink;
 }
 
