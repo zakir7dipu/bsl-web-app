@@ -96,10 +96,10 @@ function Top({general}) {
                                             </li>
 
                                             <li>
-                                                <Link to="blog">Blog</Link>
+                                                <NavLink to="blog">Blog</NavLink>
                                             </li>
                                             <li>
-                                                <Link to="contact">Contact</Link>
+                                                <NavLink to="contact">Contact</NavLink>
                                             </li>
                                         </ul>
                                     </nav>
