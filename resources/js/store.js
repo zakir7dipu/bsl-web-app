@@ -9,6 +9,7 @@ import IndustriesFeature from "./featurs/Industries/IndustriesSlice.js";
 import NavReducer from "./featurs/NavAction/NavSlice.js";
 import AboutsFeature from "./featurs/AboutUs/AboutUsSlice.js";
 import ManagementFeature from "./featurs/Management/ManagementSlice.js";
+import TeamsFeatuer from "./featurs/Teams/TeamSlice.js";
 
 const store = configureStore({
     reducer: {
@@ -22,6 +23,7 @@ const store = configureStore({
         industriesReducer: IndustriesFeature,
         aboutsReducer: AboutsFeature,
         managementReducer: ManagementFeature,
+        teamReducer: TeamsFeatuer,
     }
 })
 

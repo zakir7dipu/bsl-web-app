@@ -21,6 +21,7 @@ class OurTeams extends Model
         'twitter',
         'website',
         'avatar',
+        'slug'
     ];
 
     // TODO :: boot
@@ -31,6 +32,8 @@ class OurTeams extends Model
             if(Auth::check()){
                 $query->created_by = Auth::user()->id;
             }
+            $bytes = random_bytes(8);
+            $query->slug = bin2hex($bytes);
         });
         static::updating(function($query){
             if(Auth::check()){

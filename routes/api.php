@@ -5,6 +5,7 @@ use App\Http\Controllers\API\IndustriesController;
 use App\Http\Controllers\API\ManagementController;
 use App\Http\Controllers\API\SEOController;
 use App\Http\Controllers\API\SettingsController;
+use App\Http\Controllers\API\TeamsController;
 use App\Http\Controllers\API\TechnologyController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -65,4 +66,12 @@ Route::controller(ManagementController::class)->group(function () {
     Route::get("managements/{slug}/show", "show");
     Route::post("managements/{slug}/update", "update");
     Route::delete("managements/{slug}/destroy", "destroy");
+});
+
+Route::controller(TeamsController::class)->group(function () {
+    Route::get('teams', 'index');
+    Route::post("teams-store", "store");
+    Route::get("teams/{slug}/show", "show");
+    Route::post("teams/{slug}/update", "update");
+    Route::delete("teams/{slug}/destroy", "destroy");
 });
