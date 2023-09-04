@@ -11,6 +11,8 @@ import {GrFormAdd} from "react-icons/gr";
 import BizAlert from "../../../lib/BizAlert.js";
 import BizModal from "../../../ui/BizzModal.jsx";
 import FileInput from "../../components/inputFile/Index.jsx";
+import Preloader from "../../components/Preloader/Index.jsx";
+import {MdStar} from "react-icons/md";
 
 function Index() {
     const {
@@ -101,7 +103,9 @@ function Index() {
             formData.append("name", name);
         }
 
-        if (indexing) {
+        if (!indexing) {
+            errorMessage("Indexing is required.")
+        } else {
             formData.append("order_by", indexing);
         }
 
@@ -156,80 +160,85 @@ function Index() {
         dispatch(fetchAllTechnology(0));
     }, [dispatch]);
 
-    return (
-        <>
-            <HeaderMeta
-                title="Technology Settings"
-                url="/bsl/admin/page-settings/technology"
-            />
-            <Breadcrumb list={breadcrumb}/>
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-lg-12 col-sm-12">
-                        <div className="card">
-                            <div className="card-header">
-                                <h4>Technology Lists</h4>
-                                <button className="btn btn-info btn-mini float-right" onClick={() => {
-                                    setIsShow(!isShow);
-                                    setIsEdit(false)
-                                    setTitle('Add New Technology')
-                                }}>
-                                    <GrFormAdd/>&nbsp;Add New Technology
-                                </button>
-                            </div>
-                            <div className="card-body">
-                                <DataTableComponent
-                                    columns={columns}
-                                    data={technologies}
-                                    isLoading={isLoading}
-                                    itemPerPage={10}
-                                />
+    if (!isLoading) {
+        return (
+            <>
+                <HeaderMeta
+                    title="Technology Settings"
+                    url="/bsl/admin/page-settings/technology"
+                />
+                <Breadcrumb list={breadcrumb}/>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-lg-12 col-sm-12">
+                            <div className="card">
+                                <div className="card-header">
+                                    <h4>Technology Lists</h4>
+                                    <button className="btn btn-info btn-mini float-right" onClick={() => {
+                                        setIsShow(!isShow);
+                                        setIsEdit(false)
+                                        setTitle('Add New Technology')
+                                    }}>
+                                        <GrFormAdd/>&nbsp;Add New Technology
+                                    </button>
+                                </div>
+                                <div className="card-body">
+                                    <DataTableComponent
+                                        columns={columns}
+                                        data={technologies}
+                                        isLoading={isLoading}
+                                        itemPerPage={10}
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <BizModal isShow={isShow} title={title} handleClose={handleModalClose} large={'lg'}>
-                <form className="form-profile" onSubmit={requestHandler}>
-                    <div className="row">
-                        <div className="col-md-6">
-                            <div className="form-group">
-                                <label>Name</label>
-                                <input className="form-control" value={name}
-                                       onChange={(e) => {
-                                           setName(e.target.value)
-                                       }} placeholder="name" type="text"/>
+                <BizModal isShow={isShow} title={title} handleClose={handleModalClose} large={'lg'}>
+                    <form className="form-profile" onSubmit={requestHandler}>
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className="form-group">
+                                    <label>Name <sup className="text-danger"><MdStar/></sup></label>
+                                    <input className="form-control" value={name}
+                                           onChange={(e) => {
+                                               setName(e.target.value)
+                                           }} placeholder="name" type="text"/>
+                                </div>
+                            </div>
+                            <div className="col-md-6">
+                                <div className="form-group">
+                                    <label>Short Order <sup className="text-danger"><MdStar/></sup></label>
+                                    <input className="form-control" value={indexing}
+                                           onChange={(e) => {
+                                               setIndexing(e.target.value)
+                                           }} placeholder="short order" type="number"/>
+                                </div>
+                            </div>
+                            <div className="col-md-6">
+                                <div className="form-group">
+                                    <FileInput
+                                        label={"Image"}
+                                        file={imageFile}
+                                        id={"imageFile"}
+                                        handler={inputFileHandler}
+                                        required="required"
+                                    />
+                                </div>
+                            </div>
+                            <hr/>
+                            <div className="col-md-12 mt-3">
+                                <button className="btn btn-primary px-3 float-right" type={"submit"}>Save</button>
                             </div>
                         </div>
-                        <div className="col-md-6">
-                            <div className="form-group">
-                                <label>Short Order</label>
-                                <input className="form-control" value={indexing}
-                                       onChange={(e) => {
-                                           setIndexing(e.target.value)
-                                       }} placeholder="short order" type="number"/>
-                            </div>
-                        </div>
-                        <div className="col-md-6">
-                            <div className="form-group">
-                                <FileInput
-                                    label={"Image"}
-                                    file={imageFile}
-                                    id={"imageFile"}
-                                    handler={inputFileHandler}
-                                />
-                            </div>
-                        </div>
-                        <hr/>
-                        <div className="col-md-12 mt-3">
-                            <button className="btn btn-primary px-3 float-right" type={"submit"}>Save</button>
-                        </div>
-                    </div>
-                </form>
-            </BizModal>
-        </>
-    );
+                    </form>
+                </BizModal>
+            </>
+        );
+    } else {
+        return <Preloader/>
+    }
 }
 
 export default Index;

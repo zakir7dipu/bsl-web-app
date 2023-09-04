@@ -16,6 +16,8 @@ import {GrFormAdd} from "react-icons/gr";
 import DataTableComponent from "../../../ui/DataTableComponent.jsx";
 import BizModal from "../../../ui/BizzModal.jsx";
 import FileInput from "../../components/inputFile/Index.jsx";
+import Preloader from "../../components/Preloader/index.jsx";
+import {MdStar} from "react-icons/md";
 
 function Index(props) {
     const {
@@ -108,13 +110,16 @@ function Index(props) {
             formData.append("name", name);
         }
 
-        if (indexing) {
+        if (!indexing) {
+            errorMessage("Indexing is required.")
+        } else {
             formData.append("order_by", indexing);
         }
 
         if (imageFile) {
             formData.append("image_link", imageFile);
         }
+
 
         if (name && indexing) {
             infoMessage("Please wait a while, We are processing your request.");
@@ -160,14 +165,14 @@ function Index(props) {
     useEffect(() => {
         dispatch(fetchAllIndustries(0));
     }, [dispatch]);
-
-    return (
-        <>
-            <HeaderMeta
-                title="Technology Settings"
-                url="/bsl/admin/page-settings/industries"
-            />
-            <Breadcrumb list={breadcrumb}/>
+    if (!isLoading) {
+        return (
+            <>
+                <HeaderMeta
+                    title="Technology Settings"
+                    url="/bsl/admin/page-settings/industries"
+                />
+                <Breadcrumb list={breadcrumb}/>
 
 
                 <div className="row">
@@ -201,7 +206,7 @@ function Index(props) {
                     <div className="row">
                         <div className="col-md-6">
                             <div className="form-group">
-                                <label>Name</label>
+                                <label>Name <sup className="text-danger"><MdStar/></sup></label>
                                 <input className="form-control" value={name}
                                        onChange={(e) => {
                                            setName(e.target.value)
@@ -210,7 +215,7 @@ function Index(props) {
                         </div>
                         <div className="col-md-6">
                             <div className="form-group">
-                                <label>Short Order</label>
+                                <label>Short Order <sup className="text-danger"><MdStar/></sup></label>
                                 <input className="form-control" value={indexing}
                                        onChange={(e) => {
                                            setIndexing(e.target.value)
@@ -224,6 +229,7 @@ function Index(props) {
                                     file={imageFile}
                                     id={"imageFile"}
                                     handler={inputFileHandler}
+                                    required="required"
                                 />
                             </div>
                         </div>
@@ -234,8 +240,11 @@ function Index(props) {
                     </div>
                 </form>
             </BizModal>
-        </>
-    );
+            </>
+        );
+    } else {
+        return <Preloader/>
+    }
 }
 
 export default Index;

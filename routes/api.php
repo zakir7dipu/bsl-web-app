@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AboutsController;
+use App\Http\Controllers\API\ClientsController;
 use App\Http\Controllers\API\IndustriesController;
 use App\Http\Controllers\API\ManagementController;
 use App\Http\Controllers\API\SEOController;
@@ -74,4 +75,12 @@ Route::controller(TeamsController::class)->group(function () {
     Route::get("teams/{slug}/show", "show");
     Route::post("teams/{slug}/update", "update");
     Route::delete("teams/{slug}/destroy", "destroy");
+});
+
+Route::controller(ClientsController::class)->group(function () {
+    Route::get('clients', 'index');
+    Route::post("clients-store", "store");
+    Route::get("clients/{slug}/show", "show");
+    Route::post("clients/{slug}/update", "update");
+    Route::delete("clients/{slug}/destroy", "destroy");
 });
