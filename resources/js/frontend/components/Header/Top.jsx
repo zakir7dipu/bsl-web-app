@@ -1,10 +1,11 @@
 import React, {createRef, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {Link} from "react-router-dom";
+import {Link, NavLink, useLocation} from "react-router-dom";
 import {useInternalLink} from "../../../lib/helper.js";
 import {humburgerNavAction} from "../../../featurs/NavAction/NavSlice.js";
 
 function Top({general}) {
+    const {pathname} = useLocation();
     const maiMenuRef = createRef()
     const menuAriaRef = createRef()
 
@@ -19,6 +20,24 @@ function Top({general}) {
     window.onscroll = windowScroll
 
     const dispatch = useDispatch()
+
+    useEffect(()=>{
+        let navLinks = maiMenuRef.current.querySelectorAll("a")
+        Array.from(navLinks).map(item=>{
+            if (item.classList.contains("active")) {
+                if (item.closest("ul").classList.contains("sub-menu")) {
+                    item.closest("ul").closest('.menu-item-has-children').classList.add("current-menu-item")
+                }
+                item.closest('li').classList.add("current-menu-item")
+            }
+            else {
+                // if (item.closest("ul").classList.contains("sub-menu")) {
+                //     item.closest('.menu-item-has-children').classList.remove("current-menu-item")
+                // }
+                item.closest('li').classList.remove("current-menu-item")
+            }
+        })
+    },[pathname])
 
     return (
         <header id="rs-header" className="rs-header style3 modify2 header-transparent">
@@ -46,112 +65,48 @@ function Top({general}) {
                                 <div ref={maiMenuRef} className="main-menu">
                                     <nav className="rs-menu pr-100 lg-pr-50 md-pr-0">
                                         <ul className="nav-menu">
-                                            <li className="rs-mega-menu menu-item-has-children current-menu-item">
-                                                <Link to="/">Home</Link>
-
-                                            </li>
                                             <li>
-                                                <Link to="#">About</Link>
+                                                <NavLink to="/">Home</NavLink>
                                             </li>
+                                            <li className="menu-item-has-children">
+                                                <Link to="#">About</Link>
+                                                <ul className="sub-menu">
+                                                    <li>
+                                                        <NavLink to="/about">Our Company</NavLink>
+                                                    </li>
+                                                    <li>
+                                                        <NavLink to="/management">Our Management</NavLink>
+                                                    </li>
+                                                    <li>
+                                                        <NavLink to="/team">Our Team</NavLink>
+                                                    </li>
+                                                </ul>
+                                            </li>
+
                                             <li className="menu-item-has-children">
                                                 <Link to="#">Services</Link>
                                                 <ul className="sub-menu">
-                                                    <li><Link to="software-development.html">Software Development</Link>
+                                                    <li><NavLink to="/software-development">Software Development</NavLink>
                                                     </li>
-                                                    <li><Link to="web-development.html">Web Development</Link></li>
-                                                    <li><Link to="analytic-solutions.html">Analytic Solutions</Link>
+                                                    <li><NavLink to="/web-development">Web Development</NavLink></li>
+                                                    <li><NavLink to="/analytic-solutions">Analytic Solutions</NavLink>
                                                     </li>
-                                                    <li><Link to="product-design.html">Cloud and DevOps</Link></li>
-                                                    <li><Link to="product-design.html">Product Design</Link></li>
-                                                    <li><Link to="data-center.html">Data Center</Link></li>
+                                                    <li><NavLink to="/Courses">Courses</NavLink></li>
                                                 </ul>
                                             </li>
-                                            <li className="menu-item-has-children">
-                                                <Link to="#">Pages</Link>
-                                                <ul className="sub-menu">
-                                                    <li className="menu-item-has-children">
-                                                        <Link to="#">Services</Link>
-                                                        <ul className="sub-menu">
-                                                            <li><Link to="services1.html">Services 1</Link></li>
-                                                            <li><Link to="services2.html">Services 2</Link></li>
-                                                            <li><Link to="services3.html">Services 3</Link></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li className="menu-item-has-children">
-                                                        <Link to="our-team.html">Our Team</Link>
-                                                    </li>
-                                                    <li className="menu-item-has-children">
-                                                        <Link to="single-team.html">Single Team</Link>
-                                                    </li>
-                                                    <li className="menu-item-has-children">
-                                                        <Link to="#">Case Studies</Link>
-                                                        <ul className="sub-menu">
-                                                            <li><Link to="case-studies-style1.html">Case Studies
-                                                                Style
-                                                                1</Link></li>
-                                                            <li><Link to="case-studies-style2.html">Case Studies
-                                                                Style
-                                                                2</Link></li>
-                                                            <li><Link to="case-studies-style3.html">Case Studies
-                                                                Style
-                                                                3</Link></li>
-                                                            <li><Link to="case-studies-style4.html">Case Studies
-                                                                Style
-                                                                4</Link></li>
-                                                            <li><Link to="case-studies-style5.html">Case Studies
-                                                                Style
-                                                                5</Link></li>
-                                                            <li><Link to="case-studies-style6.html">Case Studies
-                                                                Style
-                                                                6</Link></li>
-                                                            <li><Link to="case-studies-style7.html">Case Studies
-                                                                Style
-                                                                7</Link></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li className="menu-item-has-children">
-                                                        <Link to="shop.html">Shop</Link>
-                                                        <ul className="sub-menu">
-                                                            <li><Link to="shop.html">Shop</Link></li>
-                                                            <li><Link to="shop-single.html">Shop Single</Link></li>
-                                                            <li><Link to="cart.html">Cart</Link></li>
-                                                            <li><Link to="checkout.html">Checkout</Link></li>
-                                                            <li><Link to="my-account.html">My Account</Link></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li className="menu-item-has-children">
-                                                        <Link to="pricing.html">Pricing</Link>
-                                                    </li>
-                                                    <li className="menu-item-has-children">
-                                                        <Link to="faq.html">Faq</Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to="error.html">404</Link>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li className="menu-item-has-children">
-                                                <Link to="blog.html">Blog</Link>
-                                                <ul className="sub-menu">
-                                                    <li><Link to="blog.html">Blog</Link></li>
-                                                    <li><Link to="blog-details.html">Blog Details</Link></li>
-                                                </ul>
+
+                                            <li>
+                                                <Link to="blog">Blog</Link>
                                             </li>
                                             <li>
-                                                <Link to="contact.html">Contact</Link>
+                                                <Link to="contact">Contact</Link>
                                             </li>
                                         </ul>
                                     </nav>
                                 </div>
 
                                 <div className="expand-btn-inner search-icon hidden-md">
-                                    <ul>
-                                        {/*<li className="sidebarmenu-search">*/}
-                                        {/*    <Link className="hidden-xs rs-search" data-target=".search-modal"*/}
-                                        {/*       data-toggle="modal" href="#">*/}
-                                        {/*        <i className="flaticon-search"></i>*/}
-                                        {/*    </Link>*/}
-                                        {/*</li>*/}
+                                    <ul className="parent-ul">
                                         <li>
                                             <Link id="nav-expander" className="humburger nav-expander" to="#" onClick={e=>{
                                                 e.preventDefault()
