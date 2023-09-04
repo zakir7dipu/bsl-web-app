@@ -5,10 +5,12 @@ import {Outlet} from "react-router-dom"
 import Footer from "../frontend/components/Footer/index.jsx";
 import ScrollUp from "../frontend/components/ScrollUp/index.jsx";
 import "./Frontend.css"
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {humburgerNavAction} from "../featurs/NavAction/NavSlice.js";
+import VideoModule from "../frontend/components/VideoModule/index.jsx";
 
 function Frontend(props) {
+    const {videoModuleShow} = useSelector(state => state.navAction)
     const dispatch = useDispatch()
     useEffect(() => {
         const body = document.querySelector("body")
@@ -26,12 +28,15 @@ function Frontend(props) {
     }, [])
 
     return (
-        <div className="main-content">
-            <Header/>
-            <Outlet/>
-            <Footer/>
-            <ScrollUp/>
-        </div>
+        <>
+            {videoModuleShow && <VideoModule/>}
+            <div className="main-content">
+                <Header/>
+                <Outlet/>
+                <Footer/>
+                <ScrollUp/>
+            </div>
+        </>
     );
 }
 

@@ -117,7 +117,7 @@ function Index(props) {
 
                                             <div className="col-md-6">
                                                 <div className="form-group">
-                                                    <label>Youtube Link <sup className="text-danger"><MdStar/></sup></label>
+                                                    <label>Youtube Video ID <sup className="text-danger"><MdStar/></sup></label>
                                                     <input
                                                         className="form-control"
                                                         value={link}

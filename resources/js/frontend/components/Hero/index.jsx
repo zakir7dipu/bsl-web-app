@@ -3,10 +3,16 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchSliderSettings} from "../../../featurs/Settings/SettingsSlice.js";
 import {useInternalLink} from "../../../lib/helper.js";
+import {videoModuleAction} from "../../../featurs/NavAction/NavSlice.js";
 
 function Index(props) {
     const {isLoading, sliderSetting} = useSelector(state => state.generalSettings)
     const dispatch = useDispatch()
+
+    const handelVideoAction = (e) => {
+        e.preventDefault()
+        dispatch(videoModuleAction(sliderSetting?.link))
+    }
 
     useEffect(()=>{
         dispatch(fetchSliderSettings())
@@ -19,10 +25,10 @@ function Index(props) {
                         <div className="banner-content">
                             {sliderSetting?.link && <div className="rs-videos">
                                 <div className="animate-border white-color style3">
-                                    <a className="popup-border popup-videos"
-                                          href={sliderSetting?.link}>
+                                    <Link className="popup-border popup-videos"
+                                          to={sliderSetting?.link} onClick={handelVideoAction}>
                                         <i className="fa fa-play"></i>
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>}
 

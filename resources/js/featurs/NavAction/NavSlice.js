@@ -1,7 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialData = {
-    humburgerNavExpander: false
+    humburgerNavExpander: false,
+    videoModuleShow: false,
+    videoId: ""
 }
 
 export const navSlice = createSlice({
@@ -10,9 +12,13 @@ export const navSlice = createSlice({
     reducers: {
         humburgerNavAction: (state) => {
             state.humburgerNavExpander = !state.humburgerNavExpander
+        },
+        videoModuleAction: (state, {payload}) => {
+            state.videoModuleShow = !state.videoModuleShow
+            state.videoId = payload
         }
     }
 })
 
-export const {humburgerNavAction} = navSlice.actions
+export const {humburgerNavAction, videoModuleAction} = navSlice.actions
 export default navSlice.reducer
