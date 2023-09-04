@@ -13,7 +13,7 @@ class Services extends Model
     protected $table = "services";
 
     protected $fillable = [
-        'parent_id', 'title', 'brief', 'description', 'image_link', 'type', 'meta_title', 'meta_keywords', 'meta_description', 'meta_image_link'
+        'parent_id', 'title','slug', 'brief', 'description', 'image_link', 'type', 'meta_title', 'meta_keywords', 'meta_description', 'meta_image_link'
     ];
 
 

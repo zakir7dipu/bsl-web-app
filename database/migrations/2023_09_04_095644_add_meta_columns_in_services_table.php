@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('services', function (Blueprint $table) {
+            $table->string('slug',128)->after('title')->nullable();
             $table->string('meta_title',264)->after('type')->nullable();
             $table->text('meta_keywords')->after('meta_title')->nullable();
             $table->text('meta_description')->after('meta_keywords')->nullable();
@@ -25,7 +26,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('services', function (Blueprint $table) {
-            $table->dropColumn(['meta_title','meta_keywords','meta_description','meta_image_link']);
+            $table->dropColumn(['slug','meta_title','meta_keywords','meta_description','meta_image_link']);
         });
     }
 };
