@@ -29,6 +29,7 @@ import BackendPartner from "../backend/pages/Partners";
 import ServiceCategory from "../backend/pages/Services/Category";
 import ServiceCategoryCreate from "../backend/pages/Services/Category/Create.jsx";
 import ServiceCategoryEdit from "../backend/pages/Services/Category/Edit.jsx";
+import BackendProduct from "../backend/pages/Services/Product/Index.jsx";
 
 import {checkAccess, refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
 import {useDispatch, useSelector} from "react-redux";
@@ -105,6 +106,7 @@ function Main() {
                             <Route path="create" element={<ServiceCategoryCreate/>}/>
                             <Route path=":id/edit" element={<ServiceCategoryEdit/>}/>
                         </Route>
+                        <Route path="products" element={<BackendProduct/>}/>
                     </Route>
                 }
             </Route>

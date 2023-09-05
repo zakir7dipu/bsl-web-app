@@ -180,7 +180,11 @@ class ServiceController extends Controller
         DB::beginTransaction();
         try {
             $service = Services::where('id', $id)->first();
+
             $service->subServices->each->delete();
+            $service->courses->each->delete();
+            $service->products->each->delete();
+
             $service->delete();
             DB::commit();
             return response()->json($service);

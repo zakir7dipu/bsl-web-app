@@ -5,6 +5,7 @@ use App\Http\Controllers\API\ClientsController;
 use App\Http\Controllers\API\IndustriesController;
 use App\Http\Controllers\API\ManagementController;
 use App\Http\Controllers\API\PartnerController;
+use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\SEOController;
 use App\Http\Controllers\API\ServiceController;
 use App\Http\Controllers\API\SettingsController;
@@ -103,4 +104,12 @@ Route::controller(ServiceController::class)->group(function () {
     Route::get("services/{id}/edit", "edit");
     Route::post("services/{id}/update", "update");
     Route::delete("services/{id}/destroy", "destroy");
+});
+
+Route::controller( ProductController::class)->group(function () {
+    Route::get('products', 'index');
+    Route::post("products-store", "store");
+    Route::get("products/{slug}/show", "show");
+    Route::post("products/{slug}/update", "update");
+    Route::delete("products/{slug}/destroy", "destroy");
 });
