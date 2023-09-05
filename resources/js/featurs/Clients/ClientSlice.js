@@ -16,7 +16,7 @@ const initialData = {
     metaInfo: []
 }
 // all data get
-export const fetchAllClients = createAsyncThunk("fetchAllClients/fetchAllClients", async (arg, {rejectWithValue}) => {
+export const fetchAllClients = createAsyncThunk("OurClients/fetchAllClients", async (arg, {rejectWithValue}) => {
     try {
         const res = await apiAccess.get(initialData.apiUrl)
         return res.data

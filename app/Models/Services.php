@@ -10,12 +10,22 @@ use Illuminate\Support\Facades\Auth;
 class Services extends Model
 {
     use HasFactory, SoftDeletes;
+
     protected $table = "services";
 
     protected $fillable = [
-        'parent_id', 'title','slug', 'brief', 'description', 'image_link', 'type', 'meta_title', 'meta_keywords', 'meta_description', 'meta_image_link'
+        'parent_id', 'title', 'slug', 'brief', 'description', 'image_link', 'type', 'meta_title', 'meta_keywords', 'meta_description', 'meta_image_link'
     ];
 
+    public function subServices()
+    {
+        return $this->hasMany(Services::class, 'parent_id', 'id');
+    }
+
+    public function service()
+    {
+        return $this->belongsTo(Services::class, 'parent_id', 'id');
+    }
 
     public function courses()
     {

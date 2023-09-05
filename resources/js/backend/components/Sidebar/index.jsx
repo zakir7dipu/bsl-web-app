@@ -93,7 +93,7 @@ function Index(props) {
                                 menuIcon={<i className="fa fa-server menu-icon"></i>}
                             >
                                 <ul aria-expanded="false" className="collapse">
-                                    <li><Link to="categories">Categories</Link></li>
+                                    <li><Link to="services">Services</Link></li>
                                     <li><Link to="products">Products</Link></li>
                                     <li><Link to="courses">Courses</Link></li>
                                 </ul>

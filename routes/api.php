@@ -6,6 +6,7 @@ use App\Http\Controllers\API\IndustriesController;
 use App\Http\Controllers\API\ManagementController;
 use App\Http\Controllers\API\PartnerController;
 use App\Http\Controllers\API\SEOController;
+use App\Http\Controllers\API\ServiceController;
 use App\Http\Controllers\API\SettingsController;
 use App\Http\Controllers\API\TeamsController;
 use App\Http\Controllers\API\TechnologyController;
@@ -92,4 +93,14 @@ Route::controller(PartnerController::class)->group(function () {
     Route::get("partners/{slug}/show", "show");
     Route::post("partners/{slug}/update", "update");
     Route::delete("partners/{slug}/destroy", "destroy");
+});
+
+Route::controller(ServiceController::class)->group(function () {
+    Route::get('services', 'index');
+    Route::get("get-parent-services", "create");
+    Route::post("services-store", "store");
+    Route::get("services/{slug}/show", "show");
+    Route::get("services/{id}/edit", "edit");
+    Route::post("services/{id}/update", "update");
+    Route::delete("services/{id}/destroy", "destroy");
 });

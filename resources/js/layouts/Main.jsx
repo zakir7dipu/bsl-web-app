@@ -26,7 +26,7 @@ import BackendManagement from "../backend/pages/Management";
 import BackendTeams from "../backend/pages/Teams";
 import BackendClients from "../backend/pages/Clients";
 import BackendPartner from "../backend/pages/Partners";
-import BackendCategory from "../backend/pages/Services/Category";
+import ServiceCategory from "../backend/pages/Services/Category";
 
 import {checkAccess, refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
 import {useDispatch, useSelector} from "react-redux";
@@ -90,16 +90,18 @@ function Main() {
                         <Route path="about" element={<AboutSettings/>}/>
                         <Route path="contact" element={<ContactSettings/>}/>
                     </Route>
-                    <Route path="technology" element={<Technology/>}/>
-                    <Route path="industries" element={<Industries/>}/>
+                        <Route path="technology" element={<Technology/>}/>
+                        <Route path="industries" element={<Industries/>}/>
 
-                    <Route path="about-us" element={<BackendAbout/>}/>
-                    <Route path="our-management" element={<BackendManagement/>}/>
-                    <Route path="our-teams" element={<BackendTeams/>}/>
-                    <Route path="clients" element={<BackendClients/>}/>
-                    <Route path="partner" element={<BackendPartner/>}/>
-                    <Route path="categories" element={<BackendCategory/>}/>
-                </Route>
+                        <Route path="about-us" element={<BackendAbout/>}/>
+                        <Route path="our-management" element={<BackendManagement/>}/>
+                        <Route path="our-teams" element={<BackendTeams/>}/>
+                        <Route path="clients" element={<BackendClients/>}/>
+                        <Route path="partner" element={<BackendPartner/>}/>
+                        <Route path="services">
+                            <Route index element={<ServiceCategory/>}/>
+                        </Route>
+                    </Route>
                 }
             </Route>
             <Route path="*" element={<Errors/>}/>

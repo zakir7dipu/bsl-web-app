@@ -12,6 +12,7 @@ import ManagementFeature from "./featurs/Management/ManagementSlice.js";
 import TeamsFeature from "./featurs/Teams/TeamSlice.js";
 import ClientFeature from "./featurs/Clients/ClientSlice.js";
 import PartnerFeature from "./featurs/Partner/PartnerSlice.js";
+import ServiceFeature from "./featurs/Service/ServiceSlice.js";
 
 const store = configureStore({
     reducer: {
@@ -28,6 +29,7 @@ const store = configureStore({
         teamReducer: TeamsFeature,
         clientReducer : ClientFeature,
         partnerReducer : PartnerFeature,
+        serviceReducer : ServiceFeature,
     }
 })
 
