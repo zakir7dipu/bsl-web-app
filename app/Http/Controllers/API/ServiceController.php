@@ -98,7 +98,7 @@ class ServiceController extends Controller
     {
         try {
 
-            $service = Services::where('slug', $slug)->first();
+            $service = Services::with('service')->where('slug', $slug)->first();
             return response()->json($service);
 
         } catch (\Throwable $th) {
@@ -113,7 +113,7 @@ class ServiceController extends Controller
     {
         try {
 
-            $service = Services::where('slug', $id)->first();
+            $service = Services::where('id', $id)->first();
             return response()->json($service);
 
         } catch (\Throwable $th) {

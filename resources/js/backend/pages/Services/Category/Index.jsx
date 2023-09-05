@@ -4,19 +4,21 @@ import BizAlert from "../../../../lib/BizAlert.js";
 import {ucFirst, useInternalLink} from "../../../../lib/helper.js";
 import RowDropDown from "../../../../ui/RowDropDown.jsx";
 import {Link} from "react-router-dom";
-import {deleteServiceData, fetchAllServices} from "../../../../featurs/Service/ServiceSlice";
+import {deleteServiceData, fetchAllServices, showServiceData} from "../../../../featurs/Service/ServiceSlice";
 import Preloader from "../../../components/Preloader/Index.jsx";
 import HeaderMeta from "../../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
 import {GrFormAdd} from "react-icons/gr";
 import DataTableComponent from "../../../../ui/DataTableComponent.jsx";
+import BizModal from "../../../../ui/BizzModal.jsx";
 
 function Index(props) {
     const {
         isLoading,
         services,
         parentServices,
-        errorMess
+        errorMess,
+        metaInfo
     } = useSelector((state) => state.serviceReducer);
     const dispatch = useDispatch();
 
@@ -40,7 +42,7 @@ function Index(props) {
         },
         {
             name: 'Parent Services',
-            selector: row => row?.service?.title,
+            selector: row => row?.service?.title || '',
             sortable: true,
         },
         {
@@ -73,38 +75,11 @@ function Index(props) {
     ];
 
     const [isShow, setIsShow] = useState(false);
-    const [title, setTitle] = useState("Add New Services");
+    const [title, setTitle] = useState("Add New");
     const [isEdit, setIsEdit] = useState(false);
-
-    const [selectedService, setSelectedService] = useState("");
-    const [name, setName] = useState("");
-    const [parentName, setParentName] = useState("");
-    const [brief, setBrief] = useState("");
-    const [description, setDescription] = useState("");
-    const [type, setType] = useState("");
-    const [meta_title, setMetaTitle] = useState("");
-    const [meta_keywords, setMetaKeywords] = useState("");
-    const [meta_description, setMetaDescription] = useState("");
-    const [meta_image_link, setMetaImage] = useState("");
-
-    const [image_link, setImageFile] = useState("");
 
     const handleModalClose = () => {
         setIsShow(!isShow);
-        resetHandler()
-    }
-
-    const resetHandler = () => {
-        setName("");
-        setParentName("");
-        setBrief("");
-        setDescription("");
-        setType("");
-        setMetaTitle("");
-        setMetaKeywords("");
-        setMetaDescription("");
-        setMetaImage("");
-        setImageFile("");
     }
 
     const handelServiceShow = (slug) => {
@@ -112,28 +87,14 @@ function Index(props) {
     }
 
     const getMeta = (slug) => {
-        setSelectedService(slug)
-
-        let modal = services.filter((service) => service.slug === slug)
-        modal = modal[0]
-        setTitle(`Show ${modal?.title}`)
+        dispatch(showServiceData(slug))
+        setTitle(`Show ${metaInfo?.title || ''}`)
         setIsEdit(true)
         setIsShow(!isShow);
-
-        setName(modal?.title || " ");
-        setParentName(modal?.service?.title || "");
-        setBrief(modal?.brief || "");
-        setDescription(modal?.description || "");
-        setType(modal?.type || "");
-        setMetaTitle(modal?.meta_title || "");
-        setMetaKeywords(modal?.meta_keywords || "");
-        setMetaDescription(modal?.meta_description || "");
-        setMetaImage(modal?.meta_image_link || "");
-        setImageFile(modal?.image_link || "");
     }
 
+
     const deleteServiceHandler = async (id) => {
-        setSelectedService(id)
         let {isConfirmed} = await bizAlert.confirmAlert(`Are you sure?`, `Once you delete this you can't able to recover this data`);
         if (isConfirmed) {
             let data = {
@@ -178,6 +139,46 @@ function Index(props) {
                         </div>
                     </div>
                 </div>
+
+                <BizModal isShow={isShow} title={`Show ${metaInfo?.title}`} handleClose={handleModalClose} large={'lg'}>
+                    <div className="card-body">
+                        <table className="table table-responsive table-bordered table">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Parent Name</td>
+                                <td>{metaInfo?.service?.title || ''}</td>
+                            </tr>
+                            <tr>
+                                <td>Name</td>
+                                <td>{metaInfo?.title || ''}</td>
+                            </tr>
+                            <tr>
+                                <td>Type</td>
+                                <td>{metaInfo?.type || ''}</td>
+                            </tr>
+                            <tr>
+                                <td>Brief</td>
+                                <td><p dangerouslySetInnerHTML={{__html: metaInfo?.brief}}></p></td>
+                            </tr>
+                            <tr>
+                                <td>Description</td>
+                                <td><p dangerouslySetInnerHTML={{__html: metaInfo?.description}}></p></td>
+                            </tr>
+                            <tr>
+                                <td>Image</td>
+                                <td><img style={{height: "100px", width: "100px"}}
+                                         src={useInternalLink(metaInfo?.image_link)}/></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </BizModal>
             </>
         );
     } else {

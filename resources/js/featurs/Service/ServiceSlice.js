@@ -157,7 +157,7 @@ export const ServiceSlice = createSlice({
         },
 
         [showServiceData.pending]: (state) => {
-            state.isLoading = true
+            state.isLoading = false
         },
         [showServiceData.fulfilled]: (state, {payload}) => {
             state.isLoading = false;
