@@ -93,8 +93,8 @@ export const updateServiceData = createAsyncThunk("categories/updateServiceData"
 
 export const deleteServiceData = createAsyncThunk("categories/deleteServiceData", async (data, {rejectWithValue}) => {
     try {
-        const {client} = data
-        const res = await apiAccess.delete(`${initialData.apiUrl}/${client}/destroy`)
+        const {id} = data
+        const res = await apiAccess.delete(`${initialData.apiUrl}/${id}/destroy`)
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.data)

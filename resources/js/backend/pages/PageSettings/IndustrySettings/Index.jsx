@@ -3,7 +3,7 @@ import HeaderMeta from "../../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchIndustrySettings, saveSettings} from "../../../../featurs/Settings/SettingsSlice.js";
-import {errorMessage} from "../../../../lib/helper.js";
+import {errorMessage, warningMessage} from "../../../../lib/helper.js";
 import Preloader from "../../../components/Preloader/Index.jsx";
 
 function Index(props) {
@@ -26,13 +26,13 @@ function Index(props) {
         e.preventDefault();
         let formData = new FormData();
         if (!title) {
-            errorMessage("Title is required.")
+            warningMessage("Title is required.")
         } else {
             formData.append("title", title);
         }
 
         if (!subText) {
-            errorMessage("Description is required.")
+            warningMessage("Description is required.")
         } else {
             formData.append("sub_text", subText);
         }

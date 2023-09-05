@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {errorMessage} from "../../../../lib/helper.js";
+import {errorMessage, warningMessage} from "../../../../lib/helper.js";
 import {saveSettings} from "../../../../featurs/Settings/SettingsSlice.js";
 import Preloader from "../../../components/Preloader/Index.jsx";
 import {MdStar} from "react-icons/md";
@@ -26,13 +26,13 @@ function Contact() {
         e.preventDefault();
         let formData = new FormData();
         if (!phone) {
-            errorMessage("Phone is required.")
+            warningMessage("Phone is required.")
         } else {
             formData.append("phone", phone);
         }
 
         if (!email) {
-            errorMessage("Email is required.")
+            warningMessage("Email is required.")
         } else {
             formData.append("mail", email);
         }

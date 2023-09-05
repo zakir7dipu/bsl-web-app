@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import BizAlert from "../../../lib/BizAlert.js";
-import {errorMessage, infoMessage, ucFirst, useInternalLink} from "../../../lib/helper.js";
+import {errorMessage, infoMessage, ucFirst, useInternalLink, warningMessage} from "../../../lib/helper.js";
 import RowDropDown from "../../../ui/RowDropDown.jsx";
 import {Link} from "react-router-dom";
 import HeaderMeta from "../../../ui/HeaderMeta.jsx";
@@ -119,25 +119,25 @@ function Index(props) {
         let formData = new FormData();
 
         if (!name) {
-            errorMessage("Name is required.")
+            warningMessage("Name is required.")
         } else {
             formData.append("name", name);
         }
 
         if (!email) {
-            errorMessage("Email is required.")
+            warningMessage("Email is required.")
         } else {
             formData.append("email", email);
         }
 
         if (!phone) {
-            errorMessage("Phone is required.")
+            warningMessage("Phone is required.")
         } else {
             formData.append("phone", phone);
         }
 
         if (!designation) {
-            errorMessage("Designation is required.")
+            warningMessage("Designation is required.")
         } else {
             formData.append("designation", designation);
         }

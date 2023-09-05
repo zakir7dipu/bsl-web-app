@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {createData, deleteData, fetchAllTechnology, updateData} from "../../../featurs/Technology/TechnologySlice.js";
 import RowDropDown from "../../../ui/RowDropDown.jsx";
 import {Link} from "react-router-dom";
-import {errorMessage, infoMessage, useInternalLink} from "../../../lib/helper.js";
+import {errorMessage, infoMessage, useInternalLink, warningMessage} from "../../../lib/helper.js";
 import DataTableComponent from "../../../ui/DataTableComponent.jsx";
 import {GrFormAdd} from "react-icons/gr";
 import BizAlert from "../../../lib/BizAlert.js";
@@ -98,13 +98,13 @@ function Index() {
         let formData = new FormData();
 
         if (!name) {
-            errorMessage("Name is required.")
+            warningMessage("Name is required.")
         } else {
             formData.append("name", name);
         }
 
         if (!indexing) {
-            errorMessage("Indexing is required.")
+            warningMessage("Indexing is required.")
         } else {
             formData.append("order_by", indexing);
         }

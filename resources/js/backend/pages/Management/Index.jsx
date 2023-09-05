@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import BizAlert from "../../../lib/BizAlert.js";
-import {errorMessage, infoMessage, ucFirst, useInternalLink} from "../../../lib/helper.js";
+import {errorMessage, infoMessage, ucFirst, useInternalLink, warningMessage} from "../../../lib/helper.js";
 import RowDropDown from "../../../ui/RowDropDown.jsx";
 import {Link} from "react-router-dom";
 import {
@@ -134,25 +134,25 @@ function Index(props) {
         let formData = new FormData();
 
         if (!name) {
-            errorMessage("Name is required.")
+            warningMessage("Name is required.")
         } else {
             formData.append("name", name);
         }
 
         if (!index_of) {
-            errorMessage("Index is required.")
+            warningMessage("Index is required.")
         } else {
             formData.append("index_of", index_of);
         }
 
         if (!type) {
-            errorMessage("Type is required.")
+            warningMessage("Type is required.")
         } else {
             formData.append("type", type);
         }
 
         if (!designation) {
-            errorMessage("Designation is required.")
+            warningMessage("Designation is required.")
         } else {
             formData.append("designation", designation);
         }
@@ -311,6 +311,7 @@ function Index(props) {
                                     <select className="form-control" name="type" onChange={(e) => {
                                         setType(e.target.value)
                                     }} value={type}>
+                                        <option value={null}>--Select One--</option>
                                         <option value="management">Management</option>
                                         <option value="hod">Hod</option>
                                     </select>

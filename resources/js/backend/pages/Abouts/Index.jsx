@@ -5,7 +5,7 @@ import BizAlert from "../../../lib/BizAlert.js";
 import HeaderMeta from "../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../components/Breadcrumb/Index.jsx";
 import Preloader from "../../components/Preloader/Index.jsx";
-import {errorMessage, infoMessage} from "../../../lib/helper.js";
+import {infoMessage, warningMessage} from "../../../lib/helper.js";
 import FileInput from "../../components/inputFile/Index.jsx";
 import {CKEditor} from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
@@ -47,19 +47,19 @@ function Index(props) {
         e.preventDefault();
         let formData = new FormData();
         if (!title) {
-            errorMessage("Title is required.")
+            warningMessage("Title is required.")
         } else {
             formData.append("title", title);
         }
 
         if (!description) {
-            errorMessage("Description is required.")
+            warningMessage("Description is required.")
         } else {
             formData.append("description", description);
         }
 
         if (!btn_text) {
-            errorMessage("Btn text required.")
+            warningMessage("Btn text required.")
         } else {
             formData.append("btn_text", btn_text);
         }

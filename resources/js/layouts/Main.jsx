@@ -27,6 +27,8 @@ import BackendTeams from "../backend/pages/Teams";
 import BackendClients from "../backend/pages/Clients";
 import BackendPartner from "../backend/pages/Partners";
 import ServiceCategory from "../backend/pages/Services/Category";
+import ServiceCategoryCreate from "../backend/pages/Services/Category/Create.jsx";
+import ServiceCategoryEdit from "../backend/pages/Services/Category/Edit.jsx";
 
 import {checkAccess, refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
 import {useDispatch, useSelector} from "react-redux";
@@ -100,6 +102,8 @@ function Main() {
                         <Route path="partner" element={<BackendPartner/>}/>
                         <Route path="services">
                             <Route index element={<ServiceCategory/>}/>
+                            <Route path="create" element={<ServiceCategoryCreate/>}/>
+                            <Route path=":id/edit" element={<ServiceCategoryEdit/>}/>
                         </Route>
                     </Route>
                 }

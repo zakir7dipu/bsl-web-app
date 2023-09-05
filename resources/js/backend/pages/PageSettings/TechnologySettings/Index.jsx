@@ -26,13 +26,13 @@ function Index(props) {
         e.preventDefault();
         let formData = new FormData();
         if (!title) {
-            errorMessage("Title is required.")
+            warningMessage("Title is required.")
         } else {
             formData.append("title", title);
         }
 
         if (!subText) {
-            errorMessage("Description is required.")
+            warningMessage("Description is required.")
         } else {
             formData.append("sub_text", subText);
         }

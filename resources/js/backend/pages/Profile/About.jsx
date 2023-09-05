@@ -3,6 +3,7 @@ import {editUserData, getAuthUser} from "../../../featurs/AuthAction/AuthSlice.j
 import {useDispatch, useSelector} from "react-redux";
 
 import FileInput from "../../components/inputFile/Index.jsx";
+import {warningMessage} from "../../../lib/helper.js";
 
 function About() {
 
@@ -25,19 +26,19 @@ function About() {
         e.preventDefault();
         let formData = new FormData();
         if (!name) {
-            errorMessage("Name is required.")
+            warningMessage("Name is required.")
         } else {
             formData.append("name", name);
         }
 
         if (!email) {
-            errorMessage("email is required.")
+            warningMessage("email is required.")
         } else {
             formData.append("email", email);
         }
 
         if (!phone) {
-            errorMessage("phone is required.")
+            warningMessage("phone is required.")
         } else {
             formData.append("phone", phone);
         }

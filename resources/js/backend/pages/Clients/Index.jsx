@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import BizAlert from "../../../lib/BizAlert.js";
-import {errorMessage, infoMessage, ucFirst, useInternalLink} from "../../../lib/helper.js";
+import {infoMessage, useInternalLink, warningMessage} from "../../../lib/helper.js";
 import RowDropDown from "../../../ui/RowDropDown.jsx";
 import {Link} from "react-router-dom";
 import {
@@ -105,13 +105,13 @@ function Index(props) {
         let formData = new FormData();
 
         if (!name) {
-            errorMessage("Name is required.")
+            warningMessage("Name is required.")
         } else {
             formData.append("name", name);
         }
 
         if (!index_of) {
-            errorMessage("Indexing is required.")
+            warningMessage("Indexing is required.")
         } else {
             formData.append("index_of", index_of);
         }
@@ -122,7 +122,7 @@ function Index(props) {
 
         if (!isEdit) {
             if (!image_link) {
-                errorMessage("Image is required.")
+                warningMessage("Image is required.")
             } else {
                 formData.append("image_link", image_link);
             }
