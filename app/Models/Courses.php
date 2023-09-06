@@ -42,7 +42,7 @@ class Courses extends Model
 
     public function curriculums()
     {
-        return $this->hasMany(Curriculum::class, "course_id", "id");
+        return $this->hasMany(Curricular::class, "course_id", "id");
     }
 
     public function reviews()

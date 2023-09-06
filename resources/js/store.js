@@ -15,6 +15,7 @@ import PartnerFeature from "./featurs/Partner/PartnerSlice.js";
 import ServiceFeature from "./featurs/Service/ServiceSlice.js";
 import ProductFeature from "./featurs/Product/ProductSlice.js";
 import CoursesFeature from "./featurs/Courses/CourseSlice.js";
+import CurricularFeature from "./featurs/Curricular/CurricularSlice.js";
 
 const store = configureStore({
     reducer: {
@@ -34,6 +35,7 @@ const store = configureStore({
         serviceReducer : ServiceFeature,
         productReducer : ProductFeature,
         coursesReducer : CoursesFeature,
+        curricularReducer : CurricularFeature,
     }
 })
 

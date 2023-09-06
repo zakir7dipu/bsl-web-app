@@ -60,9 +60,9 @@ function Index(props) {
             sortable: true,
         },
         {
-            name: 'Curriculum',
+            name: 'Curricular',
             selector: row => (
-                <Link to={`${row?.id}/curriculum`} className="btn btn-info btn-sm">Curriculum</Link>
+                <Link to={`${row?.id}/curricular`} className="btn btn-info btn-sm">Curricular</Link>
             ),
             sortable: false,
         },

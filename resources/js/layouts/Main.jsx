@@ -33,7 +33,7 @@ import BackendProduct from "../backend/pages/Services/Product/Index.jsx";
 import BackendCourses from "../backend/pages/Courses/Index.jsx";
 import CourseCreate from "../backend/pages/Courses/Create.jsx";
 import CourseEdit from "../backend/pages/Courses/Edit.jsx";
-import BackendCurriculum from "../backend/pages/Courses/Curriculam";
+import BackendCurricular from "../backend/pages/Courses/Curricular";
 
 import {checkAccess, refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
 import {useDispatch, useSelector} from "react-redux";
@@ -116,7 +116,7 @@ function Main() {
                             <Route index element={<BackendCourses/>}/>
                             <Route path="create" element={<CourseCreate/>}/>
                             <Route path=":id/edit" element={<CourseEdit/>}/>
-                            <Route path=":id/curriculum" element={<BackendCurriculum/>}/>
+                            <Route path=":id/curricular" element={<BackendCurricular/>}/>
                         </Route>
                     </Route>
                 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\AboutsController;
 use App\Http\Controllers\API\ClientsController;
 use App\Http\Controllers\API\CourseController;
+use App\Http\Controllers\API\CurricularController;
 use App\Http\Controllers\API\IndustriesController;
 use App\Http\Controllers\API\ManagementController;
 use App\Http\Controllers\API\PartnerController;
@@ -123,11 +124,12 @@ Route::controller(CourseController::class)->group(function () {
     Route::get("courses/{id}/edit", "edit");
     Route::post("courses/{id}/update", "update");
     Route::delete("courses/{id}/destroy", "destroy");
+});
 
-    //Course wise curricular manage routes
-    Route::get("curricular/{course}/all", "curricular");
-    Route::post("curricular", "curricularStore");
-    Route::get("curricular/{id}/edit", "curricularEdit");
-    Route::post("curricular/{id}/update", "curricularUpdate");
-    Route::delete("curricular/{id}/destroy", "curricularDestroy");
+Route::controller(CurricularController::class)->group(function () {
+    Route::get("curricular/{course?}", "index");
+    Route::post("curricular", "store");
+    Route::get("curricular/{id}/show", "show");
+    Route::post("curricular/{id}/update", "update");
+    Route::delete("curricular/{id}/destroy", "destroy");
 });
