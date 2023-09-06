@@ -30,6 +30,10 @@ import ServiceCategory from "../backend/pages/Services/Category";
 import ServiceCategoryCreate from "../backend/pages/Services/Category/Create.jsx";
 import ServiceCategoryEdit from "../backend/pages/Services/Category/Edit.jsx";
 import BackendProduct from "../backend/pages/Services/Product/Index.jsx";
+import BackendCourses from "../backend/pages/Courses/Index.jsx";
+import CourseCreate from "../backend/pages/Courses/Create.jsx";
+import CourseEdit from "../backend/pages/Courses/Edit.jsx";
+import BackendCurriculum from "../backend/pages/Courses/Curriculam";
 
 import {checkAccess, refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
 import {useDispatch, useSelector} from "react-redux";
@@ -107,6 +111,13 @@ function Main() {
                             <Route path=":id/edit" element={<ServiceCategoryEdit/>}/>
                         </Route>
                         <Route path="products" element={<BackendProduct/>}/>
+
+                        <Route path="courses">
+                            <Route index element={<BackendCourses/>}/>
+                            <Route path="create" element={<CourseCreate/>}/>
+                            <Route path=":id/edit" element={<CourseEdit/>}/>
+                            <Route path=":id/curriculum" element={<BackendCurriculum/>}/>
+                        </Route>
                     </Route>
                 }
             </Route>

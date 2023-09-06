@@ -55,12 +55,10 @@ class Courses extends Model
     public static function boot(){
         parent::boot();
         static::creating(function($query){
-            if(Auth::check()){
+            if (Auth::check()) {
                 $query->created_by = Auth::user()->id;
             }
-
-            $bytes = random_bytes(8);
-            $query->slug = bin2hex($bytes);
+            $query->published_at = date('y-m-d');
         });
         static::updating(function($query){
             if(Auth::check()){

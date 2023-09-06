@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\AboutsController;
 use App\Http\Controllers\API\ClientsController;
+use App\Http\Controllers\API\CourseController;
 use App\Http\Controllers\API\IndustriesController;
 use App\Http\Controllers\API\ManagementController;
 use App\Http\Controllers\API\PartnerController;
@@ -106,10 +107,27 @@ Route::controller(ServiceController::class)->group(function () {
     Route::delete("services/{id}/destroy", "destroy");
 });
 
-Route::controller( ProductController::class)->group(function () {
+Route::controller(ProductController::class)->group(function () {
     Route::get('products', 'index');
     Route::post("products-store", "store");
     Route::get("products/{slug}/show", "show");
     Route::post("products/{slug}/update", "update");
     Route::delete("products/{slug}/destroy", "destroy");
+});
+
+Route::controller(CourseController::class)->group(function () {
+    Route::get("courses", "index");
+    Route::get("get-services", "create");
+    Route::post("courses-store", "store");
+    Route::get("courses/{slug}/show", "show");
+    Route::get("courses/{id}/edit", "edit");
+    Route::post("courses/{id}/update", "update");
+    Route::delete("courses/{id}/destroy", "destroy");
+
+    //Course wise curricular manage routes
+    Route::get("curricular/{course}/all", "curricular");
+    Route::post("curricular", "curricularStore");
+    Route::get("curricular/{id}/edit", "curricularEdit");
+    Route::post("curricular/{id}/update", "curricularUpdate");
+    Route::delete("curricular/{id}/destroy", "curricularDestroy");
 });
