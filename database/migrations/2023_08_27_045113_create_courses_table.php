@@ -34,8 +34,8 @@ return new class extends Migration
             $table->enum("delivery_mode",["online","off_line"])->default('online');
             $table->enum("course_type",["admission","going_on"])->default('going_on');
 
-            $table->timestamp("start_date")->nullable();
-            $table->timestamp("end_date")->nullable();
+            $table->date("start_date")->nullable();
+            $table->date("end_date")->nullable();
 
             $table->longText("curriculum_text")->nullable();
             $table->string("slug")->unique();

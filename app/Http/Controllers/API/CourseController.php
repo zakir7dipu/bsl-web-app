@@ -98,10 +98,7 @@ class CourseController extends Controller
                 return response()->json($course);
             } catch (\Throwable $th) {
                 DB::rollback();
-                return response()->json([
-                    'status' => 'error',
-                    'message' => $th->getMessage()
-                ], $th->getCode());
+                return response()->json($th->getMessage(), $th->getCode());
             }
         } else {
             return returnBack('Already data exists with this name');
@@ -117,12 +114,12 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        $course = Courses::where('id', $id)
+        $course = Courses::with('service')->where('id', $id)
             ->first();
         try {
             return response()->json($course);
         } catch (\Throwable $th) {
-            return returnBack($th);
+            return response()->json($th->getMessage(), $th->getCode());
         }
     }
 
@@ -139,7 +136,7 @@ class CourseController extends Controller
         try {
             return response()->json($course);
         } catch (\Throwable $th) {
-            return returnBack($th);
+            return response()->json($th->getMessage(), $th->getCode());
         }
     }
 
@@ -176,7 +173,6 @@ class CourseController extends Controller
         if ($course) {
             try {
 
-
                 if ($request->hasFile("thumbnail")) {
                     $filename = time() . '-' . 'thumbnail.' . fileInfo($request->thumbnail)['extension'];
                     $path = '/uploads/thumbnail';
@@ -186,6 +182,8 @@ class CourseController extends Controller
                     fileUpload($request->thumbnail, $path, $filename);
                     $img = $path . '/' . $filename;
                     $input['thumbnail'] = $img;
+                }else{
+                    $input['thumbnail'] = $course->thumbnail;
                 }
 
                 if ($request->hasFile("banner")) {
@@ -197,6 +195,8 @@ class CourseController extends Controller
                     fileUpload($request->banner, $path, $filename);
                     $img = $path . '/' . $filename;
                     $input['banner'] = $img;
+                }else{
+                    $input['banner'] = $course->banner;
                 }
 
                 $course->update($input);
@@ -206,10 +206,10 @@ class CourseController extends Controller
                 return response()->json($course);
             } catch (\Throwable $th) {
                 DB::rollback();
-                return returnBack($th);
+                return response()->json($th->getMessage(), $th->getCode());
             }
         } else {
-            return returnBack('No Data Found!');
+            return response()->json('No Data Found');
         }
     }
 
@@ -232,7 +232,7 @@ class CourseController extends Controller
 
         } catch (\Throwable $th) {
             DB::rollBack();
-            return returnBack($th);
+            return response()->json($th->getMessage(), $th->getCode());
         }
     }
 
