@@ -35,6 +35,11 @@ import CourseCreate from "../backend/pages/Courses/Create.jsx";
 import CourseEdit from "../backend/pages/Courses/Edit.jsx";
 import BackendCurricular from "../backend/pages/Courses/Curricular";
 import BackendBlogs from "../backend/pages/Blogs";
+import CaseStudy from "../backend/pages/CaseStudy";
+import Testimonial from "../backend/pages/Testimonial";
+import GeneralPages from "../backend/pages/GeneralPage";
+import Messages from "../backend/pages/Messages";
+import BackendSubscribers from "../backend/pages/Subscribers";
 
 import {checkAccess, refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
 import {useDispatch, useSelector} from "react-redux";
@@ -118,6 +123,11 @@ function Main() {
                             <Route path=":id/curricular" element={<BackendCurricular/>}/>
                         </Route>
                         <Route path="blogs" element={<BackendBlogs/>}/>
+                        <Route path="case-study" element={<CaseStudy/>}/>
+                        <Route path="testimonial" element={<Testimonial/>}/>
+                        <Route path="pages" element={<GeneralPages/>}/>
+                        <Route path="messages" element={<Messages/>}/>
+                        <Route path="subscribers" element={<BackendSubscribers/>}/>
                     </Route>
                 }
             </Route>

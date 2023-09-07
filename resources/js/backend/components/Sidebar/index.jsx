@@ -107,6 +107,22 @@ function Index(props) {
                                 menuIcon={<i className="fa fa-list-alt menu-icon"></i>}
                             />
                         </li>
+                        <li>
+                            <NavBarLink
+                                link={'/bsl/admin/case-study'}
+                                linkName={'Case Study'}
+                                hasSubMenu={false}
+                                menuIcon={<i className="fa fa-briefcase menu-icon"></i>}
+                            />
+                        </li>
+                        <li>
+                            <NavBarLink
+                                link={'/bsl/admin/testimonial'}
+                                linkName={'Testimonial'}
+                                hasSubMenu={false}
+                                menuIcon={<i className="fa fa-quote-left menu-icon"></i>}
+                            />
+                        </li>
 
                         <li>
                             <NavBarLink
