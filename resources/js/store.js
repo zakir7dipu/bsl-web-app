@@ -17,6 +17,12 @@ import ProductFeature from "./featurs/Product/ProductSlice.js";
 import CoursesFeature from "./featurs/Courses/CourseSlice.js";
 import CurricularFeature from "./featurs/Curricular/CurricularSlice.js";
 import BlogsFeature from "./featurs/Blogs/BlogSlice.js";
+import CaseStudyFeature from "./featurs/CaseStudy/CaseStudySlice.js";
+import PagesFeature from "./featurs/Pages/PageSlice.js";
+import TestimonialFeature from "./featurs/Testimonial/TestimonialSlice.js";
+import MessageFeature from "./featurs/Messages/MessagesSlice.js";
+import SubscriberFeature from "./featurs/Subscribers/SubscribersSlice.js";
+
 
 const store = configureStore({
     reducer: {
@@ -31,13 +37,18 @@ const store = configureStore({
         aboutsReducer: AboutsFeature,
         managementReducer: ManagementFeature,
         teamReducer: TeamsFeature,
-        clientReducer : ClientFeature,
-        partnerReducer : PartnerFeature,
-        serviceReducer : ServiceFeature,
-        productReducer : ProductFeature,
-        coursesReducer : CoursesFeature,
-        curricularReducer : CurricularFeature,
-        blogsReducer : BlogsFeature,
+        clientReducer: ClientFeature,
+        partnerReducer: PartnerFeature,
+        serviceReducer: ServiceFeature,
+        productReducer: ProductFeature,
+        coursesReducer: CoursesFeature,
+        curricularReducer: CurricularFeature,
+        blogsReducer: BlogsFeature,
+        caseStudyReducer: CaseStudyFeature,
+        pagesReducer: PagesFeature,
+        testimonialReducer: TestimonialFeature,
+        messageReducer: MessageFeature,
+        subscriberReducer: SubscriberFeature,
     }
 })
 

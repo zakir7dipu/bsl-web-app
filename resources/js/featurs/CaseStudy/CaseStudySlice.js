@@ -6,14 +6,14 @@ const {apiAccess} = new Api();
 
 const initialData = {
     isLoading: true,
-    blogs: [],
-    apiUrl: 'blogs',
+    caseStudies: [],
+    apiUrl: 'case-study',
     errorMess: null,
     metaInfo: []
 }
 
 // all data get
-export const fetchAllBlogs = createAsyncThunk("blogsData/fetchAllBlogs", async (data, {rejectWithValue}) => {
+export const fetchAllCaseStudy = createAsyncThunk("caseStudy/fetchAllCaseStudy", async (data, {rejectWithValue}) => {
     try {
         const res = await apiAccess.get(`${initialData.apiUrl}/${data}`)
         return res.data
@@ -21,7 +21,7 @@ export const fetchAllBlogs = createAsyncThunk("blogsData/fetchAllBlogs", async (
         return rejectWithValue(error.response.data)
     }
 })
-export const fetchBlogsDataBySlug = createAsyncThunk("blogsData/fetchBlogsDataBySlug", async (brand, {rejectWithValue}) => {
+export const fetchCaseStudyBySlug = createAsyncThunk("caseStudy/fetchCaseStudyBySlug", async (brand, {rejectWithValue}) => {
     try {
         const res = await apiAccess.get(`${initialData.apiUrl}/${slug}/show`);
         return res.data
@@ -31,21 +31,21 @@ export const fetchBlogsDataBySlug = createAsyncThunk("blogsData/fetchBlogsDataBy
 })
 
 // create brand
-export const createBlogsData = createAsyncThunk("blogsData/createBlogsData", async (data, {rejectWithValue}) => {
+export const createCaseStudy = createAsyncThunk("caseStudy/createCaseStudy", async (data, {rejectWithValue}) => {
     try {
         const config = {
             headers: {
                 'content-type': 'multipart/form-data'
             }
         }
-        const res = await apiAccess.post("blogs-store", data, config)
+        const res = await apiAccess.post("case-study-store", data, config)
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.data)
     }
 })
 
-export const updateBlogsData = createAsyncThunk("blogsData/updateBlogsData", async (data, {rejectWithValue}) => {
+export const updateCaseStudy = createAsyncThunk("caseStudy/updateCaseStudy", async (data, {rejectWithValue}) => {
     try {
         const config = {
             headers: {
@@ -59,7 +59,7 @@ export const updateBlogsData = createAsyncThunk("blogsData/updateBlogsData", asy
         return rejectWithValue(error.response.data)
     }
 })
-export const deleteBlogsData = createAsyncThunk("blogsData/deleteBlogsData", async (data, {rejectWithValue}) => {
+export const deleteCaseStudy = createAsyncThunk("caseStudy/deleteCaseStudy", async (data, {rejectWithValue}) => {
     try {
         const {id} = data
         const res = await apiAccess.delete(`${initialData.apiUrl}/${id}/destroy`)
@@ -70,99 +70,101 @@ export const deleteBlogsData = createAsyncThunk("blogsData/deleteBlogsData", asy
 })
 
 
-export const BlogSlice = createSlice({
-    name: "blogsData",
+export const CaseStudySlice = createSlice({
+    name: "caseStudy",
     initialState: initialData,
     extraReducers: {
-        [fetchAllBlogs.pending]: (state) => {
+        [fetchAllCaseStudy.pending]: (state) => {
             state.isLoading = true
         },
-        [fetchAllBlogs.fulfilled]: (state, {payload}) => {
+        [fetchAllCaseStudy.fulfilled]: (state, {payload}) => {
             state.isLoading = false;
-            state.blogs = payload;
+            state.caseStudies = payload;
         },
-        [fetchAllBlogs.rejected]: (state, {payload}) => {
+        [fetchAllCaseStudy.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
             errorMessage(payload)
         },
 
-        [fetchBlogsDataBySlug.pending]: (state) => {
+        [fetchCaseStudyBySlug.pending]: (state) => {
             state.isLoading = true
         },
-        [fetchBlogsDataBySlug.fulfilled]: (state, {payload}) => {
+        [fetchCaseStudyBySlug.fulfilled]: (state, {payload}) => {
             state.isLoading = false;
             state.metaInfo = payload;
         },
-        [fetchBlogsDataBySlug.rejected]: (state, {payload}) => {
+        [fetchCaseStudyBySlug.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
         },
 
-        [createBlogsData.pending]: (state) => {
+        [createCaseStudy.pending]: (state) => {
             state.isLoading = true
         },
-        [createBlogsData.fulfilled]: (state, {payload}) => {
+        [createCaseStudy.fulfilled]: (state, {payload}) => {
             state.isLoading = false
-            state.blogs = [...state.blogs, payload]
+            state.caseStudies = [...state.caseStudies, payload]
             state.errorMess = null
             successMessage("Data Created Successfully")
         },
-        [createBlogsData.rejected]: (state, {payload}) => {
+        [createCaseStudy.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
             errorMessage(payload)
         },
 
-        [updateBlogsData.pending]: (state) => {
+        [updateCaseStudy.pending]: (state) => {
             state.isLoading = true
         },
-        [updateBlogsData.fulfilled]: (state, {payload}) => {
+        [updateCaseStudy.fulfilled]: (state, {payload}) => {
             state.isLoading = false
             const {
-                title,
-                slug,
-                description,
+                id,
+                name,
+                descriptions,
                 image_link,
-                short_order,
-                meta_title,
-                meta_description,
-                meta_keywords,
-                meta_image_link,
-                id
+                clients,
+                location,
+                complete_date,
+                technologies,
+                links,
+                files,
+                tags
             } = payload
-            const model = state.blogs.filter((blog) => blog.id === id);
+            const model = state.caseStudies.filter((cs) => cs.id === id);
             if (model) {
-                model[0].title = title;
-                model[0].slug = slug;
-                model[0].description = description;
+                model[0].name = name;
+                model[0].descriptions = descriptions;
                 model[0].image_link = image_link;
-                model[0].short_order = short_order;
-                model[0].meta_title = meta_title;
-                model[0].meta_description = meta_description;
-                model[0].meta_keywords = meta_keywords;
-                model[0].meta_image_link = meta_image_link;
+                model[0].clients = clients;
+                model[0].location = location;
+                model[0].complete_date = complete_date;
+                model[0].technologies = technologies;
+                model[0].links = links;
+                model[0].files = files;
+                model[0].tags = tags;
             }
             state.errorMess = null
             successMessage("Data Updated Successfully")
         },
-        [updateBlogsData.rejected]: (state, {payload}) => {
+        [updateCaseStudy.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
             errorMessage(payload)
         },
 
-        [deleteBlogsData.pending]: (state) => {
+        [deleteCaseStudy.pending]: (state) => {
             state.isLoading = true
         },
-        [deleteBlogsData.fulfilled]: (state, {payload}) => {
+        [deleteCaseStudy.fulfilled]: (state, {payload}) => {
             state.isLoading = false
             const {id} = payload
-            state.blogs = state.blogs.filter((blog) => blog.id !== id);
+            state.caseStudies = state.caseStudies.filter((cs) => cs.id !== id);
             state.errorMess = null
             successMessage("Data Deleted Successfully")
         },
-        [deleteBlogsData.rejected]: (state, {payload}) => {
+        [deleteCaseStudy.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
             errorMessage(payload)
@@ -170,4 +172,4 @@ export const BlogSlice = createSlice({
     }
 });
 
-export default BlogSlice.reducer
+export default CaseStudySlice.reducer

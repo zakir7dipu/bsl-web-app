@@ -2,18 +2,23 @@
 
 use App\Http\Controllers\API\AboutsController;
 use App\Http\Controllers\API\BlogsController;
+use App\Http\Controllers\API\CaseStudyController;
 use App\Http\Controllers\API\ClientsController;
 use App\Http\Controllers\API\CourseController;
 use App\Http\Controllers\API\CurricularController;
 use App\Http\Controllers\API\IndustriesController;
 use App\Http\Controllers\API\ManagementController;
+use App\Http\Controllers\API\MessageController;
+use App\Http\Controllers\API\PagesController;
 use App\Http\Controllers\API\PartnerController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\SEOController;
 use App\Http\Controllers\API\ServiceController;
 use App\Http\Controllers\API\SettingsController;
+use App\Http\Controllers\API\SubscriberController;
 use App\Http\Controllers\API\TeamsController;
 use App\Http\Controllers\API\TechnologyController;
+use App\Http\Controllers\API\TestimonialController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -141,4 +146,42 @@ Route::controller(BlogsController::class)->group(function () {
     Route::get("blogs/{slug}/show", "show");
     Route::post("blogs/{id}/update", "update");
     Route::delete("blogs/{id}/destroy", "destroy");
+});
+
+Route::controller(CaseStudyController::class)->group(function () {
+    Route::get("case-study/{take?}", "index");
+    Route::post("case-study-store", "store");
+    Route::get("case-study/{slug}/show", "show");
+    Route::post("case-study/{id}/update", "update");
+    Route::delete("case-study/{id}/destroy", "destroy");
+});
+
+Route::controller(TestimonialController::class)->group(function () {
+    Route::get("testimonial/{take?}", "index");
+    Route::post("testimonial-store", "store");
+    Route::get("testimonial/{slug}/show", "show");
+    Route::post("testimonial/{id}/update", "update");
+    Route::delete("testimonial/{id}/destroy", "destroy");
+});
+
+Route::controller(PagesController::class)->group(function () {
+    Route::get("pages", "index");
+    Route::post("pages-store", "store");
+    Route::get("pages/{slug}/show", "show");
+    Route::post("pages/{id}/update", "update");
+    Route::delete("pages/{id}/destroy", "destroy");
+});
+
+Route::controller(MessageController::class)->group(function () {
+    Route::get("messages", "index");
+    Route::post("messages-store", "store");
+    Route::get("messages/{slug}/show", "show");
+    Route::delete("messages/{id}/destroy", "destroy");
+});
+
+Route::controller(SubscriberController::class)->group(function () {
+    Route::get("subscribers", "index");
+    Route::post("subscribers-store", "store");
+    Route::get("subscribers/{slug}/show", "show");
+    Route::delete("subscribers/{id}/destroy", "destroy");
 });

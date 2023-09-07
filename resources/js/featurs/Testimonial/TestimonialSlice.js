@@ -6,14 +6,14 @@ const {apiAccess} = new Api();
 
 const initialData = {
     isLoading: true,
-    blogs: [],
-    apiUrl: 'blogs',
+    testimonials: [],
+    apiUrl: 'testimonial',
     errorMess: null,
     metaInfo: []
 }
 
 // all data get
-export const fetchAllBlogs = createAsyncThunk("blogsData/fetchAllBlogs", async (data, {rejectWithValue}) => {
+export const fetchAllTestimonial = createAsyncThunk("testimonialData/fetchAllTestimonial", async (data, {rejectWithValue}) => {
     try {
         const res = await apiAccess.get(`${initialData.apiUrl}/${data}`)
         return res.data
@@ -21,7 +21,7 @@ export const fetchAllBlogs = createAsyncThunk("blogsData/fetchAllBlogs", async (
         return rejectWithValue(error.response.data)
     }
 })
-export const fetchBlogsDataBySlug = createAsyncThunk("blogsData/fetchBlogsDataBySlug", async (brand, {rejectWithValue}) => {
+export const fetchTestimonialBySlug = createAsyncThunk("testimonialData/fetchTestimonialBySlug", async (brand, {rejectWithValue}) => {
     try {
         const res = await apiAccess.get(`${initialData.apiUrl}/${slug}/show`);
         return res.data
@@ -31,21 +31,21 @@ export const fetchBlogsDataBySlug = createAsyncThunk("blogsData/fetchBlogsDataBy
 })
 
 // create brand
-export const createBlogsData = createAsyncThunk("blogsData/createBlogsData", async (data, {rejectWithValue}) => {
+export const createTestimonial = createAsyncThunk("testimonialData/createTestimonial", async (data, {rejectWithValue}) => {
     try {
         const config = {
             headers: {
                 'content-type': 'multipart/form-data'
             }
         }
-        const res = await apiAccess.post("blogs-store", data, config)
+        const res = await apiAccess.post("testimonial-store", data, config)
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.data)
     }
 })
 
-export const updateBlogsData = createAsyncThunk("blogsData/updateBlogsData", async (data, {rejectWithValue}) => {
+export const updateTestimonial = createAsyncThunk("testimonialData/updateTestimonial", async (data, {rejectWithValue}) => {
     try {
         const config = {
             headers: {
@@ -59,7 +59,7 @@ export const updateBlogsData = createAsyncThunk("blogsData/updateBlogsData", asy
         return rejectWithValue(error.response.data)
     }
 })
-export const deleteBlogsData = createAsyncThunk("blogsData/deleteBlogsData", async (data, {rejectWithValue}) => {
+export const deleteTestimonial = createAsyncThunk("testimonialData/deleteTestimonial", async (data, {rejectWithValue}) => {
     try {
         const {id} = data
         const res = await apiAccess.delete(`${initialData.apiUrl}/${id}/destroy`)
@@ -70,99 +70,89 @@ export const deleteBlogsData = createAsyncThunk("blogsData/deleteBlogsData", asy
 })
 
 
-export const BlogSlice = createSlice({
-    name: "blogsData",
+export const TestimonialSlice = createSlice({
+    name: "testimonialData",
     initialState: initialData,
     extraReducers: {
-        [fetchAllBlogs.pending]: (state) => {
+        [fetchAllTestimonial.pending]: (state) => {
             state.isLoading = true
         },
-        [fetchAllBlogs.fulfilled]: (state, {payload}) => {
+        [fetchAllTestimonial.fulfilled]: (state, {payload}) => {
             state.isLoading = false;
-            state.blogs = payload;
+            state.testimonials = payload;
         },
-        [fetchAllBlogs.rejected]: (state, {payload}) => {
+        [fetchAllTestimonial.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
             errorMessage(payload)
         },
 
-        [fetchBlogsDataBySlug.pending]: (state) => {
+        [fetchTestimonialBySlug.pending]: (state) => {
             state.isLoading = true
         },
-        [fetchBlogsDataBySlug.fulfilled]: (state, {payload}) => {
+        [fetchTestimonialBySlug.fulfilled]: (state, {payload}) => {
             state.isLoading = false;
             state.metaInfo = payload;
         },
-        [fetchBlogsDataBySlug.rejected]: (state, {payload}) => {
+        [fetchTestimonialBySlug.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
         },
 
-        [createBlogsData.pending]: (state) => {
+        [createTestimonial.pending]: (state) => {
             state.isLoading = true
         },
-        [createBlogsData.fulfilled]: (state, {payload}) => {
+        [createTestimonial.fulfilled]: (state, {payload}) => {
             state.isLoading = false
-            state.blogs = [...state.blogs, payload]
+            state.testimonials = [...state.testimonials, payload]
             state.errorMess = null
             successMessage("Data Created Successfully")
         },
-        [createBlogsData.rejected]: (state, {payload}) => {
+        [createTestimonial.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
             errorMessage(payload)
         },
 
-        [updateBlogsData.pending]: (state) => {
+        [updateTestimonial.pending]: (state) => {
             state.isLoading = true
         },
-        [updateBlogsData.fulfilled]: (state, {payload}) => {
+        [updateTestimonial.fulfilled]: (state, {payload}) => {
             state.isLoading = false
             const {
-                title,
-                slug,
+                id,
+                name,
+                designation,
                 description,
-                image_link,
-                short_order,
-                meta_title,
-                meta_description,
-                meta_keywords,
-                meta_image_link,
-                id
+                image_link
             } = payload
-            const model = state.blogs.filter((blog) => blog.id === id);
+            const model = state.testimonials.filter((cs) => cs.id === id);
             if (model) {
-                model[0].title = title;
-                model[0].slug = slug;
+                model[0].name = name;
+                model[0].designation = designation;
                 model[0].description = description;
                 model[0].image_link = image_link;
-                model[0].short_order = short_order;
-                model[0].meta_title = meta_title;
-                model[0].meta_description = meta_description;
-                model[0].meta_keywords = meta_keywords;
-                model[0].meta_image_link = meta_image_link;
             }
             state.errorMess = null
             successMessage("Data Updated Successfully")
         },
-        [updateBlogsData.rejected]: (state, {payload}) => {
+        [updateTestimonial.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
             errorMessage(payload)
         },
 
-        [deleteBlogsData.pending]: (state) => {
+        [deleteTestimonial.pending]: (state) => {
             state.isLoading = true
         },
-        [deleteBlogsData.fulfilled]: (state, {payload}) => {
+        [deleteTestimonial.fulfilled]: (state, {payload}) => {
             state.isLoading = false
             const {id} = payload
-            state.blogs = state.blogs.filter((blog) => blog.id !== id);
+            state.testimonials = state.testimonials.filter((ts) => ts.id !== id);
             state.errorMess = null
             successMessage("Data Deleted Successfully")
         },
-        [deleteBlogsData.rejected]: (state, {payload}) => {
+        [deleteTestimonial.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
             errorMessage(payload)
@@ -170,4 +160,4 @@ export const BlogSlice = createSlice({
     }
 });
 
-export default BlogSlice.reducer
+export default TestimonialSlice.reducer

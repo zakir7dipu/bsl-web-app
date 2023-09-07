@@ -6,22 +6,22 @@ const {apiAccess} = new Api();
 
 const initialData = {
     isLoading: true,
-    blogs: [],
-    apiUrl: 'blogs',
+    pages: [],
+    apiUrl: 'pages',
     errorMess: null,
     metaInfo: []
 }
-
 // all data get
-export const fetchAllBlogs = createAsyncThunk("blogsData/fetchAllBlogs", async (data, {rejectWithValue}) => {
+export const fetchAllPageData = createAsyncThunk("pagesData/fetchAllPageData", async (arg, {rejectWithValue}) => {
     try {
-        const res = await apiAccess.get(`${initialData.apiUrl}/${data}`)
+        const res = await apiAccess.get(initialData.apiUrl)
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.data)
     }
 })
-export const fetchBlogsDataBySlug = createAsyncThunk("blogsData/fetchBlogsDataBySlug", async (brand, {rejectWithValue}) => {
+
+export const fetchClientBySlug = createAsyncThunk("pagesData/fetchClientBySlug", async (slug, {rejectWithValue}) => {
     try {
         const res = await apiAccess.get(`${initialData.apiUrl}/${slug}/show`);
         return res.data
@@ -30,22 +30,21 @@ export const fetchBlogsDataBySlug = createAsyncThunk("blogsData/fetchBlogsDataBy
     }
 })
 
-// create brand
-export const createBlogsData = createAsyncThunk("blogsData/createBlogsData", async (data, {rejectWithValue}) => {
+export const createPageData = createAsyncThunk("pagesData/createPageData", async (data, {rejectWithValue}) => {
     try {
         const config = {
             headers: {
                 'content-type': 'multipart/form-data'
             }
         }
-        const res = await apiAccess.post("blogs-store", data, config)
+        const res = await apiAccess.post("pages-store", data, config)
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.data)
     }
 })
 
-export const updateBlogsData = createAsyncThunk("blogsData/updateBlogsData", async (data, {rejectWithValue}) => {
+export const updatePageData = createAsyncThunk("pagesData/updatePageData", async (data, {rejectWithValue}) => {
     try {
         const config = {
             headers: {
@@ -59,110 +58,100 @@ export const updateBlogsData = createAsyncThunk("blogsData/updateBlogsData", asy
         return rejectWithValue(error.response.data)
     }
 })
-export const deleteBlogsData = createAsyncThunk("blogsData/deleteBlogsData", async (data, {rejectWithValue}) => {
+
+export const deletePageData = createAsyncThunk("pagesData/deletePageData", async (data, {rejectWithValue}) => {
     try {
-        const {id} = data
-        const res = await apiAccess.delete(`${initialData.apiUrl}/${id}/destroy`)
+        const {client} = data
+        const res = await apiAccess.delete(`${initialData.apiUrl}/${client}/destroy`)
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.data)
     }
 })
 
-
-export const BlogSlice = createSlice({
-    name: "blogsData",
+export const PageSlice = createSlice({
+    name: 'pagesData',
     initialState: initialData,
     extraReducers: {
-        [fetchAllBlogs.pending]: (state) => {
+        [fetchAllPageData.pending]: (state) => {
             state.isLoading = true
         },
-        [fetchAllBlogs.fulfilled]: (state, {payload}) => {
+        [fetchAllPageData.fulfilled]: (state, {payload}) => {
             state.isLoading = false;
-            state.blogs = payload;
+            state.pages = payload;
         },
-        [fetchAllBlogs.rejected]: (state, {payload}) => {
+        [fetchAllPageData.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
-            errorMessage(payload)
         },
 
-        [fetchBlogsDataBySlug.pending]: (state) => {
+        [fetchClientBySlug.pending]: (state) => {
             state.isLoading = true
         },
-        [fetchBlogsDataBySlug.fulfilled]: (state, {payload}) => {
+        [fetchClientBySlug.fulfilled]: (state, {payload}) => {
             state.isLoading = false;
             state.metaInfo = payload;
         },
-        [fetchBlogsDataBySlug.rejected]: (state, {payload}) => {
+        [fetchClientBySlug.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
         },
 
-        [createBlogsData.pending]: (state) => {
+        [createPageData.pending]: (state) => {
             state.isLoading = true
         },
-        [createBlogsData.fulfilled]: (state, {payload}) => {
+        [createPageData.fulfilled]: (state, {payload}) => {
             state.isLoading = false
-            state.blogs = [...state.blogs, payload]
+            state.pages = [...state.pages, payload]
             state.errorMess = null
             successMessage("Data Created Successfully")
         },
-        [createBlogsData.rejected]: (state, {payload}) => {
+        [createPageData.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
             errorMessage(payload)
         },
 
-        [updateBlogsData.pending]: (state) => {
+        [updatePageData.pending]: (state) => {
             state.isLoading = true
         },
-        [updateBlogsData.fulfilled]: (state, {payload}) => {
+        [updatePageData.fulfilled]: (state, {payload}) => {
             state.isLoading = false
             const {
-                title,
+                name,
                 slug,
                 description,
                 image_link,
-                short_order,
-                meta_title,
-                meta_description,
-                meta_keywords,
-                meta_image_link,
                 id
-            } = payload
-            const model = state.blogs.filter((blog) => blog.id === id);
-            if (model) {
-                model[0].title = title;
-                model[0].slug = slug;
-                model[0].description = description;
-                model[0].image_link = image_link;
-                model[0].short_order = short_order;
-                model[0].meta_title = meta_title;
-                model[0].meta_description = meta_description;
-                model[0].meta_keywords = meta_keywords;
-                model[0].meta_image_link = meta_image_link;
+            } = payload;
+
+            const updateData = state.pages.filter((page) => page.id === id);
+            if (updateData) {
+                updateData[0].name = name;
+                updateData[0].slug = slug;
+                updateData[0].description = description;
+                updateData[0].image_link = image_link;
             }
             state.errorMess = null
             successMessage("Data Updated Successfully")
         },
-        [updateBlogsData.rejected]: (state, {payload}) => {
+        [updatePageData.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
             errorMessage(payload)
         },
 
-        [deleteBlogsData.pending]: (state) => {
+        [deletePageData.pending]: (state) => {
             state.isLoading = true
         },
-        [deleteBlogsData.fulfilled]: (state, {payload}) => {
+        [deletePageData.fulfilled]: (state, {payload}) => {
             state.isLoading = false
             const {id} = payload
-            state.blogs = state.blogs.filter((blog) => blog.id !== id);
+            state.pages = state.pages.filter((page) => page.id !== id);
             state.errorMess = null
             successMessage("Data Deleted Successfully")
         },
-        [deleteBlogsData.rejected]: (state, {payload}) => {
+        [deletePageData.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
             errorMessage(payload)
@@ -170,4 +159,4 @@ export const BlogSlice = createSlice({
     }
 });
 
-export default BlogSlice.reducer
+export default PageSlice.reducer;
