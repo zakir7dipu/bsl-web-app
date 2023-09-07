@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AboutsController;
+use App\Http\Controllers\API\BlogsController;
 use App\Http\Controllers\API\ClientsController;
 use App\Http\Controllers\API\CourseController;
 use App\Http\Controllers\API\CurricularController;
@@ -132,4 +133,12 @@ Route::controller(CurricularController::class)->group(function () {
     Route::get("curricular/{id}/show", "show");
     Route::post("curricular/{id}/update", "update");
     Route::delete("curricular/{id}/destroy", "destroy");
+});
+
+Route::controller(BlogsController::class)->group(function () {
+    Route::get("blogs/{take?}", "index");
+    Route::post("blogs-store", "store");
+    Route::get("blogs/{slug}/show", "show");
+    Route::post("blogs/{id}/update", "update");
+    Route::delete("blogs/{id}/destroy", "destroy");
 });

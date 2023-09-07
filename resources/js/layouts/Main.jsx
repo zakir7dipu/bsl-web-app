@@ -34,6 +34,7 @@ import BackendCourses from "../backend/pages/Courses/Index.jsx";
 import CourseCreate from "../backend/pages/Courses/Create.jsx";
 import CourseEdit from "../backend/pages/Courses/Edit.jsx";
 import BackendCurricular from "../backend/pages/Courses/Curricular";
+import BackendBlogs from "../backend/pages/Blogs";
 
 import {checkAccess, refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
 import {useDispatch, useSelector} from "react-redux";
@@ -81,25 +82,24 @@ function Main() {
                 <Route path="login" element={<Login/>}/>
                 {isAccess &&
                     <Route path="admin" element={<Admin/>}>
-                    <Route index element={<Dashboard/>}/>
-                    <Route path="profile" element={<Profile/>}/>
-                    <Route path="test" element={<TestPage/>}/>
-                    <Route path="settings">
-                        <Route index element={<SettingsMain/>}/>
-                        <Route path="seo" element={<SEO/>}/>
-                        <Route path="general" element={<GeneralSetting/>}/>
-                    </Route>
-                    <Route path="page-settings">
-                        <Route index element={<PageSettings/>}/>
-                        <Route path="slider" element={<Slider/>}/>
-                        <Route path="industry" element={<IndustrySettings/>}/>
-                        <Route path="technology" element={<TechnologySettings/>}/>
-                        <Route path="about" element={<AboutSettings/>}/>
-                        <Route path="contact" element={<ContactSettings/>}/>
-                    </Route>
+                        <Route index element={<Dashboard/>}/>
+                        <Route path="profile" element={<Profile/>}/>
+                        <Route path="test" element={<TestPage/>}/>
+                        <Route path="settings">
+                            <Route index element={<SettingsMain/>}/>
+                            <Route path="seo" element={<SEO/>}/>
+                            <Route path="general" element={<GeneralSetting/>}/>
+                        </Route>
+                        <Route path="page-settings">
+                            <Route index element={<PageSettings/>}/>
+                            <Route path="slider" element={<Slider/>}/>
+                            <Route path="industry" element={<IndustrySettings/>}/>
+                            <Route path="technology" element={<TechnologySettings/>}/>
+                            <Route path="about" element={<AboutSettings/>}/>
+                            <Route path="contact" element={<ContactSettings/>}/>
+                        </Route>
                         <Route path="technology" element={<Technology/>}/>
                         <Route path="industries" element={<Industries/>}/>
-
                         <Route path="about-us" element={<BackendAbout/>}/>
                         <Route path="our-management" element={<BackendManagement/>}/>
                         <Route path="our-teams" element={<BackendTeams/>}/>
@@ -111,13 +111,13 @@ function Main() {
                             <Route path=":id/edit" element={<ServiceCategoryEdit/>}/>
                         </Route>
                         <Route path="products" element={<BackendProduct/>}/>
-
                         <Route path="courses">
                             <Route index element={<BackendCourses/>}/>
                             <Route path="create" element={<CourseCreate/>}/>
                             <Route path=":id/edit" element={<CourseEdit/>}/>
                             <Route path=":id/curricular" element={<BackendCurricular/>}/>
                         </Route>
+                        <Route path="blogs" element={<BackendBlogs/>}/>
                     </Route>
                 }
             </Route>

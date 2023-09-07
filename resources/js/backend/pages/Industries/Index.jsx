@@ -169,8 +169,8 @@ function Index(props) {
         return (
             <>
                 <HeaderMeta
-                    title="Technology Settings"
-                    url="/bsl/admin/page-settings/industries"
+                    title="Industries"
+                    url="/bsl/admin/industries"
                 />
                 <Breadcrumb list={breadcrumb}/>
 

@@ -32,6 +32,7 @@ class Blogs extends Model
             if(Auth::check()){
                 $query->created_by = Auth::user()->id;
             }
+
         });
         static::updating(function($query){
             if(Auth::check()){

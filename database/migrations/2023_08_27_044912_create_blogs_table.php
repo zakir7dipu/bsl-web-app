@@ -14,16 +14,16 @@ return new class extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
 
-            $table->string('title',128)->nullable();
-            $table->string('slug',128)->unique()->nullable();
+            $table->string('title',256)->nullable();
+            $table->string('slug',256)->unique()->nullable();
             $table->text('description')->nullable();
 
             $table->string('image_link',128)->nullable();
 
             $table->integer('short_order')->nullable();
-            $table->string('meta_title',32)->nullable();
+            $table->string('meta_title',256)->nullable();
             $table->text('meta_description')->nullable();
-            $table->string('meta_keywords',128)->nullable();
+            $table->text('meta_keywords',)->nullable();
             $table->string('meta_image_link',128)->nullable();
 
             $table->unsignedBigInteger('created_by')->nullable();
