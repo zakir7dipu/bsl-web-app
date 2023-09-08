@@ -46,10 +46,8 @@ class CaseStudyController extends Controller
     {
         $request->validate([
             "name" => ["required", "string", "max:128"],
-            "descriptions" => ["required", "max:10"],
+            "descriptions" => ["required"],
             "clients" => ["required", "string"],
-            "location" => ["required", "string"],
-            "complete_date" => ["required", "string"],
             'image_link' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']
         ]);
 
@@ -104,10 +102,8 @@ class CaseStudyController extends Controller
     {
         $request->validate([
             "name" => ["required", "string", "max:128"],
-            "descriptions" => ["required", "max:10"],
+            "descriptions" => ["required"],
             "clients" => ["required", "string"],
-            "location" => ["required", "string"],
-            "complete_date" => ["required", "string"],
             'image_link' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']
         ]);
 
