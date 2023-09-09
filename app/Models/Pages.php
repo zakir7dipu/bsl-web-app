@@ -14,7 +14,7 @@ class Pages extends Model
     protected $table = "pages";
 
     protected $fillable = [
-        'name',
+        'title',
         'slug',
         'description',
         'image_link',
