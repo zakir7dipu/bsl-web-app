@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {BsSearch} from "react-icons/bs";
 import DataTable from "react-data-table-component";
 
-function DataTableComponent({columns, data, isLoading, itemPerPage}) {
+function DataTableComponent({columns, data, isLoading, itemPerPage,handleSearchText}) {
     const [rowPerPage, setRowPerPage] = useState(itemPerPage)
 
     const customStyles = {
@@ -28,7 +28,7 @@ function DataTableComponent({columns, data, isLoading, itemPerPage}) {
         <div>
             <div className="row mb-3">
                 <div className="col-lg-4 col-md-8" style={{position: 'relative'}}>
-                    <input type="text" placeholder="Search..." className={`form-control`} style={{paddingLeft: "20px", paddingRight:"50px", borderRadius: '5px'}}/>
+                    <input type="text" onChange={handleSearchText && handleSearchText} placeholder="Search..." className={`form-control`} style={{paddingLeft: "20px", paddingRight:"50px", borderRadius: '5px'}}/>
                     <span style={{position:"absolute", top: '50%', right: '30px', transform: 'translate(0, -50%)', cursor: 'pointer'}}><BsSearch/></span>
                 </div>
                 <div className="col-lg-8 col-md-4 d-flex justify-content-end">

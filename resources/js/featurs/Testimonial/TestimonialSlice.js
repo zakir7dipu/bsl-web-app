@@ -69,6 +69,14 @@ export const deleteTestimonial = createAsyncThunk("testimonialData/deleteTestimo
     }
 })
 
+export const fetchSearchTestimonial = createAsyncThunk("testimonialData/fetchSearchTestimonial", async (data, {rejectWithValue}) => {
+    try {
+        const res = await apiAccess.post(`${initialData.apiUrl}-search`,data)
+        return res.data
+    } catch (error) {
+        return rejectWithValue(error.response.data)
+    }
+})
 
 export const TestimonialSlice = createSlice({
     name: "testimonialData",
@@ -153,6 +161,20 @@ export const TestimonialSlice = createSlice({
             successMessage("Data Deleted Successfully")
         },
         [deleteTestimonial.rejected]: (state, {payload}) => {
+            state.isLoading = false;
+            state.message = payload;
+            errorMessage(payload)
+        },
+
+        [fetchSearchTestimonial.pending]: (state) => {
+            state.isLoading = false
+        },
+        [fetchSearchTestimonial.fulfilled]: (state, {payload}) => {
+            state.isLoading = false
+            state.testimonials = payload;
+            state.errorMess = null
+        },
+        [fetchSearchTestimonial.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
             errorMessage(payload)

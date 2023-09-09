@@ -68,7 +68,14 @@ export const deletePageData = createAsyncThunk("pagesData/deletePageData", async
         return rejectWithValue(error.response.data)
     }
 })
-
+export const fetchSearchPageData = createAsyncThunk("testimonialData/fetchSearchPageData", async (data, {rejectWithValue}) => {
+    try {
+        const res = await apiAccess.post(`${initialData.apiUrl}-search`,data)
+        return res.data
+    } catch (error) {
+        return rejectWithValue(error.response.data)
+    }
+})
 export const PageSlice = createSlice({
     name: 'pagesData',
     initialState: initialData,
@@ -152,6 +159,19 @@ export const PageSlice = createSlice({
             successMessage("Data Deleted Successfully")
         },
         [deletePageData.rejected]: (state, {payload}) => {
+            state.isLoading = false;
+            state.message = payload;
+            errorMessage(payload)
+        },
+        [fetchSearchPageData.pending]: (state) => {
+            state.isLoading = false
+        },
+        [fetchSearchPageData.fulfilled]: (state, {payload}) => {
+            state.isLoading = false
+            state.pages = payload;
+            state.errorMess = null
+        },
+        [fetchSearchPageData.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
             errorMessage(payload)

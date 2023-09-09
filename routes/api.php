@@ -162,6 +162,7 @@ Route::controller(TestimonialController::class)->group(function () {
     Route::get("testimonial/{slug}/show", "show");
     Route::post("testimonial/{id}/update", "update");
     Route::delete("testimonial/{id}/destroy", "destroy");
+	Route::post("testimonial-search", "search");
 });
 
 Route::controller(PagesController::class)->group(function () {
@@ -170,6 +171,7 @@ Route::controller(PagesController::class)->group(function () {
     Route::get("pages/{slug}/show", "show");
     Route::post("pages/{id}/update", "update");
     Route::delete("pages/{id}/destroy", "destroy");
+	Route::post("pages-search", "search");
 });
 
 Route::controller(MessageController::class)->group(function () {
