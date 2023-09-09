@@ -3,16 +3,32 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Testimonials;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TestimonialController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($items)
     {
-        //
+        try {
+            if ($items > 0) {
+                $testimonials = Testimonials::orderBy('id', 'desc')->take($items)->get();
+            } else {
+                $testimonials = Testimonials::orderBy('id', 'desc')->get();
+            }
+            return response()->json($testimonials);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), $th->getCode());
+        }
     }
 
     /**
@@ -20,7 +36,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -28,7 +44,34 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name" => ["required", "string", "max:128"],
+            "designation" => ["required"],
+            "description" => ["required", "string"],
+            'image_link' => ['image',  'max:2048']
+        ]);
+
+        $input = $request->all();
+
+        DB::beginTransaction();
+        try {
+
+            if ($request->hasFile('image_link')) {
+                $filename = time() . '-' . 'case-study.' . fileInfo($request->image_link)['extension'];
+                $path = 'uploads/testimonial';
+                fileUpload($request->image_link, $path, $filename);
+                $img = '/' . $path . '/' . $filename;
+                $input['image_link'] = $img;
+            }
+
+            $testimonial = Testimonials::create($input);
+
+            DB::commit();
+            return response()->json($testimonial);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return response()->json($th, $th->getCode());
+        }
     }
 
     /**
@@ -36,7 +79,12 @@ class TestimonialController extends Controller
      */
     public function show(string $id)
     {
-        //
+        try {
+            $testimonial = Testimonials::where('id', $id)->first();
+            return response()->json($testimonial);
+        } catch (\Throwable $th) {
+            return response()->json($th, $th->getCode());
+        }
     }
 
     /**
@@ -52,7 +100,38 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            "name" => ["required", "string", "max:128"],
+            "designation" => ["required"],
+            "description" => ["required", "string"],
+        ]);
+
+        $input = $request->all();
+
+        $testimonial = Testimonials::findOrFail($id);
+
+        DB::beginTransaction();
+        try {
+
+            if ($request->hasFile('image_link')) {
+                $filename = time() . '-' . 'case-study.' . fileInfo($request->image_link)['extension'];
+                $path = 'uploads/testimonial';
+                if ($testimonial->image_link) {
+                    fileDelete($testimonial->image_link);
+                }
+                fileUpload($request->image_link, $path, $filename);
+                $img = '/' . $path . '/' . $filename;
+                $input['image_link'] = $img;
+            }
+
+            $testimonial->update($input);
+
+            DB::commit();
+            return response()->json($testimonial);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return response()->json($th, $th->getCode());
+        }
     }
 
     /**
@@ -60,6 +139,19 @@ class TestimonialController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::beginTransaction();
+        try {
+
+            $testimonial = Testimonials::where('id', $id)->first();
+            if ($testimonial->image_link) {
+                fileDelete($testimonial->image_link);
+            }
+            $testimonial->delete();
+            DB::commit();
+            return response()->json($testimonial);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return response()->json($th, $th->getCode());
+        }
     }
 }
