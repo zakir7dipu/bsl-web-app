@@ -1,0 +1,1758 @@
+{
+  "node_modules/react-multi-carousel/lib/revicons.eot": {
+    "file": "assets/revicons-9e4d4c68.eot",
+    "src": "node_modules/react-multi-carousel/lib/revicons.eot"
+  },
+  "node_modules/react-multi-carousel/lib/revicons.ttf": {
+    "file": "assets/revicons-4ca02b8a.ttf",
+    "src": "node_modules/react-multi-carousel/lib/revicons.ttf"
+  },
+  "node_modules/react-multi-carousel/lib/revicons.woff": {
+    "file": "assets/revicons-f7b9c306.woff",
+    "src": "node_modules/react-multi-carousel/lib/revicons.woff"
+  },
+  "resources/backend-assets/icons/cryptocoins/fonts/cryptocoins.ttf": {
+    "file": "assets/cryptocoins-68abea86.ttf",
+    "src": "resources/backend-assets/icons/cryptocoins/fonts/cryptocoins.ttf"
+  },
+  "resources/backend-assets/icons/cryptocoins/fonts/cryptocoins.woff": {
+    "file": "assets/cryptocoins-fad8040a.woff",
+    "src": "resources/backend-assets/icons/cryptocoins/fonts/cryptocoins.woff"
+  },
+  "resources/backend-assets/icons/cryptocoins/fonts/cryptocoins.woff2": {
+    "file": "assets/cryptocoins-3a6acd3b.woff2",
+    "src": "resources/backend-assets/icons/cryptocoins/fonts/cryptocoins.woff2"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ad.svg": {
+    "file": "assets/ad-80ac0f73.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ad.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ae.svg": {
+    "file": "assets/ae-fbc34886.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ae.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/af.svg": {
+    "file": "assets/af-74255fde.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/af.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ag.svg": {
+    "file": "assets/ag-3a902e40.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ag.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ai.svg": {
+    "file": "assets/ai-c5c20cce.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ai.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/al.svg": {
+    "file": "assets/al-e785f57f.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/al.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/am.svg": {
+    "file": "assets/am-ce852f9d.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/am.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ao.svg": {
+    "file": "assets/ao-28f4c921.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ao.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/aq.svg": {
+    "file": "assets/aq-f66fd555.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/aq.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ar.svg": {
+    "file": "assets/ar-bff351b2.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ar.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/as.svg": {
+    "file": "assets/as-5c27006a.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/as.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/at.svg": {
+    "file": "assets/at-0629657c.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/at.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/au.svg": {
+    "file": "assets/au-61562904.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/au.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/aw.svg": {
+    "file": "assets/aw-79feda6f.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/aw.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ax.svg": {
+    "file": "assets/ax-b08e00be.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ax.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/az.svg": {
+    "file": "assets/az-1c1cf72e.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/az.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ba.svg": {
+    "file": "assets/ba-88db045c.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ba.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/bb.svg": {
+    "file": "assets/bb-a54f24df.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/bb.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/bd.svg": {
+    "file": "assets/bd-1fd43a37.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/bd.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/be.svg": {
+    "file": "assets/be-9f7261a4.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/be.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/bf.svg": {
+    "file": "assets/bf-46585dfe.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/bf.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/bg.svg": {
+    "file": "assets/bg-f0218e2f.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/bg.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/bh.svg": {
+    "file": "assets/bh-3451a8b4.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/bh.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/bi.svg": {
+    "file": "assets/bi-0fdf3446.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/bi.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/bj.svg": {
+    "file": "assets/bj-cb04ae04.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/bj.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/bl.svg": {
+    "file": "assets/bl-020ee5e3.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/bl.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/bm.svg": {
+    "file": "assets/bm-09356960.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/bm.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/bn.svg": {
+    "file": "assets/bn-23a4433a.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/bn.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/bo.svg": {
+    "file": "assets/bo-cd73763c.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/bo.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/bq.svg": {
+    "file": "assets/bq-8472ef29.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/bq.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/br.svg": {
+    "file": "assets/br-89780ed2.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/br.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/bs.svg": {
+    "file": "assets/bs-2556d5ec.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/bs.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/bt.svg": {
+    "file": "assets/bt-7608059f.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/bt.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/bv.svg": {
+    "file": "assets/bv-d4dbc6b7.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/bv.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/bw.svg": {
+    "file": "assets/bw-cf0a45b7.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/bw.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/by.svg": {
+    "file": "assets/by-54856178.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/by.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/bz.svg": {
+    "file": "assets/bz-69ac0104.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/bz.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ca.svg": {
+    "file": "assets/ca-f925a23c.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ca.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/cc.svg": {
+    "file": "assets/cc-398f7184.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/cc.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/cd.svg": {
+    "file": "assets/cd-f890fac5.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/cd.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/cf.svg": {
+    "file": "assets/cf-0236bc07.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/cf.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/cg.svg": {
+    "file": "assets/cg-448153a1.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/cg.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ch.svg": {
+    "file": "assets/ch-ff34bff1.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ch.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ci.svg": {
+    "file": "assets/ci-096f12b8.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ci.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ck.svg": {
+    "file": "assets/ck-177b9497.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ck.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/cl.svg": {
+    "file": "assets/cl-0d5de868.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/cl.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/cm.svg": {
+    "file": "assets/cm-6aa2a51d.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/cm.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/cn.svg": {
+    "file": "assets/cn-4c6ea2cd.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/cn.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/co.svg": {
+    "file": "assets/co-a5fcf87d.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/co.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/cr.svg": {
+    "file": "assets/cr-5caf88db.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/cr.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/cu.svg": {
+    "file": "assets/cu-33fe0423.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/cu.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/cv.svg": {
+    "file": "assets/cv-6db0dccf.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/cv.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/cw.svg": {
+    "file": "assets/cw-64012045.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/cw.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/cx.svg": {
+    "file": "assets/cx-a3fb43bc.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/cx.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/cy.svg": {
+    "file": "assets/cy-f8625bef.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/cy.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/cz.svg": {
+    "file": "assets/cz-4cd949b9.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/cz.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/de.svg": {
+    "file": "assets/de-2f7c37c3.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/de.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/dj.svg": {
+    "file": "assets/dj-d98d2c7e.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/dj.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/dk.svg": {
+    "file": "assets/dk-a68b01da.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/dk.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/dm.svg": {
+    "file": "assets/dm-1013dcc4.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/dm.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/do.svg": {
+    "file": "assets/do-f995d8d2.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/do.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/dz.svg": {
+    "file": "assets/dz-f198357e.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/dz.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ec.svg": {
+    "file": "assets/ec-35b4b125.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ec.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ee.svg": {
+    "file": "assets/ee-7affd523.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ee.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/eg.svg": {
+    "file": "assets/eg-f688770c.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/eg.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/eh.svg": {
+    "file": "assets/eh-89536bf6.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/eh.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/er.svg": {
+    "file": "assets/er-d4d808e5.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/er.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/es.svg": {
+    "file": "assets/es-afc75481.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/es.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/et.svg": {
+    "file": "assets/et-778f3d27.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/et.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/fi.svg": {
+    "file": "assets/fi-a6816a3a.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/fi.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/fj.svg": {
+    "file": "assets/fj-e5a7abaf.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/fj.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/fk.svg": {
+    "file": "assets/fk-05f7aa23.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/fk.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/fm.svg": {
+    "file": "assets/fm-9db2cfa6.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/fm.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/fo.svg": {
+    "file": "assets/fo-4598e293.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/fo.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/fr.svg": {
+    "file": "assets/fr-a0fc8d66.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/mf.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ga.svg": {
+    "file": "assets/ga-3d0965f5.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ga.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/gb.svg": {
+    "file": "assets/gb-fd3be68d.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/gb.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/gd.svg": {
+    "file": "assets/gd-ffdbc0d7.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/gd.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ge.svg": {
+    "file": "assets/ge-e7df76b0.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ge.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/gf.svg": {
+    "file": "assets/gf-0f560ccf.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/gf.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/gg.svg": {
+    "file": "assets/gg-fb18fdf4.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/gg.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/gh.svg": {
+    "file": "assets/gh-2c8501b7.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/gh.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/gi.svg": {
+    "file": "assets/gi-6755325f.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/gi.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/gl.svg": {
+    "file": "assets/gl-ec10fca8.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/gl.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/gm.svg": {
+    "file": "assets/gm-b218daec.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/gm.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/gn.svg": {
+    "file": "assets/gn-9f5f1fb4.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/gn.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/gp.svg": {
+    "file": "assets/fr-a0fc8d66.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/mf.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/gq.svg": {
+    "file": "assets/gq-6e945b23.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/gq.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/gr.svg": {
+    "file": "assets/gr-d52739ab.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/gr.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/gs.svg": {
+    "file": "assets/gs-2ac31f4b.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/gs.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/gt.svg": {
+    "file": "assets/gt-d8d2a0de.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/gt.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/gu.svg": {
+    "file": "assets/gu-d53a4051.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/gu.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/gw.svg": {
+    "file": "assets/gw-cc7b1f44.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/gw.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/gy.svg": {
+    "file": "assets/gy-f0675686.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/gy.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/hk.svg": {
+    "file": "assets/hk-c5e98990.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/hk.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/hm.svg": {
+    "file": "assets/hm-fe9178cd.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/hm.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/hn.svg": {
+    "file": "assets/hn-0c3dcc21.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/hn.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/hr.svg": {
+    "file": "assets/hr-f60a29f5.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/hr.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ht.svg": {
+    "file": "assets/ht-62654541.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ht.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/hu.svg": {
+    "file": "assets/hu-b3ff04a1.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/hu.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/id.svg": {
+    "file": "assets/id-e222083e.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/id.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ie.svg": {
+    "file": "assets/ie-5a10ccfa.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ie.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/il.svg": {
+    "file": "assets/il-e791bbc3.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/il.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/im.svg": {
+    "file": "assets/im-14af7486.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/im.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/in.svg": {
+    "file": "assets/in-33344acf.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/in.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/io.svg": {
+    "file": "assets/io-cb8c4c94.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/io.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/iq.svg": {
+    "file": "assets/iq-c232b2ef.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/iq.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ir.svg": {
+    "file": "assets/ir-c213d5b0.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ir.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/is.svg": {
+    "file": "assets/is-ee617b99.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/is.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/it.svg": {
+    "file": "assets/it-cd8557b1.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/it.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/je.svg": {
+    "file": "assets/je-a2481728.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/je.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/jm.svg": {
+    "file": "assets/jm-e87a7758.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/jm.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/jo.svg": {
+    "file": "assets/jo-a6dd6e41.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/jo.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/jp.svg": {
+    "file": "assets/jp-49abf6c1.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/jp.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ke.svg": {
+    "file": "assets/ke-e5be6370.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ke.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/kg.svg": {
+    "file": "assets/kg-61116787.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/kg.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/kh.svg": {
+    "file": "assets/kh-4926b5ea.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/kh.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ki.svg": {
+    "file": "assets/ki-2f303d22.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ki.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/km.svg": {
+    "file": "assets/km-f73fbd5b.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/km.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/kn.svg": {
+    "file": "assets/kn-77248103.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/kn.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/kp.svg": {
+    "file": "assets/kp-2f0b306c.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/kp.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/kr.svg": {
+    "file": "assets/kr-f8c368c6.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/kr.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/kw.svg": {
+    "file": "assets/kw-61581eb8.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/kw.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ky.svg": {
+    "file": "assets/ky-f02977bc.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ky.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/kz.svg": {
+    "file": "assets/kz-04faa6af.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/kz.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/la.svg": {
+    "file": "assets/la-95ff919a.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/la.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/lb.svg": {
+    "file": "assets/lb-90843a3f.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/lb.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/lc.svg": {
+    "file": "assets/lc-85695827.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/lc.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/li.svg": {
+    "file": "assets/li-c37bd7e1.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/li.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/lk.svg": {
+    "file": "assets/lk-19dfaee2.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/lk.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/lr.svg": {
+    "file": "assets/lr-03ce9822.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/lr.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ls.svg": {
+    "file": "assets/ls-c6ac43c7.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ls.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/lt.svg": {
+    "file": "assets/lt-bc46ad0a.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/lt.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/lu.svg": {
+    "file": "assets/lu-3091f4d3.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/lu.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/lv.svg": {
+    "file": "assets/lv-ce4922e0.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/lv.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ly.svg": {
+    "file": "assets/ly-90f09e67.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ly.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ma.svg": {
+    "file": "assets/ma-3742df61.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ma.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/mc.svg": {
+    "file": "assets/mc-cc830768.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/mc.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/md.svg": {
+    "file": "assets/md-9fcf4a9f.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/md.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/me.svg": {
+    "file": "assets/me-82b27da4.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/me.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/mf.svg": {
+    "file": "assets/fr-a0fc8d66.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/mf.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/mg.svg": {
+    "file": "assets/mg-38544ea2.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/mg.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/mh.svg": {
+    "file": "assets/mh-5d59a950.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/mh.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/mk.svg": {
+    "file": "assets/mk-3d3f89d0.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/mk.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ml.svg": {
+    "file": "assets/ml-335df169.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ml.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/mm.svg": {
+    "file": "assets/mm-851517b8.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/mm.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/mn.svg": {
+    "file": "assets/mn-b2f0c830.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/mn.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/mo.svg": {
+    "file": "assets/mo-6b25b819.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/mo.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/mp.svg": {
+    "file": "assets/mp-c0208f84.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/mp.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/mq.svg": {
+    "file": "assets/mq-4c96e77a.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/mq.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/mr.svg": {
+    "file": "assets/mr-7b6202f8.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/mr.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ms.svg": {
+    "file": "assets/ms-5f36ecbd.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ms.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/mt.svg": {
+    "file": "assets/mt-04dda128.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/mt.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/mu.svg": {
+    "file": "assets/mu-d6042299.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/mu.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/mv.svg": {
+    "file": "assets/mv-faa0cf78.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/mv.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/mw.svg": {
+    "file": "assets/mw-bc80b618.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/mw.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/mx.svg": {
+    "file": "assets/mx-38351dcd.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/mx.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/my.svg": {
+    "file": "assets/my-c9895ff1.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/my.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/mz.svg": {
+    "file": "assets/mz-a889dfcb.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/mz.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/na.svg": {
+    "file": "assets/na-b650ca0f.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/na.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/nc.svg": {
+    "file": "assets/nc-285e1bf2.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/yt.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ne.svg": {
+    "file": "assets/ne-bb8f6970.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ne.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/nf.svg": {
+    "file": "assets/nf-1f8e20f0.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/nf.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ng.svg": {
+    "file": "assets/ng-0bf3a5fc.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ng.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ni.svg": {
+    "file": "assets/ni-016598c2.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ni.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/nl.svg": {
+    "file": "assets/nl-9e1a01ee.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/nl.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/no.svg": {
+    "file": "assets/no-63e38c60.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/no.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/np.svg": {
+    "file": "assets/np-4f5bcd0d.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/np.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/nr.svg": {
+    "file": "assets/nr-981cf37a.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/nr.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/nu.svg": {
+    "file": "assets/nu-3e0324fb.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/nu.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/nz.svg": {
+    "file": "assets/nz-dffd6a34.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/nz.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/om.svg": {
+    "file": "assets/om-686c0ff1.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/om.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/pa.svg": {
+    "file": "assets/pa-cba70350.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/pa.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/pe.svg": {
+    "file": "assets/pe-ee4924c9.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/pe.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/pf.svg": {
+    "file": "assets/pf-d5b52776.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/pf.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/pg.svg": {
+    "file": "assets/pg-e377f3b4.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/pg.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ph.svg": {
+    "file": "assets/ph-12ac9456.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ph.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/pk.svg": {
+    "file": "assets/pk-a7db89ad.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/pk.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/pl.svg": {
+    "file": "assets/pl-e1430233.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/pl.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/pm.svg": {
+    "file": "assets/nc-285e1bf2.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/yt.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/pn.svg": {
+    "file": "assets/pn-6c666b10.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/pn.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/pr.svg": {
+    "file": "assets/pr-807b8523.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/pr.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ps.svg": {
+    "file": "assets/ps-b9b67adc.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ps.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/pt.svg": {
+    "file": "assets/pt-87e37d05.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/pt.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/pw.svg": {
+    "file": "assets/pw-ab5e7b22.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/pw.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/py.svg": {
+    "file": "assets/py-96ffc65a.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/py.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/qa.svg": {
+    "file": "assets/qa-42ef6c3e.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/qa.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/re.svg": {
+    "file": "assets/nc-285e1bf2.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/yt.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ro.svg": {
+    "file": "assets/ro-38f00fb8.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ro.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/rs.svg": {
+    "file": "assets/rs-652aaf5d.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/rs.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ru.svg": {
+    "file": "assets/ru-393e219e.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ru.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/rw.svg": {
+    "file": "assets/rw-79b6246d.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/rw.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/sa.svg": {
+    "file": "assets/sa-4a45abf1.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/sa.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/sb.svg": {
+    "file": "assets/sb-cbf264f2.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/sb.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/sc.svg": {
+    "file": "assets/sc-554b6525.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/sc.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/sd.svg": {
+    "file": "assets/sd-8bcd76c9.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/sd.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/se.svg": {
+    "file": "assets/se-f7c79a45.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/se.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/sg.svg": {
+    "file": "assets/sg-9e751bc4.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/sg.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/sh.svg": {
+    "file": "assets/sh-2c64a26e.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/sh.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/si.svg": {
+    "file": "assets/si-e7df2850.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/si.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/sj.svg": {
+    "file": "assets/sj-1ce460b1.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/sj.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/sk.svg": {
+    "file": "assets/sk-23fb8524.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/sk.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/sl.svg": {
+    "file": "assets/sl-43522229.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/sl.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/sm.svg": {
+    "file": "assets/sm-70d28310.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/sm.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/sn.svg": {
+    "file": "assets/sn-4fb46f1a.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/sn.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/so.svg": {
+    "file": "assets/so-cd9ebde4.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/so.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/sr.svg": {
+    "file": "assets/sr-acb04110.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/sr.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ss.svg": {
+    "file": "assets/ss-562deed4.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ss.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/st.svg": {
+    "file": "assets/st-e5337941.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/st.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/sv.svg": {
+    "file": "assets/sv-ffda4c93.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/sv.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/sx.svg": {
+    "file": "assets/sx-419c945f.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/sx.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/sy.svg": {
+    "file": "assets/sy-795def13.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/sy.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/sz.svg": {
+    "file": "assets/sz-bb145761.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/sz.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/tc.svg": {
+    "file": "assets/tc-b56c8707.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/tc.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/td.svg": {
+    "file": "assets/td-4173b15d.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/td.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/tf.svg": {
+    "file": "assets/tf-77b92fc3.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/tf.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/tg.svg": {
+    "file": "assets/tg-aa3037cf.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/tg.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/th.svg": {
+    "file": "assets/th-75b306a8.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/th.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/tj.svg": {
+    "file": "assets/tj-4e57499f.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/tj.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/tk.svg": {
+    "file": "assets/tk-1192bc92.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/tk.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/tl.svg": {
+    "file": "assets/tl-de341e27.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/tl.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/tm.svg": {
+    "file": "assets/tm-5b9b1f60.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/tm.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/tn.svg": {
+    "file": "assets/tn-43bb3c66.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/tn.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/to.svg": {
+    "file": "assets/to-a870a6a3.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/to.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/tr.svg": {
+    "file": "assets/tr-d26bc7ed.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/tr.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/tt.svg": {
+    "file": "assets/tt-b53e3033.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/tt.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/tv.svg": {
+    "file": "assets/tv-3944d3be.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/tv.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/tw.svg": {
+    "file": "assets/tw-ea2ba70c.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/tw.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/tz.svg": {
+    "file": "assets/tz-cdc26140.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/tz.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ua.svg": {
+    "file": "assets/ua-ab405fa6.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ua.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ug.svg": {
+    "file": "assets/ug-06d57b2f.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ug.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/um.svg": {
+    "file": "assets/um-6c26a964.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/us.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/us.svg": {
+    "file": "assets/um-6c26a964.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/us.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/uy.svg": {
+    "file": "assets/uy-2d5a9764.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/uy.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/uz.svg": {
+    "file": "assets/uz-2d96afc8.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/uz.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/va.svg": {
+    "file": "assets/va-98a593ff.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/va.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/vc.svg": {
+    "file": "assets/vc-3e69c323.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/vc.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ve.svg": {
+    "file": "assets/ve-155d8315.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ve.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/vg.svg": {
+    "file": "assets/vg-df7d92e5.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/vg.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/vi.svg": {
+    "file": "assets/vi-9f6792cf.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/vi.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/vn.svg": {
+    "file": "assets/vn-d460022f.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/vn.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/vu.svg": {
+    "file": "assets/vu-59c7716d.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/vu.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/wf.svg": {
+    "file": "assets/wf-c3cde554.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/wf.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ws.svg": {
+    "file": "assets/ws-29d46d12.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ws.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/ye.svg": {
+    "file": "assets/ye-08c47467.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/ye.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/yt.svg": {
+    "file": "assets/nc-285e1bf2.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/yt.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/za.svg": {
+    "file": "assets/za-1837f3ba.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/za.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/zm.svg": {
+    "file": "assets/zm-08e519f4.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/zm.svg"
+  },
+  "resources/backend-assets/icons/flag-icon-css/flags/zw.svg": {
+    "file": "assets/zw-40dd71aa.svg",
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/zw.svg"
+  },
+  "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.eot": {
+    "file": "assets/fontawesome-webfont3e6e-7bfcab6d.eot",
+    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfontd41d.eot"
+  },
+  "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.svg": {
+    "file": "assets/fontawesome-webfont3e6e-fc378232.svg",
+    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.svg"
+  },
+  "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.ttf": {
+    "file": "assets/fontawesome-webfont3e6e-aa58f33f.ttf",
+    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.ttf"
+  },
+  "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.woff": {
+    "file": "assets/fontawesome-webfont3e6e-ba0c59de.woff",
+    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.woff"
+  },
+  "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.woff2": {
+    "file": "assets/fontawesome-webfont3e6e-2adefcbc.woff2",
+    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.woff2"
+  },
+  "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfontd41d.eot": {
+    "file": "assets/fontawesome-webfont3e6e-7bfcab6d.eot",
+    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfontd41d.eot"
+  },
+  "resources/backend-assets/icons/ionicons/fonts/ionicons.eot": {
+    "file": "assets/ionicons-a4803d7b.eot",
+    "src": "resources/backend-assets/icons/ionicons/fonts/ionicons.eot"
+  },
+  "resources/backend-assets/icons/ionicons/fonts/ionicons.svg": {
+    "file": "assets/ionicons-dd1d74ab.svg",
+    "src": "resources/backend-assets/icons/ionicons/fonts/ionicons.svg"
+  },
+  "resources/backend-assets/icons/ionicons/fonts/ionicons.ttf": {
+    "file": "assets/ionicons-2ba7f20b.ttf",
+    "src": "resources/backend-assets/icons/ionicons/fonts/ionicons.ttf"
+  },
+  "resources/backend-assets/icons/ionicons/fonts/ionicons.woff": {
+    "file": "assets/ionicons-709f2789.woff",
+    "src": "resources/backend-assets/icons/ionicons/fonts/ionicons.woff"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-arrows-10.eot": {
+    "file": "assets/linea-arrows-10-aa8e1eb6.eot",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-arrows-10d41d.eot"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-arrows-10.svg": {
+    "file": "assets/linea-arrows-10-0220f0bf.svg",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-arrows-10.svg"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-arrows-10.ttf": {
+    "file": "assets/linea-arrows-10-bf63aba4.ttf",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-arrows-10.ttf"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-arrows-10.woff": {
+    "file": "assets/linea-arrows-10-6afa35b7.woff",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-arrows-10.woff"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-arrows-10d41d.eot": {
+    "file": "assets/linea-arrows-10-aa8e1eb6.eot",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-arrows-10d41d.eot"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-basic-10.eot": {
+    "file": "assets/linea-basic-10-a4d53d08.eot",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-basic-10.eot"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-basic-10.svg": {
+    "file": "assets/linea-basic-10-2423df8c.svg",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-basic-10.svg"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-basic-10.ttf": {
+    "file": "assets/linea-basic-10-aad9aaf1.ttf",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-basic-10.ttf"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-basic-10.woff": {
+    "file": "assets/linea-basic-10-3f660cf1.woff",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-basic-10.woff"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-basic-10d41d.eot": {
+    "file": "assets/linea-basic-10-a4d53d08.eot",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-basic-10.eot"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10.eot": {
+    "file": "assets/linea-basic-elaboration-10-9984ab62.eot",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10d41d.eot"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10.svg": {
+    "file": "assets/linea-basic-elaboration-10-1bad7b04.svg",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10.svg"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10.ttf": {
+    "file": "assets/linea-basic-elaboration-10-212787b1.ttf",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10.ttf"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10.woff": {
+    "file": "assets/linea-basic-elaboration-10-68591083.woff",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10.woff"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10d41d.eot": {
+    "file": "assets/linea-basic-elaboration-10-9984ab62.eot",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10d41d.eot"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10.eot": {
+    "file": "assets/linea-ecommerce-10-d4e3c9f4.eot",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10.eot"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10.svg": {
+    "file": "assets/linea-ecommerce-10-a94ee766.svg",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10.svg"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10.ttf": {
+    "file": "assets/linea-ecommerce-10-d2f54399.ttf",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10.ttf"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10.woff": {
+    "file": "assets/linea-ecommerce-10-665b4a7c.woff",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10.woff"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10d41d.eot": {
+    "file": "assets/linea-ecommerce-10-d4e3c9f4.eot",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10.eot"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.eot": {
+    "file": "assets/linea-music-10-623ca9d9.eot",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.eot"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.svg": {
+    "file": "assets/linea-music-10-b0f18775.svg",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.svg"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.ttf": {
+    "file": "assets/linea-music-10-d27efb95.ttf",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.ttf"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.woff": {
+    "file": "assets/linea-music-10-9f151c44.woff",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.woff"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-music-10d41d.eot": {
+    "file": "assets/linea-music-10-623ca9d9.eot",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.eot"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-software-10.eot": {
+    "file": "assets/linea-software-10-fba5eb94.eot",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-software-10d41d.eot"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-software-10.svg": {
+    "file": "assets/linea-software-10-f0daa3ed.svg",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-software-10.svg"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-software-10.ttf": {
+    "file": "assets/linea-software-10-c9e6323c.ttf",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-software-10.ttf"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-software-10.woff": {
+    "file": "assets/linea-software-10-ee45f572.woff",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-software-10.woff"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-software-10d41d.eot": {
+    "file": "assets/linea-software-10-fba5eb94.eot",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-software-10d41d.eot"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10.eot": {
+    "file": "assets/linea-weather-10-5844acf7.eot",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10d41d.eot"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10.svg": {
+    "file": "assets/linea-weather-10-f409f6dd.svg",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10.svg"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10.ttf": {
+    "file": "assets/linea-weather-10-c0e93e30.ttf",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10.ttf"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10.woff": {
+    "file": "assets/linea-weather-10-2ca6f7a1.woff",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10.woff"
+  },
+  "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10d41d.eot": {
+    "file": "assets/linea-weather-10-5844acf7.eot",
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10d41d.eot"
+  },
+  "resources/backend-assets/icons/material-design-iconic-font/fonts/materialdesignicons-webfont.eot": {
+    "file": "assets/materialdesignicons-webfont-c06cfca1.eot",
+    "src": "resources/backend-assets/icons/material-design-iconic-font/fonts/materialdesignicons-webfont.eot"
+  },
+  "resources/backend-assets/icons/material-design-iconic-font/fonts/materialdesignicons-webfont.svg": {
+    "file": "assets/materialdesignicons-webfont-a3b77798.svg",
+    "src": "resources/backend-assets/icons/material-design-iconic-font/fonts/materialdesignicons-webfont.svg"
+  },
+  "resources/backend-assets/icons/material-design-iconic-font/fonts/materialdesignicons-webfont.ttf": {
+    "file": "assets/materialdesignicons-webfont-7230ede0.ttf",
+    "src": "resources/backend-assets/icons/material-design-iconic-font/fonts/materialdesignicons-webfont.ttf"
+  },
+  "resources/backend-assets/icons/material-design-iconic-font/fonts/materialdesignicons-webfont.woff": {
+    "file": "assets/materialdesignicons-webfont-22811ef2.woff",
+    "src": "resources/backend-assets/icons/material-design-iconic-font/fonts/materialdesignicons-webfont.woff"
+  },
+  "resources/backend-assets/icons/material-design-iconic-font/fonts/materialdesignicons-webfont.woff2": {
+    "file": "assets/materialdesignicons-webfont-c0d9828a.woff2",
+    "src": "resources/backend-assets/icons/material-design-iconic-font/fonts/materialdesignicons-webfont.woff2"
+  },
+  "resources/backend-assets/icons/pe-icon-set-weather/fonts/pe-icon-set-weather.eot": {
+    "file": "assets/pe-icon-set-weather-1f278266.eot",
+    "src": "resources/backend-assets/icons/pe-icon-set-weather/fonts/pe-icon-set-weather.eot"
+  },
+  "resources/backend-assets/icons/pe-icon-set-weather/fonts/pe-icon-set-weather.svg": {
+    "file": "assets/pe-icon-set-weather-fc15f596.svg",
+    "src": "resources/backend-assets/icons/pe-icon-set-weather/fonts/pe-icon-set-weather.svg"
+  },
+  "resources/backend-assets/icons/pe-icon-set-weather/fonts/pe-icon-set-weather.ttf": {
+    "file": "assets/pe-icon-set-weather-c69d27b5.ttf",
+    "src": "resources/backend-assets/icons/pe-icon-set-weather/fonts/pe-icon-set-weather.ttf"
+  },
+  "resources/backend-assets/icons/pe-icon-set-weather/fonts/pe-icon-set-weather.woff": {
+    "file": "assets/pe-icon-set-weather-e2b1599c.woff",
+    "src": "resources/backend-assets/icons/pe-icon-set-weather/fonts/pe-icon-set-weather.woff"
+  },
+  "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.eot": {
+    "file": "assets/Simple-Line-Icons4c82-b76b3d1d.eot",
+    "src": "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Iconsd41d.eot"
+  },
+  "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.svg": {
+    "file": "assets/Simple-Line-Icons4c82-ebd98fd1.svg",
+    "src": "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.svg"
+  },
+  "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.ttf": {
+    "file": "assets/Simple-Line-Icons4c82-937e5915.ttf",
+    "src": "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.ttf"
+  },
+  "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.woff": {
+    "file": "assets/Simple-Line-Icons4c82-72bbd904.woff",
+    "src": "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.woff"
+  },
+  "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.woff2": {
+    "file": "assets/Simple-Line-Icons4c82-1097a163.woff2",
+    "src": "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.woff2"
+  },
+  "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Iconsd41d.eot": {
+    "file": "assets/Simple-Line-Icons4c82-b76b3d1d.eot",
+    "src": "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Iconsd41d.eot"
+  },
+  "resources/backend-assets/icons/themify-icons/fonts/themify.ttf": {
+    "file": "assets/themify-350663a4.ttf",
+    "src": "resources/backend-assets/icons/themify-icons/fonts/themify.ttf"
+  },
+  "resources/backend-assets/icons/themify-icons/fonts/themify.woff": {
+    "file": "assets/themify-0db5c5a1.woff",
+    "src": "resources/backend-assets/icons/themify-icons/fonts/themify.woff"
+  },
+  "resources/backend-assets/icons/themify-icons/fonts/themify9f24.eot": {
+    "file": "assets/themify9f24-dff415da.eot",
+    "src": "resources/backend-assets/icons/themify-icons/fonts/themifyd41d.eot"
+  },
+  "resources/backend-assets/icons/themify-icons/fonts/themify9f24.svg": {
+    "file": "assets/themify9f24-2e242102.svg",
+    "src": "resources/backend-assets/icons/themify-icons/fonts/themify9f24.svg"
+  },
+  "resources/backend-assets/icons/themify-icons/fonts/themifyd41d.eot": {
+    "file": "assets/themify9f24-dff415da.eot",
+    "src": "resources/backend-assets/icons/themify-icons/fonts/themifyd41d.eot"
+  },
+  "resources/backend-assets/icons/weather-icons/fonts/weathericons-regular-webfont.eot": {
+    "file": "assets/weathericons-regular-webfont-3afed4f7.eot",
+    "src": "resources/backend-assets/icons/weather-icons/fonts/weathericons-regular-webfont.eot"
+  },
+  "resources/backend-assets/icons/weather-icons/fonts/weathericons-regular-webfont.svg": {
+    "file": "assets/weathericons-regular-webfont-6832c600.svg",
+    "src": "resources/backend-assets/icons/weather-icons/fonts/weathericons-regular-webfont.svg"
+  },
+  "resources/backend-assets/icons/weather-icons/fonts/weathericons-regular-webfont.ttf": {
+    "file": "assets/weathericons-regular-webfont-176bda66.ttf",
+    "src": "resources/backend-assets/icons/weather-icons/fonts/weathericons-regular-webfont.ttf"
+  },
+  "resources/backend-assets/icons/weather-icons/fonts/weathericons-regular-webfont.woff": {
+    "file": "assets/weathericons-regular-webfont-d4e90136.woff",
+    "src": "resources/backend-assets/icons/weather-icons/fonts/weathericons-regular-webfont.woff"
+  },
+  "resources/backend-assets/icons/weather-icons/fonts/weathericons-regular-webfont.woff2": {
+    "file": "assets/weathericons-regular-webfont-93276477.woff2",
+    "src": "resources/backend-assets/icons/weather-icons/fonts/weathericons-regular-webfont.woff2"
+  },
+  "resources/frontend-assets/fonts/Flaticon.eot": {
+    "file": "assets/Flaticon-65faddbc.eot",
+    "src": "resources/frontend-assets/fonts/Flaticond41d.eot"
+  },
+  "resources/frontend-assets/fonts/Flaticon.svg": {
+    "file": "assets/Flaticon-1b7b8142.svg",
+    "src": "resources/frontend-assets/fonts/Flaticon.svg"
+  },
+  "resources/frontend-assets/fonts/Flaticon.ttf": {
+    "file": "assets/Flaticon-983efb4a.ttf",
+    "src": "resources/frontend-assets/fonts/Flaticon.ttf"
+  },
+  "resources/frontend-assets/fonts/Flaticon.woff": {
+    "file": "assets/Flaticon-ab311b12.woff",
+    "src": "resources/frontend-assets/fonts/Flaticon.woff"
+  },
+  "resources/frontend-assets/fonts/Flaticon.woff2": {
+    "file": "assets/Flaticon-87793eea.woff2",
+    "src": "resources/frontend-assets/fonts/Flaticon.woff2"
+  },
+  "resources/frontend-assets/fonts/Flaticond41d.eot": {
+    "file": "assets/Flaticon-65faddbc.eot",
+    "src": "resources/frontend-assets/fonts/Flaticond41d.eot"
+  },
+  "resources/frontend-assets/fonts/fontawesome-webfont3e6e.eot": {
+    "file": "assets/fontawesome-webfont3e6e-7bfcab6d.eot",
+    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfontd41d.eot"
+  },
+  "resources/frontend-assets/fonts/fontawesome-webfont3e6e.svg": {
+    "file": "assets/fontawesome-webfont3e6e-fc378232.svg",
+    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.svg"
+  },
+  "resources/frontend-assets/fonts/fontawesome-webfont3e6e.ttf": {
+    "file": "assets/fontawesome-webfont3e6e-aa58f33f.ttf",
+    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.ttf"
+  },
+  "resources/frontend-assets/fonts/fontawesome-webfont3e6e.woff": {
+    "file": "assets/fontawesome-webfont3e6e-ba0c59de.woff",
+    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.woff"
+  },
+  "resources/frontend-assets/fonts/fontawesome-webfont3e6e.woff2": {
+    "file": "assets/fontawesome-webfont3e6e-2adefcbc.woff2",
+    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.woff2"
+  },
+  "resources/frontend-assets/fonts/fontawesome-webfontd41d.eot": {
+    "file": "assets/fontawesome-webfont3e6e-7bfcab6d.eot",
+    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfontd41d.eot"
+  },
+  "resources/frontend-assets/images/bg/footer-bg.png": {
+    "file": "assets/footer-bg-33deb978.png",
+    "src": "resources/frontend-assets/images/bg/footer-bg.png"
+  },
+  "resources/frontend-assets/images/partner/1.png": {
+    "file": "assets/1-583ec9ef.png",
+    "src": "resources/frontend-assets/images/partner/1.png"
+  },
+  "resources/frontend-assets/images/partner/2.png": {
+    "file": "assets/2-eeced13b.png",
+    "src": "resources/frontend-assets/images/partner/2.png"
+  },
+  "resources/frontend-assets/images/partner/3.png": {
+    "file": "assets/3-a556cbf1.png",
+    "src": "resources/frontend-assets/images/partner/3.png"
+  },
+  "resources/frontend-assets/images/partner/4.png": {
+    "file": "assets/4-c99da36e.png",
+    "src": "resources/frontend-assets/images/partner/4.png"
+  },
+  "resources/frontend-assets/images/partner/5.png": {
+    "file": "assets/5-b59a34dd.png",
+    "src": "resources/frontend-assets/images/partner/5.png"
+  },
+  "resources/frontend-assets/images/partner/6.png": {
+    "file": "assets/6-344bbfcc.png",
+    "src": "resources/frontend-assets/images/partner/6.png"
+  },
+  "resources/frontend-assets/images/partner/style2/1.png": {
+    "file": "assets/1-673be8c1.png",
+    "src": "resources/frontend-assets/images/partner/style2/1.png"
+  },
+  "resources/frontend-assets/images/partner/style2/2.png": {
+    "file": "assets/2-1d8b7d9b.png",
+    "src": "resources/frontend-assets/images/partner/style2/2.png"
+  },
+  "resources/frontend-assets/images/partner/style2/3.png": {
+    "file": "assets/3-d8aadd7f.png",
+    "src": "resources/frontend-assets/images/partner/style2/3.png"
+  },
+  "resources/frontend-assets/images/partner/style2/4.png": {
+    "file": "assets/4-90e10ff8.png",
+    "src": "resources/frontend-assets/images/partner/style2/4.png"
+  },
+  "resources/frontend-assets/images/partner/style2/5.png": {
+    "file": "assets/5-c14657d7.png",
+    "src": "resources/frontend-assets/images/partner/style2/5.png"
+  },
+  "resources/frontend-assets/images/partner/style2/6.png": {
+    "file": "assets/6-cb8fad6d.png",
+    "src": "resources/frontend-assets/images/partner/style2/6.png"
+  },
+  "resources/image/bizz-icon.png": {
+    "file": "assets/bizz-icon-f4078adf.png",
+    "src": "resources/image/bizz-icon.png"
+  },
+  "resources/image/bizz-logo.png": {
+    "file": "assets/bizz-logo-7e19d3af.png",
+    "src": "resources/image/bizz-logo.png"
+  },
+  "resources/image/default-avatar.png": {
+    "file": "assets/default-avatar-f2770b81.png",
+    "src": "resources/image/default-avatar.png"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app-a9212f02.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.jsx": {
+    "assets": [
+      "assets/1-673be8c1.png",
+      "assets/2-1d8b7d9b.png",
+      "assets/3-d8aadd7f.png",
+      "assets/4-90e10ff8.png",
+      "assets/5-c14657d7.png",
+      "assets/6-cb8fad6d.png",
+      "assets/1-583ec9ef.png",
+      "assets/2-eeced13b.png",
+      "assets/3-a556cbf1.png",
+      "assets/4-c99da36e.png",
+      "assets/5-b59a34dd.png",
+      "assets/6-344bbfcc.png",
+      "assets/bizz-logo-7e19d3af.png",
+      "assets/bizz-icon-f4078adf.png",
+      "assets/default-avatar-f2770b81.png",
+      "assets/footer-bg-33deb978.png",
+      "assets/revicons-f7b9c306.woff",
+      "assets/revicons-4ca02b8a.ttf",
+      "assets/revicons-9e4d4c68.eot",
+      "assets/fontawesome-webfont3e6e-7bfcab6d.eot",
+      "assets/fontawesome-webfont3e6e-2adefcbc.woff2",
+      "assets/fontawesome-webfont3e6e-ba0c59de.woff",
+      "assets/fontawesome-webfont3e6e-aa58f33f.ttf",
+      "assets/fontawesome-webfont3e6e-fc378232.svg",
+      "assets/Simple-Line-Icons4c82-b76b3d1d.eot",
+      "assets/Simple-Line-Icons4c82-937e5915.ttf",
+      "assets/Simple-Line-Icons4c82-1097a163.woff2",
+      "assets/Simple-Line-Icons4c82-72bbd904.woff",
+      "assets/Simple-Line-Icons4c82-ebd98fd1.svg",
+      "assets/weathericons-regular-webfont-3afed4f7.eot",
+      "assets/weathericons-regular-webfont-93276477.woff2",
+      "assets/weathericons-regular-webfont-d4e90136.woff",
+      "assets/weathericons-regular-webfont-176bda66.ttf",
+      "assets/weathericons-regular-webfont-6832c600.svg",
+      "assets/cryptocoins-3a6acd3b.woff2",
+      "assets/cryptocoins-fad8040a.woff",
+      "assets/cryptocoins-68abea86.ttf",
+      "assets/linea-arrows-10-aa8e1eb6.eot",
+      "assets/linea-arrows-10-6afa35b7.woff",
+      "assets/linea-arrows-10-bf63aba4.ttf",
+      "assets/linea-arrows-10-0220f0bf.svg",
+      "assets/linea-basic-10-a4d53d08.eot",
+      "assets/linea-basic-10-3f660cf1.woff",
+      "assets/linea-basic-10-aad9aaf1.ttf",
+      "assets/linea-basic-10-2423df8c.svg",
+      "assets/linea-basic-elaboration-10-9984ab62.eot",
+      "assets/linea-basic-elaboration-10-68591083.woff",
+      "assets/linea-basic-elaboration-10-212787b1.ttf",
+      "assets/linea-basic-elaboration-10-1bad7b04.svg",
+      "assets/linea-ecommerce-10-d4e3c9f4.eot",
+      "assets/linea-ecommerce-10-665b4a7c.woff",
+      "assets/linea-ecommerce-10-d2f54399.ttf",
+      "assets/linea-ecommerce-10-a94ee766.svg",
+      "assets/linea-music-10-623ca9d9.eot",
+      "assets/linea-music-10-9f151c44.woff",
+      "assets/linea-music-10-d27efb95.ttf",
+      "assets/linea-music-10-b0f18775.svg",
+      "assets/linea-software-10-fba5eb94.eot",
+      "assets/linea-software-10-ee45f572.woff",
+      "assets/linea-software-10-c9e6323c.ttf",
+      "assets/linea-software-10-f0daa3ed.svg",
+      "assets/linea-weather-10-5844acf7.eot",
+      "assets/linea-weather-10-2ca6f7a1.woff",
+      "assets/linea-weather-10-c0e93e30.ttf",
+      "assets/linea-weather-10-f409f6dd.svg",
+      "assets/ionicons-a4803d7b.eot",
+      "assets/ionicons-2ba7f20b.ttf",
+      "assets/ionicons-709f2789.woff",
+      "assets/ionicons-dd1d74ab.svg",
+      "assets/themify9f24-dff415da.eot",
+      "assets/themify-0db5c5a1.woff",
+      "assets/themify-350663a4.ttf",
+      "assets/themify9f24-2e242102.svg",
+      "assets/ad-80ac0f73.svg",
+      "assets/ae-fbc34886.svg",
+      "assets/af-74255fde.svg",
+      "assets/ag-3a902e40.svg",
+      "assets/ai-c5c20cce.svg",
+      "assets/al-e785f57f.svg",
+      "assets/am-ce852f9d.svg",
+      "assets/ao-28f4c921.svg",
+      "assets/aq-f66fd555.svg",
+      "assets/ar-bff351b2.svg",
+      "assets/as-5c27006a.svg",
+      "assets/at-0629657c.svg",
+      "assets/au-61562904.svg",
+      "assets/aw-79feda6f.svg",
+      "assets/ax-b08e00be.svg",
+      "assets/az-1c1cf72e.svg",
+      "assets/ba-88db045c.svg",
+      "assets/bb-a54f24df.svg",
+      "assets/bd-1fd43a37.svg",
+      "assets/be-9f7261a4.svg",
+      "assets/bf-46585dfe.svg",
+      "assets/bg-f0218e2f.svg",
+      "assets/bh-3451a8b4.svg",
+      "assets/bi-0fdf3446.svg",
+      "assets/bj-cb04ae04.svg",
+      "assets/bl-020ee5e3.svg",
+      "assets/bm-09356960.svg",
+      "assets/bn-23a4433a.svg",
+      "assets/bo-cd73763c.svg",
+      "assets/bq-8472ef29.svg",
+      "assets/br-89780ed2.svg",
+      "assets/bs-2556d5ec.svg",
+      "assets/bt-7608059f.svg",
+      "assets/bv-d4dbc6b7.svg",
+      "assets/bw-cf0a45b7.svg",
+      "assets/by-54856178.svg",
+      "assets/bz-69ac0104.svg",
+      "assets/ca-f925a23c.svg",
+      "assets/cc-398f7184.svg",
+      "assets/cd-f890fac5.svg",
+      "assets/cf-0236bc07.svg",
+      "assets/cg-448153a1.svg",
+      "assets/ch-ff34bff1.svg",
+      "assets/ci-096f12b8.svg",
+      "assets/ck-177b9497.svg",
+      "assets/cl-0d5de868.svg",
+      "assets/cm-6aa2a51d.svg",
+      "assets/cn-4c6ea2cd.svg",
+      "assets/co-a5fcf87d.svg",
+      "assets/cr-5caf88db.svg",
+      "assets/cu-33fe0423.svg",
+      "assets/cv-6db0dccf.svg",
+      "assets/cw-64012045.svg",
+      "assets/cx-a3fb43bc.svg",
+      "assets/cy-f8625bef.svg",
+      "assets/cz-4cd949b9.svg",
+      "assets/de-2f7c37c3.svg",
+      "assets/dj-d98d2c7e.svg",
+      "assets/dk-a68b01da.svg",
+      "assets/dm-1013dcc4.svg",
+      "assets/do-f995d8d2.svg",
+      "assets/dz-f198357e.svg",
+      "assets/ec-35b4b125.svg",
+      "assets/ee-7affd523.svg",
+      "assets/eg-f688770c.svg",
+      "assets/eh-89536bf6.svg",
+      "assets/er-d4d808e5.svg",
+      "assets/es-afc75481.svg",
+      "assets/et-778f3d27.svg",
+      "assets/fi-a6816a3a.svg",
+      "assets/fj-e5a7abaf.svg",
+      "assets/fk-05f7aa23.svg",
+      "assets/fm-9db2cfa6.svg",
+      "assets/fo-4598e293.svg",
+      "assets/fr-a0fc8d66.svg",
+      "assets/ga-3d0965f5.svg",
+      "assets/gb-fd3be68d.svg",
+      "assets/gd-ffdbc0d7.svg",
+      "assets/ge-e7df76b0.svg",
+      "assets/gf-0f560ccf.svg",
+      "assets/gg-fb18fdf4.svg",
+      "assets/gh-2c8501b7.svg",
+      "assets/gi-6755325f.svg",
+      "assets/gl-ec10fca8.svg",
+      "assets/gm-b218daec.svg",
+      "assets/gn-9f5f1fb4.svg",
+      "assets/gq-6e945b23.svg",
+      "assets/gr-d52739ab.svg",
+      "assets/gs-2ac31f4b.svg",
+      "assets/gt-d8d2a0de.svg",
+      "assets/gu-d53a4051.svg",
+      "assets/gw-cc7b1f44.svg",
+      "assets/gy-f0675686.svg",
+      "assets/hk-c5e98990.svg",
+      "assets/hm-fe9178cd.svg",
+      "assets/hn-0c3dcc21.svg",
+      "assets/hr-f60a29f5.svg",
+      "assets/ht-62654541.svg",
+      "assets/hu-b3ff04a1.svg",
+      "assets/id-e222083e.svg",
+      "assets/ie-5a10ccfa.svg",
+      "assets/il-e791bbc3.svg",
+      "assets/im-14af7486.svg",
+      "assets/in-33344acf.svg",
+      "assets/io-cb8c4c94.svg",
+      "assets/iq-c232b2ef.svg",
+      "assets/ir-c213d5b0.svg",
+      "assets/is-ee617b99.svg",
+      "assets/it-cd8557b1.svg",
+      "assets/je-a2481728.svg",
+      "assets/jm-e87a7758.svg",
+      "assets/jo-a6dd6e41.svg",
+      "assets/jp-49abf6c1.svg",
+      "assets/ke-e5be6370.svg",
+      "assets/kg-61116787.svg",
+      "assets/kh-4926b5ea.svg",
+      "assets/ki-2f303d22.svg",
+      "assets/km-f73fbd5b.svg",
+      "assets/kn-77248103.svg",
+      "assets/kp-2f0b306c.svg",
+      "assets/kr-f8c368c6.svg",
+      "assets/kw-61581eb8.svg",
+      "assets/ky-f02977bc.svg",
+      "assets/kz-04faa6af.svg",
+      "assets/la-95ff919a.svg",
+      "assets/lb-90843a3f.svg",
+      "assets/lc-85695827.svg",
+      "assets/li-c37bd7e1.svg",
+      "assets/lk-19dfaee2.svg",
+      "assets/lr-03ce9822.svg",
+      "assets/ls-c6ac43c7.svg",
+      "assets/lt-bc46ad0a.svg",
+      "assets/lu-3091f4d3.svg",
+      "assets/lv-ce4922e0.svg",
+      "assets/ly-90f09e67.svg",
+      "assets/ma-3742df61.svg",
+      "assets/mc-cc830768.svg",
+      "assets/md-9fcf4a9f.svg",
+      "assets/me-82b27da4.svg",
+      "assets/mg-38544ea2.svg",
+      "assets/mh-5d59a950.svg",
+      "assets/mk-3d3f89d0.svg",
+      "assets/ml-335df169.svg",
+      "assets/mm-851517b8.svg",
+      "assets/mn-b2f0c830.svg",
+      "assets/mo-6b25b819.svg",
+      "assets/mp-c0208f84.svg",
+      "assets/mq-4c96e77a.svg",
+      "assets/mr-7b6202f8.svg",
+      "assets/ms-5f36ecbd.svg",
+      "assets/mt-04dda128.svg",
+      "assets/mu-d6042299.svg",
+      "assets/mv-faa0cf78.svg",
+      "assets/mw-bc80b618.svg",
+      "assets/mx-38351dcd.svg",
+      "assets/my-c9895ff1.svg",
+      "assets/mz-a889dfcb.svg",
+      "assets/na-b650ca0f.svg",
+      "assets/nc-285e1bf2.svg",
+      "assets/ne-bb8f6970.svg",
+      "assets/nf-1f8e20f0.svg",
+      "assets/ng-0bf3a5fc.svg",
+      "assets/ni-016598c2.svg",
+      "assets/nl-9e1a01ee.svg",
+      "assets/no-63e38c60.svg",
+      "assets/np-4f5bcd0d.svg",
+      "assets/nr-981cf37a.svg",
+      "assets/nu-3e0324fb.svg",
+      "assets/nz-dffd6a34.svg",
+      "assets/om-686c0ff1.svg",
+      "assets/pa-cba70350.svg",
+      "assets/pe-ee4924c9.svg",
+      "assets/pf-d5b52776.svg",
+      "assets/pg-e377f3b4.svg",
+      "assets/ph-12ac9456.svg",
+      "assets/pk-a7db89ad.svg",
+      "assets/pl-e1430233.svg",
+      "assets/pn-6c666b10.svg",
+      "assets/pr-807b8523.svg",
+      "assets/ps-b9b67adc.svg",
+      "assets/pt-87e37d05.svg",
+      "assets/pw-ab5e7b22.svg",
+      "assets/py-96ffc65a.svg",
+      "assets/qa-42ef6c3e.svg",
+      "assets/ro-38f00fb8.svg",
+      "assets/rs-652aaf5d.svg",
+      "assets/ru-393e219e.svg",
+      "assets/rw-79b6246d.svg",
+      "assets/sa-4a45abf1.svg",
+      "assets/sb-cbf264f2.svg",
+      "assets/sc-554b6525.svg",
+      "assets/sd-8bcd76c9.svg",
+      "assets/se-f7c79a45.svg",
+      "assets/sg-9e751bc4.svg",
+      "assets/sh-2c64a26e.svg",
+      "assets/si-e7df2850.svg",
+      "assets/sj-1ce460b1.svg",
+      "assets/sk-23fb8524.svg",
+      "assets/sl-43522229.svg",
+      "assets/sm-70d28310.svg",
+      "assets/sn-4fb46f1a.svg",
+      "assets/so-cd9ebde4.svg",
+      "assets/sr-acb04110.svg",
+      "assets/ss-562deed4.svg",
+      "assets/st-e5337941.svg",
+      "assets/sv-ffda4c93.svg",
+      "assets/sx-419c945f.svg",
+      "assets/sy-795def13.svg",
+      "assets/sz-bb145761.svg",
+      "assets/tc-b56c8707.svg",
+      "assets/td-4173b15d.svg",
+      "assets/tf-77b92fc3.svg",
+      "assets/tg-aa3037cf.svg",
+      "assets/th-75b306a8.svg",
+      "assets/tj-4e57499f.svg",
+      "assets/tk-1192bc92.svg",
+      "assets/tl-de341e27.svg",
+      "assets/tm-5b9b1f60.svg",
+      "assets/tn-43bb3c66.svg",
+      "assets/to-a870a6a3.svg",
+      "assets/tr-d26bc7ed.svg",
+      "assets/tt-b53e3033.svg",
+      "assets/tv-3944d3be.svg",
+      "assets/tw-ea2ba70c.svg",
+      "assets/tz-cdc26140.svg",
+      "assets/ua-ab405fa6.svg",
+      "assets/ug-06d57b2f.svg",
+      "assets/um-6c26a964.svg",
+      "assets/uy-2d5a9764.svg",
+      "assets/uz-2d96afc8.svg",
+      "assets/va-98a593ff.svg",
+      "assets/vc-3e69c323.svg",
+      "assets/ve-155d8315.svg",
+      "assets/vg-df7d92e5.svg",
+      "assets/vi-9f6792cf.svg",
+      "assets/vn-d460022f.svg",
+      "assets/vu-59c7716d.svg",
+      "assets/wf-c3cde554.svg",
+      "assets/ws-29d46d12.svg",
+      "assets/ye-08c47467.svg",
+      "assets/za-1837f3ba.svg",
+      "assets/zm-08e519f4.svg",
+      "assets/zw-40dd71aa.svg",
+      "assets/materialdesignicons-webfont-c06cfca1.eot",
+      "assets/materialdesignicons-webfont-c0d9828a.woff2",
+      "assets/materialdesignicons-webfont-22811ef2.woff",
+      "assets/materialdesignicons-webfont-7230ede0.ttf",
+      "assets/materialdesignicons-webfont-a3b77798.svg",
+      "assets/pe-icon-set-weather-1f278266.eot",
+      "assets/pe-icon-set-weather-c69d27b5.ttf",
+      "assets/pe-icon-set-weather-e2b1599c.woff",
+      "assets/pe-icon-set-weather-fc15f596.svg",
+      "assets/Flaticon-65faddbc.eot",
+      "assets/Flaticon-87793eea.woff2",
+      "assets/Flaticon-ab311b12.woff",
+      "assets/Flaticon-983efb4a.ttf",
+      "assets/Flaticon-1b7b8142.svg"
+    ],
+    "css": [
+      "assets/app-a9212f02.css"
+    ],
+    "file": "assets/app-88559196.js",
+    "isEntry": true,
+    "src": "resources/js/app.jsx"
+  }
+}

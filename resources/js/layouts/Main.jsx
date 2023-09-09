@@ -85,51 +85,51 @@ function Main() {
             </Route>
             <Route path="/bsl" element={<Backend/>}>
                 <Route path="login" element={<Login/>}/>
-                {isAccess &&
-                    <Route path="admin" element={<Admin/>}>
-                        <Route index element={<Dashboard/>}/>
-                        <Route path="profile" element={<Profile/>}/>
-                        <Route path="test" element={<TestPage/>}/>
-                        <Route path="settings">
-                            <Route index element={<SettingsMain/>}/>
-                            <Route path="seo" element={<SEO/>}/>
-                            <Route path="general" element={<GeneralSetting/>}/>
-                        </Route>
-                        <Route path="page-settings">
-                            <Route index element={<PageSettings/>}/>
-                            <Route path="slider" element={<Slider/>}/>
-                            <Route path="industry" element={<IndustrySettings/>}/>
-                            <Route path="technology" element={<TechnologySettings/>}/>
-                            <Route path="about" element={<AboutSettings/>}/>
-                            <Route path="contact" element={<ContactSettings/>}/>
-                        </Route>
-                        <Route path="technology" element={<Technology/>}/>
-                        <Route path="industries" element={<Industries/>}/>
-                        <Route path="about-us" element={<BackendAbout/>}/>
-                        <Route path="our-management" element={<BackendManagement/>}/>
-                        <Route path="our-teams" element={<BackendTeams/>}/>
-                        <Route path="clients" element={<BackendClients/>}/>
-                        <Route path="partner" element={<BackendPartner/>}/>
-                        <Route path="services">
-                            <Route index element={<ServiceCategory/>}/>
-                            <Route path="create" element={<ServiceCategoryCreate/>}/>
-                            <Route path=":id/edit" element={<ServiceCategoryEdit/>}/>
-                        </Route>
-                        <Route path="products" element={<BackendProduct/>}/>
-                        <Route path="courses">
-                            <Route index element={<BackendCourses/>}/>
-                            <Route path="create" element={<CourseCreate/>}/>
-                            <Route path=":id/edit" element={<CourseEdit/>}/>
-                            <Route path=":id/curricular" element={<BackendCurricular/>}/>
-                        </Route>
-                        <Route path="blogs" element={<BackendBlogs/>}/>
-                        <Route path="case-study" element={<CaseStudy/>}/>
-                        <Route path="testimonial" element={<Testimonial/>}/>
-                        <Route path="pages" element={<GeneralPages/>}/>
-                        <Route path="messages" element={<Messages/>}/>
-                        <Route path="subscribers" element={<BackendSubscribers/>}/>
+                {/*{isAccess &&*/}
+                <Route path="admin" element={<Admin/>}>
+                    <Route index element={<Dashboard/>}/>
+                    <Route path="profile" element={<Profile/>}/>
+                    <Route path="test" element={<TestPage/>}/>
+                    <Route path="settings">
+                        <Route index element={<SettingsMain/>}/>
+                        <Route path="seo" element={<SEO/>}/>
+                        <Route path="general" element={<GeneralSetting/>}/>
                     </Route>
-                }
+                    <Route path="page-settings">
+                        <Route index element={<PageSettings/>}/>
+                        <Route path="slider" element={<Slider/>}/>
+                        <Route path="industry" element={<IndustrySettings/>}/>
+                        <Route path="technology" element={<TechnologySettings/>}/>
+                        <Route path="about" element={<AboutSettings/>}/>
+                        <Route path="contact" element={<ContactSettings/>}/>
+                    </Route>
+                    <Route path="technology" element={<Technology/>}/>
+                    <Route path="industries" element={<Industries/>}/>
+                    <Route path="about-us" element={<BackendAbout/>}/>
+                    <Route path="our-management" element={<BackendManagement/>}/>
+                    <Route path="our-teams" element={<BackendTeams/>}/>
+                    <Route path="clients" element={<BackendClients/>}/>
+                    <Route path="partner" element={<BackendPartner/>}/>
+                    <Route path="services">
+                        <Route index element={<ServiceCategory/>}/>
+                        <Route path="create" element={<ServiceCategoryCreate/>}/>
+                        <Route path=":id/edit" element={<ServiceCategoryEdit/>}/>
+                    </Route>
+                    <Route path="products" element={<BackendProduct/>}/>
+                    <Route path="courses">
+                        <Route index element={<BackendCourses/>}/>
+                        <Route path="create" element={<CourseCreate/>}/>
+                        <Route path=":id/edit" element={<CourseEdit/>}/>
+                        <Route path=":id/curricular" element={<BackendCurricular/>}/>
+                    </Route>
+                    <Route path="blogs" element={<BackendBlogs/>}/>
+                    <Route path="case-study" element={<CaseStudy/>}/>
+                    <Route path="testimonial" element={<Testimonial/>}/>
+                    <Route path="pages" element={<GeneralPages/>}/>
+                    <Route path="messages" element={<Messages/>}/>
+                    <Route path="subscribers" element={<BackendSubscribers/>}/>
+                </Route>
+                {/*}*/}
             </Route>
             <Route path="*" element={<Errors/>}/>
         </Routes>
