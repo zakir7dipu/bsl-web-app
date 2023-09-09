@@ -57,7 +57,7 @@ class TestimonialController extends Controller
         try {
 
             if ($request->hasFile('image_link')) {
-                $filename = time() . '-' . 'case-study.' . fileInfo($request->image_link)['extension'];
+                $filename = time() . '-' . 'testimonial.' . fileInfo($request->image_link)['extension'];
                 $path = 'uploads/testimonial';
                 fileUpload($request->image_link, $path, $filename);
                 $img = '/' . $path . '/' . $filename;
@@ -114,7 +114,7 @@ class TestimonialController extends Controller
         try {
 
             if ($request->hasFile('image_link')) {
-                $filename = time() . '-' . 'case-study.' . fileInfo($request->image_link)['extension'];
+                $filename = time() . '-' . 'testimonial.' . fileInfo($request->image_link)['extension'];
                 $path = 'uploads/testimonial';
                 if ($testimonial->image_link) {
                     fileDelete($testimonial->image_link);
