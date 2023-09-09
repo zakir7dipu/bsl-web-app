@@ -16,7 +16,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Preloader from "../../components/Preloader/Index.jsx";
 import {
     createTestimonial,
-    deleteTestimonial, fetchAllTestimonial,
+    deleteTestimonial, fetchAllTestimonial, fetchSearchTestimonial,
     updateTestimonial
 } from "../../../featurs/Testimonial/TestimonialSlice.js";
 
@@ -87,6 +87,7 @@ function Index(props) {
     const [descriptions, setDescription] = useState("");
     const [designation, setDesignation] = useState("");
     const [imageFile, setImageFile] = useState("");
+    const [searchText, setSearchText] = useState("");
 
     const handleModalClose = () => {
         setIsShow(!isShow);
@@ -102,6 +103,7 @@ function Index(props) {
         setDescription('');
         setDesignation('');
         setImageFile('');
+        setSearchText('');
     }
 
     const requestHandler = (e) => {
@@ -173,6 +175,14 @@ function Index(props) {
             dispatch(deleteTestimonial(data))
         }
     }
+
+    const handleSearchText = (e) => {
+        setSearchText(e.target.value);
+        let formData = new FormData();
+        formData.append("search_text", searchText);
+        dispatch(fetchSearchTestimonial(formData))
+    }
+
     useEffect(() => {
         dispatch(fetchAllTestimonial(0));
     }, [dispatch]);
@@ -204,6 +214,7 @@ function Index(props) {
                                     data={testimonials}
                                     isLoading={isLoading}
                                     itemPerPage={10}
+                                    handleSearchText={handleSearchText}
                                 />
                             </div>
                         </div>
