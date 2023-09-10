@@ -17,7 +17,7 @@ class CaseStudyController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($items)
+    public function index($items = 0)
     {
         try {
             if ($items > 0) {
