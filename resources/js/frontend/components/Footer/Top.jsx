@@ -41,7 +41,7 @@ function Top({newsletter, general, contact, backlink}) {
         parentServices
     } = useSelector((state) => state.serviceReducer);
     useEffect(() => {
-        dispatch(fetchParentServices());
+        dispatch(fetchParentServices(0));
     }, [dispatch]);
 
     return (

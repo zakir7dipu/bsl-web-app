@@ -18,9 +18,9 @@ const initialData = {
 }
 
 /*fetch all services*/
-export const fetchAllServices = createAsyncThunk("categories/fetchAllServices", async (arg, {rejectWithValue}) => {
+export const fetchAllServices = createAsyncThunk("categories/fetchAllServices", async (data, {rejectWithValue}) => {
     try {
-        const res = await apiAccess.get(initialData.apiUrl)
+        const res = await apiAccess.get(`${initialData.apiUrl}/${data}`)
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.data)
@@ -28,9 +28,9 @@ export const fetchAllServices = createAsyncThunk("categories/fetchAllServices", 
 })
 /*fetch parent services*/
 
-export const fetchParentServices = createAsyncThunk("categories/fetchParentServices", async (arg, {rejectWithValue}) => {
+export const fetchParentServices = createAsyncThunk("categories/fetchParentServices", async (data, {rejectWithValue}) => {
     try {
-        const res = await apiAccess.get('get-parent-services')
+        const res = await apiAccess.get(`get-parent-services/${data}`)
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.data)

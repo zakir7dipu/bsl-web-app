@@ -109,8 +109,8 @@ Route::controller(PartnerController::class)->group(function () {
 });
 
 Route::controller(ServiceController::class)->group(function () {
-    Route::get('services', 'index');
-    Route::get("get-parent-services", "create");
+    Route::get('services/{items?}', 'index');
+    Route::get("get-parent-services/{item?}", "create");
     Route::post("services-store", "store");
     Route::get("services/{slug}/show", "show");
     Route::get("services/{id}/edit", "edit");

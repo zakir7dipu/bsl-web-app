@@ -45,7 +45,7 @@ function Top({general}) {
     }, [pathname])
 
     useEffect(() => {
-        dispatch(fetchParentServices());
+        dispatch(fetchParentServices(0));
     }, [dispatch]);
 
     return (
