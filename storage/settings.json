@@ -86,6 +86,16 @@
             "title": "What Technology We Are Using For Our Valued Customers",
             "sub_text": "TECHNOLOGY INDEX",
             "limit": "18"
+        },
+        "service": {
+            "title": "Explore Our All Services We Offer to customers",
+            "sub_text": "SERVICES",
+            "limit": "6"
+        },
+        "case_study": {
+            "title": "Our Recent Launched Projects Available into Market",
+            "sub_text": "PROJECTS",
+            "limit": "6"
         }
     },
     "seo": {

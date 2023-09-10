@@ -17,10 +17,11 @@ import IndustrySettings from "../backend/pages/PageSettings/IndustrySettings";
 import TechnologySettings from "../backend/pages/PageSettings/TechnologySettings";
 import AboutSettings from "../backend/pages/PageSettings/About";
 import ContactSettings from "../backend/pages/PageSettings/Contact";
+import ServiceSetting from "../backend/pages/PageSettings/ServiceSetting/index.jsx"
+import CaseStudySetting from "../backend/pages/PageSettings/CaseStudySetting/index.jsx"
 
 import Technology from "../backend/pages/Technology";
 import Industries from "../backend/pages/Industries/Index.jsx";
-
 import BackendAbout from "../backend/pages/Abouts";
 import BackendManagement from "../backend/pages/Management";
 import BackendTeams from "../backend/pages/Teams";
@@ -102,6 +103,8 @@ function Main() {
                         <Route path="technology" element={<TechnologySettings/>}/>
                         <Route path="about" element={<AboutSettings/>}/>
                         <Route path="contact" element={<ContactSettings/>}/>
+                        <Route path="service" element={<ServiceSetting/>}/>
+                        <Route path="case-study" element={<CaseStudySetting/>}/>
                     </Route>
                     <Route path="technology" element={<Technology/>}/>
                     <Route path="industries" element={<Industries/>}/>

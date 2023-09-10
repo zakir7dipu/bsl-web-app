@@ -41,6 +41,8 @@ Route::controller(SettingsController::class)->group(function (){
     Route::post('store-settings', 'storeSettings');
     Route::get('technology-settings','technologySetting');
     Route::get('industry-settings', 'industrySettings');
+    Route::get('service-settings', 'serviceSettings');
+    Route::get('case-study-settings', 'caseStudySettings');
 });
 
 Route::controller(SEOController::class)->group(function () {
