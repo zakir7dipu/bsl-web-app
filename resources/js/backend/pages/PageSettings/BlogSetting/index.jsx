@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {warningMessage} from "../../../../lib/helper.js";
-import {fetchCaseStudySettings, saveSettings} from "../../../../featurs/Settings/SettingsSlice.js";
+import {fetchBlogSettings, fetchCaseStudySettings, saveSettings} from "../../../../featurs/Settings/SettingsSlice.js";
 import HeaderMeta from "../../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
 import Preloader from "../../../components/Preloader/Index.jsx";
 import {MdStar} from "react-icons/md";
 
-function Index() {
-    const {isLoading, caseStudySetting} = useSelector(state => state.generalSettings);
+function Index(props) {
+    const {isLoading, blogSetting} = useSelector(state => state.generalSettings);
     const dispatch = useDispatch()
 
     const breadcrumb = [{
@@ -21,6 +21,7 @@ function Index() {
 
     const [title, setTitle] = useState("");
     const [subText, setSubText] = useState("");
+    const [desc, setDesc] = useState("");
     const [limit, setLimit] = useState("");
 
     const requestHandler = (e) => {
@@ -33,16 +34,22 @@ function Index() {
         }
 
         if (!subText) {
-            warningMessage("Description is required.")
+            warningMessage("Subtext is required.")
         } else {
             formData.append("sub_text", subText);
+        }
+
+        if (!desc) {
+            warningMessage("Description is required.")
+        } else {
+            formData.append("desc", desc);
         }
 
         if (limit) {
             formData.append("limit", limit);
         }
 
-        formData.append("type", 'case_study');
+        formData.append("type", 'blog');
 
         if (title && subText && limit) {
             dispatch(saveSettings(formData))
@@ -50,15 +57,16 @@ function Index() {
     }
 
     useEffect(() => {
-        if (caseStudySetting) {
-            setTitle(caseStudySetting?.title)
-            setSubText(caseStudySetting?.sub_text)
-            setLimit(caseStudySetting?.limit)
+        if (blogSetting) {
+            setTitle(blogSetting?.title)
+            setSubText(blogSetting?.sub_text)
+            setLimit(blogSetting?.limit)
+            setDesc(blogSetting?.desc)
         }
-    }, [caseStudySetting])
+    }, [blogSetting])
 
     useEffect(() => {
-        dispatch(fetchCaseStudySettings())
+        dispatch(fetchBlogSettings())
     }, []);
 
     if (!isLoading) {
@@ -74,7 +82,7 @@ function Index() {
                         <div className="col-md-12">
                             <div className="card">
                                 <div className="card-header">
-                                    <h4 className="card-title">Case Study Settings</h4>
+                                    <h4 className="card-title">Blog Settings</h4>
                                 </div>
                                 <div className="card-body">
                                     <form className="form-profile" onSubmit={requestHandler}>
@@ -107,14 +115,26 @@ function Index() {
                                             <div className="col-md-12">
                                                 <div className="form-group">
                                                     <label>Sub Text <sup className="text-danger"><MdStar/></sup></label>
+                                                    <input
+                                                        className="form-control"
+                                                        value={subText}
+                                                        onChange={e => setSubText(e.target.value)}
+                                                        placeholder="Sub text"
+                                                        type="text"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="col-md-12">
+                                                <div className="form-group">
+                                                    <label>Desc <sup className="text-danger"><MdStar/></sup></label>
                                                     <textarea
                                                         className="form-control"
                                                         name="textarea"
                                                         id="textarea" cols="30"
                                                         rows="3"
-                                                        placeholder="Sub Text"
-                                                        value={subText}
-                                                        onChange={e => setSubText(e.target.value)}
+                                                        placeholder="Description"
+                                                        value={desc}
+                                                        onChange={e => setDesc(e.target.value)}
                                                     />
                                                 </div>
                                             </div>

@@ -102,6 +102,13 @@ function caseStudyInfo()
     return $data;
 }
 
+function blogInfo()
+{
+    $group = 'site.';
+    $data = setting($group . 'blog');
+    return $data;
+}
+
 
 function storeGeneralData($generalSetting, $global, $request)
 {
@@ -329,3 +336,16 @@ function changeAttributeFile($currentFile, $newFile, $fileType) {
     return $imageLink;
 }
 
+function storeBlogData($global, $request)
+{
+    $data = [
+        "title" => $request->title,
+        "sub_text" => $request->sub_text,
+        "limit" => $request->limit,
+        "desc" => $request->desc,
+    ];
+    setting([$global . ".blog" => $data]);
+    $data = setting($global . ".blog");
+    $data["type"] = $request->type;
+    return $data;
+}

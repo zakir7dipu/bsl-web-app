@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchSliderSettings, saveSettings} from "../../../../featurs/Settings/SettingsSlice.js";
-import {errorMessage} from "../../../../lib/helper.js";
 import FileInput from "../../../components/inputFile/Index.jsx";
 import Preloader from "../../../components/Preloader/Index.jsx";
 import {MdStar} from "react-icons/md";
@@ -94,7 +93,7 @@ function Index(props) {
                 <Breadcrumb list={breadcrumb}/>
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-lg-8 col-sm-12 offset-2">
+                        <div className="col-lg-12 col-sm-12">
                             <div className="card">
                                 <div className="card-header">
                                     <h4>Slider Information</h4>

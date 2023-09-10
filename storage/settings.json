@@ -96,6 +96,12 @@
             "title": "Our Recent Launched Projects Available into Market",
             "sub_text": "PROJECTS",
             "limit": "6"
+        },
+        "blog": {
+            "title": "Latest Tips &Tricks",
+            "sub_text": "BLOGS",
+            "limit": "12",
+            "desc": "We've been building creative tools together for over a decade and have a deep appreciation for software applications"
         }
     },
     "seo": {

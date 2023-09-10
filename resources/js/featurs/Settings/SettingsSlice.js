@@ -12,6 +12,7 @@ const initialData = {
     industry: [],
     serviceSetting: [],
     caseStudySetting: [],
+    blogSetting: [],
     errorMess: null,
 }
 
@@ -106,6 +107,15 @@ export const fetchServiceSettings = createAsyncThunk("settings/fetchServiceSetti
 export const fetchCaseStudySettings = createAsyncThunk("settings/fetchCaseStudySettings", async (args, {rejectedWithValue}) => {
     try {
         const res = await apiAccess.get(`case-study-settings`)
+        return res.data
+    } catch (error) {
+        return rejectedWithValue(error.response.message)
+    }
+})
+
+export const fetchBlogSettings = createAsyncThunk("settings/fetchBlogSettings", async (args, {rejectedWithValue}) => {
+    try {
+        const res = await apiAccess.get(`blog-settings`)
         return res.data
     } catch (error) {
         return rejectedWithValue(error.response.message)
@@ -254,6 +264,20 @@ export const settingsSlice = createSlice({
             state.errorMess = null
         },
         [fetchCaseStudySettings.rejected]: (state, {payload}) => {
+            state.isLoading = false
+            state.errorMess = payload
+        },
+
+        [fetchBlogSettings.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchBlogSettings.fulfilled]: (state, {payload}) => {
+            const {data} = payload
+            state.isLoading = false
+            state.blogSetting = data
+            state.errorMess = null
+        },
+        [fetchBlogSettings.rejected]: (state, {payload}) => {
             state.isLoading = false
             state.errorMess = payload
         },

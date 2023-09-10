@@ -75,6 +75,14 @@ class SettingsController extends Controller
         ]);
     }
 
+    public function blogSettings()
+    {
+        $blog = blogInfo();
+        return response()->json([
+            'data' => $blog,
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -95,6 +103,7 @@ class SettingsController extends Controller
                 "about" => storeAboutData($generalSetting, $sliderglobal, $request),
                 "service" => storeServiceData($sliderglobal, $request),
                 "case_study" => storeCaseStudyData($sliderglobal, $request),
+                "blog" => storeBlogData($sliderglobal, $request),
                 default => "no Data Found",
             };
 

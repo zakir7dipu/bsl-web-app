@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchIndustrySettings, saveSettings} from "../../../../featurs/Settings/SettingsSlice.js";
 import {errorMessage, warningMessage} from "../../../../lib/helper.js";
 import Preloader from "../../../components/Preloader/Index.jsx";
+import {MdStar} from "react-icons/md";
 
 function Index(props) {
     const {isLoading, industry} = useSelector(state => state.generalSettings);
@@ -80,24 +81,24 @@ function Index(props) {
                                         <div className="row">
                                             <div className="col-md-6">
                                                 <div className="form-group">
-                                                    <label>Title</label>
+                                                    <label>Title <sup className="text-danger"><MdStar/></sup></label>
                                                     <input
                                                         className="form-control"
                                                         value={title}
                                                         onChange={e => setTitle(e.target.value)}
-                                                        placeholder="Slider title"
+                                                        placeholder="Title"
                                                         type="text"
                                                     />
                                                 </div>
                                             </div>
                                             <div className="col-md-6">
                                                 <div className="form-group">
-                                                    <label>Data Show Limit</label>
+                                                    <label>Data Show Limit <sup className="text-danger"><MdStar/></sup></label>
                                                     <input
                                                         className="form-control"
                                                         value={limit}
                                                         onChange={e => setLimit(e.target.value)}
-                                                        placeholder="limit count"
+                                                        placeholder="Limit count"
                                                         type="number"
                                                     />
                                                 </div>
@@ -105,7 +106,7 @@ function Index(props) {
 
                                             <div className="col-md-12">
                                                 <div className="form-group">
-                                                    <label>Sub Text</label>
+                                                    <label>Sub Text <sup className="text-danger"><MdStar/></sup></label>
                                                     <textarea
                                                         className="form-control"
                                                         name="textarea"
