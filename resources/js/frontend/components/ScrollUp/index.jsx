@@ -7,13 +7,14 @@ function Index(props) {
 
     useEffect(()=>{
         window.addEventListener('scroll', (e)=>{
-            if(window.pageYOffset > 100) {
-                totop.current.style = 'display: block;'
-            } else {
-                totop.current.removeAttribute('style')
+            if(totop.current) {
+                if (window.pageYOffset > 100) {
+                    totop.current.style = 'display: block;'
+                } else {
+                    totop.current.removeAttribute('style')
+                }
             }
         })
-
     },[window.pageYOffset])
 
     return (
