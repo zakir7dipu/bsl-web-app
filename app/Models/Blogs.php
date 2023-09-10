@@ -18,6 +18,7 @@ class Blogs extends Model
         'description',
         'image_link',
         'short_order',
+        'tag',
         'meta_title',
         'meta_description',
         'meta_keywords',

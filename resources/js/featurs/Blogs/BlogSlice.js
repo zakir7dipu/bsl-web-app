@@ -122,6 +122,7 @@ export const BlogSlice = createSlice({
             const {
                 title,
                 slug,
+                tag,
                 description,
                 image_link,
                 short_order,
@@ -135,6 +136,7 @@ export const BlogSlice = createSlice({
             if (model) {
                 model[0].title = title;
                 model[0].slug = slug;
+                model[0].tag = tag;
                 model[0].description = description;
                 model[0].image_link = image_link;
                 model[0].short_order = short_order;
