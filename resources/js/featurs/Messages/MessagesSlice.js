@@ -21,9 +21,9 @@ export const fetchAllUserMessages = createAsyncThunk("messagesData/fetchAllUserM
         return rejectWithValue(error.response.data)
     }
 })
-export const fetchUserMessagesBySlug = createAsyncThunk("messagesData/fetchUserMessagesBySlug", async (brand, {rejectWithValue}) => {
+export const showUserMessage = createAsyncThunk("messagesData/showUserMessage", async (id, {rejectWithValue}) => {
     try {
-        const res = await apiAccess.get(`${initialData.apiUrl}/${slug}/show`);
+        const res = await apiAccess.get(`${initialData.apiUrl}/${id}/show`);
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.data)
@@ -74,14 +74,14 @@ export const MessagesSlice = createSlice({
             errorMessage(payload)
         },
 
-        [fetchUserMessagesBySlug.pending]: (state) => {
-            state.isLoading = true
+        [showUserMessage.pending]: (state) => {
+            state.isLoading = false
         },
-        [fetchUserMessagesBySlug.fulfilled]: (state, {payload}) => {
+        [showUserMessage.fulfilled]: (state, {payload}) => {
             state.isLoading = false;
             state.metaInfo = payload;
         },
-        [fetchUserMessagesBySlug.rejected]: (state, {payload}) => {
+        [showUserMessage.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
         },

@@ -7,7 +7,7 @@ import ServiceItem from "./ServiceItem.jsx";
 function Index(props) {
     const {
         isLoading,
-        services
+        parentServices
     } = useSelector((state) => state.serviceReducer);
     const dispatch = useDispatch();
 
@@ -26,7 +26,7 @@ function Index(props) {
                 </div>
                 <div className="row">
                     {isLoading && ""}
-                    {services && services.map(item =>
+                    {parentServices && parentServices.map(item =>
                         <ServiceItem
                             info={item}
                             key={uid()}
