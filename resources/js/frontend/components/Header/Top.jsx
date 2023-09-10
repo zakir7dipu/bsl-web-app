@@ -1,13 +1,19 @@
 import React, {createRef, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Link, NavLink, useLocation} from "react-router-dom";
-import {useInternalLink} from "../../../lib/helper.js";
+import {uid, useInternalLink} from "../../../lib/helper.js";
 import {humburgerNavAction} from "../../../featurs/NavAction/NavSlice.js";
+import {fetchAllServices, fetchParentServices} from "../../../featurs/Service/ServiceSlice.js";
 
 function Top({general}) {
     const {pathname} = useLocation();
     const maiMenuRef = createRef()
     const menuAriaRef = createRef()
+
+    const {
+        parentServices
+    } = useSelector((state) => state.serviceReducer);
+
 
     const windowScroll = () => {
         if (window.pageYOffset > 100) {
@@ -29,15 +35,18 @@ function Top({general}) {
                     item.closest("ul").closest('.menu-item-has-children').classList.add("current-menu-item")
                 }
                 item.closest('li').classList.add("current-menu-item")
-            }
-            else {
+            } else {
                 // if (item.closest("ul").classList.contains("sub-menu")) {
                 //     item.closest('.menu-item-has-children').classList.remove("current-menu-item")
                 // }
                 item.closest('li').classList.remove("current-menu-item")
             }
         })
-    },[pathname])
+    }, [pathname])
+
+    useEffect(() => {
+        dispatch(fetchParentServices());
+    }, [dispatch]);
 
     return (
         <header id="rs-header" className="rs-header style3 modify2 header-transparent">
@@ -47,8 +56,11 @@ function Top({general}) {
                         <div className="col-lg-2">
                             <div className="logo-part">
                                 <Link to="/">
-                                    <img className="normal-logo" src={useInternalLink(`/${general?.site_secondary_logo}`)} alt="logo" style={{maxHeight: "55px"}}/>
-                                        <img className="sticky-logo" src={useInternalLink(`/${general?.site_logo}`)} alt="logo" style={{maxHeight: "55px"}}/>
+                                    <img className="normal-logo"
+                                         src={useInternalLink(`/${general?.site_secondary_logo}`)} alt="logo"
+                                         style={{maxHeight: "55px"}}/>
+                                    <img className="sticky-logo" src={useInternalLink(`/${general?.site_logo}`)}
+                                         alt="logo" style={{maxHeight: "55px"}}/>
                                 </Link>
                             </div>
                             <div className="mobile-menu">
@@ -86,12 +98,12 @@ function Top({general}) {
                                             <li className="menu-item-has-children">
                                                 <Link to="#">Services</Link>
                                                 <ul className="sub-menu">
-                                                    <li><NavLink to="/software-development">Software Development</NavLink>
-                                                    </li>
-                                                    <li><NavLink to="/web-development">Web Development</NavLink></li>
-                                                    <li><NavLink to="/analytic-solutions">Analytic Solutions</NavLink>
-                                                    </li>
-                                                    <li><NavLink to="/Courses">Courses</NavLink></li>
+                                                    {parentServices && parentServices.map(item =>
+                                                        <li key={uid()}>
+                                                            <NavLink
+                                                                to={`service/${item?.slug}/details`}>{item?.title}</NavLink>
+                                                        </li>
+                                                    )}
                                                 </ul>
                                             </li>
 

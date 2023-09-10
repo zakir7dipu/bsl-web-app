@@ -12,12 +12,13 @@ class ServiceController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['index', 'show']]);
+        $this->middleware('auth:api', ['except' => ['index', 'show','create']]);
     }
 
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
         try {
@@ -36,7 +37,7 @@ class ServiceController extends Controller
     public function create()
     {
         try {
-            $services = Services::doesntHave('service')->orderBy('id', 'asc')->get();
+            $services = Services::doesntHave('service')->with(['subServices'])->orderBy('id', 'asc')->get();
             return response()->json($services);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), $th->getCode());
