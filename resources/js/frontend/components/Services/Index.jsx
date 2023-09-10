@@ -12,7 +12,7 @@ function Index(props) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchAllServices());
+        dispatch(fetchAllServices(6));
     }, [dispatch]);
 
     return (

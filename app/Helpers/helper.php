@@ -88,6 +88,35 @@ function technologyInfo()
     return $data;
 }
 
+function serviceInfo()
+{
+    $group = 'site.';
+    $data = setting($group . 'service');
+    return $data;
+}
+
+function caseStudyInfo()
+{
+    $group = 'site.';
+    $data = setting($group . 'case_study');
+    return $data;
+}
+
+function blogInfo()
+{
+    $group = 'site.';
+    $data = setting($group . 'blog');
+    return $data;
+}
+
+function testimonialInfo()
+{
+    $group = 'site.';
+    $data = setting($group . 'testimonial');
+    return $data;
+}
+
+
 function storeGeneralData($generalSetting, $global, $request)
 {
     $currentFile = $generalSetting->findSetting($global . 'general.site_logo');
@@ -240,6 +269,32 @@ function storeIndustryData($global, $request)
     return $data;
 }
 
+function storeServiceData($global, $request)
+{
+    $data = [
+        "title" => $request->title,
+        "sub_text" => $request->sub_text,
+        "limit" => $request->limit,
+    ];
+    setting([$global . ".service" => $data]);
+    $data = setting($global . ".service");
+    $data["type"] = $request->type;
+    return $data;
+}
+
+function storeCaseStudyData($global, $request)
+{
+    $data = [
+        "title" => $request->title,
+        "sub_text" => $request->sub_text,
+        "limit" => $request->limit,
+    ];
+    setting([$global . ".case_study" => $data]);
+    $data = setting($global . ".case_study");
+    $data["type"] = $request->type;
+    return $data;
+}
+
 function storeAboutData($generalSetting, $global, $request)
 {
     $data = setting($global . ".about");
@@ -288,3 +343,30 @@ function changeAttributeFile($currentFile, $newFile, $fileType) {
     return $imageLink;
 }
 
+function storeBlogData($global, $request)
+{
+    $data = [
+        "title" => $request->title,
+        "sub_text" => $request->sub_text,
+        "limit" => $request->limit,
+        "desc" => $request->desc,
+    ];
+    setting([$global . ".blog" => $data]);
+    $data = setting($global . ".blog");
+    $data["type"] = $request->type;
+    return $data;
+}
+
+function storeTestimonialData($global, $request)
+{
+    $data = [
+        "title" => $request->title,
+        "sub_text" => $request->sub_text,
+        "limit" => $request->limit,
+        "desc" => $request->desc,
+    ];
+    setting([$global . ".testimonial" => $data]);
+    $data = setting($global . ".testimonial");
+    $data["type"] = $request->type;
+    return $data;
+}

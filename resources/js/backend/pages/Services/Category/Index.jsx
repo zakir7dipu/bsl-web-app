@@ -105,7 +105,7 @@ function Index(props) {
     }
 
     useEffect(() => {
-        dispatch(fetchAllServices());
+        dispatch(fetchAllServices(0));
     }, [dispatch]);
 
     if (!isLoading) {

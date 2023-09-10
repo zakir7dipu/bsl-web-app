@@ -154,7 +154,7 @@ function Edit() {
     }, [isLoading])
 
     useEffect(() => {
-        dispatch(fetchParentServices());
+        dispatch(fetchParentServices(0));
     }, [dispatch]);
 
     if (!isLoading) {

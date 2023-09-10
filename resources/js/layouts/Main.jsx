@@ -17,10 +17,13 @@ import IndustrySettings from "../backend/pages/PageSettings/IndustrySettings";
 import TechnologySettings from "../backend/pages/PageSettings/TechnologySettings";
 import AboutSettings from "../backend/pages/PageSettings/About";
 import ContactSettings from "../backend/pages/PageSettings/Contact";
+import ServiceSetting from "../backend/pages/PageSettings/ServiceSetting/index.jsx"
+import CaseStudySetting from "../backend/pages/PageSettings/CaseStudySetting/index.jsx"
+import BlogSetting from "../backend/pages/PageSettings/BlogSetting/index.jsx"
+import TestimonialSetting from "../backend/pages/PageSettings/TestimonialSetting/index.jsx"
 
 import Technology from "../backend/pages/Technology";
 import Industries from "../backend/pages/Industries/Index.jsx";
-
 import BackendAbout from "../backend/pages/Abouts";
 import BackendManagement from "../backend/pages/Management";
 import BackendTeams from "../backend/pages/Teams";
@@ -49,9 +52,7 @@ import Frontend from "./Frontend.jsx";
 import About from "../frontend/pages/About.jsx";
 import Management from "../frontend/pages/Management.jsx";
 import Team from "../frontend/pages/Team.jsx";
-import SoftwareDevelopment from "../frontend/pages/SoftwareDevelopment.jsx";
-import WebDevelopment from "../frontend/pages/WebDevelopment.jsx";
-import AnalyticSolutions from "../frontend/pages/AnalyticSolutions.jsx";
+import FrontendServiceCategory from "../frontend/pages/ServiceCategory.jsx";
 import Courses from "../frontend/pages/Courses";
 import Contact from "../frontend/pages/Contact.jsx";
 import Blog from "../frontend/pages/Blog/index.jsx";
@@ -72,9 +73,7 @@ function Main() {
                 <Route path="/about" element={<About/>}/>
                 <Route path="/management" element={<Management/>}/>
                 <Route path="/team" element={<Team/>}/>
-                <Route path="/software-development" element={<SoftwareDevelopment/>}/>
-                <Route path="/web-development" element={<WebDevelopment/>}/>
-                <Route path="/analytic-solutions" element={<AnalyticSolutions/>}/>
+                <Route path="/service/:slug/details" element={<FrontendServiceCategory/>}/>
                 <Route path="/courses">
                     <Route index element={<Courses/>}/>
                 </Route>
@@ -102,6 +101,10 @@ function Main() {
                         <Route path="technology" element={<TechnologySettings/>}/>
                         <Route path="about" element={<AboutSettings/>}/>
                         <Route path="contact" element={<ContactSettings/>}/>
+                        <Route path="service" element={<ServiceSetting/>}/>
+                        <Route path="case-study" element={<CaseStudySetting/>}/>
+                        <Route path="blogs" element={<BlogSetting/>}/>
+                        <Route path="testimonial" element={<TestimonialSetting/>}/>
                     </Route>
                     <Route path="technology" element={<Technology/>}/>
                     <Route path="industries" element={<Industries/>}/>

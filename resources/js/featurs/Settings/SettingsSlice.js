@@ -10,6 +10,10 @@ const initialData = {
     sliderSetting: [],
     technology: [],
     industry: [],
+    serviceSetting: [],
+    caseStudySetting: [],
+    blogSetting: [],
+    testimonialSetting: [],
     errorMess: null,
 }
 
@@ -89,6 +93,42 @@ export const saveAboutSettings = createAsyncThunk("settings/saveAboutSettings", 
             throw error
         }
         return rejectWithValue(error.response.data)
+    }
+})
+
+export const fetchServiceSettings = createAsyncThunk("settings/fetchServiceSettings", async (args, {rejectedWithValue}) => {
+    try {
+        const res = await apiAccess.get(`service-settings`)
+        return res.data
+    } catch (error) {
+        return rejectedWithValue(error.response.message)
+    }
+})
+
+export const fetchCaseStudySettings = createAsyncThunk("settings/fetchCaseStudySettings", async (args, {rejectedWithValue}) => {
+    try {
+        const res = await apiAccess.get(`case-study-settings`)
+        return res.data
+    } catch (error) {
+        return rejectedWithValue(error.response.message)
+    }
+})
+
+export const fetchBlogSettings = createAsyncThunk("settings/fetchBlogSettings", async (args, {rejectedWithValue}) => {
+    try {
+        const res = await apiAccess.get(`blog-settings`)
+        return res.data
+    } catch (error) {
+        return rejectedWithValue(error.response.message)
+    }
+})
+
+export const fetchTestimonialSettings = createAsyncThunk("settings/fetchTestimonialSettings", async (args, {rejectedWithValue}) => {
+    try {
+        const res = await apiAccess.get(`testimonial-settings`)
+        return res.data
+    } catch (error) {
+        return rejectedWithValue(error.response.message)
     }
 })
 
@@ -206,7 +246,62 @@ export const settingsSlice = createSlice({
             state.isLoading = false
             state.errorMessage = payload
             errorMessage(payload)
-        }
+        },
+
+        [fetchServiceSettings.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchServiceSettings.fulfilled]: (state, {payload}) => {
+            const {data} = payload
+            state.isLoading = false
+            state.serviceSetting = data
+            state.errorMess = null
+        },
+        [fetchServiceSettings.rejected]: (state, {payload}) => {
+            state.isLoading = false
+            state.errorMess = payload
+        },
+
+        [fetchCaseStudySettings.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchCaseStudySettings.fulfilled]: (state, {payload}) => {
+            const {data} = payload
+            state.isLoading = false
+            state.caseStudySetting = data
+            state.errorMess = null
+        },
+        [fetchCaseStudySettings.rejected]: (state, {payload}) => {
+            state.isLoading = false
+            state.errorMess = payload
+        },
+
+        [fetchBlogSettings.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchBlogSettings.fulfilled]: (state, {payload}) => {
+            const {data} = payload
+            state.isLoading = false
+            state.blogSetting = data
+            state.errorMess = null
+        },
+        [fetchBlogSettings.rejected]: (state, {payload}) => {
+            state.isLoading = false
+            state.errorMess = payload
+        },
+        [fetchTestimonialSettings.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchTestimonialSettings.fulfilled]: (state, {payload}) => {
+            const {data} = payload
+            state.isLoading = false
+            state.testimonialSetting = data
+            state.errorMess = null
+        },
+        [fetchTestimonialSettings.rejected]: (state, {payload}) => {
+            state.isLoading = false
+            state.errorMess = payload
+        },
     }
 })
 

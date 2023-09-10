@@ -59,6 +59,37 @@ class SettingsController extends Controller
         ]);
     }
 
+    public function serviceSettings()
+    {
+        $services = serviceInfo();
+        return response()->json([
+            'data' => $services,
+        ]);
+    }
+
+    public function caseStudySettings()
+    {
+        $caseStudy = caseStudyInfo();
+        return response()->json([
+            'data' => $caseStudy,
+        ]);
+    }
+
+    public function blogSettings()
+    {
+        $blog = blogInfo();
+        return response()->json([
+            'data' => $blog,
+        ]);
+    }
+    public function testimonialSettings()
+    {
+        $testimonial = testimonialInfo();
+        return response()->json([
+            'data' => $testimonial,
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -77,6 +108,10 @@ class SettingsController extends Controller
                 "technology" => storeTechnologyData($sliderglobal, $request),
                 "industry" => storeIndustryData($sliderglobal, $request),
                 "about" => storeAboutData($generalSetting, $sliderglobal, $request),
+                "service" => storeServiceData($sliderglobal, $request),
+                "case_study" => storeCaseStudyData($sliderglobal, $request),
+                "blog" => storeBlogData($sliderglobal, $request),
+                "testimonial" => storeTestimonialData($sliderglobal, $request),
                 default => "no Data Found",
             };
 

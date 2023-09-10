@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {warningMessage} from "../../../../lib/helper.js";
+import {fetchServiceSettings, saveSettings} from "../../../../featurs/Settings/SettingsSlice.js";
 import HeaderMeta from "../../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchIndustrySettings, saveSettings} from "../../../../featurs/Settings/SettingsSlice.js";
-import {errorMessage, warningMessage} from "../../../../lib/helper.js";
 import Preloader from "../../../components/Preloader/Index.jsx";
 import {MdStar} from "react-icons/md";
 
 function Index(props) {
-    const {isLoading, industry} = useSelector(state => state.generalSettings);
+    const {isLoading, serviceSetting} = useSelector(state => state.generalSettings);
     const dispatch = useDispatch()
 
     const breadcrumb = [{
@@ -16,7 +16,7 @@ function Index(props) {
     }, {
         name: "Page Settings", url: "/bsl/admin/page-settings"
     }, {
-        name: "Industry Settings", url: null
+        name: "Service Settings", url: null
     }]
 
     const [title, setTitle] = useState("");
@@ -42,7 +42,7 @@ function Index(props) {
             formData.append("limit", limit);
         }
 
-        formData.append("type", 'industry');
+        formData.append("type", 'service');
 
         if (title && subText && limit) {
             dispatch(saveSettings(formData))
@@ -50,15 +50,15 @@ function Index(props) {
     }
 
     useEffect(() => {
-        if (industry) {
-            setTitle(industry?.title)
-            setSubText(industry?.sub_text)
-            setLimit(industry?.limit)
+        if (serviceSetting) {
+            setTitle(serviceSetting?.title)
+            setSubText(serviceSetting?.sub_text)
+            setLimit(serviceSetting?.limit)
         }
-    }, [industry])
+    }, [serviceSetting])
 
     useEffect(() => {
-        dispatch(fetchIndustrySettings())
+        dispatch(fetchServiceSettings())
     }, []);
 
     if (!isLoading) {
@@ -66,7 +66,7 @@ function Index(props) {
             <>
                 <HeaderMeta
                     title="Industry Settings"
-                    url="/bsl/admin/page-settings/industry"
+                    url="/bsl/admin/page-settings/service"
                 />
                 <Breadcrumb list={breadcrumb}/>
                 <div className="container-fluid">
@@ -74,7 +74,7 @@ function Index(props) {
                         <div className="col-md-12">
                             <div className="card">
                                 <div className="card-header">
-                                    <h4 className="card-title">Industry Settings</h4>
+                                    <h4 className="card-title">Service Settings</h4>
                                 </div>
                                 <div className="card-body">
                                     <form className="form-profile" onSubmit={requestHandler}>
