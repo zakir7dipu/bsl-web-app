@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Carousel from "react-multi-carousel";
 import {uid} from "../../../lib/helper.js";
 import TestimonialItem from "./TestimonialItem.jsx";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchAllTestimonial} from "../../../featurs/Testimonial/TestimonialSlice.js";
 
 function TestimonialCarousel(props) {
+    const {isLoading, testimonials} = useSelector(state => state.testimonialReducer)
+    const dispatch = useDispatch()
+
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -24,6 +29,10 @@ function TestimonialCarousel(props) {
         }
     };
 
+    useEffect(()=>{
+        dispatch(fetchAllTestimonial(4))
+    },[])
+
     return (
         <Carousel
             swipeable={true}
@@ -41,10 +50,10 @@ function TestimonialCarousel(props) {
             itemClass="carousel-item-padding-40-px"
             arrows={false}
         >
-            <TestimonialItem/>
-            <TestimonialItem/>
-            <TestimonialItem/>
-            <TestimonialItem/>
+            {testimonials?.map(item=><TestimonialItem
+                key={uid()}
+                testimonial={item}
+            />)}
         </Carousel>
     );
 }

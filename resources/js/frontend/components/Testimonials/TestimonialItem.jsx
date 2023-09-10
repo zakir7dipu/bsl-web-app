@@ -1,23 +1,25 @@
 import React from 'react';
 import quote2 from "../../../../frontend-assets/images/testimonial/main-home/quote2.png"
 import testimonialAvatar from "../../../../frontend-assets/images/testimonial/main-home/1.jpg"
+import {useInternalLink} from "../../../lib/helper.js";
 
-function TestimonialItem(props) {
+function TestimonialItem({testimonial}) {
+    const {name, image_link, designation, description} = testimonial
     return (
         <div className="testi-item">
             <div className="author-desc">
                 <div className="desc">
                     <img className="quote" src={quote2} alt=""/>
-                        Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway.
+                    {description.replace(/<\/?[^>]+(>|$)/g, "")}
                 </div>
             </div>
             <div className="testimonial-content">
                 <div className="author-img">
-                    <img src={testimonialAvatar} alt=""/>
+                    <img src={useInternalLink(image_link)} alt=""/>
                 </div>
                 <div className="author-part">
-                    <a className="name" href="#">Mariya Khan</a>
-                    <span className="designation">CEO, Brick Consulting</span>
+                    <a className="name" href="#">{name}</a>
+                    <span className="designation">{designation}</span>
                 </div>
             </div>
         </div>

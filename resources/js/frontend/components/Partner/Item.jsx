@@ -1,12 +1,14 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import Style from "./Item.module.css"
+import {useInternalLink} from "../../../lib/helper.js";
 
-function Item({toLink, img}) {
+function Item({info}) {
+    const {image_link} = info
     return (
         <div className={Style.logoImg}>
-            <Link to={toLink}>
-                <img className={Style.mainLogo} src={img} alt=""/>
+            <Link to="#">
+                <img style={{width:"218px", height:"66px"}} className={Style.mainLogo} src={useInternalLink(image_link)} alt=""/>
             </Link>
         </div>
     );

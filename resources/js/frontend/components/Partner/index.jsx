@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Style from "./Partner.module.css"
-import {Container} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import PartnerItem from "./Item.jsx"
@@ -10,9 +10,16 @@ import partnerImg3 from "../../../../frontend-assets/images/partner/style2/3.png
 import partnerImg4 from "../../../../frontend-assets/images/partner/style2/4.png"
 import partnerImg5 from "../../../../frontend-assets/images/partner/style2/5.png"
 import partnerImg6 from "../../../../frontend-assets/images/partner/style2/6.png"
+import {useDispatch, useSelector} from "react-redux";
+import {fetchAllPartners} from "../../../featurs/Partner/PartnerSlice.js";
+import {uid} from "../../../lib/helper.js";
+import RowImg from "../Skeletons/RowImg.jsx";
 
 
 function Index(props) {
+    const {isLoading, partners} = useSelector(state => state.partnerReducer)
+    const dispatch = useDispatch()
+
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -32,10 +39,17 @@ function Index(props) {
             items: 2
         }
     };
+
+    useEffect(()=>{
+        dispatch(fetchAllPartners())
+    },[])
+
     return (
         <div className={Style.partner}>
             <Container>
-                <Carousel
+                {isLoading && <RowImg count={5}/>}
+
+                {!isLoading && <Carousel
                     swipeable={true}
                     draggable={true}
                     showDots={false}
@@ -51,26 +65,11 @@ function Index(props) {
                     itemClass="carousel-item-padding-40-px"
                     arrows={false}
                 >
-                    <PartnerItem
-                        toLink={'#'}
-                        img={partnerImg1}
-                    /><PartnerItem
-                        toLink={'#'}
-                        img={partnerImg2}
-                    /><PartnerItem
-                        toLink={'#'}
-                        img={partnerImg3}
-                    /><PartnerItem
-                        toLink={'#'}
-                        img={partnerImg4}
-                    /><PartnerItem
-                        toLink={'#'}
-                        img={partnerImg5}
-                    /><PartnerItem
-                        toLink={'#'}
-                        img={partnerImg6}
-                    />
-                </Carousel>;
+                    {partners?.map(item=><PartnerItem
+                        key={uid()}
+                        info={item}
+                    />)}
+                </Carousel>}
             </Container>
         </div>
     );

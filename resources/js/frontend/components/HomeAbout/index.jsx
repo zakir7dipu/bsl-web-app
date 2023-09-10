@@ -9,14 +9,14 @@ import Attribute from "./Attribute.jsx";
 function Index(props) {
     const {isLoading, aboutSetting} = useSelector(state => state.generalSettings)
     const {title, brief, clients, project, attributes} = aboutSetting
-    // console.log(aboutSetting)
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(fetchAboutSettings())
     }, [dispatch])
+
     return (
-        <div id="rs-about" className="rs-about">
+        <div id="rs-about" className="rs-about pt-10 md-pt-7">
             {/*pt-120 md-pt-70*/}
             <div className="container">
                 <div className="row align-items-center">

@@ -8,6 +8,7 @@ function Index(props) {
     return (
         <div className="full-width-header">
             <Top
+                loading={isLoading}
                 general={generalSetting?.general}
             />
             <CanvasMenu

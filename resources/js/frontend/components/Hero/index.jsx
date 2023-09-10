@@ -4,6 +4,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchSliderSettings} from "../../../featurs/Settings/SettingsSlice.js";
 import {useInternalLink} from "../../../lib/helper.js";
 import {videoModuleAction} from "../../../featurs/NavAction/NavSlice.js";
+import {Col, Container, Row} from "react-bootstrap";
+import ImgSkel from "../Skeletons/ImgSkel.jsx";
 
 function Index(props) {
     const {isLoading, sliderSetting} = useSelector(state => state.generalSettings)
@@ -19,9 +21,9 @@ function Index(props) {
     },[dispatch])
     return (
         <div className="rs-banner style3 rs-rain-animate modify1">
-            <div className="container">
-                <div className="row">
-                    <div className="col-lg-6">
+            <Container>
+                <Row>
+                    <Col lg={6}>
                         <div className="banner-content">
                             {sliderSetting?.link && <div className="rs-videos">
                                 <div className="animate-border white-color style3">
@@ -41,11 +43,15 @@ function Index(props) {
                             </ul>}
 
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </Col>
+                </Row>
+            </Container>
             <div className="images-part hidden-md">
-                <img src={useInternalLink(`/${sliderSetting?.image_link}`)} alt=""/>
+                {isLoading ? <ImgSkel
+                    width={`900px`}
+                    height={`648px`}
+                /> : <img src={useInternalLink(`/${sliderSetting?.image_link}`)} alt=""/>}
+
             </div>
             <div className="line-inner style2">
                 <div className="line"></div>

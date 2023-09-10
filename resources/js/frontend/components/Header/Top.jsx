@@ -3,9 +3,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link, NavLink, useLocation} from "react-router-dom";
 import {uid, useInternalLink} from "../../../lib/helper.js";
 import {humburgerNavAction} from "../../../featurs/NavAction/NavSlice.js";
-import {fetchAllServices, fetchParentServices} from "../../../featurs/Service/ServiceSlice.js";
+import {fetchParentServices} from "../../../featurs/Service/ServiceSlice.js";
+import Skeletons from "../Skeletons/index.jsx";
+import ImgSkel from "../Skeletons/ImgSkel.jsx";
 
-function Top({general}) {
+function Top({loading, general}) {
     const {pathname} = useLocation();
     const maiMenuRef = createRef()
     const menuAriaRef = createRef()
@@ -27,18 +29,15 @@ function Top({general}) {
 
     const dispatch = useDispatch()
 
-    useEffect(()=>{
+    useEffect(() => {
         let navLinks = maiMenuRef.current.querySelectorAll("a")
-        Array.from(navLinks).map(item=>{
+        Array.from(navLinks).map(item => {
             if (item.classList.contains("active")) {
                 if (item.closest("ul").classList.contains("sub-menu")) {
                     item.closest("ul").closest('.menu-item-has-children').classList.add("current-menu-item")
                 }
                 item.closest('li').classList.add("current-menu-item")
             } else {
-                // if (item.closest("ul").classList.contains("sub-menu")) {
-                //     item.closest('.menu-item-has-children').classList.remove("current-menu-item")
-                // }
                 item.closest('li').classList.remove("current-menu-item")
             }
         })
@@ -55,16 +54,20 @@ function Top({general}) {
                     <div className="row align-items-center">
                         <div className="col-lg-2">
                             <div className="logo-part">
-                                <Link to="/">
+                                {loading? <ImgSkel
+                                    width={`113px`}
+                                    height={`55px`}
+                                /> : <Link to="/">
                                     <img className="normal-logo"
                                          src={useInternalLink(`/${general?.site_secondary_logo}`)} alt="logo"
                                          style={{maxHeight: "55px"}}/>
                                     <img className="sticky-logo" src={useInternalLink(`/${general?.site_logo}`)}
                                          alt="logo" style={{maxHeight: "55px"}}/>
-                                </Link>
+                                </Link>}
+
                             </div>
                             <div className="mobile-menu">
-                                <Link to="#" className="rs-menu-toggle rs-menu-toggle-close" onClick={e=>{
+                                <Link to="#" className="rs-menu-toggle rs-menu-toggle-close" onClick={e => {
                                     e.preventDefault()
                                     maiMenuRef.current.classList.toggle("d-block")
                                 }}>
@@ -120,10 +123,11 @@ function Top({general}) {
                                 <div className="expand-btn-inner search-icon hidden-md">
                                     <ul className="parent-ul">
                                         <li>
-                                            <Link id="nav-expander" className="humburger nav-expander" to="#" onClick={e=>{
-                                                e.preventDefault()
-                                                dispatch(humburgerNavAction())
-                                            }}>
+                                            <Link id="nav-expander" className="humburger nav-expander" to="#"
+                                                  onClick={e => {
+                                                      e.preventDefault()
+                                                      dispatch(humburgerNavAction())
+                                                  }}>
                                                 <span className="dot1"></span>
                                                 <span className="dot2"></span>
                                                 <span className="dot3"></span>
