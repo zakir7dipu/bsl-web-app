@@ -11,6 +11,7 @@ import Preloader from "../components/Preloader/index.jsx";
 import Service from "../components/Services/Index.jsx";
 import Projects from "../components/Projects";
 import Blogs from "../components/Blogs";
+import Testimonials from "../components/Testimonials";
 
 function Home(props) {
     const {isLoading} = useSelector(state => state.generalSettings)
@@ -28,6 +29,7 @@ function Home(props) {
         <Service/>
         <Projects/>
         <Blogs/>
+        <Testimonials/>
         <Client/>
     </>);
 }
