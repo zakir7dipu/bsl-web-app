@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Style from './Top.module.css'
 import {Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
@@ -6,19 +6,34 @@ import {AiFillLinkedin, AiOutlineInstagram, AiOutlineMail} from "react-icons/ai"
 import {BiLogoFacebook} from "react-icons/bi";
 import {LiaPhoneVolumeSolid} from "react-icons/lia";
 import {HiOutlineLocationMarker} from "react-icons/hi";
-import {FaRegClock} from "react-icons/fa";
-// import logoImg from "../../assets/virtualistbd Icon.png"
 import {BsSendFill} from "react-icons/bs";
-import {useDispatch, useSelector} from "react-redux";
-// import {getContactInfo} from "../../featurs/ContactSlice.js";
+import {useDispatch} from "react-redux";
 import {FiYoutube} from "react-icons/fi";
-import {useInternalLink} from "../../../lib/helper.js";
+import {infoMessage, useInternalLink, warningMessage} from "../../../lib/helper.js";
+import {createSubscriber} from "../../../featurs/Subscribers/SubscribersSlice.js";
 
 function Top({newsletter, general, contact, backlink}) {
-    const [email, setEmail] = useState()
+    const dispatch = useDispatch();
+    const [email, setEmail] = useState();
+
+    const resetHandler = () => {
+        setEmail('');
+    }
+
     const handelNewsletter = (e) => {
-        e.preventDefault()
-        console.log(email)
+        e.preventDefault();
+        let formData = new FormData();
+        if (!email) {
+            warningMessage("Email is required.")
+        } else {
+            formData.append("email", email);
+        }
+
+        if (email) {
+            infoMessage("Please wait a while, We are processing your request.");
+            dispatch(createSubscriber(formData))
+        }
+        resetHandler();
     }
     return (
         <div className={Style.footerTop}>

@@ -10,10 +10,10 @@ function Bottom({general}) {
                 <div className="row y-middle">
                     <div className="col-lg-6 text-right md-mb-10 order-last">
                         <ul className="copy-right-menu">
-                            <li className={Style.copyRightMenuLi}><a href="index.html">Home</a></li>
-                            <li className={Style.copyRightMenuLi}><a href="about.html">About</a></li>
-                            <li className={Style.copyRightMenuLi}><a href="shop.html">Training</a></li>
-                            <li className={Style.copyRightMenuLi}><a href="blog.html">Blog</a></li>
+                            <li className={Style.copyRightMenuLi}><Link to="/">Home</Link></li>
+                            <li className={Style.copyRightMenuLi}><Link to="/about">About</Link></li>
+                            <li className={Style.copyRightMenuLi}><Link to="/blog">Blog</Link></li>
+                            <li className={Style.copyRightMenuLi}><Link to="/contact">Contact</Link></li>
                         </ul>
                     </div>
                     <div className="col-lg-6">

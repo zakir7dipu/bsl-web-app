@@ -3,24 +3,30 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Subscribers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SubscriberController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['index', 'store']]);
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
-    }
+        try {
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+            $subscribers = Subscribers::orderBy('id', 'desc')->get();
+
+            return response()->json($subscribers);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), $th->getCode());
+        }
     }
 
     /**
@@ -28,7 +34,19 @@ class SubscriberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "email" => ["required", "email", "max:128"],
+        ]);
+
+        DB::beginTransaction();
+        try {
+            DB::commit();
+            $subscriber = Subscribers::create($request->all());
+            return response()->json($subscriber);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return response()->json($th->getMessage(), $th->getCode());
+        }
     }
 
     /**
@@ -36,23 +54,12 @@ class SubscriberController extends Controller
      */
     public function show(string $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+        try {
+            $subscriber = Subscribers::where('id', $id)->first();
+            return response()->json($subscriber);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), $th->getCode());
+        }
     }
 
     /**
@@ -60,6 +67,17 @@ class SubscriberController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::beginTransaction();
+        try {
+
+            $subscriber = Subscribers::where('id', $id)->first();
+
+            $subscriber->delete();
+            DB::commit();
+            return response()->json($subscriber);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return response()->json($th->getMessage(), $th->getCode());
+        }
     }
 }
