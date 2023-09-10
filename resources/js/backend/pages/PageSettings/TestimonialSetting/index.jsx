@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {warningMessage} from "../../../../lib/helper.js";
-import {fetchBlogSettings, saveSettings} from "../../../../featurs/Settings/SettingsSlice.js";
+import {fetchTestimonialSettings, saveSettings} from "../../../../featurs/Settings/SettingsSlice.js";
 import HeaderMeta from "../../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
-import Preloader from "../../../components/Preloader/Index.jsx";
 import {MdStar} from "react-icons/md";
+import Preloader from "../../../components/Preloader/Index.jsx";
 
 function Index(props) {
-    const {isLoading, blogSetting} = useSelector(state => state.generalSettings);
+    const {isLoading, testimonialSetting} = useSelector(state => state.generalSettings);
     const dispatch = useDispatch()
 
     const breadcrumb = [{
@@ -49,7 +49,7 @@ function Index(props) {
             formData.append("limit", limit);
         }
 
-        formData.append("type", 'blog');
+        formData.append("type", 'testimonial');
 
         if (title && subText && limit) {
             dispatch(saveSettings(formData))
@@ -57,16 +57,16 @@ function Index(props) {
     }
 
     useEffect(() => {
-        if (blogSetting) {
-            setTitle(blogSetting?.title)
-            setSubText(blogSetting?.sub_text)
-            setLimit(blogSetting?.limit)
-            setDesc(blogSetting?.desc)
+        if (testimonialSetting) {
+            setTitle(testimonialSetting?.title)
+            setSubText(testimonialSetting?.sub_text)
+            setLimit(testimonialSetting?.limit)
+            setDesc(testimonialSetting?.desc)
         }
-    }, [blogSetting])
+    }, [testimonialSetting])
 
     useEffect(() => {
-        dispatch(fetchBlogSettings())
+        dispatch(fetchTestimonialSettings())
     }, []);
 
     if (!isLoading) {
@@ -82,7 +82,7 @@ function Index(props) {
                         <div className="col-md-12">
                             <div className="card">
                                 <div className="card-header">
-                                    <h4 className="card-title">Blog Settings</h4>
+                                    <h4 className="card-title">Testimonial Settings</h4>
                                 </div>
                                 <div className="card-body">
                                     <form className="form-profile" onSubmit={requestHandler}>

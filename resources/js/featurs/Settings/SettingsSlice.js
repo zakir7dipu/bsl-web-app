@@ -13,6 +13,7 @@ const initialData = {
     serviceSetting: [],
     caseStudySetting: [],
     blogSetting: [],
+    testimonialSetting: [],
     errorMess: null,
 }
 
@@ -122,7 +123,14 @@ export const fetchBlogSettings = createAsyncThunk("settings/fetchBlogSettings", 
     }
 })
 
-
+export const fetchTestimonialSettings = createAsyncThunk("settings/fetchTestimonialSettings", async (args, {rejectedWithValue}) => {
+    try {
+        const res = await apiAccess.get(`testimonial-settings`)
+        return res.data
+    } catch (error) {
+        return rejectedWithValue(error.response.message)
+    }
+})
 
 export const settingsSlice = createSlice({
     name: "settings",
@@ -278,6 +286,19 @@ export const settingsSlice = createSlice({
             state.errorMess = null
         },
         [fetchBlogSettings.rejected]: (state, {payload}) => {
+            state.isLoading = false
+            state.errorMess = payload
+        },
+        [fetchTestimonialSettings.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchTestimonialSettings.fulfilled]: (state, {payload}) => {
+            const {data} = payload
+            state.isLoading = false
+            state.testimonialSetting = data
+            state.errorMess = null
+        },
+        [fetchTestimonialSettings.rejected]: (state, {payload}) => {
             state.isLoading = false
             state.errorMess = payload
         },

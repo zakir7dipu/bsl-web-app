@@ -82,6 +82,13 @@ class SettingsController extends Controller
             'data' => $blog,
         ]);
     }
+    public function testimonialSettings()
+    {
+        $testimonial = testimonialInfo();
+        return response()->json([
+            'data' => $testimonial,
+        ]);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -104,6 +111,7 @@ class SettingsController extends Controller
                 "service" => storeServiceData($sliderglobal, $request),
                 "case_study" => storeCaseStudyData($sliderglobal, $request),
                 "blog" => storeBlogData($sliderglobal, $request),
+                "testimonial" => storeTestimonialData($sliderglobal, $request),
                 default => "no Data Found",
             };
 

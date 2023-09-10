@@ -109,6 +109,13 @@ function blogInfo()
     return $data;
 }
 
+function testimonialInfo()
+{
+    $group = 'site.';
+    $data = setting($group . 'testimonial');
+    return $data;
+}
+
 
 function storeGeneralData($generalSetting, $global, $request)
 {
@@ -346,6 +353,20 @@ function storeBlogData($global, $request)
     ];
     setting([$global . ".blog" => $data]);
     $data = setting($global . ".blog");
+    $data["type"] = $request->type;
+    return $data;
+}
+
+function storeTestimonialData($global, $request)
+{
+    $data = [
+        "title" => $request->title,
+        "sub_text" => $request->sub_text,
+        "limit" => $request->limit,
+        "desc" => $request->desc,
+    ];
+    setting([$global . ".testimonial" => $data]);
+    $data = setting($global . ".testimonial");
     $data["type"] = $request->type;
     return $data;
 }
