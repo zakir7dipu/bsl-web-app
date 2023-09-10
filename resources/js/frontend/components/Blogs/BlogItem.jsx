@@ -5,7 +5,6 @@ import "moment/locale/bn.js"
 import {useInternalLink} from "../../../lib/helper.js";
 
 function BlogItem({blogItem}) {
-    console.log(blogItem)
     const {image_link, title, meta_description, created_at} = blogItem
     return (
         <div className="blog-item">

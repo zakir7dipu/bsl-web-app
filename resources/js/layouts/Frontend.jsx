@@ -34,7 +34,7 @@ function Frontend(props) {
                 <Header/>
                 <Outlet/>
                 <Footer/>
-                {/*<ScrollUp/>*/}
+                <ScrollUp/>
             </div>
         </>
     );
