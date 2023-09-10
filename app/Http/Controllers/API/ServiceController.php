@@ -19,7 +19,7 @@ class ServiceController extends Controller
      * Display a listing of the resource.
      */
 
-    public function index($items = 0)
+    public function index($items)
     {
         try {
 
@@ -38,7 +38,7 @@ class ServiceController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create($items = 0)
+    public function create($items)
     {
         try {
 
@@ -49,7 +49,6 @@ class ServiceController extends Controller
                 $services = Services::doesntHave('service')->with(['subServices'])->orderBy('id', 'asc')->get();
             }
 
-            $services = Services::doesntHave('service')->with(['subServices'])->orderBy('id', 'asc')->get();
             return response()->json($services);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), $th->getCode());

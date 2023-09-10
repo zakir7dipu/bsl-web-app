@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {fetchAllServices} from "../../../featurs/Service/ServiceSlice.js";
+import {fetchAllServices, fetchParentServices} from "../../../featurs/Service/ServiceSlice.js";
 import {uid, useInternalLink} from "../../../lib/helper.js";
 import ServiceItem from "./ServiceItem.jsx";
 
@@ -12,7 +12,7 @@ function Index(props) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchAllServices(6));
+        dispatch(fetchParentServices(3));
     }, [dispatch]);
 
     return (
