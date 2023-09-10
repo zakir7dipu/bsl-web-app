@@ -93,7 +93,7 @@ export const MessagesSlice = createSlice({
             state.isLoading = false
             state.userMessages = [...state.userMessages, payload]
             state.errorMess = null
-            successMessage("Data Created Successfully")
+            successMessage("Messages have been sent successfully. We will contact you very soon")
         },
         [createUserMessages.rejected]: (state, {payload}) => {
             state.isLoading = false;

@@ -92,7 +92,7 @@ export const SubscribersSlice = createSlice({
             state.isLoading = false
             state.subscribers = [...state.subscribers, payload]
             state.errorMess = null
-            successMessage("Data Created Successfully")
+            successMessage("Thanks for subscribing to our newsletter.")
         },
         [createSubscriber.rejected]: (state, {payload}) => {
             state.isLoading = false;
