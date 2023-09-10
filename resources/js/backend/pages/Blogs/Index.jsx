@@ -49,7 +49,11 @@ function Index(props) {
             selector: row => row?.title,
             sortable: true,
         },
-
+        {
+            name: 'Tag',
+            selector: row => row?.tag,
+            sortable: true,
+        },
         {
             name: 'Image',
             cell: row => (
@@ -76,7 +80,9 @@ function Index(props) {
 
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
+    const [tag, setTag] = useState("");
     const [metaTitle, setMetaTitle] = useState("");
+
     const [metaDescription, setMetaDescription] = useState("");
     const [metaKeywords, setMetaKeywords] = useState("");
     const [indexing, setIndexing] = useState("");
@@ -94,6 +100,7 @@ function Index(props) {
     const resetHandler = () => {
         setName('');
         setIndexing('');
+        setTag('');
         setDescription('');
         setMetaTitle('');
         setMetaKeywords('');
@@ -115,6 +122,11 @@ function Index(props) {
             warningMessage("Indexing is required.")
         } else {
             formData.append("short_order", indexing);
+        }
+        if (!tag) {
+            warningMessage("Tag is required.")
+        } else {
+            formData.append("tag", tag);
         }
 
         if (!description) {
@@ -139,7 +151,7 @@ function Index(props) {
         }
 
 
-        if (name && indexing && description) {
+        if (name && indexing && tag && description) {
             infoMessage("Please wait a while, We are processing your request.");
             if (!isEdit) {
                 dispatch(createBlogsData(formData))
@@ -166,6 +178,7 @@ function Index(props) {
         setIsEdit(true)
         setName(model?.title)
         setIndexing(model?.short_order)
+        setTag(model?.tag)
         setDescription(model?.description)
         setMetaTitle(model?.meta_title)
         setMetaDescription(model?.meta_description)
@@ -231,13 +244,25 @@ function Index(props) {
                                            }} placeholder="title" type="text"/>
                                 </div>
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-md-2">
                                 <div className="form-group">
                                     <label>Short Order <sup className="text-danger"><MdStar/></sup></label>
                                     <input className="form-control" value={indexing}
                                            onChange={(e) => {
                                                setIndexing(e.target.value)
                                            }} placeholder="short order" type="number"/>
+                                </div>
+                            </div>
+                            <div className="col-md-4">
+                                <div className="form-group">
+                                    <label>Tag <sup className="text-danger"><MdStar/></sup></label>
+                                    <input
+                                        type={`text`}
+                                        className={`form-control`}
+                                        value={tag}
+                                        onChange={e => setTag(e.target.value)}
+                                        placeholder={`Ex: Software. Please Do not put comma.`}
+                                    />
                                 </div>
                             </div>
                             <div className="col-md-12">
@@ -265,6 +290,7 @@ function Index(props) {
                                     />
                                 </div>
                             </div>
+
                             <div className="col-md-6">
                                 <div className="form-group">
                                     <label>Meta Title <sup className="text-danger"><MdStar/></sup></label>
