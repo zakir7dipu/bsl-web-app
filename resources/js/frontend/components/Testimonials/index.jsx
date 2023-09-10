@@ -1,6 +1,7 @@
 import React from 'react';
 import {Col, Container, Row} from "react-bootstrap";
 import TestimonialImg from "../../../../frontend-assets/images/testimonial/testimonial-3.png"
+import TestimonialCarousel from "./TestimonialCarousel.jsx";
 
 function Index(props) {
     return (
@@ -14,7 +15,7 @@ function Index(props) {
                     </Col>
 
                     <Col lg={6} className="md-pt-50 modify-gap">
-                        <div className="sec-title mb-50">
+                        <div className="sec-title mb-2">
                             <div className="sub-text style4-bg left testi">Testimonials</div>
                             <h2 className="title pb-20" style={{float:"none"}}>
                                 What Customer Saying
@@ -26,7 +27,7 @@ function Index(props) {
                             </div>
                         </div>
 
-
+                        <TestimonialCarousel/>
                     </Col>
                 </Row>
             </Container>

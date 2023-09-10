@@ -18,7 +18,7 @@ function BlogItem({blogItem}) {
             <div className="blog-content">
                 <ul className="blog-meta">
                     <li className="date"><i className="fa fa-calendar-check-o"></i> {moment(created_at).format("LL")}</li>
-                    <li className="admin"><i className="fa fa-user-o"></i> admin</li>
+                    {/*<li className="admin"><i className="fa fa-user-o"></i> admin</li>*/}
                 </ul>
                 <h3 className="blog-title"><Link to="#">{title}</Link></h3>
                 <p className="desc">{meta_description.slice(0, 150)}.....</p>
