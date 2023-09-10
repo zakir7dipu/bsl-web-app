@@ -1,16 +1,17 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Style from './Top.module.css'
 import {Col, Container, Row} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import {AiFillLinkedin, AiOutlineInstagram, AiOutlineMail} from "react-icons/ai";
 import {BiLogoFacebook} from "react-icons/bi";
 import {LiaPhoneVolumeSolid} from "react-icons/lia";
 import {HiOutlineLocationMarker} from "react-icons/hi";
 import {BsSendFill} from "react-icons/bs";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {FiYoutube} from "react-icons/fi";
-import {infoMessage, useInternalLink, warningMessage} from "../../../lib/helper.js";
+import {infoMessage, uid, useInternalLink, warningMessage} from "../../../lib/helper.js";
 import {createSubscriber} from "../../../featurs/Subscribers/SubscribersSlice.js";
+import {fetchParentServices} from "../../../featurs/Service/ServiceSlice.js";
 
 function Top({newsletter, general, contact, backlink}) {
     const dispatch = useDispatch();
@@ -35,6 +36,14 @@ function Top({newsletter, general, contact, backlink}) {
         }
         resetHandler();
     }
+
+    const {
+        parentServices
+    } = useSelector((state) => state.serviceReducer);
+    useEffect(() => {
+        dispatch(fetchParentServices());
+    }, [dispatch]);
+
     return (
         <div className={Style.footerTop}>
             <Container>
@@ -65,11 +74,14 @@ function Top({newsletter, general, contact, backlink}) {
                             <Col lg={3} md={12} sm={12}>
                                 <h3 className={Style.widgetTitle}>IT Services</h3>
                                 <ul className={Style.siteMap}>
-                                    <li><Link to="#">Software Development</Link></li>
-                                    <li><Link to="#">Web Development</Link></li>
-                                    <li><Link to="#">Analytic Solutions</Link></li>
-                                    <li><Link to="#">Cloud and DevOps</Link></li>
-                                    <li><Link to="#">Product Design</Link></li>
+
+                                    {parentServices && parentServices.map(item =>
+                                        <li key={uid()}>
+                                            <NavLink
+                                                to={`service/${item?.slug}/details`}>{item?.title}</NavLink>
+                                        </li>
+                                    )}
+
                                 </ul>
                             </Col>
 
