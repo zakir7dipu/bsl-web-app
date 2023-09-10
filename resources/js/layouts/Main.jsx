@@ -52,9 +52,7 @@ import Frontend from "./Frontend.jsx";
 import About from "../frontend/pages/About.jsx";
 import Management from "../frontend/pages/Management.jsx";
 import Team from "../frontend/pages/Team.jsx";
-import SoftwareDevelopment from "../frontend/pages/SoftwareDevelopment.jsx";
-import WebDevelopment from "../frontend/pages/WebDevelopment.jsx";
-import AnalyticSolutions from "../frontend/pages/AnalyticSolutions.jsx";
+import FrontendServiceCategory from "../frontend/pages/ServiceCategory.jsx";
 import Courses from "../frontend/pages/Courses";
 import Contact from "../frontend/pages/Contact.jsx";
 import Blog from "../frontend/pages/Blog/index.jsx";
@@ -75,9 +73,7 @@ function Main() {
                 <Route path="/about" element={<About/>}/>
                 <Route path="/management" element={<Management/>}/>
                 <Route path="/team" element={<Team/>}/>
-                <Route path="/software-development" element={<SoftwareDevelopment/>}/>
-                <Route path="/web-development" element={<WebDevelopment/>}/>
-                <Route path="/analytic-solutions" element={<AnalyticSolutions/>}/>
+                <Route path="/service/:slug/details" element={<FrontendServiceCategory/>}/>
                 <Route path="/courses">
                     <Route index element={<Courses/>}/>
                 </Route>

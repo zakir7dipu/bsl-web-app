@@ -110,8 +110,9 @@ class ServiceController extends Controller
     public function show(string $slug)
     {
         try {
-
-            $service = Services::with('service')->where('slug', $slug)->first();
+            $service = Services::with(['service','subServices','courses','products'])
+                ->where('slug', $slug)
+                ->first();
             return response()->json($service);
 
         } catch (\Throwable $th) {
