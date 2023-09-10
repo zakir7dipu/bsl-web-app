@@ -1,0 +1,8 @@
+.projectTags::after {
+    content: ", ";
+    right: 1px;
+}
+
+.projectTags:nth-last-child(1)::after {
+    content: "";
+}

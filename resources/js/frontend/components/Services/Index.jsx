@@ -10,6 +10,7 @@ function Index(props) {
         services
     } = useSelector((state) => state.serviceReducer);
     const dispatch = useDispatch();
+
     useEffect(() => {
         dispatch(fetchAllServices());
     }, [dispatch]);
@@ -19,7 +20,7 @@ function Index(props) {
             <div className="container">
                 <div className="sec-title2 text-center mb-45">
                     <span className="sub-text gold-color">Services</span>
-                    <h2 className="title title2">
+                    <h2 className="title title2" style={{float: "none"}}>
                         Explore Our All Services We Offer to customers
                     </h2>
                 </div>

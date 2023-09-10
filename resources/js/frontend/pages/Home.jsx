@@ -9,23 +9,27 @@ import Partner from "../components/Partner";
 import Client from "../components/Client";
 import Preloader from "../components/Preloader/index.jsx";
 import Service from "../components/Services/Index.jsx";
+import Projects from "../components/Projects";
+import Blogs from "../components/Blogs";
 
 function Home(props) {
     const {isLoading} = useSelector(state => state.generalSettings)
     return (<>
-            {isLoading && <Preloader/>}
+        {isLoading && <Preloader/>}
         <HeaderMeta
             title="Home"
             page="Home"
         />
-            <Hero/>
-            <Partner/>
-            <HomeAbout/>
-            <Industry/>
-            <Technology/>
-            <Client/>
-            <Service/>
-        </>);
+        <Hero/>
+        <Partner/>
+        <HomeAbout/>
+        <Industry/>
+        <Technology/>
+        <Service/>
+        <Projects/>
+        <Blogs/>
+        <Client/>
+    </>);
 }
 
 export default Home;
