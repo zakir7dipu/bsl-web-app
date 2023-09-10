@@ -21,9 +21,9 @@ export const fetchAllSubscriber = createAsyncThunk("subscriberData/fetchAllSubsc
         return rejectWithValue(error.response.data)
     }
 })
-export const fetchSubscriberBySlug = createAsyncThunk("subscriberData/fetchSubscriberBySlug", async (brand, {rejectWithValue}) => {
+export const showSubscriberData = createAsyncThunk("subscriberData/showSubscriberData", async (id, {rejectWithValue}) => {
     try {
-        const res = await apiAccess.get(`${initialData.apiUrl}/${slug}/show`);
+        const res = await apiAccess.get(`${initialData.apiUrl}/${id}/show`);
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.data)
@@ -73,14 +73,14 @@ export const SubscribersSlice = createSlice({
             errorMessage(payload)
         },
 
-        [fetchSubscriberBySlug.pending]: (state) => {
-            state.isLoading = true
+        [showSubscriberData.pending]: (state) => {
+            state.isLoading = false
         },
-        [fetchSubscriberBySlug.fulfilled]: (state, {payload}) => {
+        [showSubscriberData.fulfilled]: (state, {payload}) => {
             state.isLoading = false;
             state.metaInfo = payload;
         },
-        [fetchSubscriberBySlug.rejected]: (state, {payload}) => {
+        [showSubscriberData.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
         },
