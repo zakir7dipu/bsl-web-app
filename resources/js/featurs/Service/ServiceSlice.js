@@ -8,6 +8,7 @@ const initialData = {
     isLoading: true,
     services: [],
     parentServices: [],
+    serviceForHomePage:[],
     lastPage: 0,
     currentPage: 1,
     perPage: 0,
@@ -104,6 +105,13 @@ export const deleteServiceData = createAsyncThunk("categories/deleteServiceData"
 export const ServiceSlice = createSlice({
     name: 'categories',
     initialState: initialData,
+    reducers: {
+        getServicesForHomePage:(state,{payload})=>{
+            if(payload) {
+                state.serviceForHomePage = state.parentServices.slice(0,payload)
+            }
+        }
+    },
     extraReducers: {
         [fetchAllServices.pending]: (state) => {
             state.isLoading = true
@@ -230,4 +238,5 @@ export const ServiceSlice = createSlice({
     }
 });
 
+export const {getServicesForHomePage} = ServiceSlice.actions
 export default ServiceSlice.reducer;
