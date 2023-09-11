@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {useInternalLink} from "../../../lib/helper.js";
+import {uid, useInternalLink} from "../../../lib/helper.js";
 import moment from "moment/moment.js";
 import ImgSkel from "./ImgSkel.jsx";
 import TextSkel from "./TextSkel.jsx";
@@ -9,7 +9,7 @@ function BlogsItemSkel({count}) {
     return (
         Array(count).fill(0).map((item, index) => {
             return (
-                <div className="blog-item">
+                <div className="blog-item" key={uid()}>
                     <div className="image-wrap">
                         <Link to="#">
                             <ImgSkel

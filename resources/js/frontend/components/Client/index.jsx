@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Style from "./Client.module.css"
 import {Container} from "react-bootstrap";
 import Carousel from "react-multi-carousel";
@@ -10,9 +10,16 @@ import clientImg3 from "../../../../frontend-assets/images/partner/3.png"
 import clientImg4 from "../../../../frontend-assets/images/partner/4.png"
 import clientImg5 from "../../../../frontend-assets/images/partner/5.png"
 import clientImg6 from "../../../../frontend-assets/images/partner/6.png"
+import {useDispatch, useSelector} from "react-redux";
+import {fetchAllClients} from "../../../featurs/Clients/ClientSlice.js";
+import PartnerSkel from "../Skeletons/PartnerSkel.jsx";
+import {uid} from "../../../lib/helper.js";
 
 
 function Index(props) {
+    const {isLoading, clients} = useSelector(state => state.clientReducer)
+    const dispatch = useDispatch()
+
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -32,7 +39,13 @@ function Index(props) {
             items: 2
         }
     };
+
+    useEffect(() => {
+        dispatch(fetchAllClients())
+    }, [])
+
     return (
+        isLoading ? <PartnerSkel/>:
         <div className={Style.client}>
             <Container>
                 <Carousel
@@ -51,25 +64,11 @@ function Index(props) {
                     itemClass="carousel-item-padding-40-px"
                     arrows={false}
                 >
-                    <ClientItem
-                        toLink={'#'}
-                        img={clientImg1}
-                    /><ClientItem
-                        toLink={'#'}
-                        img={clientImg2}
-                    /><ClientItem
-                        toLink={'#'}
-                        img={clientImg3}
-                    /><ClientItem
-                        toLink={'#'}
-                        img={clientImg4}
-                    /><ClientItem
-                        toLink={'#'}
-                        img={clientImg5}
-                    /><ClientItem
-                        toLink={'#'}
-                        img={clientImg6}
-                    />
+                    {clients?.map(item=><ClientItem
+                        key={uid()}
+                        info={item}
+                    />)}
+
                 </Carousel>;
             </Container>
         </div>
