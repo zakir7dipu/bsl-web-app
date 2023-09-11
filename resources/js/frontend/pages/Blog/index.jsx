@@ -54,9 +54,6 @@ function Index(props) {
                 breadcrumbs={breadcrumbs}
             />
 
-            {isLoading && <Row>
-                <ServiceItemSkel count={6}/>
-            </Row>}
             <div className="rs-inner-blog pt-120 pb-120 md-pt-90 md-pb-90">
                 <Container>
                     <Row>

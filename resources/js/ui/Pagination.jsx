@@ -3,9 +3,13 @@ import ReactPaginate from "react-paginate";
 import Style from "./Pagination.module.css"
 
 function Pagination({handlePageClick, pageCount, range}) {
-    useEffect(()=>{
-        document.querySelector("li.selected").classList.add(Style.selected)
-    })
+    const selectedPage = document.querySelector("li.selected")
+    useEffect(() => {
+        if (selectedPage) {
+            selectedPage.classList.add(Style.selected)
+        }
+    }, [selectedPage])
+
     return (
         <ReactPaginate
             className={Style.paginationPart}

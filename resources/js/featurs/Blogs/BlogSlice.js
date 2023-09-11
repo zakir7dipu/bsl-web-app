@@ -199,9 +199,8 @@ export const BlogSlice = createSlice({
         [fetchAllBlogsData.pending]: (state) => {
             state.isLoading = true
         },
-        [fetchAllBlogsData.fulfilled]: (state, action) => {
-            console.log(action.payload);
-            const {data, last_page, current_page, per_page, path, total} = action.payload;
+        [fetchAllBlogsData.fulfilled]: (state, {payload}) => {
+            const {data, last_page, current_page, per_page, path, total} = payload;
             state.isLoading = false
             state.paginateBlogs = data
             state.lastPage = last_page
@@ -211,17 +210,17 @@ export const BlogSlice = createSlice({
             state.apiUrl = path
             state.errorMess = null
         },
-        [fetchAllBlogsData.rejected]: (state, action) => {
+        [fetchAllBlogsData.rejected]: (state, {payload}) => {
             state.isLoading = false
             state.paginateBlogs = []
-            state.errorMess = action.payload
+            state.errorMess = {payload}
         },
 
         [fetchAllBlogsByPage.pending]: (state) => {
             state.isLoading = true
         },
-        [fetchAllBlogsByPage.fulfilled]: (state, action) => {
-            const {data, last_page, current_page, per_page, path, total} = action.payload
+        [fetchAllBlogsByPage.fulfilled]: (state, {payload}) => {
+            const {data, last_page, current_page, per_page, path, total} = payload
             state.isLoading = false
             state.paginateBlogs = data
             state.lastPage = last_page
@@ -231,10 +230,10 @@ export const BlogSlice = createSlice({
             state.apiUrl = path
             state.errorMess = null
         },
-        [fetchAllBlogsByPage.rejected]: (state, action) => {
+        [fetchAllBlogsByPage.rejected]: (state, {payload}) => {
             state.isLoading = false
             state.paginateBlogs = []
-            state.errorMess = action.payload
+            state.errorMess = payload
         },
     }
 });
