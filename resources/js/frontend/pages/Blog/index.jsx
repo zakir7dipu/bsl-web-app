@@ -2,16 +2,25 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import HeaderMeta from "../../../ui/HeaderMeta.jsx";
 import Breadcrumbs from "../../components/Breadcrumbs/index.jsx";
-import {fetchAllBlogs} from "../../../featurs/Blogs/BlogSlice.js";
+import {fetchAllBlogs, fetchAllBlogsByPage, fetchAllBlogsData} from "../../../featurs/Blogs/BlogSlice.js";
 import {Container, Row} from "react-bootstrap";
 import ServiceItemSkel from "../../components/Skeletons/ServiceItemSkel.jsx";
 import {Link} from "react-router-dom";
 import {uid, useInternalLink} from "../../../lib/helper.js";
 import moment from "moment";
+import Pagination from "../../../ui/Pagination.jsx";
 
 function Index(props) {
 
-    const {isLoading, blogs} = useSelector(state => state.blogsReducer)
+    const {
+        isLoading,
+        paginateBlogs,
+        lastPage,
+        currentPage,
+        perPage,
+        total,
+        apiUrl
+    } = useSelector(state => state.blogsReducer);
     const breadcrumbs = [
         {
             name: "Home",
@@ -24,8 +33,12 @@ function Index(props) {
     ]
     const dispatch = useDispatch();
 
+    const pageChangeHandler = (page) => {
+        dispatch(fetchAllBlogsByPage({page: page}))
+    }
+
     useEffect(() => {
-        dispatch(fetchAllBlogs(0))
+        dispatch(fetchAllBlogsData())
     }, [dispatch])
 
 
@@ -50,7 +63,7 @@ function Index(props) {
                             <ServiceItemSkel count={6}/>
                         }
                         {
-                            blogs?.map(item =>
+                            paginateBlogs?.map(item =>
                                 <div className="col-lg-4 mb-50" key={uid()}>
                                     <div className="blog-item">
                                         <div className="blog-img">
@@ -59,7 +72,7 @@ function Index(props) {
                                                      alt=""/>
                                             </Link>
                                             <ul className="post-categories">
-                                                <li><Link to={`/blog/${item?.slug}/details`}>Application Testing</Link>
+                                                <li><Link to="#">{item?.tag}</Link>
                                                 </li>
                                             </ul>
                                         </div>
@@ -92,6 +105,9 @@ function Index(props) {
                                 </div>
                             )
                         }
+
+                        <div className="col-md-12 mt-3 text-center">{paginateBlogs?.length > 8 ?
+                            <Pagination handlePageClick={pageChangeHandler} pageCount={total}/> : ''}</div>
                     </Row>
                 </Container>
             </div>
