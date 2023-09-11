@@ -33,9 +33,9 @@ function Index(props) {
     ]
     const dispatch = useDispatch();
 
-    const pageChangeHandler = (e) => {
-        console.log(e)
-        dispatch(fetchAllBlogsByPage({page: e}))
+    const pageChangeHandler = ({selected}) => {
+        let page = selected+1
+        dispatch(fetchAllBlogsByPage({page: page}))
     }
 
     useEffect(() => {
