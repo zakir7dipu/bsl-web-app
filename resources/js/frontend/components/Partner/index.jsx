@@ -46,7 +46,7 @@ function Index(props) {
     }, [])
 
     return (
-        !isLoading ? <PartnerSkel/>:
+        isLoading ? <PartnerSkel/>:
         <div className={Style.partner}>
             <Container>
                 <Carousel
