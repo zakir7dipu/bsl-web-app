@@ -7,6 +7,11 @@ const {apiAccess} = new Api();
 const initialData = {
     isLoading: true,
     blogs: [],
+    paginateBlogs: [],
+    lastPage: 0,
+    currentPage: 1,
+    perPage: 0,
+    total: 0,
     apiUrl: 'blogs',
     errorMess: null,
     metaInfo: []
@@ -66,6 +71,27 @@ export const deleteBlogsData = createAsyncThunk("blogsData/deleteBlogsData", asy
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.data)
+    }
+})
+
+// Frontend blogs function
+
+export const fetchAllBlogsData = createAsyncThunk("blogsData/fetchAllBlogsData", async (data, {rejectWithValue}) => {
+    try {
+        const res = await apiAccess.get("blogs-all")
+        return res.data
+    } catch (error) {
+        return rejectWithValue(error.response.message)
+    }
+})
+
+export const fetchAllBlogsByPage = createAsyncThunk("blogsData/fetchAllBlogsByPage", async (data, {rejectWithValue}) => {
+    try {
+        const {page} = data
+        const res = await apiAccess.get(`blogs-all?page=${page}`)
+        return res.data
+    } catch (error) {
+        return rejectWithValue(error.response.message)
     }
 })
 
@@ -168,6 +194,47 @@ export const BlogSlice = createSlice({
             state.isLoading = false;
             state.message = payload;
             errorMessage(payload)
+        },
+
+        [fetchAllBlogsData.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchAllBlogsData.fulfilled]: (state, action) => {
+            console.log(action.payload);
+            const {data, last_page, current_page, per_page, path, total} = action.payload;
+            state.isLoading = false
+            state.paginateBlogs = data
+            state.lastPage = last_page
+            state.currentPage = current_page
+            state.total = total
+            state.perPage = per_page
+            state.apiUrl = path
+            state.errorMess = null
+        },
+        [fetchAllBlogsData.rejected]: (state, action) => {
+            state.isLoading = false
+            state.paginateBlogs = []
+            state.errorMess = action.payload
+        },
+
+        [fetchAllBlogsByPage.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchAllBlogsByPage.fulfilled]: (state, action) => {
+            const {data, last_page, current_page, per_page, path, total} = action.payload
+            state.isLoading = false
+            state.paginateBlogs = data
+            state.lastPage = last_page
+            state.currentPage = current_page
+            state.total = total
+            state.perPage = per_page
+            state.apiUrl = path
+            state.errorMess = null
+        },
+        [fetchAllBlogsByPage.rejected]: (state, action) => {
+            state.isLoading = false
+            state.paginateBlogs = []
+            state.errorMess = action.payload
         },
     }
 });

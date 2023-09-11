@@ -146,6 +146,7 @@ Route::controller(CurricularController::class)->group(function () {
 
 Route::controller(BlogsController::class)->group(function () {
     Route::get("blogs/{take?}", "index");
+    Route::get("blogs-all", "allData");
     Route::post("blogs-store", "store");
     Route::get("blogs/{slug}/show", "show");
     Route::post("blogs/{id}/update", "update");

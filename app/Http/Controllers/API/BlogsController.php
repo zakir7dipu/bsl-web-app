@@ -12,7 +12,7 @@ class BlogsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['index', 'show']]);
+        $this->middleware('auth:api', ['except' => ['index', 'show', 'allData']]);
     }
 
     /**
@@ -30,6 +30,21 @@ class BlogsController extends Controller
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), $th->getCode());
         }
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function allData()
+    {
+//        try {
+
+            $blogs = Blogs::orderBy('short_order', 'desc')->paginate(2);
+
+            return response()->json($blogs);
+//        } catch (\Throwable $th) {
+//            return response()->json($th->getMessage(), $th->getCode());
+//        }
     }
 
     /**
