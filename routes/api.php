@@ -69,7 +69,7 @@ Route::controller(IndustriesController::class)->group(function () {
 });
 
 Route::controller(AboutsController::class)->group(function () {
-    Route::get('abouts/', 'index');
+    Route::get('abouts', 'index');
     Route::post("abouts-store", "store");
     Route::get("abouts/{slug}/show", "show");
     Route::post("abouts/{slug}/update", "update");
