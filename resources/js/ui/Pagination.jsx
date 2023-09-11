@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactPaginate from "react-paginate";
 
-function Pagination({handlePageClick, pageCount}) {
+function Pagination({handlePageClick, pageCount, range}) {
     return (
         <ReactPaginate
             breakLabel="..."
@@ -9,7 +9,7 @@ function Pagination({handlePageClick, pageCount}) {
             previousLabel="<"
             pageCount={pageCount}
             onPageChange={handlePageClick}
-            pageRangeDisplayed={5}
+            pageRangeDisplayed={range}
             renderOnZeroPageCount={null}
         />
     );
