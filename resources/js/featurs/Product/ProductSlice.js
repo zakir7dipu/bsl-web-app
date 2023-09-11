@@ -8,6 +8,11 @@ const initialData = {
     isLoading: true,
     products: [],
     services: [],
+    productsForHomePage: [],
+    lastPage: 0,
+    currentPage: 1,
+    perPage: 0,
+    total: 0,
     apiUrl: 'products',
     errorMess: null,
     metaInfo: []
@@ -73,6 +78,27 @@ export const deleteProductData = createAsyncThunk("serviceProduct/deleteProductD
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.data)
+    }
+})
+
+// Frontend blogs function
+
+export const fetchAllProductsData = createAsyncThunk("serviceProduct/fetchAllProductsData", async (id, {rejectWithValue}) => {
+    try {
+        const res = await apiAccess.get(`products-all/${id}`)
+        return res.data
+    } catch (error) {
+        return rejectWithValue(error.response.message)
+    }
+})
+
+export const fetchAllProductsByPage = createAsyncThunk("serviceProduct/fetchAllProductsByPage", async (data, {rejectWithValue}) => {
+    try {
+        const {id, page} = data;
+        const res = await apiAccess.get(`products-all/${id}?page=${page}`)
+        return res.data
+    } catch (error) {
+        return rejectWithValue(error.response.message)
     }
 })
 
@@ -167,6 +193,46 @@ export const ProductSlice = createSlice({
             state.isLoading = false;
             state.message = payload;
             errorMessage(payload)
+        },
+
+        [fetchAllProductsData.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchAllProductsData.fulfilled]: (state, {payload}) => {
+            const {data, last_page, current_page, per_page, path, total} = payload;
+            state.isLoading = false
+            state.productsForHomePage = data
+            state.lastPage = last_page
+            state.currentPage = current_page
+            state.total = total
+            state.perPage = per_page
+            state.apiUrl = path
+            state.errorMess = null
+        },
+        [fetchAllProductsData.rejected]: (state, {payload}) => {
+            state.isLoading = false
+            state.productsForHomePage = []
+            state.errorMess = {payload}
+        },
+
+        [fetchAllProductsByPage.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchAllProductsByPage.fulfilled]: (state, {payload}) => {
+            const {data, last_page, current_page, per_page, path, total} = payload
+            state.isLoading = false
+            state.productsForHomePage = data
+            state.lastPage = last_page
+            state.currentPage = current_page
+            state.total = total
+            state.perPage = per_page
+            state.apiUrl = path
+            state.errorMess = null
+        },
+        [fetchAllProductsByPage.rejected]: (state, {payload}) => {
+            state.isLoading = false
+            state.productsForHomePage = []
+            state.errorMess = payload
         },
     }
 });

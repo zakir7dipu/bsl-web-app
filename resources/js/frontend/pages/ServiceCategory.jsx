@@ -5,6 +5,8 @@ import HeaderMeta from "../../ui/HeaderMeta.jsx";
 import Breadcrumbs from "../components/Breadcrumbs/index.jsx";
 import {showServiceData} from "../../featurs/Service/ServiceSlice.js";
 import {useParams} from "react-router-dom";
+import ServiceProduct from "../components/ServiceProduct";
+import ServiceContent from "../components/ServiceContent/index.jsx";
 
 function ServiceCategory(props) {
     const {slug} = useParams();
@@ -42,7 +44,12 @@ function ServiceCategory(props) {
                     page={metaInfo?.title}
                     breadcrumbs={breadcrumbs}
                 />
-
+                {
+                    metaInfo?.type ==='product' && <ServiceProduct service={metaInfo?.id}/>
+                }
+                {
+                    metaInfo?.type ==='content' && <ServiceContent info={metaInfo}/>
+                }
             </>
         );
     } else {

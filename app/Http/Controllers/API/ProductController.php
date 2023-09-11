@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['index', 'show']]);
+        $this->middleware('auth:api', ['except' => ['index', 'show','productsAll']]);
     }
 
     /**
@@ -31,6 +31,16 @@ class ProductController extends Controller
             ];
 
             return response()->json($data);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), $th->getCode());
+        }
+    }
+
+    public function productsAll($id)
+    {
+        try {
+            $products = Products::where('service_id',$id)->with('service')->orderBy('id', 'asc')->paginate(12);
+            return response()->json($products);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), $th->getCode());
         }
