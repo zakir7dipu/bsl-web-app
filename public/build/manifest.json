@@ -949,11 +949,11 @@
   },
   "resources/backend-assets/icons/flag-icon-css/flags/um.svg": {
     "file": "assets/um-6c26a964.svg",
-    "src": "resources/backend-assets/icons/flag-icon-css/flags/us.svg"
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/um.svg"
   },
   "resources/backend-assets/icons/flag-icon-css/flags/us.svg": {
     "file": "assets/um-6c26a964.svg",
-    "src": "resources/backend-assets/icons/flag-icon-css/flags/us.svg"
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/um.svg"
   },
   "resources/backend-assets/icons/flag-icon-css/flags/uy.svg": {
     "file": "assets/uy-2d5a9764.svg",
@@ -1021,7 +1021,7 @@
   },
   "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.eot": {
     "file": "assets/fontawesome-webfont3e6e-7bfcab6d.eot",
-    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfontd41d.eot"
+    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.eot"
   },
   "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.svg": {
     "file": "assets/fontawesome-webfont3e6e-fc378232.svg",
@@ -1041,7 +1041,7 @@
   },
   "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfontd41d.eot": {
     "file": "assets/fontawesome-webfont3e6e-7bfcab6d.eot",
-    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfontd41d.eot"
+    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.eot"
   },
   "resources/backend-assets/icons/ionicons/fonts/ionicons.eot": {
     "file": "assets/ionicons-a4803d7b.eot",
@@ -1101,7 +1101,7 @@
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10.eot": {
     "file": "assets/linea-basic-elaboration-10-9984ab62.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10d41d.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10.eot"
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10.svg": {
     "file": "assets/linea-basic-elaboration-10-1bad7b04.svg",
@@ -1117,7 +1117,7 @@
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10d41d.eot": {
     "file": "assets/linea-basic-elaboration-10-9984ab62.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10d41d.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10.eot"
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10.eot": {
     "file": "assets/linea-ecommerce-10-d4e3c9f4.eot",
@@ -1141,7 +1141,7 @@
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.eot": {
     "file": "assets/linea-music-10-623ca9d9.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-music-10d41d.eot"
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.svg": {
     "file": "assets/linea-music-10-b0f18775.svg",
@@ -1157,7 +1157,7 @@
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-music-10d41d.eot": {
     "file": "assets/linea-music-10-623ca9d9.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-music-10d41d.eot"
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-software-10.eot": {
     "file": "assets/linea-software-10-fba5eb94.eot",
@@ -1237,7 +1237,7 @@
   },
   "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.eot": {
     "file": "assets/Simple-Line-Icons4c82-b76b3d1d.eot",
-    "src": "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Iconsd41d.eot"
+    "src": "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.eot"
   },
   "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.svg": {
     "file": "assets/Simple-Line-Icons4c82-ebd98fd1.svg",
@@ -1257,7 +1257,7 @@
   },
   "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Iconsd41d.eot": {
     "file": "assets/Simple-Line-Icons4c82-b76b3d1d.eot",
-    "src": "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Iconsd41d.eot"
+    "src": "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.eot"
   },
   "resources/backend-assets/icons/themify-icons/fonts/themify.ttf": {
     "file": "assets/themify-350663a4.ttf",
@@ -1325,7 +1325,7 @@
   },
   "resources/frontend-assets/fonts/fontawesome-webfont3e6e.eot": {
     "file": "assets/fontawesome-webfont3e6e-7bfcab6d.eot",
-    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfontd41d.eot"
+    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.eot"
   },
   "resources/frontend-assets/fonts/fontawesome-webfont3e6e.svg": {
     "file": "assets/fontawesome-webfont3e6e-fc378232.svg",
@@ -1345,7 +1345,15 @@
   },
   "resources/frontend-assets/fonts/fontawesome-webfontd41d.eot": {
     "file": "assets/fontawesome-webfont3e6e-7bfcab6d.eot",
-    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfontd41d.eot"
+    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.eot"
+  },
+  "resources/frontend-assets/images/about/dotted-3.png": {
+    "file": "assets/dotted-3-0cb9b822.png",
+    "src": "resources/frontend-assets/images/about/dotted-3.png"
+  },
+  "resources/frontend-assets/images/about/effect-1.png": {
+    "file": "assets/effect-1-dc07c719.png",
+    "src": "resources/frontend-assets/images/about/effect-1.png"
   },
   "resources/frontend-assets/images/bg/footer-bg.png": {
     "file": "assets/footer-bg-33deb978.png",
@@ -1375,29 +1383,21 @@
     "file": "assets/6-344bbfcc.png",
     "src": "resources/frontend-assets/images/partner/6.png"
   },
-  "resources/frontend-assets/images/partner/style2/1.png": {
-    "file": "assets/1-673be8c1.png",
-    "src": "resources/frontend-assets/images/partner/style2/1.png"
+  "resources/frontend-assets/images/team/ngbng.png": {
+    "file": "assets/ngbng-21445970.png",
+    "src": "resources/frontend-assets/images/team/ngbng.png"
   },
-  "resources/frontend-assets/images/partner/style2/2.png": {
-    "file": "assets/2-1d8b7d9b.png",
-    "src": "resources/frontend-assets/images/partner/style2/2.png"
+  "resources/frontend-assets/images/testimonial/main-home/1.jpg": {
+    "file": "assets/1-0e4ff86f.jpg",
+    "src": "resources/frontend-assets/images/testimonial/main-home/1.jpg"
   },
-  "resources/frontend-assets/images/partner/style2/3.png": {
-    "file": "assets/3-d8aadd7f.png",
-    "src": "resources/frontend-assets/images/partner/style2/3.png"
+  "resources/frontend-assets/images/testimonial/main-home/quote2.png": {
+    "file": "assets/quote2-4408a563.png",
+    "src": "resources/frontend-assets/images/testimonial/main-home/quote2.png"
   },
-  "resources/frontend-assets/images/partner/style2/4.png": {
-    "file": "assets/4-90e10ff8.png",
-    "src": "resources/frontend-assets/images/partner/style2/4.png"
-  },
-  "resources/frontend-assets/images/partner/style2/5.png": {
-    "file": "assets/5-c14657d7.png",
-    "src": "resources/frontend-assets/images/partner/style2/5.png"
-  },
-  "resources/frontend-assets/images/partner/style2/6.png": {
-    "file": "assets/6-cb8fad6d.png",
-    "src": "resources/frontend-assets/images/partner/style2/6.png"
+  "resources/frontend-assets/images/testimonial/testimonial-3.png": {
+    "file": "assets/testimonial-3-b26f2d0e.png",
+    "src": "resources/frontend-assets/images/testimonial/testimonial-3.png"
   },
   "resources/image/bizz-icon.png": {
     "file": "assets/bizz-icon-f4078adf.png",
@@ -1412,27 +1412,20 @@
     "src": "resources/image/default-avatar.png"
   },
   "resources/js/app.css": {
-    "file": "assets/app-a9212f02.css",
+    "file": "assets/app-6940c66c.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.jsx": {
     "assets": [
-      "assets/1-673be8c1.png",
-      "assets/2-1d8b7d9b.png",
-      "assets/3-d8aadd7f.png",
-      "assets/4-90e10ff8.png",
-      "assets/5-c14657d7.png",
-      "assets/6-cb8fad6d.png",
-      "assets/1-583ec9ef.png",
-      "assets/2-eeced13b.png",
-      "assets/3-a556cbf1.png",
-      "assets/4-c99da36e.png",
-      "assets/5-b59a34dd.png",
-      "assets/6-344bbfcc.png",
+      "assets/testimonial-3-b26f2d0e.png",
+      "assets/quote2-4408a563.png",
       "assets/bizz-logo-7e19d3af.png",
       "assets/bizz-icon-f4078adf.png",
       "assets/default-avatar-f2770b81.png",
       "assets/footer-bg-33deb978.png",
+      "assets/effect-1-dc07c719.png",
+      "assets/dotted-3-0cb9b822.png",
+      "assets/ngbng-21445970.png",
       "assets/revicons-f7b9c306.woff",
       "assets/revicons-4ca02b8a.ttf",
       "assets/revicons-9e4d4c68.eot",
@@ -1749,9 +1742,9 @@
       "assets/Flaticon-1b7b8142.svg"
     ],
     "css": [
-      "assets/app-a9212f02.css"
+      "assets/app-6940c66c.css"
     ],
-    "file": "assets/app-88559196.js",
+    "file": "assets/app-94615f1f.js",
     "isEntry": true,
     "src": "resources/js/app.jsx"
   }
