@@ -37,14 +37,14 @@ class BlogsController extends Controller
      */
     public function allData()
     {
-//        try {
+        try {
 
             $blogs = Blogs::orderBy('short_order', 'desc')->paginate(1);
 
             return response()->json($blogs);
-//        } catch (\Throwable $th) {
-//            return response()->json($th->getMessage(), $th->getCode());
-//        }
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), $th->getCode());
+        }
     }
 
     /**
