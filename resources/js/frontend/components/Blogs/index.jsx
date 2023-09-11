@@ -5,6 +5,7 @@ import {fetchAllBlogs} from "../../../featurs/Blogs/BlogSlice.js";
 import {fetchBlogSettings} from "../../../featurs/Settings/SettingsSlice.js";
 import ServiceItemSkel from "../Skeletons/ServiceItemSkel.jsx";
 import {Container, Row} from "react-bootstrap";
+import BlogsSkel from "../Skeletons/BlogsSkel.jsx";
 
 function Index(props) {
     const {isLoading, blogs} = useSelector(state => state.blogsReducer)
@@ -21,6 +22,7 @@ function Index(props) {
     }, [blogSetting, dispatch])
 
     return (
+        isLoading ? <BlogsSkel/> :
         <div id="rs-blog" className="rs-blog pt-120 pb-120 md-pt-80 md-pb-80">
             <Container>
                 <div className="sec-title2 text-center mb-30">
@@ -32,13 +34,9 @@ function Index(props) {
                         {blogSetting?.desc}
                     </div>
                 </div>
-                {isLoading && <Row>
-                    <ServiceItemSkel count={3}/>
-                </Row>}
-                {!isLoading && <BlogCarousel
+                <BlogCarousel
                     blogs={blogs}
-                />}
-
+                />
             </Container>
         </div>
     );

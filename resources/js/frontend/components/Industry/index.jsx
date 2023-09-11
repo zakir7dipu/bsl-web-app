@@ -4,6 +4,7 @@ import {fetchIndustrySettings} from "../../../featurs/Settings/SettingsSlice.js"
 import {fetchAllIndustries} from "../../../featurs/Industries/IndustriesSlice.js";
 import Items from "./Items.jsx";
 import {uid} from "../../../lib/helper.js";
+import IndustrySkel from "../Skeletons/IndustrySkel.jsx";
 
 function Index(props) {
     const {industry} = useSelector(state => state.generalSettings)
@@ -22,6 +23,7 @@ function Index(props) {
     },[dispatch])
 
     return (
+        isLoading ? <IndustrySkel/> :
         <div className="rs-industry pt-120 pb-120 md-pt-80 md-pb-80">
             <div className="container">
                 <div className="sec-title2 text-center mb-45">
@@ -29,8 +31,7 @@ function Index(props) {
                     <h2 className="title" style={{float:"none"}}>{title}</h2>
                 </div>
                 <div className="all-services" style={{width:"100%"}}>
-                    {isLoading && ""}
-                    {industries && industries.map(item=><Items
+                    {industries?.map(item=><Items
                         info={item}
                         key={uid()}
                     />)}
