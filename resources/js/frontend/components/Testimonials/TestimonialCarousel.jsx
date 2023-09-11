@@ -5,7 +5,7 @@ import TestimonialItem from "./TestimonialItem.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllTestimonial} from "../../../featurs/Testimonial/TestimonialSlice.js";
 
-function TestimonialCarousel(props) {
+function TestimonialCarousel({testimonialLimit}) {
     const {isLoading, testimonials} = useSelector(state => state.testimonialReducer)
     const dispatch = useDispatch()
 
@@ -30,8 +30,8 @@ function TestimonialCarousel(props) {
     };
 
     useEffect(()=>{
-        dispatch(fetchAllTestimonial(4))
-    },[])
+        dispatch(fetchAllTestimonial(testimonialLimit))
+    },[testimonialLimit, dispatch])
 
     return (
         <Carousel

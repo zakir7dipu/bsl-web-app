@@ -1,9 +1,10 @@
 import React from 'react';
 import Skeleton from "react-loading-skeleton";
 
-function TextSkel({lineHeight, height, width, baseColor, highlightColor}) {
+function TextSkel({count, lineHeight, height, width, baseColor, highlightColor}) {
     return (
         <Skeleton
+            count={count}
             lineHeight={lineHeight}
             height={height}
             width={width}

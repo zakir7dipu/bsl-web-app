@@ -5,6 +5,7 @@ import {fetchAllCaseStudy} from "../../../featurs/CaseStudy/CaseStudySlice.js";
 import {uid} from "../../../lib/helper.js";
 import ProjectItem from "./ProjectItem.jsx";
 import {fetchCaseStudySettings} from "../../../featurs/Settings/SettingsSlice.js";
+import ServiceItemSkel from "../Skeletons/ServiceItemSkel.jsx";
 
 function Index(props) {
     const {isLoading, caseStudies} = useSelector(state => state.caseStudyReducer)
@@ -17,8 +18,10 @@ function Index(props) {
     }, [dispatch])
 
     useEffect(() => {
-        dispatch(fetchAllCaseStudy(caseStudySetting?.limit))
-    }, [])
+        const {limit} = caseStudySetting
+        dispatch(fetchAllCaseStudy(limit))
+    }, [caseStudySetting, dispatch])
+
     return (
         <div className="rs-project style4 gray-color pt-120 pb-120 md-pt-80 md-pb-80">
             <div className="container-fluid">
@@ -29,7 +32,8 @@ function Index(props) {
                     </h2>
                 </div>
                 <Row>
-                    {caseStudies?.map(item=>{
+                    {isLoading && <ServiceItemSkel count={3}/>}
+                    {!isLoading && caseStudies?.map(item=>{
                         const {image_link, technologies, name} = item
                         const tagArray = technologies.split(",")
                         return (

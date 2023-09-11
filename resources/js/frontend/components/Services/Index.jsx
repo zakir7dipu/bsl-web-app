@@ -12,7 +12,6 @@ function Index(props) {
         isLoading,
         parentServices
     } = useSelector((state) => state.serviceReducer);
-    console.log(isLoading)
 
     const {serviceSetting} = useSelector((state) => state.generalSettings);
 

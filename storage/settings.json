@@ -95,7 +95,7 @@
         "case_study": {
             "title": "Our Recent Launched Projects Available into Market",
             "sub_text": "PROJECTS",
-            "limit": "6"
+            "limit": "3"
         },
         "blog": {
             "title": "Latest Tips &Tricks",
@@ -107,7 +107,7 @@
             "title": "What Customer Saying",
             "sub_text": "TESTIMONIALS",
             "limit": "10",
-            "desc": "Over 25 years working in IT services developing software applications and mobile apps for clients all over the world."
+            "desc": "Over 5 years working in IT services developing software applications and mobile apps for clients all over the world."
         }
     },
     "seo": {
