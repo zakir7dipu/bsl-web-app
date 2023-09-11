@@ -91,7 +91,7 @@ export const ManagementSlice = createSlice({
         },
 
         [fetchManagementBySlug.pending]: (state) => {
-            state.isLoading = true
+            state.isLoading = false
         },
         [fetchManagementBySlug.fulfilled]: (state, {payload}) => {
             state.isLoading = false;
