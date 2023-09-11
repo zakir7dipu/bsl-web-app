@@ -61,7 +61,7 @@ function Index(props) {
                             <ServiceItemSkel count={6}/>
                         }
                         {
-                            paginateBlogs?.map(item =>
+                           !isLoading && paginateBlogs?.map(item =>
                                 <div className="col-lg-4 mb-50" key={uid()}>
                                     <div className="blog-item">
                                         <div className="blog-img">

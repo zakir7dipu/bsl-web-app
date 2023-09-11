@@ -124,6 +124,9 @@ Route::controller(ProductController::class)->group(function () {
     Route::get("products/{slug}/show", "show");
     Route::post("products/{slug}/update", "update");
     Route::delete("products/{slug}/destroy", "destroy");
+
+    /*For frontend products with pagination*/
+    Route::get('products-all/{id}', 'productsAll');
 });
 
 Route::controller(CourseController::class)->group(function () {

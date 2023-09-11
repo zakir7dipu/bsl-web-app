@@ -10,7 +10,7 @@ function Index({team}) {
             <div className="team-item-wrap">
                 <div className="team-wrap" style={{backgroundImage: `url('${backImage}')`}}>
                     <div className="image-inner">
-                        <img style={{height: "300px", width: "100%"}} src={useInternalLink(avatar)} alt=""/>
+                        <img style={{height: "325px", width: "100%"}} src={useInternalLink(avatar)} alt=""/>
                     </div>
                 </div>
                 <div className="team-content text-center">
