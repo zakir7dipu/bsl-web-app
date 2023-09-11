@@ -14,6 +14,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchAllPartners} from "../../../featurs/Partner/PartnerSlice.js";
 import {uid} from "../../../lib/helper.js";
 import RowImg from "../Skeletons/RowImg.jsx";
+import PartnerSkel from "../Skeletons/PartnerSkel.jsx";
 
 
 function Index(props) {
@@ -23,33 +24,32 @@ function Index(props) {
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
-            breakpoint: { max: 4000, min: 3000 },
+            breakpoint: {max: 4000, min: 3000},
             items: 8
         },
         desktop: {
-            breakpoint: { max: 3000, min: 1024 },
+            breakpoint: {max: 3000, min: 1024},
             items: 5
         },
         tablet: {
-            breakpoint: { max: 1024, min: 464 },
+            breakpoint: {max: 1024, min: 464},
             items: 3
         },
         mobile: {
-            breakpoint: { max: 464, min: 0 },
+            breakpoint: {max: 464, min: 0},
             items: 2
         }
     };
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(fetchAllPartners())
-    },[])
+    }, [])
 
     return (
+        !isLoading ? <PartnerSkel/>:
         <div className={Style.partner}>
             <Container>
-                {isLoading && <RowImg count={5}/>}
-
-                {!isLoading && <Carousel
+                <Carousel
                     swipeable={true}
                     draggable={true}
                     showDots={false}
@@ -65,11 +65,11 @@ function Index(props) {
                     itemClass="carousel-item-padding-40-px"
                     arrows={false}
                 >
-                    {partners?.map(item=><PartnerItem
+                    {partners?.map(item => <PartnerItem
                         key={uid()}
                         info={item}
                     />)}
-                </Carousel>}
+                </Carousel>
             </Container>
         </div>
     );
