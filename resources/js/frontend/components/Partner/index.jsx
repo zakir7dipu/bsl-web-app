@@ -1,19 +1,12 @@
 import React, {useEffect} from 'react';
 import Style from "./Partner.module.css"
-import {Col, Container, Row} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import PartnerItem from "./Item.jsx"
-import partnerImg1 from "../../../../frontend-assets/images/partner/style2/1.png"
-import partnerImg2 from "../../../../frontend-assets/images/partner/style2/2.png"
-import partnerImg3 from "../../../../frontend-assets/images/partner/style2/3.png"
-import partnerImg4 from "../../../../frontend-assets/images/partner/style2/4.png"
-import partnerImg5 from "../../../../frontend-assets/images/partner/style2/5.png"
-import partnerImg6 from "../../../../frontend-assets/images/partner/style2/6.png"
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllPartners} from "../../../featurs/Partner/PartnerSlice.js";
 import {uid} from "../../../lib/helper.js";
-import RowImg from "../Skeletons/RowImg.jsx";
 import PartnerSkel from "../Skeletons/PartnerSkel.jsx";
 
 
