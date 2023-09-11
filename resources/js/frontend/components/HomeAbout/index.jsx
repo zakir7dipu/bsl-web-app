@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import {Row} from "react-bootstrap";
 import {isOdd, uid, useInternalLink} from "../../../lib/helper.js";
 import Attribute from "./Attribute.jsx";
+import HomeAbout from "../Skeletons/HomeAbout.jsx";
 
 function Index(props) {
     const {isLoading, aboutSetting} = useSelector(state => state.generalSettings)
@@ -16,6 +17,7 @@ function Index(props) {
     }, [dispatch])
 
     return (
+        isLoading ? <HomeAbout/>:
         <div id="rs-about" className="rs-about pt-10 md-pt-7">
             {/*pt-120 md-pt-70*/}
             <div className="container">
