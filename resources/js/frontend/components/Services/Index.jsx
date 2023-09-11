@@ -20,7 +20,7 @@ function Index(props) {
     },[dispatch])
 
     useEffect(() => {
-        dispatch(fetchParentServices(serviceSetting?.limit));
+        dispatch(fetchParentServices(serviceSetting?serviceSetting?.limit:3));
     }, [dispatch]);
 
     return (
