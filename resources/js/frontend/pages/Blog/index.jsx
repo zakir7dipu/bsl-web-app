@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import HeaderMeta from "../../../ui/HeaderMeta.jsx";
 import Breadcrumbs from "../../components/Breadcrumbs/index.jsx";
-import {fetchAllBlogs, fetchAllBlogsByPage, fetchAllBlogsData} from "../../../featurs/Blogs/BlogSlice.js";
+import {fetchAllBlogsByPage, fetchAllBlogsData} from "../../../featurs/Blogs/BlogSlice.js";
 import {Container, Row} from "react-bootstrap";
 import ServiceItemSkel from "../../components/Skeletons/ServiceItemSkel.jsx";
 import {Link} from "react-router-dom";
@@ -33,8 +33,9 @@ function Index(props) {
     ]
     const dispatch = useDispatch();
 
-    const pageChangeHandler = (page) => {
-        dispatch(fetchAllBlogsByPage({page: page}))
+    const pageChangeHandler = (e) => {
+        console.log(e)
+        dispatch(fetchAllBlogsByPage({page: e}))
     }
 
     useEffect(() => {
@@ -106,8 +107,9 @@ function Index(props) {
                             )
                         }
 
-                        <div className="col-md-12 mt-3 text-center">{paginateBlogs?.length > 8 ?
-                            <Pagination handlePageClick={pageChangeHandler} pageCount={total}/> : ''}</div>
+                        <div className="col-md-12 mt-3 text-center">
+                            <Pagination handlePageClick={pageChangeHandler} pageCount={total} range={perPage}/>
+                        </div>
                     </Row>
                 </Container>
             </div>
