@@ -34,15 +34,28 @@ class  CourseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function courseAll($slug)
+    public function courseAll($slug, $service)
     {
         try {
+
             if ($slug == 'all') {
-                $courses = Courses::with(['service', 'curriculums'])->orderBy('id', 'asc')->paginate(9);
+                $courses = Courses::with(['service', 'curriculums'])
+                    ->orderBy('id', 'asc')
+                    ->paginate(9);
+            } elseif ($slug == 'category') {
+                $courses = Courses::with(['service', 'curriculums'])
+                    ->when($service > 0, function ($query) use ($service) {
+                        return $query->where('service_id', $service);
+                    })
+                    ->orderBy('id', 'asc')
+                    ->paginate(9);
             } else {
-                $courses = Courses::with(['service', 'curriculums'])->where('course_type', $slug)->orderBy('id', 'asc')->paginate(9);
+                $courses = Courses::with(['service', 'curriculums'])
+                    ->where('course_type', $slug)
+                    ->orderBy('id', 'asc')
+                    ->paginate(9);
             }
-            
+
             return response()->json($courses);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), $th->getCode());

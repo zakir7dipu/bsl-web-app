@@ -1,23 +1,29 @@
 import React, {useEffect} from 'react';
+import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchAllCourseAll, fetchAllCourseAllByPage} from "../../../featurs/Courses/CourseSlice.js";
-import BlogsSkel from "../../components/Skeletons/BlogsSkel.jsx";
-import Item from "./item.jsx";
-import {uid} from "../../../lib/helper.js";
-import Pagination from "../../../ui/Pagination.jsx";
+import {showServiceData} from "../../../featurs/Service/ServiceSlice";
 import HeaderMeta from "../../../ui/HeaderMeta.jsx";
 import Breadcrumbs from "../../components/Breadcrumbs/index.jsx";
+import {fetchAllCourseAll, fetchAllCourseAllByPage} from "../../../featurs/Courses/CourseSlice.js";
+import BlogsSkel from "../../components/Skeletons/BlogsSkel.jsx";
+import Item from "../Courses/item.jsx";
+import {uid} from "../../../lib/helper.js";
+import Pagination from "../../../ui/Pagination.jsx";
 
-function AllCourses() {
+function Index(props) {
+    const {slug} = useParams();
     const {
         isLoading,
+        metaInfo,
+    } = useSelector((state) => state.serviceReducer);
+
+    const {
         coursesAll,
         lastPage,
         currentPage,
         perPage,
         total,
         errorMess,
-        metaInfo
     } = useSelector((state) => state.coursesReducer);
     const dispatch = useDispatch();
 
@@ -27,16 +33,21 @@ function AllCourses() {
             url: "/"
         },
         {
-            name: "All Courses",
+            name: `${metaInfo?.service?.title}`,
+            url: `/service/${metaInfo?.service?.slug}/details`
+        },
+        {
+            name: `${metaInfo?.title}`,
             url: null
         },
     ];
+    //console.log(coursesAll)
 
     const pageChangeHandler = ({selected}) => {
         let nextPage = selected + 1
         const data = {
-            slug: 'all',
-            serviceId: 0,
+            slug: 'category',
+            serviceId: `${metaInfo?.id}`,
             page: nextPage
         }
         dispatch(fetchAllCourseAllByPage(data))
@@ -44,20 +55,24 @@ function AllCourses() {
 
     useEffect(() => {
         const data = {
-            slug: 'all',
-            serviceId: 0
+            slug: 'category',
+            serviceId: `${metaInfo?.id}`
         }
         dispatch(fetchAllCourseAll(data));
-    }, [dispatch]);
+    }, [metaInfo]);
+
+    useEffect(() => {
+        dispatch(showServiceData(slug));
+    }, [slug])
 
     return (
         <>
             <HeaderMeta
-                title="All Courses"
-                page="All Courses"
+                title={metaInfo?.title}
+                page="Category wise courses"
             />
             <Breadcrumbs
-                page="All Courses"
+                page={metaInfo?.title}
                 breadcrumbs={breadcrumbs}
             />
 
@@ -79,4 +94,4 @@ function AllCourses() {
     );
 }
 
-export default AllCourses;
+export default Index;

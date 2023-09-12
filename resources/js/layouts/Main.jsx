@@ -57,6 +57,7 @@ import Courses from "../frontend/pages/Courses";
 import Contact from "../frontend/pages/Contact.jsx";
 import Blog from "../frontend/pages/Blog/index.jsx";
 import AllCourses from "../frontend/pages/Courses/allCourses.jsx";
+import CategoryCourses from "../frontend/pages/CategoryCourses";
 
 function Main() {
     const {isAccess} = useSelector(state => state.authUser)
@@ -75,6 +76,7 @@ function Main() {
                 <Route path="/management" element={<Management/>}/>
                 <Route path="/team" element={<Team/>}/>
                 <Route path="/service/:slug/details" element={<FrontendServiceCategory/>}/>
+                <Route path="/training/:slug/courses" element={<CategoryCourses/>}/>
                 <Route path="/courses/:slug">
                     <Route index element={<AllCourses/>}/>
                 </Route>

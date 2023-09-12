@@ -90,9 +90,10 @@ export const deleteCourseData = createAsyncThunk("serviceCourses/deleteCourseDat
     }
 })
 
-export const fetchAllCourseAll = createAsyncThunk("serviceCourses/fetchAllCourseAll", async (slug, {rejectWithValue}) => {
+export const fetchAllCourseAll = createAsyncThunk("serviceCourses/fetchAllCourseAll", async (data, {rejectWithValue}) => {
     try {
-        const res = await apiAccess.get(`courses-all/${slug}`)
+        const {slug,serviceId} = data;
+        const res = await apiAccess.get(`courses-all/${slug}/${serviceId}`)
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.message)
@@ -101,8 +102,8 @@ export const fetchAllCourseAll = createAsyncThunk("serviceCourses/fetchAllCourse
 
 export const fetchAllCourseAllByPage = createAsyncThunk("serviceCourses/fetchAllCourseAllByPage", async (data, {rejectWithValue}) => {
     try {
-        const {slug,page} = data;
-        const res = await apiAccess.get(`courses-all/${slug}?page=${page}`)
+        const {slug,serviceId,page} = data;
+        const res = await apiAccess.get(`courses-all/${slug}/${serviceId}?page=${page}`)
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.message)
@@ -198,6 +199,7 @@ export const CourseSlice = createSlice({
 
         [fetchAllCourseAll.pending]: (state) => {
             state.isLoading = true
+            state.coursesAll = []
         },
         [fetchAllCourseAll.fulfilled]: (state, {payload}) => {
             const {data, last_page, current_page, per_page, path, total} = payload;
@@ -237,6 +239,7 @@ export const CourseSlice = createSlice({
         },
     }
 });
+
 
 export default CourseSlice.reducer;
 

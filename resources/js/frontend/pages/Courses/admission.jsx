@@ -24,14 +24,21 @@ function Admission({type}) {
         let nextPage = selected + 1
         const data = {
             slug: type,
+            serviceId: 0,
             page: nextPage
         }
         dispatch(fetchAllCourseAllByPage(data))
     }
 
     useEffect(() => {
-        dispatch(fetchAllCourseAll(type));
-    }, [type, dispatch]);
+
+        const data = {
+            slug: type,
+            serviceId: 0
+        }
+
+        dispatch(fetchAllCourseAll(data));
+    }, [dispatch]);
 
     return (
         isLoading ? <BlogsSkel/> :
