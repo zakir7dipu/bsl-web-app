@@ -175,6 +175,14 @@ function Index(props) {
                                 <td><img style={{height: "100px", width: "100px"}}
                                          src={useInternalLink(metaInfo?.image_link)}/></td>
                             </tr>
+                            <tr>
+                                <td>Icons</td>
+                                <td>
+                                    {metaInfo?.icons && <img style={{height: "100px", width: "100px"}}
+                                                             src={useInternalLink(metaInfo?.icons)}/>
+                                    }
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
