@@ -201,9 +201,10 @@ export const BlogSlice = createSlice({
         },
         [fetchAllBlogsData.fulfilled]: (state, {payload}) => {
             const {data, last_page, current_page, per_page, path, total} = payload;
+            console.log(last_page)
             state.isLoading = false
             state.paginateBlogs = data
-            state.lastPage = last_page
+            state.lastPage = last_page > 1 ? last_page:0
             state.currentPage = current_page
             state.total = total
             state.perPage = per_page
