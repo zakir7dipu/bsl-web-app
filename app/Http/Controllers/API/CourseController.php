@@ -13,7 +13,7 @@ class  CourseController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['index', 'show']]);
+        $this->middleware('auth:api', ['except' => ['index', 'show', 'courseAll']]);
     }
 
     /**
@@ -30,13 +30,32 @@ class  CourseController extends Controller
             return response()->json($th->getMessage(), $th->getCode());
         }
     }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function courseAll($slug)
+    {
+        try {
+            if ($slug == 'all') {
+                $courses = Courses::with(['service', 'curriculums'])->orderBy('id', 'asc')->paginate(9);
+            } else {
+                $courses = Courses::with(['service', 'curriculums'])->where('course_type', $slug)->orderBy('id', 'asc')->paginate(9);
+            }
+            
+            return response()->json($courses);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), $th->getCode());
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
         try {
-            $services = Services::where('type', 'training')->where('parent_id','!=',null)->orderBy('id', 'asc')->get();
+            $services = Services::where('type', 'training')->where('parent_id', '!=', null)->orderBy('id', 'asc')->get();
             return response()->json($services);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), $th->getCode());

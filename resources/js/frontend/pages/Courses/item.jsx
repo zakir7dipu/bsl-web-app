@@ -6,19 +6,17 @@ import {Link} from "react-router-dom";
 function Item({info}) {
     const {slug, thumbnail, name, class_count, duration, price, discount, course_type} = info;
     return (
-        <>
-            {
-                course_type === 'admission' && <div className="col-lg-4 col-md-4 col-sm-12">
-                    <div className="single-studies grid-item">
-                        <div className="inner-course">
-                            <div className="case-img"><img
-                                src={useInternalLink(thumbnail)}
-                                alt={name}/></div>
-                            <div className="case-content">
-                                <h4 className="case-title"><Link
-                                    to={`/course/${slug}`}>{name}</Link>
-                                </h4>
-                                <ul className="meta-course p-0">
+        <div className="col-lg-4 col-md-4 col-sm-12">
+            <div className="single-studies grid-item">
+                <div className="inner-course">
+                    <div className="case-img"><img
+                        src={useInternalLink(thumbnail)}
+                        alt={name}/></div>
+                    <div className="case-content">
+                        <h4 className="case-title"><Link
+                            to={`/course/${slug}`}>{name}</Link>
+                        </h4>
+                        <ul className="meta-course p-0">
                                     <li>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                              viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -51,9 +49,6 @@ function Item({info}) {
                         </div>
                     </div>
                 </div>
-            }
-        </>
-
     );
 }
 

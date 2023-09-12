@@ -35,7 +35,7 @@ function Index({service}) {
 
     return (
         <>
-            <div className="rs-inner-blog pt-120 pb-120 md-pt-90 md-pb-90">
+            <div className="rs-inner-blog pt-50 pb-50 md-pt-90 md-pb-90">
                 <div className="container">
                     <div className="row">
                         {isLoading &&
@@ -49,7 +49,7 @@ function Index({service}) {
                     </div>
 
                     <div className="col-md-12 mt-3 text-center">
-                        <Pagination handlePageClick={pageChangeHandler} pageCount={total} range={perPage}/>
+                        <Pagination handlePageClick={pageChangeHandler} pageCount={lastPage} range={perPage}/>
                     </div>
                 </div>
             </div>
