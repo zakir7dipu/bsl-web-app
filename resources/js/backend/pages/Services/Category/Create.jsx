@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {errorMessage, infoMessage, uid, warningMessage} from "../../../../lib/helper.js";
+import {infoMessage, uid, warningMessage} from "../../../../lib/helper.js";
 import {createServiceData, fetchParentServices} from "../../../../featurs/Service/ServiceSlice.js";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
@@ -29,9 +29,14 @@ function Create(props) {
     const [meta_keywords, setMetaKeywords] = useState("");
     const [meta_description, setMetaDescription] = useState("");
     const [image_link, setImageFile] = useState("");
+    const [icons, setIconFile] = useState("");
 
     const inputFileHandler = (file) => {
         setImageFile(file[0])
+    }
+
+    const inputIconHandler = (file) => {
+        setIconFile(file[0])
     }
 
     const resetHandler = () => {
@@ -44,6 +49,7 @@ function Create(props) {
         setMetaKeywords("");
         setMetaDescription("");
         setImageFile("");
+        setIconFile("");
     }
 
     const navGoBack = () => {
@@ -102,6 +108,10 @@ function Create(props) {
             formData.append("image_link", image_link);
         }
 
+        if (icons) {
+            formData.append("icons", icons);
+        }
+
         if (name && description && meta_title && meta_keywords && meta_description && image_link) {
             infoMessage("Please wait a while, We are processing your request.");
             dispatch(createServiceData(formData))
@@ -148,7 +158,7 @@ function Create(props) {
                             <div className="card-body">
                                 <form className="form-profile" onSubmit={requestHandler}>
                                     <div className="row">
-                                        <div className="col-md-6">
+                                        <div className="col-md-4">
                                             <div className="form-group">
                                                 <label>Select Parent Services <sup
                                                     className="text-danger"><MdStar/></sup></label>
@@ -158,9 +168,22 @@ function Create(props) {
 
                                                     {parentServices && Array.from(parentServices).map(model => {
                                                         return (
-                                                            <option key={uid()} value={model?.id}>{model?.title}</option>
+                                                            <option key={uid()}
+                                                                    value={model?.id}>{model?.title}</option>
                                                         )
                                                     })}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-2">
+                                            <div className="form-group">
+                                                <label>Content Type <sup className="text-danger"><MdStar/></sup></label>
+                                                <select className="form-control" name="type" value={type}
+                                                        onChange={event => setType(event.target.value)}>
+                                                    <option value={null}>--Select One--</option>
+                                                    <option value="product">Product</option>
+                                                    <option value="content">Content</option>
+                                                    <option value="training">Training</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -177,18 +200,7 @@ function Create(props) {
                                             </div>
                                         </div>
 
-                                        <div className="col-md-6">
-                                            <div className="form-group">
-                                                <label>Content Type <sup className="text-danger"><MdStar/></sup></label>
-                                                <select className="form-control" name="type" value={type}
-                                                        onChange={event => setType(event.target.value)}>
-                                                    <option value={null}>--Select One--</option>
-                                                    <option value="product">Product</option>
-                                                    <option value="content">Content</option>
-                                                    <option value="training">Training</option>
-                                                </select>
-                                            </div>
-                                        </div>
+
 
                                         <div className="col-md-6">
                                             <div className="form-group">
@@ -198,6 +210,17 @@ function Create(props) {
                                                     id={`siteLogo`}
                                                     handler={inputFileHandler}
                                                     required={`required`}
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div className="col-md-6">
+                                            <div className="form-group">
+                                                <FileInput
+                                                    label={"Service Icons"}
+                                                    file={icons}
+                                                    id={`siteIcon`}
+                                                    handler={inputIconHandler}
                                                 />
                                             </div>
                                         </div>

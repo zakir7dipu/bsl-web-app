@@ -33,6 +33,11 @@ function Edit() {
     const [meta_keywords, setMetaKeywords] = useState("");
     const [meta_description, setMetaDescription] = useState("");
     const [image_link, setImageFile] = useState("");
+    const [icons, setIconFile] = useState("");
+
+    const inputIconHandler = (file) => {
+        setIconFile(file[0])
+    }
 
     const inputFileHandler = (file) => {
         setImageFile(file[0])
@@ -48,6 +53,7 @@ function Edit() {
         setMetaKeywords("");
         setMetaDescription("");
         setImageFile("");
+        setIconFile("");
     }
 
     const navGoBack = () => {
@@ -102,6 +108,10 @@ function Edit() {
 
         if (image_link) {
             formData.append("image_link", image_link);
+        }
+
+        if (icons) {
+            formData.append("icons", icons);
         }
 
         if (name && description && meta_title && meta_keywords && meta_description) {
@@ -176,7 +186,7 @@ function Edit() {
                                 <div className="card-body">
                                     <form className="form-profile" onSubmit={requestHandler}>
                                         <div className="row">
-                                            <div className="col-md-6">
+                                            <div className="col-md-4">
                                                 <div className="form-group">
                                                     <label>Select Parent Services <sup
                                                         className="text-danger"><MdStar/></sup></label>
@@ -193,6 +203,19 @@ function Edit() {
                                                     </select>
                                                 </div>
                                             </div>
+                                            <div className="col-md-2">
+                                                <div className="form-group">
+                                                    <label>Content Type <sup
+                                                        className="text-danger"><MdStar/></sup></label>
+                                                    <select className="form-control" name="type" value={type}
+                                                            onChange={event => setType(event.target.value)}>
+                                                        <option value={null}>--Select One--</option>
+                                                        <option value="product">Product</option>
+                                                        <option value="content">Content</option>
+                                                        <option value="training">Training</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                             <div className="col-md-6">
                                                 <div className="form-group">
                                                     <label>Title <sup className="text-danger"><MdStar/></sup></label>
@@ -206,19 +229,6 @@ function Edit() {
                                                 </div>
                                             </div>
 
-                                            <div className="col-md-6">
-                                                <div className="form-group">
-                                                    <label>Content Type <sup
-                                                        className="text-danger"><MdStar/></sup></label>
-                                                    <select className="form-control" name="type" value={type}
-                                                            onChange={event => setType(event.target.value)}>
-                                                        <option value={null}>--Select One--</option>
-                                                        <option value="product">Product</option>
-                                                        <option value="content">Content</option>
-                                                        <option value="training">Training</option>
-                                                    </select>
-                                                </div>
-                                            </div>
 
                                             <div className="col-md-6">
                                                 <div className="form-group">
@@ -228,6 +238,17 @@ function Edit() {
                                                         id={`siteLogo`}
                                                         handler={inputFileHandler}
                                                         required={`required`}
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <div className="col-md-6">
+                                                <div className="form-group">
+                                                    <FileInput
+                                                        label={"Service Icons"}
+                                                        file={icons}
+                                                        id={`siteIcon`}
+                                                        handler={inputIconHandler}
                                                     />
                                                 </div>
                                             </div>
