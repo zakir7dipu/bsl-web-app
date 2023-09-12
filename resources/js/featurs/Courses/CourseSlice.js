@@ -1,7 +1,6 @@
 import Api from "../../lib/api.js";
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {errorMessage, successMessage} from "../../lib/helper.js";
-import {fetchParentServices} from "../Service/ServiceSlice.js";
 
 const {apiAccess} = new Api();
 
@@ -9,6 +8,11 @@ const initialData = {
     isLoading: true,
     courses: [],
     services: [],
+    coursesAll: [],
+    lastPage: 0,
+    currentPage: 1,
+    perPage: 0,
+    total: 0,
     apiUrl: 'courses',
     errorMess: null,
     metaInfo: []
@@ -83,6 +87,26 @@ export const deleteCourseData = createAsyncThunk("serviceCourses/deleteCourseDat
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.data)
+    }
+})
+
+export const fetchAllCourseAll = createAsyncThunk("serviceCourses/fetchAllCourseAll", async (data, {rejectWithValue}) => {
+    try {
+        const {slug,serviceId} = data;
+        const res = await apiAccess.get(`courses-all/${slug}/${serviceId}`)
+        return res.data
+    } catch (error) {
+        return rejectWithValue(error.response.message)
+    }
+})
+
+export const fetchAllCourseAllByPage = createAsyncThunk("serviceCourses/fetchAllCourseAllByPage", async (data, {rejectWithValue}) => {
+    try {
+        const {slug,serviceId,page} = data;
+        const res = await apiAccess.get(`courses-all/${slug}/${serviceId}?page=${page}`)
+        return res.data
+    } catch (error) {
+        return rejectWithValue(error.response.message)
     }
 })
 
@@ -172,8 +196,50 @@ export const CourseSlice = createSlice({
             state.message = payload;
             errorMessage(payload)
         },
+
+        [fetchAllCourseAll.pending]: (state) => {
+            state.isLoading = true
+            state.coursesAll = []
+        },
+        [fetchAllCourseAll.fulfilled]: (state, {payload}) => {
+            const {data, last_page, current_page, per_page, path, total} = payload;
+            state.isLoading = false
+            state.coursesAll = data
+            state.lastPage = last_page>1?last_page:0
+            state.currentPage = current_page
+            state.total = total
+            state.perPage = per_page
+            state.apiUrl = path
+            state.errorMess = null
+        },
+        [fetchAllCourseAll.rejected]: (state, {payload}) => {
+            state.isLoading = false
+            state.productsForHomePage = []
+            state.errorMess = {payload}
+        },
+
+        [fetchAllCourseAllByPage.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchAllCourseAllByPage.fulfilled]: (state, {payload}) => {
+            const {data, last_page, current_page, per_page, path, total} = payload
+            state.isLoading = false
+            state.coursesAll = data
+            state.lastPage = last_page>1?last_page:0
+            state.currentPage = current_page
+            state.total = total
+            state.perPage = per_page
+            state.apiUrl = path
+            state.errorMess = null
+        },
+        [fetchAllCourseAllByPage.rejected]: (state, {payload}) => {
+            state.isLoading = false
+            state.productsForHomePage = []
+            state.errorMess = payload
+        },
     }
 });
+
 
 export default CourseSlice.reducer;
 

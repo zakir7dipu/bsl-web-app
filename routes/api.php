@@ -137,6 +137,8 @@ Route::controller(CourseController::class)->group(function () {
     Route::get("courses/{id}/edit", "edit");
     Route::post("courses/{id}/update", "update");
     Route::delete("courses/{id}/destroy", "destroy");
+    //Frontend courses pagination
+    Route::get("courses-all/{slug?}/{service?}", "courseAll");
 });
 
 Route::controller(CurricularController::class)->group(function () {

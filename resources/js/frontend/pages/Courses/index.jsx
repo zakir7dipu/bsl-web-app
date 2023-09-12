@@ -6,8 +6,7 @@ function Index({info}) {
     return (
         <>
             <Category services={info?.sub_services}/>
-            <Admission/>
-
+            <Admission type={`admission`}/>
         </>
     );
 }

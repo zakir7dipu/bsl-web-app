@@ -5,13 +5,13 @@ function ServiceProductItem({product}) {
     const {title, image_link} = product;
 
     return (
-        <div className="col-lg-4 col-md-6 mb-80">
+        <div className="col-lg-3 col-md-6 pb-20">
             <div className="blog-item">
-                <div className="blog-img text-center">
-                    <img style={{height:"330px"}} src={useInternalLink(image_link)} alt=""/>
+                <div className="blog-img text-center" style={{height:"200px"}}>
+                    <img style={{maxHeight:"200px"}} src={useInternalLink(image_link)} alt=""/>
                 </div>
                 <div className="blog-content text-center">
-                    <h2 className="blog-title pt-15">{title}</h2>
+                    <h4 className="blog-title" style={{fontSize:"18px !important"}}>{title}</h4>
                 </div>
             </div>
         </div>

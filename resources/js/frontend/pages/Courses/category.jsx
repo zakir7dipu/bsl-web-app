@@ -1,5 +1,6 @@
 import React from 'react';
 import {uid, useInternalLink} from "../../../lib/helper.js";
+import {Link} from "react-router-dom";
 
 function Category({services}) {
     return (
@@ -11,14 +12,16 @@ function Category({services}) {
                 <div className="all-services" style={{width: "100%"}}>
                     {services?.map(item =>
                         <div className="services-item" key={uid()}>
-                            <div className="services-wrap" style={{height:"200px"}}>
-                                <div className="services-icon">
-                                    <img src={useInternalLink(item?.icons)} alt=""/>
+                            <Link to={`/training/${item?.slug}/courses`}>
+                                <div className="services-wrap" style={{height:"200px"}}>
+                                    <div className="services-icon">
+                                        <img src={useInternalLink(item?.icons)} alt=""/>
+                                    </div>
+                                    <div className="services-text">
+                                        <h4 className="title" style={{float: "none"}}>{item?.title}</h4>
+                                    </div>
                                 </div>
-                                <div className="services-text">
-                                    <h4 className="title" style={{float: "none"}}>{item?.title}</h4>
-                                </div>
-                            </div>
+                            </Link>
                         </div>
                     )}
                 </div>
