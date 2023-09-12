@@ -39,7 +39,7 @@ class BlogsController extends Controller
     {
         try {
 
-            $blogs = Blogs::orderBy('short_order', 'desc')->paginate(12);
+            $blogs = Blogs::orderBy('short_order', 'desc')->paginate(9);
 
             return response()->json($blogs);
         } catch (\Throwable $th) {
