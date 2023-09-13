@@ -35,36 +35,33 @@ function BlogDetails(props) {
 
     useEffect(() => {
         dispatch(fetchBlogsDataBySlug(slug));
-    }, [])
+    }, [slug])
 
-    if (!isLoading) {
-        return (
-            <>
-                <HeaderMeta
-                    title="Blog Details"
-                    page="Blog Details"
-                />
-                <Breadcrumbs
-                    page="Blog Details"
-                    breadcrumbs={breadcrumbs}
-                />
-                <div className="rs-inner-blog pt-120 pb-120 md-pt-90 md-pb-90">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-4 col-md-12 order-last">
-                                <LatestBlog infoID={metaInfo?.id} />
-                            </div>
-                            <div className="col-lg-8 pr-35 md-pr-15">
-                                <MainDetails info={metaInfo}/>
-                            </div>
+    return (
+        <>
+            {isLoading && <Preloader/>}
+            <HeaderMeta
+                title="Blog Details"
+                page="Blog Details"
+            />
+            <Breadcrumbs
+                page="Blog Details"
+                breadcrumbs={breadcrumbs}
+            />
+            <div className="rs-inner-blog pt-120 pb-120 md-pt-90 md-pb-90">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-4 col-md-12 order-last">
+                            <LatestBlog infoID={metaInfo?.id} />
+                        </div>
+                        <div className="col-lg-8 pr-35 md-pr-15">
+                            <MainDetails info={metaInfo}/>
                         </div>
                     </div>
                 </div>
-            </>
-        );
-    } else {
-        return <Preloader/>
-    }
+            </div>
+        </>
+    );
 
 }
 

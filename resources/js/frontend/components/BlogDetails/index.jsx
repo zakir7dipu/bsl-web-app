@@ -18,9 +18,7 @@ function Index({info}) {
                                 <i className="fa fa-calendar-check-o"></i> {moment(created_at).format("LL")}
                             </span>
                             </li>
-                            <li>
-                                <span className="p-date"> <i className="fa fa-user-o"></i> admin </span>
-                            </li>
+
                             <li className="Post-cate">
                                 <div className="tag-line">
                                     <i className="fa fa-book"></i>
