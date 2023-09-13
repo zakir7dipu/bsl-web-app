@@ -100,17 +100,6 @@ export const fetchAllBlogsByPage = createAsyncThunk("blogsData/fetchAllBlogsByPa
 export const BlogSlice = createSlice({
     name: "blogsData",
     initialState: initialData,
-    reducers : {
-      findLatestBlogs: (state,{payload}) =>  {
-          let filterData = state.blogs.filter((blog) => {
-              console.log(blog.id)
-              // blog.id === payload
-          });
-
-          // console.log(filterData)
-          // state.latestBlogs = filterData.splice(-6);
-      }
-    },
     extraReducers: {
         [fetchAllBlogs.pending]: (state) => {
             state.isLoading = true
@@ -249,7 +238,5 @@ export const BlogSlice = createSlice({
         },
     }
 });
-
-export const {findLatestBlogs} = BlogSlice.actions;
 
 export default BlogSlice.reducer

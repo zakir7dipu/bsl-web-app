@@ -43,9 +43,6 @@ function BlogDetails(props) {
         dispatch(fetchBlogsDataBySlug(slug));
     }, [slug])
 
-    useEffect(() => {
-        dispatch(fetchAllBlogs())
-    }, [dispatch])
 
     if (!isLoading) {
         return (
@@ -62,7 +59,7 @@ function BlogDetails(props) {
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-4 col-md-12 order-last">
-                                <LatestBlog info={metaInfo?.id} />
+                                <LatestBlog infoID={metaInfo?.id} />
                             </div>
                             <div className="col-lg-8 pr-35 md-pr-15">
                                 <MainDetails info={metaInfo}/>
