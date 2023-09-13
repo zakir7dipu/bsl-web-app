@@ -13,7 +13,7 @@ class  CourseController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['index', 'show', 'courseAll']]);
+        $this->middleware('auth:api', ['except' => ['index', 'show', 'courseAll', 'getCourse']]);
     }
 
     /**
@@ -147,6 +147,23 @@ class  CourseController extends Controller
     public function show($id)
     {
         $course = Courses::with('service')->where('id', $id)
+            ->first();
+        try {
+            return response()->json($course);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), $th->getCode());
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param \App\Models\Courses $slug
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getCourse($slug)
+    {
+        $course = Courses::with(['service', 'curriculums'])->where('slug', $slug)
             ->first();
         try {
             return response()->json($course);
