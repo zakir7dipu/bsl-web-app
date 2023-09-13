@@ -15,7 +15,7 @@ const initialData = {
     apiUrl: 'blogs',
     errorMess: null,
     metaInfo: [],
-    latestBlogs: [],
+    latest: [],
 }
 
 // all data get
@@ -96,21 +96,19 @@ export const fetchAllBlogsByPage = createAsyncThunk("blogsData/fetchAllBlogsByPa
     }
 })
 
+export const fetchLatestBlogs = createAsyncThunk("blogsData/fetchLatestBlogs", async (current, {rejectWithValue}) => {
+    try {
+        const res = await apiAccess.get(`latest-blogs/${current}`)
+        return res.data
+    } catch (error) {
+        return rejectWithValue(error.response.message)
+    }
+})
+
 
 export const BlogSlice = createSlice({
     name: "blogsData",
     initialState: initialData,
-    reducers : {
-      findLatestBlogs: (state,{payload}) =>  {
-          let filterData = state.blogs.filter((blog) => {
-              console.log(blog.id)
-              // blog.id === payload
-          });
-
-          // console.log(filterData)
-          // state.latestBlogs = filterData.splice(-6);
-      }
-    },
     extraReducers: {
         [fetchAllBlogs.pending]: (state) => {
             state.isLoading = true
@@ -247,9 +245,19 @@ export const BlogSlice = createSlice({
             state.paginateBlogs = []
             state.errorMess = payload
         },
+
+        [fetchLatestBlogs.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchLatestBlogs.fulfilled]: (state, {payload}) => {
+            state.isLoading = false;
+            state.latest = payload;
+        },
+        [fetchLatestBlogs.rejected]: (state, {payload}) => {
+            state.isLoading = false;
+            state.message = payload;
+            errorMessage(payload)
+        },
     }
 });
-
-export const {findLatestBlogs} = BlogSlice.actions;
-
 export default BlogSlice.reducer
