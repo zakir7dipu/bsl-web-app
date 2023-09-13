@@ -44,6 +44,19 @@ function CourseInformation({course}) {
 
                 </div>
             </div>
+
+            <div className="services-add">
+                <div className="address-item mb-35">
+                    <div className="address-icon">
+                        <i className="fa fa-phone"></i>
+                    </div>
+                </div>
+                <h2 className="title" style={{float: "none"}}>Have any Questions? <br/> Call us Today</h2>
+                <div className="contact">
+                    <Link
+                        to={`tel:${generalSetting?.contact?.phone}`}>{generalSetting?.contact?.phone}</Link>
+                </div>
+            </div>
         </>
     );
 }

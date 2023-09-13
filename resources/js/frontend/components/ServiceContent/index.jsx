@@ -28,7 +28,7 @@ function Index({info}) {
                                     <i className="fa fa-phone"></i>
                                 </div>
                             </div>
-                            <h2 className="title">Have any Questions? <br/> Call us Today</h2>
+                            <h2 className="title" style={{float: "none"}}>Have any Questions? <br/> Call us Today</h2>
                             <div className="contact">
                                 <Link
                                     to={`tel:${generalSetting?.contact?.phone}`}>{generalSetting?.contact?.phone}</Link>
