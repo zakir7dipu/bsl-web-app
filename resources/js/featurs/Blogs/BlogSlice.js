@@ -14,7 +14,8 @@ const initialData = {
     total: 0,
     apiUrl: 'blogs',
     errorMess: null,
-    metaInfo: []
+    metaInfo: [],
+    latestBlogs: [],
 }
 
 // all data get
@@ -26,7 +27,7 @@ export const fetchAllBlogs = createAsyncThunk("blogsData/fetchAllBlogs", async (
         return rejectWithValue(error.response.data)
     }
 })
-export const fetchBlogsDataBySlug = createAsyncThunk("blogsData/fetchBlogsDataBySlug", async (brand, {rejectWithValue}) => {
+export const fetchBlogsDataBySlug = createAsyncThunk("blogsData/fetchBlogsDataBySlug", async (slug, {rejectWithValue}) => {
     try {
         const res = await apiAccess.get(`${initialData.apiUrl}/${slug}/show`);
         return res.data
@@ -99,6 +100,17 @@ export const fetchAllBlogsByPage = createAsyncThunk("blogsData/fetchAllBlogsByPa
 export const BlogSlice = createSlice({
     name: "blogsData",
     initialState: initialData,
+    reducers : {
+      findLatestBlogs: (state,{payload}) =>  {
+          let filterData = state.blogs.filter((blog) => {
+              console.log(blog.id)
+              // blog.id === payload
+          });
+
+          // console.log(filterData)
+          // state.latestBlogs = filterData.splice(-6);
+      }
+    },
     extraReducers: {
         [fetchAllBlogs.pending]: (state) => {
             state.isLoading = true
@@ -237,5 +249,7 @@ export const BlogSlice = createSlice({
         },
     }
 });
+
+export const {findLatestBlogs} = BlogSlice.actions;
 
 export default BlogSlice.reducer
