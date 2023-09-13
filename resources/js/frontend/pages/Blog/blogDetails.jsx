@@ -13,12 +13,6 @@ function BlogDetails(props) {
 
     const {
         isLoading,
-        blogs,
-        lastPage,
-        currentPage,
-        perPage,
-        total,
-        apiUrl,
         metaInfo
     } = useSelector(state => state.blogsReducer);
 
@@ -41,8 +35,7 @@ function BlogDetails(props) {
 
     useEffect(() => {
         dispatch(fetchBlogsDataBySlug(slug));
-    }, [slug])
-
+    }, [])
 
     if (!isLoading) {
         return (

@@ -1,17 +1,21 @@
 import React, {useEffect} from 'react';
 
 import {useDispatch, useSelector} from "react-redux";
-import {findLatestBlogs} from "../../../featurs/Blogs/BlogSlice.js";
+import {fetchLatestBlogs} from "../../../featurs/Blogs/BlogSlice.js";
 
 function LatestBlog({infoID}) {
     const {
-        latestBlogs
+        isLoading,
+        latest
     } = useSelector(state => state.blogsReducer);
 
     const dispatch = useDispatch();
+
+    console.log(latest)
+
     useEffect(() => {
-        dispatch(findLatestBlogs(infoID))
-    }, [infoID])
+        //dispatch(fetchLatestBlogs(info))
+    },[])
 
     return (
         <>Latest BLog</>

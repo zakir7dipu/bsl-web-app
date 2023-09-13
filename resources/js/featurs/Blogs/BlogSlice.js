@@ -15,7 +15,7 @@ const initialData = {
     apiUrl: 'blogs',
     errorMess: null,
     metaInfo: [],
-    latestBlogs: [],
+    latest: [],
 }
 
 // all data get
@@ -90,6 +90,15 @@ export const fetchAllBlogsByPage = createAsyncThunk("blogsData/fetchAllBlogsByPa
     try {
         const {page} = data
         const res = await apiAccess.get(`blogs-all?page=${page}`)
+        return res.data
+    } catch (error) {
+        return rejectWithValue(error.response.message)
+    }
+})
+
+export const fetchLatestBlogs = createAsyncThunk("blogsData/fetchLatestBlogs", async (current, {rejectWithValue}) => {
+    try {
+        const res = await apiAccess.get(`latest-blogs/${current}`)
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.message)
@@ -235,6 +244,19 @@ export const BlogSlice = createSlice({
             state.isLoading = false
             state.paginateBlogs = []
             state.errorMess = payload
+        },
+
+        [fetchLatestBlogs.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchLatestBlogs.fulfilled]: (state, {payload}) => {
+            state.isLoading = false;
+            state.latest = payload;
+        },
+        [fetchLatestBlogs.rejected]: (state, {payload}) => {
+            state.isLoading = false;
+            state.message = payload;
+            errorMessage(payload)
         },
     }
 });
