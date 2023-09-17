@@ -110,6 +110,15 @@ export const fetchAllCourseAllByPage = createAsyncThunk("serviceCourses/fetchAll
     }
 })
 
+export const fetchCourseBySlug = createAsyncThunk("serviceCourses/fetchCourseBySlug", async (slug, {rejectWithValue}) => {
+    try {
+        const res = await apiAccess.get(`get-courses/${slug}`);
+        return res.data
+    } catch (error) {
+        return rejectWithValue(error.response.data)
+    }
+})
+
 
 export const CourseSlice = createSlice({
     name: 'serviceCourses',
@@ -236,6 +245,18 @@ export const CourseSlice = createSlice({
             state.isLoading = false
             state.productsForHomePage = []
             state.errorMess = payload
+        },
+
+        [fetchCourseBySlug.pending]: (state) => {
+            state.isLoading = false
+        },
+        [fetchCourseBySlug.fulfilled]: (state, {payload}) => {
+            state.isLoading = false;
+            state.metaInfo = payload;
+        },
+        [fetchCourseBySlug.rejected]: (state, {payload}) => {
+            state.isLoading = false;
+            state.message = payload;
         },
     }
 });

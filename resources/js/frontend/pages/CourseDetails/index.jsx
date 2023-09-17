@@ -1,21 +1,19 @@
 import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchBlogsDataBySlug} from "../../../featurs/Blogs/BlogSlice.js";
+import {fetchCourseBySlug} from "../../../featurs/Courses/CourseSlice";
+import Preloader from "../../components/Preloader/index.jsx";
 import HeaderMeta from "../../../ui/HeaderMeta.jsx";
 import Breadcrumbs from "../../components/Breadcrumbs/index.jsx";
-import Preloader from "../../components/Preloader";
-import MainDetails from "../../components/BlogDetails";
-import LatestBlog from "../../components/BlogDetails/latestBlog.jsx";
+import MainCourse from "./mainCourse.jsx";
+import CourseInformation from "./courseInformation.jsx";
 
-function BlogDetails(props) {
+function Index(props) {
     const {slug} = useParams();
-
     const {
         isLoading,
         metaInfo
-    } = useSelector(state => state.blogsReducer);
-
+    } = useSelector(state => state.coursesReducer);
     const dispatch = useDispatch();
 
     const breadcrumbs = [
@@ -24,45 +22,45 @@ function BlogDetails(props) {
             url: "/"
         },
         {
-            name: "Blogs",
-            url: "/blog"
+            name: "Course",
+            url: "/service/training/details"
         },
         {
-            name: `${metaInfo?.title}`,
+            name: `${metaInfo?.name}`,
             url: null
         },
     ]
 
     useEffect(() => {
-        dispatch(fetchBlogsDataBySlug(slug));
+        dispatch(fetchCourseBySlug(slug));
     }, [slug])
 
     return (
         <>
             {isLoading && <Preloader/>}
             <HeaderMeta
-                title="Blog Details"
-                page="Blog Details"
+                title="Course Details"
+                page="Course Details"
             />
             <Breadcrumbs
-                page="Blog Details"
+                page="Course Details"
                 breadcrumbs={breadcrumbs}
             />
-            <div className="rs-inner-blog pt-120 pb-120 md-pt-90 md-pb-90">
+
+            <div className="rs-case-studies-single pt-120 pb-120 md-pt-80 md-pb-80">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-4 col-md-12 order-last">
-                            <LatestBlog infoID={metaInfo?.id} />
+                        <div className="col-lg-8 md-mb-50">
+                            <MainCourse course={metaInfo}/>
                         </div>
-                        <div className="col-lg-8 pr-35 md-pr-15">
-                            <MainDetails info={metaInfo}/>
+                        <div className="col-lg-4 pl-32 md-pl-15">
+                            <CourseInformation course={metaInfo}/>
                         </div>
                     </div>
                 </div>
             </div>
         </>
     );
-
 }
 
-export default BlogDetails;
+export default Index;

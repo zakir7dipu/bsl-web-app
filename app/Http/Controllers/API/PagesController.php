@@ -70,15 +70,15 @@ class PagesController extends Controller
 	/**
 	 * Display the specified resource.
 	 */
-	public function show(string $id)
-	{
-		try {
-			$page = Pages::where('id', $id)->first();
-			return response()->json($page);
-		} catch (\Throwable $th) {
-			return response()->json($th, $th->getCode());
-		}
-	}
+	public function show(string $slug)
+    {
+        try {
+            $page = Pages::where('slug', $slug)->first();
+            return response()->json($page);
+        } catch (\Throwable $th) {
+            return response()->json($th, $th->getCode());
+        }
+    }
 
 	/**
 	 * Update the specified resource in storage.

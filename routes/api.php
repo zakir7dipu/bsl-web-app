@@ -139,6 +139,7 @@ Route::controller(CourseController::class)->group(function () {
     Route::delete("courses/{id}/destroy", "destroy");
     //Frontend courses pagination
     Route::get("courses-all/{slug?}/{service?}", "courseAll");
+    Route::get("get-courses/{slug}", "getCourse");
 });
 
 Route::controller(CurricularController::class)->group(function () {

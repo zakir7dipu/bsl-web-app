@@ -11,7 +11,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {FiYoutube} from "react-icons/fi";
 import {infoMessage, uid, useInternalLink, warningMessage} from "../../../lib/helper.js";
 import {createSubscriber} from "../../../featurs/Subscribers/SubscribersSlice.js";
-import {fetchParentServices} from "../../../featurs/Service/ServiceSlice.js";
+import {fetchAllPageData} from "../../../featurs/Pages/PageSlice.js";
 
 function Top({newsletter, general, contact, backlink}) {
     const dispatch = useDispatch();
@@ -38,10 +38,11 @@ function Top({newsletter, general, contact, backlink}) {
     }
 
     const {
-        parentServices
-    } = useSelector((state) => state.serviceReducer);
+        pages,
+    } = useSelector((state) => state.pagesReducer);
+
     useEffect(() => {
-        dispatch(fetchParentServices(0));
+        dispatch(fetchAllPageData());
     }, [dispatch]);
 
     return (
@@ -72,16 +73,15 @@ function Top({newsletter, general, contact, backlink}) {
                     <Col lg={8} md={12} sm={12} className="p-0 m-0">
                         <Row className="p-0 m-0">
                             <Col lg={3} md={12} sm={12}>
-                                <h3 className={Style.widgetTitle}>IT Services</h3>
+                                <h3 className={Style.widgetTitle}>Our Hot Links</h3>
                                 <ul className={Style.siteMap}>
 
-                                    {parentServices && parentServices.map(item =>
+                                    {pages && pages.map(item =>
                                         <li key={uid()}>
                                             <NavLink
-                                                to={`service/${item?.slug}/details`}>{item?.title}</NavLink>
+                                                to={`page/${item?.slug}`}>{item?.title}</NavLink>
                                         </li>
                                     )}
-
                                 </ul>
                             </Col>
 

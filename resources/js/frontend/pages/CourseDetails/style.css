@@ -1,0 +1,169 @@
+.course-single-tab .nav.nav-tabs {
+    background: #f2f4f9;
+    border: none;
+    border-radius: 6px;
+    margin-bottom: 50px;
+    margin-top: 0;
+    padding: 0 0 1px;
+}
+
+.nav-tabs {
+    --bs-nav-tabs-border-width: var(--bs-border-width);
+    --bs-nav-tabs-border-color: var(--bs-border-color);
+    --bs-nav-tabs-border-radius: var(--bs-border-radius);
+    --bs-nav-tabs-link-hover-border-color: var(--bs-secondary-bg) var(--bs-secondary-bg) var(--bs-border-color);
+    --bs-nav-tabs-link-active-color: var(--bs-emphasis-color);
+    --bs-nav-tabs-link-active-bg: var(--bs-body-bg);
+    --bs-nav-tabs-link-active-border-color: var(--bs-border-color) var(--bs-border-color) var(--bs-body-bg);
+    border-bottom: var(--bs-nav-tabs-border-width) solid var(--bs-nav-tabs-border-color);
+}
+
+.nav {
+    --bs-nav-link-padding-x: 1rem;
+    --bs-nav-link-padding-y: 0.5rem;
+    --bs-nav-link-color: var(--bs-link-color);
+    --bs-nav-link-hover-color: var(--bs-link-hover-color);
+    --bs-nav-link-disabled-color: var(--bs-secondary-color);
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+.course-single-tab .nav.nav-tabs li button {
+    background: transparent;
+    border: none;
+    color: #5b5f64;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    margin: 10px 8px;
+    padding: 19px 25px;
+    text-align: center;
+}
+
+.react-courses__single-page .course-single-tab #back-tab-content h3 {
+    color: #0f1216;
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0 0 20px;
+}
+
+.course-single-tab #back-tab-content p {
+    color: #4b4b57;
+    font-size: 16px;
+}
+
+.course-single-tab #back-tab-content .single-week {
+    background: #f7f7f8;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    padding: 40px 40px 30px;
+}
+
+.course-single-tab #back-tab-content h3 {
+    color: #0f1216;
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0 0 20px;
+}
+
+.course-single-tab .nav.nav-tabs li button:hover, .react-courses__single-page .course-single-tab .nav.nav-tabs li.react-tabs__tab--selected button {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 6px 10px rgba(15, 18, 22, .1);
+    color: #0f1216;
+}
+
+.react-tabs__tab--selected button{
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 6px 10px rgba(15, 18, 22, .1);
+    color: #0f1216;
+}
+
+.react-sidebar.react-back-course2 {
+    box-shadow: none;
+}
+.react-sidebar {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 20px 40px rgba(15,18,22,.08);
+}
+.react-sidebar .widget.get-back-course {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 30px 50px 0 rgba(1,11,60,.1);
+    margin-bottom: 10px;
+    padding: 0;
+}
+.react-sidebar .widget {
+    border-bottom: 1px solid #e8ecf0;
+    padding: 35px;
+}
+.react-sidebar .widget.get-back-course .price {
+    align-items: center;
+    border-bottom: 1px solid #e8ecf0;
+    display: flex;
+    padding: 25px 40px;
+}
+.react-sidebar .widget.get-back-course .price li {
+     color: #3270fc;
+     font-size: 30px;
+     font-weight: 700;
+     line-height: 1;
+ }
+.react-sidebar .widget.get-back-course .price li:nth-child(2) {
+    color: #9da1a6;
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 9px;
+    text-decoration: line-through;
+}
+.react-sidebar .widget.get-back-course .price li {
+    color: #3270fc;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+}
+.react-sidebar .widget.get-back-course .price__course {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+}
+.react-sidebar .widget.get-back-course .price__course li {
+    box-shadow: 0 1px 0 #e8ecf0;
+    color: #0f1216;
+    padding: 10px 0;
+}
+.react-sidebar .widget.get-back-course .price__course li i {
+    color: #0f1216;
+    display: inline-block;
+    font-size: 14px;
+    margin-right: 10px;
+    position: relative;
+}
+.react-sidebar .widget.get-back-course .price__course li b {
+    clear: right;
+    color: #5b5f64;
+    float: right;
+    font-size: 16px;
+    font-weight: 400;
+}
+.react-sidebar .widget.get-back-course .start-btn {
+    background: #3270fc;
+    border-radius: 6px;
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 30px 35px 25px;
+    padding: 11px 25px;
+    text-align: center;
+    width: auto;
+}
+.react-sidebar .widget.get-back-course .start-btn svg {
+    width: 18px;
+}

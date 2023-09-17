@@ -14,7 +14,6 @@ function LatestBlog({infoID}) {
     } = useSelector(state => state.blogsReducer);
 
     const dispatch = useDispatch();
-    console.log(latest)
 
     useEffect(() => {
         dispatch(fetchLatestBlogs(infoID))
