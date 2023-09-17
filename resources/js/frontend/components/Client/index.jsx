@@ -4,12 +4,6 @@ import {Container} from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import ClientItem from "./Item.jsx"
-import clientImg1 from "../../../../frontend-assets/images/partner/1.png"
-import clientImg2 from "../../../../frontend-assets/images/partner/2.png"
-import clientImg3 from "../../../../frontend-assets/images/partner/3.png"
-import clientImg4 from "../../../../frontend-assets/images/partner/4.png"
-import clientImg5 from "../../../../frontend-assets/images/partner/5.png"
-import clientImg6 from "../../../../frontend-assets/images/partner/6.png"
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllClients} from "../../../featurs/Clients/ClientSlice.js";
 import PartnerSkel from "../Skeletons/PartnerSkel.jsx";
