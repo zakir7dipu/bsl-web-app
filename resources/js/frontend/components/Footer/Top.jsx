@@ -73,7 +73,7 @@ function Top({newsletter, general, contact, backlink}) {
                     <Col lg={8} md={12} sm={12} className="p-0 m-0">
                         <Row className="p-0 m-0">
                             <Col lg={3} md={12} sm={12}>
-                                <h3 className={Style.widgetTitle}>Our Hot Links</h3>
+                                <h3 className={Style.widgetTitle}>Hot Links</h3>
                                 <ul className={Style.siteMap}>
 
                                     {pages && pages.map(item =>
