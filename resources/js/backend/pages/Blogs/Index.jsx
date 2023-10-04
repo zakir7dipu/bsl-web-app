@@ -42,7 +42,7 @@ function Index(props) {
         {
             name: 'SL',
             cell: (row, index) => index + 1,
-            sortable: true,
+            sortable: false,
         },
         {
             name: 'Title',

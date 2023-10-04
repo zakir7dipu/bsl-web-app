@@ -23,14 +23,18 @@ function Index(props) {
         name: "Subscribers", url: null
     }];
 
-    const columns = [{
-        name: 'ID', selector: row => row.id, sortable: true,
-    }, {
-        name: 'Email', selector: row => row.email, sortable: true,
-    }, {
-        name: 'Actions', cell: (row) => (<Link to="#" onClick={(e) => subscriberDeleteHandler(row?.id)}
-                                               className="btn btn-danger btn-sm">Delete</Link>),
-    },];
+    const columns = [
+        {
+            name: 'SL',
+            cell: (row, index) => index + 1,
+            sortable: false,
+        }, {
+            name: 'Email', selector: row => row.email, sortable: true,
+        }, {
+            name: 'Actions', cell: (row) => (<Link to="#" onClick={(e) => subscriberDeleteHandler(row?.id)}
+                                                   className="btn btn-danger btn-sm">Delete</Link>),
+        }
+    ];
 
     const subscriberDeleteHandler = async (id) => {
         let {isConfirmed} = await bizAlert.confirmAlert(`Are you sure?`, `Once you delete this you can't able to recover this data`);

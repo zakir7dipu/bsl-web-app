@@ -43,9 +43,9 @@ function Index(props) {
 
     const columns = [
         {
-            name: 'ID',
-            selector: row => row.id,
-            sortable: true,
+            name: 'SL',
+            cell: (row, index) => index + 1,
+            sortable: false,
         },
         {
             name: 'Name',
