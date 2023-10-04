@@ -63,6 +63,7 @@ function Index(props) {
 
     useEffect(() => {
         dispatch(showServiceData(slug));
+        window.scrollTo(0, 0);
     }, [slug])
 
     return (

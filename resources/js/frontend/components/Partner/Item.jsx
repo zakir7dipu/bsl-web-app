@@ -8,7 +8,7 @@ function Item({info}) {
     return (
         <div className={Style.logoImg}>
             <Link to="#">
-                <img style={{width:"218px", height:"66px"}} className={Style.mainLogo} src={useInternalLink(image_link)} alt=""/>
+                <img style={{width:"218px"}} className={Style.mainLogo} src={useInternalLink(image_link)} alt=""/>
             </Link>
         </div>
     );
