@@ -40,8 +40,8 @@ function Index(props) {
 
     const columns = [
         {
-            name: 'ID',
-            selector: row => row?.short_order,
+            name: 'SL',
+            cell: (row, index) => index + 1,
             sortable: true,
         },
         {
