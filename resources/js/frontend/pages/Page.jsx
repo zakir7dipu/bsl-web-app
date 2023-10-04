@@ -31,6 +31,7 @@ function Page() {
 
     useEffect(() => {
         dispatch(fetchClientBySlug(slug));
+        window.scrollTo(0, 0);
     }, [slug]);
 
     if (!isLoading) {

@@ -33,6 +33,7 @@ function Index(props) {
 
     useEffect(() => {
         dispatch(fetchCourseBySlug(slug));
+        window.scrollTo(0, 0);
     }, [slug])
 
     return (

@@ -35,6 +35,7 @@ function BlogDetails(props) {
 
     useEffect(() => {
         dispatch(fetchBlogsDataBySlug(slug));
+        window.scrollTo(0, 0);
     }, [slug])
 
     return (

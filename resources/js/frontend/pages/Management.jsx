@@ -19,7 +19,9 @@ function Management() {
 
     useEffect(() => {
         dispatch(fetchAllManagements())
+        window.scrollTo(0, 0);
     }, [dispatch])
+
 
     const breadcrumbs = [
         {
