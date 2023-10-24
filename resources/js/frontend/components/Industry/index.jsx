@@ -30,7 +30,7 @@ function Index(props) {
                     <span className="sub-text gold-color">{sub_text}</span>
                     <h2 className="title" style={{float:"none"}}>{title}</h2>
                 </div>
-                <div className="all-services" style={{width:"100%"}}>
+                <div className="all-services row" style={{width:"100%"}}>
                     {industries?.map(item=><Items
                         info={item}
                         key={uid()}

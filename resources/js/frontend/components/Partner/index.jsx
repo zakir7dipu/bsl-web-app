@@ -42,6 +42,10 @@ function Index(props) {
         isLoading ? <PartnerSkel/>:
         <div className={Style.partner}>
             <Container>
+                <div className="sec-title2 text-center mb-45">
+                    <span className="sub-text gold-color"></span>
+                    <h2 className="title" style={{float:"none"}}>Our Partners</h2>
+                </div>
                 <Carousel
                     swipeable={true}
                     draggable={true}

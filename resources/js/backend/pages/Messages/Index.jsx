@@ -28,27 +28,23 @@ function Index(props) {
     const [title, setTitle] = useState("Add New");
     const [isEdit, setIsEdit] = useState(false);
 
-    const columns = [
-        {
-            name: 'SL',
-            cell: (row, index) => index + 1,
-            sortable: false,
-        },
-        {
-            name: 'Name', selector: row => row.name, sortable: true,
-        }, {
-            name: 'Email', selector: row => row.email, sortable: true,
-        }, {
-            name: 'Phone', selector: row => row.phone, sortable: true,
-        }, {
-            name: 'Subject', selector: row => row.subject, sortable: true,
-        }, {
-            name: 'Actions', cell: (row) => (<RowDropDown>
-                <Link to="#" onClick={(e) => handelMessageShow(row?.id)} className="dropdown-item">Show</Link>
-                <Link to="#" onClick={(e) => messageDeleteHandler(row?.id)}
-                      className="dropdown-item">Delete</Link>
-            </RowDropDown>),
-        },];
+    const columns = [{
+        name: 'ID', selector: row => row.id, sortable: true,
+    }, {
+        name: 'Name', selector: row => row.name, sortable: true,
+    }, {
+        name: 'Email', selector: row => row.email, sortable: true,
+    }, {
+        name: 'Phone', selector: row => row.phone, sortable: true,
+    }, {
+        name: 'Subject', selector: row => row.subject, sortable: true,
+    }, {
+        name: 'Actions', cell: (row) => (<RowDropDown>
+            <Link to="#" onClick={(e) => handelMessageShow(row?.id)} className="dropdown-item">Show</Link>
+            <Link to="#" onClick={(e) => messageDeleteHandler(row?.id)}
+                  className="dropdown-item">Delete</Link>
+        </RowDropDown>),
+    },];
 
     const handleModalClose = () => {
         setIsShow(!isShow);
@@ -109,7 +105,7 @@ function Index(props) {
 
                 <BizModal isShow={isShow} title={`Show ${metaInfo?.name}`} handleClose={handleModalClose} large={'xl'}>
                     <div className="card-body">
-                        <table className="table table-responsive table-bordered" style={{width: "100%"}}>
+                        <table className="table table-responsive table-bordered" style={{width:"100%"}}>
                             <thead>
                             <tr>
                                 <th width={`20%`}>Title</th>

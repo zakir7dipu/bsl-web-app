@@ -56,6 +56,11 @@ function Index(props) {
             sortable: true,
         },
         {
+            name: 'Short Order',
+            selector: row => row?.index_of,
+            sortable: true,
+        },
+        {
             name: 'Image',
             cell: row => (
                 <img style={{height: "60px", width: "60px"}} src={useInternalLink(row.image_link)}/>

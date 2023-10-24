@@ -21,7 +21,7 @@ class ClientsController extends Controller
     {
         try {
 
-            $clients = Clients::orderBy('id', 'asc')->get();
+            $clients = Clients::orderBy('index_of', 'asc')->get();
             return response()->json($clients);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), $th->getCode());
