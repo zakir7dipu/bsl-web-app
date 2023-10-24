@@ -12,7 +12,7 @@ class BlogsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['index', 'show', 'allData']]);
+        $this->middleware('auth:api', ['except' => ['index', 'show', 'allData', 'latestBlogs']]);
     }
 
     /**
@@ -39,7 +39,26 @@ class BlogsController extends Controller
     {
         try {
 
-            $blogs = Blogs::orderBy('short_order', 'desc')->paginate(12);
+            $blogs = Blogs::orderBy('short_order', 'desc')->paginate(9);
+
+            return response()->json($blogs);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), $th->getCode());
+        }
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function latestBlogs($current)
+    {
+        try {
+
+            if ($current > 0) {
+                $blogs = Blogs::orderBy('short_order', 'desc')->whereNotIn('id', [$current])->limit(6)->get();
+            } else {
+                $blogs = Blogs::orderBy('short_order', 'desc')->limit(6)->get();
+            }
 
             return response()->json($blogs);
         } catch (\Throwable $th) {

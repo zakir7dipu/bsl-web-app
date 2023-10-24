@@ -29,6 +29,11 @@ function Top({loading, general}) {
 
     const dispatch = useDispatch()
 
+    const handelMobileSubMenu = (e) => {
+        let submenu = e.target.parentElement.parentElement.querySelector('ul.sub-menu')
+        submenu.classList.toggle("visible")
+    }
+
     useEffect(() => {
         let navLinks = maiMenuRef.current.querySelectorAll("a")
         Array.from(navLinks).map(item => {
@@ -96,6 +101,9 @@ function Top({loading, general}) {
                                                         <NavLink to="/team">Our Team</NavLink>
                                                     </li>
                                                 </ul>
+                                                <span className="rs-menu-parent" onClick={handelMobileSubMenu}>
+                                                    <i className="fa fa-angle-down" aria-hidden="true"></i>
+                                                </span>
                                             </li>
 
                                             <li className="menu-item-has-children">
@@ -108,6 +116,9 @@ function Top({loading, general}) {
                                                         </li>
                                                     )}
                                                 </ul>
+                                                <span className="rs-menu-parent" onClick={handelMobileSubMenu}>
+                                                    <i className="fa fa-angle-down" aria-hidden="true"></i>
+                                                </span>
                                             </li>
 
                                             <li>

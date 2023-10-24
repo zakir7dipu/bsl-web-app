@@ -13,6 +13,7 @@ function Team(props) {
 
     useEffect(() => {
         dispatch(fetchAllTeams())
+        window.scrollTo(0, 0);
     }, [dispatch])
 
     const breadcrumbs = [

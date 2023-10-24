@@ -8373,7 +8373,7 @@ body .search-modal .close:hover {
     21. Industry Section CSS
 ------------------------------------*/
 .rs-industry .all-services {
-    display: inline-block;
+    display: flex;
 }
 
 .rs-industry .all-services .services-item {

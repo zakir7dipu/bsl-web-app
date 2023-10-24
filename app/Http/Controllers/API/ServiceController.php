@@ -94,6 +94,14 @@ class ServiceController extends Controller
                 $service->meta_image_link = $img;
             }
 
+            if ($request->hasFile('icons')) {
+                $filename = time() . '-' . 'icons.' . fileInfo($request->icons)['extension'];
+                $path = 'uploads/services';
+                fileUpload($request->icons, $path, $filename);
+                $img = '/' . $path . '/' . $filename;
+                $service->icons = $img;
+            }
+
             $service->save();
             DB::commit();
             return response()->json($service);
@@ -174,6 +182,17 @@ class ServiceController extends Controller
                 $img = '/' . $path . '/' . $filename;
                 $service->image_link = $img;
                 $service->meta_image_link = $img;
+            }
+
+            if ($request->hasFile('icons')) {
+                $filename = time() . '-' . 'icons.' . fileInfo($request->icons)['extension'];
+                $path = 'uploads/services';
+                if ($service->icons) {
+                    fileDelete($service->icons);
+                }
+                fileUpload($request->icons, $path, $filename);
+                $img = '/' . $path . '/' . $filename;
+                $service->icons = $img;
             }
 
             $service->save();

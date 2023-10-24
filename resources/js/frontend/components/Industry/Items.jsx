@@ -4,7 +4,7 @@ import {useInternalLink} from "../../../lib/helper.js";
 function Items({info}) {
     const {name, image_link} = info
     return (
-        <div className="services-item">
+        <div className="services-item col-md-2">
             <div className="services-wrap">
                 <div className="services-icon">
                     <img src={useInternalLink(image_link)} alt=""/>

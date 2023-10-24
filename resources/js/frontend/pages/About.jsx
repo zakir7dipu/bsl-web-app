@@ -11,6 +11,7 @@ function About(props) {
 
     useEffect(() => {
         dispatch(fetchAboutUs())
+        window.scrollTo(0, 0);
     }, [dispatch])
 
     const breadcrumbs = [

@@ -67,7 +67,7 @@ function Index(props) {
             name: 'Actions',
             cell: (row) => (
                 <RowDropDown>
-                    <Link to="#" onClick={(e) => handelPageEdit(row?.id)} className="dropdown-item">Edit</Link>
+                    <Link to="#" onClick={(e) => handelPageEdit(row?.slug)} className="dropdown-item">Edit</Link>
                     <Link to="#" onClick={(e) => pageDeleteHandler(row?.id)}
                           className="dropdown-item">Delete</Link>
                 </RowDropDown>
@@ -140,13 +140,12 @@ function Index(props) {
         handleModalClose()
     }
 
-    const handelPageEdit = (id) => {
-        getMeta(id)
+    const handelPageEdit = (slug) => {
+        getMeta(slug)
     }
 
-    const getMeta = (id) => {
-        setSelectedPage(id)
-        let model = pages.filter((ts) => ts.id === id)
+    const getMeta = (slug) => {
+        let model = pages.filter((ts) => ts.slug === slug)
         model = model[0]
         setTitle(`Edit ${model?.title}`)
         setIsEdit(true)
@@ -155,6 +154,7 @@ function Index(props) {
         setName(model?.title)
         setDescription(model?.description)
         setImageFile(model?.image_link)
+        setSelectedPage(model?.id);
     }
 
     const pageDeleteHandler = async (id) => {

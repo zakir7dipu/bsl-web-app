@@ -48,7 +48,7 @@ class CaseStudyController extends Controller
             "name" => ["required", "string", "max:128"],
             "descriptions" => ["required"],
             "clients" => ["required", "string"],
-            'image_link' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']
+            'image_link' => ['max:2048']
         ]);
 
         $input = $request->all();
@@ -104,7 +104,7 @@ class CaseStudyController extends Controller
             "name" => ["required", "string", "max:128"],
             "descriptions" => ["required"],
             "clients" => ["required", "string"],
-            'image_link' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']
+            'image_link' => ['max:2048']
         ]);
 
         $input = $request->all();

@@ -13,7 +13,7 @@ class  CourseController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['index', 'show']]);
+        $this->middleware('auth:api', ['except' => ['index', 'show', 'courseAll', 'getCourse']]);
     }
 
     /**
@@ -30,13 +30,45 @@ class  CourseController extends Controller
             return response()->json($th->getMessage(), $th->getCode());
         }
     }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function courseAll($slug, $service)
+    {
+        try {
+
+            if ($slug == 'all') {
+                $courses = Courses::with(['service', 'curriculums'])
+                    ->orderBy('id', 'asc')
+                    ->paginate(9);
+            } elseif ($slug == 'category') {
+                $courses = Courses::with(['service', 'curriculums'])
+                    ->when($service > 0, function ($query) use ($service) {
+                        return $query->where('service_id', $service);
+                    })
+                    ->orderBy('id', 'asc')
+                    ->paginate(9);
+            } else {
+                $courses = Courses::with(['service', 'curriculums'])
+                    ->where('course_type', $slug)
+                    ->orderBy('id', 'asc')
+                    ->paginate(9);
+            }
+
+            return response()->json($courses);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), $th->getCode());
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
         try {
-            $services = Services::where('type', 'training')->where('parent_id','!=',null)->orderBy('id', 'asc')->get();
+            $services = Services::where('type', 'training')->where('parent_id', '!=', null)->orderBy('id', 'asc')->get();
             return response()->json($services);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), $th->getCode());
@@ -115,6 +147,23 @@ class  CourseController extends Controller
     public function show($id)
     {
         $course = Courses::with('service')->where('id', $id)
+            ->first();
+        try {
+            return response()->json($course);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), $th->getCode());
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param \App\Models\Courses $slug
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getCourse($slug)
+    {
+        $course = Courses::with(['service', 'curriculums'])->where('slug', $slug)
             ->first();
         try {
             return response()->json($course);

@@ -21,7 +21,7 @@ class PartnerController extends Controller
     {
         try {
 
-            $partners = Partner::orderBy('id', 'asc')->get();
+            $partners = Partner::orderBy('index_of', 'asc')->get();
             return response()->json($partners);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), $th->getCode());

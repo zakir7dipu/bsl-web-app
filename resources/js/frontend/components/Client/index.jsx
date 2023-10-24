@@ -4,12 +4,6 @@ import {Container} from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import ClientItem from "./Item.jsx"
-import clientImg1 from "../../../../frontend-assets/images/partner/1.png"
-import clientImg2 from "../../../../frontend-assets/images/partner/2.png"
-import clientImg3 from "../../../../frontend-assets/images/partner/3.png"
-import clientImg4 from "../../../../frontend-assets/images/partner/4.png"
-import clientImg5 from "../../../../frontend-assets/images/partner/5.png"
-import clientImg6 from "../../../../frontend-assets/images/partner/6.png"
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllClients} from "../../../featurs/Clients/ClientSlice.js";
 import PartnerSkel from "../Skeletons/PartnerSkel.jsx";
@@ -48,6 +42,10 @@ function Index(props) {
         isLoading ? <PartnerSkel/>:
         <div className={Style.client}>
             <Container>
+                <div className="sec-title2 text-center mb-45">
+                    <span className="sub-text gold-color"></span>
+                    <h2 className="title" style={{float:"none"}}>Our Valued Clients</h2>
+                </div>
                 <Carousel
                     swipeable={true}
                     draggable={true}

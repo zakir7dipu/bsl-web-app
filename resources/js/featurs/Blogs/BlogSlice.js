@@ -14,7 +14,8 @@ const initialData = {
     total: 0,
     apiUrl: 'blogs',
     errorMess: null,
-    metaInfo: []
+    metaInfo: [],
+    latest: [],
 }
 
 // all data get
@@ -26,7 +27,7 @@ export const fetchAllBlogs = createAsyncThunk("blogsData/fetchAllBlogs", async (
         return rejectWithValue(error.response.data)
     }
 })
-export const fetchBlogsDataBySlug = createAsyncThunk("blogsData/fetchBlogsDataBySlug", async (brand, {rejectWithValue}) => {
+export const fetchBlogsDataBySlug = createAsyncThunk("blogsData/fetchBlogsDataBySlug", async (slug, {rejectWithValue}) => {
     try {
         const res = await apiAccess.get(`${initialData.apiUrl}/${slug}/show`);
         return res.data
@@ -89,6 +90,15 @@ export const fetchAllBlogsByPage = createAsyncThunk("blogsData/fetchAllBlogsByPa
     try {
         const {page} = data
         const res = await apiAccess.get(`blogs-all?page=${page}`)
+        return res.data
+    } catch (error) {
+        return rejectWithValue(error.response.message)
+    }
+})
+
+export const fetchLatestBlogs = createAsyncThunk("blogsData/fetchLatestBlogs", async (current, {rejectWithValue}) => {
+    try {
+        const res = await apiAccess.get(`latest-blogs/${current}`)
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.message)
@@ -203,7 +213,7 @@ export const BlogSlice = createSlice({
             const {data, last_page, current_page, per_page, path, total} = payload;
             state.isLoading = false
             state.paginateBlogs = data
-            state.lastPage = last_page
+            state.lastPage = last_page > 1 ? last_page:0
             state.currentPage = current_page
             state.total = total
             state.perPage = per_page
@@ -234,6 +244,19 @@ export const BlogSlice = createSlice({
             state.isLoading = false
             state.paginateBlogs = []
             state.errorMess = payload
+        },
+
+        [fetchLatestBlogs.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchLatestBlogs.fulfilled]: (state, {payload}) => {
+            state.isLoading = false;
+            state.latest = payload;
+        },
+        [fetchLatestBlogs.rejected]: (state, {payload}) => {
+            state.isLoading = false;
+            state.message = payload;
+            errorMessage(payload)
         },
     }
 });

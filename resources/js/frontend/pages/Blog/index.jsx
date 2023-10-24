@@ -40,6 +40,7 @@ function Index(props) {
 
     useEffect(() => {
         dispatch(fetchAllBlogsData())
+        window.scrollTo(0, 0);
     }, [dispatch])
 
 
@@ -105,7 +106,7 @@ function Index(props) {
                         }
 
                         <div className="col-md-12 mt-3 text-center">
-                            <Pagination handlePageClick={pageChangeHandler} pageCount={total} range={perPage}/>
+                            <Pagination handlePageClick={pageChangeHandler} pageCount={lastPage} range={perPage}/>
                         </div>
                     </Row>
                 </Container>

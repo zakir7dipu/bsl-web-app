@@ -26,7 +26,7 @@ function Index(props) {
     return (
         isLoading ? <ProjectsSkel/> :
         <div className="rs-project style4 gray-color pt-120 pb-120 md-pt-80 md-pb-80">
-            <div className="container-fluid">
+            <div className="container">
                 <div className="sec-title2 text-center mb-45">
                     <span className="sub-text gold-color">{caseStudySetting?.sub_text}</span>
                     <h2 className="title title2" style={{float: "none"}}>

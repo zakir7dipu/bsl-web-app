@@ -1,0 +1,90 @@
+.single-studies {
+    margin-bottom: 25px;
+}
+
+.single-studies .inner-course {
+    background: #fff;
+    border-radius: 10px;
+    transition: all 500ms ease;
+    box-shadow: 0 6px 25px rgba(12, 89, 219, 0.09);
+    margin-top: 15px;
+    padding: 15px;
+}
+
+.single-studies .inner-course .case-img {
+    position: relative;
+}
+
+.single-studies .inner-course .case-content {
+    padding: 30px 38px 20px 35px;
+}
+
+.single-studies .inner-course .case-content .case-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+    margin: 6px 0 15px;
+}
+
+.single-studies .inner-course .case-content .case-title a {
+    color: #1d9c9b;
+}
+
+.single-studies .inner-course .case-content {
+    border-top: 1px solid #eee;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 14px;
+}
+
+.single-studies .inner-course .case-content ul {
+    display: flex;
+}
+
+.p-0 {
+    padding: 0 !important;
+}
+
+.single-studies .inner-course .case-content ul li {
+    align-items: center;
+    color: #5b5f64;
+    display: flex;
+    font-size: 13px;
+    font-weight: 400;
+    padding-right: 10px;
+}
+
+.single-studies .inner-course .case-content ul li svg {
+    margin-right: 6px;
+    width: 16px;
+}
+
+.single-studies .inner-course .case-content li.price {
+    color: #d2093c;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.single-studies .inner-course .case-content li:last-child {
+    padding-right: 0;
+}
+
+.single-studies .inner-course .case-content li.price del {
+    color: rgba(255, 0, 0, .5);
+    position: relative;
+    text-decoration: none;
+}
+
+.single-studies .inner-course .case-content li.price del:before {
+    border-top: 2px solid rgba(255, 0, 0, .8);
+    bottom: 0;
+    content: " ";
+    display: block;
+    height: 12px;
+    left: 0;
+    position: absolute;
+    -webkit-transform: rotate(-7deg);
+    transform: rotate(-7deg);
+    width: 100%;
+}
+

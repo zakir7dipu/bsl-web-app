@@ -7,6 +7,7 @@ import {showServiceData} from "../../featurs/Service/ServiceSlice.js";
 import {useParams} from "react-router-dom";
 import ServiceProduct from "../components/ServiceProduct";
 import ServiceContent from "../components/ServiceContent/index.jsx";
+import Courses from "./Courses";
 
 function ServiceCategory(props) {
     const {slug} = useParams();
@@ -31,6 +32,7 @@ function ServiceCategory(props) {
 
     useEffect(() => {
         dispatch(showServiceData(slug));
+        window.scrollTo(0, 0);
     }, [slug])
 
     if (!isLoading) {
@@ -45,10 +47,13 @@ function ServiceCategory(props) {
                     breadcrumbs={breadcrumbs}
                 />
                 {
-                    metaInfo?.type ==='product' && <ServiceProduct service={metaInfo?.id}/>
+                    metaInfo?.type === 'product' && <ServiceProduct service={metaInfo?.id}/>
                 }
                 {
-                    metaInfo?.type ==='content' && <ServiceContent info={metaInfo}/>
+                    metaInfo?.type === 'content' && <ServiceContent info={metaInfo}/>
+                }
+                {
+                    metaInfo?.type === 'training' && <Courses info={metaInfo}/>
                 }
             </>
         );
