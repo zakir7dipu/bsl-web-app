@@ -1181,7 +1181,7 @@
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10.eot": {
     "file": "assets/linea-weather-10-5844acf7.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10d41d.eot"
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10.svg": {
     "file": "assets/linea-weather-10-f409f6dd.svg",
@@ -1197,7 +1197,7 @@
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10d41d.eot": {
     "file": "assets/linea-weather-10-5844acf7.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10d41d.eot"
   },
   "resources/backend-assets/icons/material-design-iconic-font/fonts/materialdesignicons-webfont.eot": {
     "file": "assets/materialdesignicons-webfont-c06cfca1.eot",
@@ -1237,7 +1237,7 @@
   },
   "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.eot": {
     "file": "assets/Simple-Line-Icons4c82-b76b3d1d.eot",
-    "src": "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Iconsd41d.eot"
+    "src": "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.eot"
   },
   "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.svg": {
     "file": "assets/Simple-Line-Icons4c82-ebd98fd1.svg",
@@ -1257,7 +1257,7 @@
   },
   "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Iconsd41d.eot": {
     "file": "assets/Simple-Line-Icons4c82-b76b3d1d.eot",
-    "src": "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Iconsd41d.eot"
+    "src": "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.eot"
   },
   "resources/backend-assets/icons/themify-icons/fonts/themify.ttf": {
     "file": "assets/themify-350663a4.ttf",
@@ -1392,7 +1392,7 @@
     "src": "resources/image/default-avatar.png"
   },
   "resources/js/app.css": {
-    "file": "assets/app-60aaa726.css",
+    "file": "assets/app-6773e90a.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.jsx": {
@@ -1723,9 +1723,9 @@
       "assets/Flaticon-1b7b8142.svg"
     ],
     "css": [
-      "assets/app-60aaa726.css"
+      "assets/app-6773e90a.css"
     ],
-    "file": "assets/app-21c81fa4.js",
+    "file": "assets/app-ed6058d7.js",
     "isEntry": true,
     "src": "resources/js/app.jsx"
   }
