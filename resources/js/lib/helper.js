@@ -3,8 +3,8 @@ import AuthUser from "../model/authUser.js";
 
 const Auth = new AuthUser();
 
-//export const mainPath = 'http://localhost:8000'
-export const mainPath = 'https://bizzsol.com.bd'
+export const mainPath = 'http://localhost:8000'
+//export const mainPath = 'https://bizzsol.com.bd'
 
 export function errorMessage(error) {
     Notify("error", error?.message)
