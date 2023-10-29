@@ -7,6 +7,7 @@ import Industry from "../components/Industry";
 import Technology from "../components/Technology";
 import Partner from "../components/Partner";
 import Client from "../components/Client";
+import Schedule from "../components/Schedule";
 import Preloader from "../components/Preloader/index.jsx";
 import Service from "../components/Services/Index.jsx";
 import Projects from "../components/Projects";
@@ -36,6 +37,7 @@ function Home(props) {
         <Blogs/>
         <Testimonials/>
         <Client/>
+        <Schedule/>
     </>);
 }
 

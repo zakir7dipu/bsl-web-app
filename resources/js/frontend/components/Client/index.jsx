@@ -67,7 +67,7 @@ function Index(props) {
                         info={item}
                     />)}
 
-                </Carousel>;
+                </Carousel>
             </Container>
         </div>
     );
