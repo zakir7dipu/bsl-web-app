@@ -1428,6 +1428,10 @@
         padding-left: 15px;
         padding-right: 15px;
     }
+    .full-width-header .rs-header .menu-area .main-menu .rs-menu ul.sub-menu li {
+        margin-left: 15px !important;
+        border: none;
+    }
     .full-width-header .rs-header .right_menu_togle .canvas-contact .canvas-map iframe {
         width: 300px;
     }
