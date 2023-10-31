@@ -66,6 +66,15 @@ function Index(props) {
                         </div>
                     </Link>
                 </div>
+                <div className="col-lg-3 col-sm-6">
+                    <Link to="schedule" className="card gradient-3">
+                        <div className="card-body">
+                            <h3 className="card-title text-white">Schedule Settings</h3>
+                            <span className="float-right display-5 opacity-5"><i
+                                className="fa fa-meetup"></i></span>
+                        </div>
+                    </Link>
+                </div>
             </div>
     );
 }

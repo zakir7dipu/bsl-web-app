@@ -45,6 +45,7 @@ Route::controller(SettingsController::class)->group(function (){
     Route::get('case-study-settings', 'caseStudySettings');
     Route::get('blog-settings', 'blogSettings');
     Route::get('testimonial-settings', 'testimonialSettings');
+    Route::get('schedule-settings', 'scheduleSettings');
 });
 
 Route::controller(SEOController::class)->group(function () {

@@ -21,6 +21,7 @@ import ServiceSetting from "../backend/pages/PageSettings/ServiceSetting/index.j
 import CaseStudySetting from "../backend/pages/PageSettings/CaseStudySetting/index.jsx"
 import BlogSetting from "../backend/pages/PageSettings/BlogSetting/index.jsx"
 import TestimonialSetting from "../backend/pages/PageSettings/TestimonialSetting/index.jsx"
+import ScheduleSetting from "../backend/pages/PageSettings/Schedule/index.jsx"
 
 import Technology from "../backend/pages/Technology";
 import Industries from "../backend/pages/Industries/Index.jsx";
@@ -113,6 +114,7 @@ function Main() {
                         <Route path="case-study" element={<CaseStudySetting/>}/>
                         <Route path="blogs" element={<BlogSetting/>}/>
                         <Route path="testimonial" element={<TestimonialSetting/>}/>
+                        <Route path="schedule" element={<ScheduleSetting/>}/>
                     </Route>
                     <Route path="technology" element={<Technology/>}/>
                     <Route path="industries" element={<Industries/>}/>

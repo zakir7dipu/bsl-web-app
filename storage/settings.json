@@ -108,6 +108,12 @@
             "sub_text": "TESTIMONIALS",
             "limit": "10",
             "desc": "Over 5 years working in IT services developing software applications and mobile apps for clients all over the world."
+        },
+        "schedule": {
+            "title": "Level Up Your Business With the Finest Solutions",
+            "btn_text_1": "Schedule A Demo",
+            "btn_text_2": "Company Profile",
+            "company_profile_link": "uploads\/settings\/schedule\/Bizz-solutions-plc-company-profile.pdf"
         }
     },
     "seo": {

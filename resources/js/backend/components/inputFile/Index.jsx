@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {goToInternalLink} from "../../../lib/helper.js";
 import {MdStar} from "react-icons/md";
 
-function Index({label, id, file, handler, required}) {
+function Index({label, id, file, handler, required, accept}) {
     const [fileName, setFileName] = useState('')
 
     const inputFileRef = createRef();
@@ -48,6 +48,7 @@ function Index({label, id, file, handler, required}) {
                         id={id}
                         ref={inputFileRef}
                         onChangeCapture={onFileChangeCapture}
+                        accept={accept}
                     />
                 </div>
             </div>

@@ -116,6 +116,13 @@ function testimonialInfo()
     return $data;
 }
 
+function scheduleInfo()
+{
+    $group = 'site.';
+    $data = setting($group . 'schedule');
+    return $data;
+}
+
 
 function storeGeneralData($generalSetting, $global, $request)
 {
@@ -367,6 +374,34 @@ function storeTestimonialData($global, $request)
     ];
     setting([$global . ".testimonial" => $data]);
     $data = setting($global . ".testimonial");
+    $data["type"] = $request->type;
+    return $data;
+}
+
+function storeScheduleData($global, $request)
+{
+
+    $currentFile = setting($global . '.schedule.company_profile_link');
+    $fileLink = '';
+    if ($request->hasFile("company_profile_link")) {
+        $filename = 'Bizz-solutions-plc-company-profile.' . fileInfo($request->company_profile_link)['extension'];
+        $path = 'uploads/settings/schedule';
+        if ($currentFile) {
+            fileDelete($currentFile);
+        }
+        fileUpload($request->company_profile_link, $path, $filename);
+        $fileLink = $path . '/' . $filename;
+    }
+
+    $data = [
+        "title" => $request->title,
+        "btn_text_1" => $request->btn_text_1,
+        "btn_text_2" => $request->btn_text_2,
+        "company_profile_link" => $request->hasFile("company_profile_link") ? $fileLink : $currentFile,
+    ];
+
+    setting([$global . ".schedule" => $data]);
+    $data = setting($global . ".schedule");
     $data["type"] = $request->type;
     return $data;
 }

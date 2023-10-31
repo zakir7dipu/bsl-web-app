@@ -10,7 +10,7 @@ class SettingsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['settings', 'sliderSetting', 'aboutSetting', 'technologySetting', 'industrySettings', 'serviceSettings', 'caseStudySettings', 'blogSettings', 'testimonialSettings']]);
+        $this->middleware('auth:api', ['except' => ['settings', 'sliderSetting', 'aboutSetting', 'technologySetting', 'industrySettings', 'serviceSettings', 'caseStudySettings', 'blogSettings', 'testimonialSettings','scheduleSettings']]);
     }
 
     /**
@@ -88,6 +88,14 @@ class SettingsController extends Controller
         ]);
     }
 
+    public function scheduleSettings()
+    {
+        $schedule = scheduleInfo();
+        return response()->json([
+            'data' => $schedule,
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -110,6 +118,7 @@ class SettingsController extends Controller
                 "case_study" => storeCaseStudyData($sliderglobal, $request),
                 "blog" => storeBlogData($sliderglobal, $request),
                 "testimonial" => storeTestimonialData($sliderglobal, $request),
+                "schedule" => storeScheduleData($sliderglobal, $request),
                 default => "no Data Found",
             };
 

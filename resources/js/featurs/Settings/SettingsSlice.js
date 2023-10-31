@@ -14,6 +14,7 @@ const initialData = {
     caseStudySetting: [],
     blogSetting: [],
     testimonialSetting: [],
+    scheduleSetting: [],
     errorMess: null,
 }
 
@@ -126,6 +127,15 @@ export const fetchBlogSettings = createAsyncThunk("settings/fetchBlogSettings", 
 export const fetchTestimonialSettings = createAsyncThunk("settings/fetchTestimonialSettings", async (args, {rejectedWithValue}) => {
     try {
         const res = await apiAccess.get(`testimonial-settings`)
+        return res.data
+    } catch (error) {
+        return rejectedWithValue(error.response.message)
+    }
+})
+
+export const fetchScheduleSettings = createAsyncThunk("settings/fetchScheduleSettings", async (args, {rejectedWithValue}) => {
+    try {
+        const res = await apiAccess.get(`schedule-settings`)
         return res.data
     } catch (error) {
         return rejectedWithValue(error.response.message)
@@ -299,6 +309,20 @@ export const settingsSlice = createSlice({
             state.errorMess = null
         },
         [fetchTestimonialSettings.rejected]: (state, {payload}) => {
+            state.isLoading = false
+            state.errorMess = payload
+        },
+
+        [fetchScheduleSettings.pending]: (state) => {
+            state.isLoading = true
+        },
+        [fetchScheduleSettings.fulfilled]: (state, {payload}) => {
+            const {data} = payload
+            state.isLoading = false
+            state.scheduleSetting = data
+            state.errorMess = null
+        },
+        [fetchScheduleSettings.rejected]: (state, {payload}) => {
             state.isLoading = false
             state.errorMess = payload
         },

@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {warningMessage} from "../../../../lib/helper.js";
-import {fetchTestimonialSettings, saveSettings} from "../../../../featurs/Settings/SettingsSlice.js";
+import {fetchScheduleSettings, saveSettings} from "../../../../featurs/Settings/SettingsSlice.js";
 import HeaderMeta from "../../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
 import {MdStar} from "react-icons/md";
 import Preloader from "../../../components/Preloader/Index.jsx";
+import FileInput from "../../../components/inputFile/Index.jsx";
 
 function Index(props) {
-    const {isLoading, testimonialSetting} = useSelector(state => state.generalSettings);
+    const {isLoading, scheduleSetting} = useSelector(state => state.generalSettings);
     const dispatch = useDispatch()
 
     const breadcrumb = [{
@@ -16,13 +17,18 @@ function Index(props) {
     }, {
         name: "Page Settings", url: "/bsl/admin/page-settings"
     }, {
-        name: "Testimonial Settings", url: null
+        name: "Schedule Settings", url: null
     }]
 
     const [title, setTitle] = useState("");
-    const [subText, setSubText] = useState("");
-    const [desc, setDesc] = useState("");
-    const [limit, setLimit] = useState("");
+    const [btnTextOne, setBtnTextOne] = useState("");
+    const [btnTextTwo, setBtnTextTwo] = useState("");
+    const [companyProfile, setCompanyProfile] = useState("");
+
+
+    const inputFileHandler = (file) => {
+        setCompanyProfile(file[0])
+    }
 
     const requestHandler = (e) => {
         e.preventDefault();
@@ -33,48 +39,50 @@ function Index(props) {
             formData.append("title", title);
         }
 
-        if (!subText) {
-            warningMessage("Subtext is required.")
+        if (!btnTextOne) {
+            warningMessage("Btn Text is required.")
         } else {
-            formData.append("sub_text", subText);
+            formData.append("btn_text_1", btnTextOne);
         }
 
-        if (!desc) {
-            warningMessage("Description is required.")
+        if (!btnTextTwo) {
+            warningMessage("Btn Text is required")
         } else {
-            formData.append("desc", desc);
+            formData.append("btn_text_2", btnTextTwo);
         }
 
-        if (limit) {
-            formData.append("limit", limit);
+        if (!companyProfile) {
+            warningMessage("Company Profile Link is required")
+        } else {
+            formData.append("company_profile_link", companyProfile);
         }
 
-        formData.append("type", 'testimonial');
+        formData.append("type", 'schedule');
 
-        if (title && subText && limit) {
+        if (title && btnTextOne && btnTextTwo && companyProfile) {
             dispatch(saveSettings(formData))
         }
     }
 
     useEffect(() => {
-        if (testimonialSetting) {
-            setTitle(testimonialSetting?.title)
-            setSubText(testimonialSetting?.sub_text)
-            setLimit(testimonialSetting?.limit)
-            setDesc(testimonialSetting?.desc)
+        if (scheduleSetting) {
+            setTitle(scheduleSetting?.title || "")
+            setBtnTextOne(scheduleSetting?.btn_text_1 || "")
+            setBtnTextTwo(scheduleSetting?.btn_text_2 || "")
+            setCompanyProfile(scheduleSetting?.company_profile_link || "")
         }
-    }, [testimonialSetting])
+    }, [scheduleSetting])
 
     useEffect(() => {
-        dispatch(fetchTestimonialSettings())
+        dispatch(fetchScheduleSettings())
     }, []);
 
     if (!isLoading) {
         return (
             <>
                 <HeaderMeta
-                    title="Industry Settings"
-                    url="/bsl/admin/page-settings/case-study"
+                    title="Schedule Settings"
+                    url="/bsl/admin/page-settings/schedule"
                 />
                 <Breadcrumb list={breadcrumb}/>
                 <div className="container-fluid">
@@ -82,12 +90,12 @@ function Index(props) {
                         <div className="col-md-12">
                             <div className="card">
                                 <div className="card-header">
-                                    <h4 className="card-title">Testimonial Settings</h4>
+                                    <h4 className="card-title">Schedule Settings</h4>
                                 </div>
                                 <div className="card-body">
                                     <form className="form-profile" onSubmit={requestHandler}>
                                         <div className="row">
-                                            <div className="col-md-6">
+                                            <div className="col-md-12">
                                                 <div className="form-group">
                                                     <label>Title <sup className="text-danger"><MdStar/></sup></label>
                                                     <input
@@ -101,40 +109,40 @@ function Index(props) {
                                             </div>
                                             <div className="col-md-6">
                                                 <div className="form-group">
-                                                    <label>Data Show Limit <sup className="text-danger"><MdStar/></sup></label>
+                                                    <label>Btn Text One <sup
+                                                        className="text-danger"><MdStar/></sup></label>
                                                     <input
                                                         className="form-control"
-                                                        value={limit}
-                                                        onChange={e => setLimit(e.target.value)}
-                                                        placeholder="Limit count"
-                                                        type="number"
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            <div className="col-md-12">
-                                                <div className="form-group">
-                                                    <label>Sub Text <sup className="text-danger"><MdStar/></sup></label>
-                                                    <input
-                                                        className="form-control"
-                                                        value={subText}
-                                                        onChange={e => setSubText(e.target.value)}
-                                                        placeholder="Sub text"
+                                                        value={btnTextOne}
+                                                        onChange={e => setBtnTextOne(e.target.value)}
+                                                        placeholder="Btn Text One"
                                                         type="text"
                                                     />
                                                 </div>
                                             </div>
-                                            <div className="col-md-12">
+
+                                            <div className="col-md-6">
                                                 <div className="form-group">
-                                                    <label>Desc <sup className="text-danger"><MdStar/></sup></label>
-                                                    <textarea
+                                                    <label>Btn Text Two<sup
+                                                        className="text-danger"><MdStar/></sup></label>
+                                                    <input
                                                         className="form-control"
-                                                        name="textarea"
-                                                        id="textarea" cols="30"
-                                                        rows="3"
-                                                        placeholder="Description"
-                                                        value={desc}
-                                                        onChange={e => setDesc(e.target.value)}
+                                                        value={btnTextTwo}
+                                                        onChange={e => setBtnTextTwo(e.target.value)}
+                                                        placeholder="Btn Text Two"
+                                                        type="text"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <div className="form-group">
+                                                    <FileInput
+                                                        label={"Company Profile File"}
+                                                        file={companyProfile}
+                                                        id={"file"}
+                                                        handler={inputFileHandler}
+                                                        required
+                                                        accept={`application/pdf`}
                                                     />
                                                 </div>
                                             </div>
