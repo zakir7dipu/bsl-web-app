@@ -1,1 +1,160 @@
-{"site":{"settings":{"general":{"site_name":"Bizz Solutions PLC","slogan":"Technology Solution Company in BD.","site_logo":"uploads\/settings\/1693305624-logo.png","site_favicon":"uploads\/settings\/1693305624-icon.png","site_secondary_logo":"uploads\/settings\/1693475251-sec-logo.png","footer_detail":"We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal."},"contact_info":{"phone":"+880 295 31087","whatsapp_number":"8801755597770","mail":"info@bizzsol.com.bd","address":"City centre 90\/1, Level-25 Type-D2, Motijheel C\/A, Dhaka-1000, Bangladesh.","sub_text":"LET'S TALK","title":"Speak With Expert Engineers.","contact_sub_text":"GET IN TOUCH","testi_title":"Fill The Form Below","map":"<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m14!1m8!1m3!1d14610.027870709226!2d90.4174443!3d23.7292944!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b95feee12d93%3A0x203b872aa0a6e9b4!2sBizz%20Solutions%20Ltd.!5e0!3m2!1sen!2sbd!4v1693712798187!5m2!1sen!2sbd\" width=\"100%\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>"},"newsletter":{"title":"Subscribe To Our Newsletter","text":"Ready to elevate your knowledge and never miss a beat when it comes to the latest updates, insights, and exclusive content?"},"backlink":{"qrcode":null,"eshop":null,"facebook":"https:\/\/www.facebook.com\/bizzsolutions","linkedin":"https:\/\/www.linkedin.com\/company\/bizz-solutions-ltd\/","youtube":"https:\/\/www.youtube.com\/@bizzsolutionsplc.007","instagram":"https:\/\/www.instagram.com\/bizzsolutionsplc\/"}},"slider":{"title":"We Are Digital Agency & Technology Solution","text":"We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal.","link":"hu9frpwmovM","btn_text":"Larn More","btn_link":"\/about","image_link":"uploads\/settings\/slider\/1693375780-slider.png"},"about":{"title":"Bizz Solutions PLC. A Creative Fintech Solution Provider Located in Dhaka, Bangladesh","brief":"Over 5 years working in IT services developing software applications and mobile apps for clients all over the world. We are one of the leading software companies renowned for its expertise in crafting innovative digital solutions. Established in 2018, the company has consistently pushed the boundaries of technology to provide cutting-edge software and services to clients\u00a0worldwide.","clients":"50","project":"100","attributes":[{"title":"high quality","bg":null,"icon":"uploads\/sections\/images\/1693811768-sections-main.png","hoverIcon":"uploads\/sections\/images\/1693811768-sections-hover.png","brief":"We are ensuring the highest quality Software solutions."},{"title":"Innovation","bg":"gold-bg","icon":"uploads\/sections\/images\/1693811857-sections-main.png","hoverIcon":"uploads\/sections\/images\/1693811857-sections-hover.png","brief":"We embrace a culture of constant innovation"},{"title":"Customer-Centric","bg":"cyan-bg","icon":"uploads\/sections\/images\/1693811899-sections-main.png","hoverIcon":"uploads\/sections\/images\/1693811899-sections-hover.png","brief":"Our clients are at the center of everything we do."},{"title":"security","bg":"blue-bg","icon":"uploads\/sections\/images\/1693811957-sections-main.png","hoverIcon":"uploads\/sections\/images\/1693811957-sections-hover.png","brief":"Ensuring security is our fundamental responsibility."}]},"industry":{"title":"Best Solutions, For All Organizations","sub_text":"WORK FOR ANY INDUSTRY","limit":"12"},"technology":{"title":"What Technology We Are Using For Our Valued Customers","sub_text":"TECHNOLOGY INDEX","limit":"12"},"service":{"title":"Explore Our All Services We Offer to customers","sub_text":"SERVICES","limit":"3"},"case_study":{"title":"Our Recent Launched Projects Available into Market","sub_text":"PROJECTS","limit":"9"},"blog":{"title":"Latest Tips &Tricks","sub_text":"BLOGS","limit":"10","desc":"We've been building creative tools together for over a decade and have a deep appreciation for software applications"},"testimonial":{"title":"What Customer Saying","sub_text":"TESTIMONIALS","limit":"10","desc":"Over 5 years working in IT services developing software applications and mobile apps for clients all over the world."}},"seo":{"home":{"meta":{"keywords":"Technology Solution Company in BD.","robots":"index, follow","description":"We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal Hi there.","og_type":"Home","og_title":"home","og_description":"We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal Hi there.","twitter_creator":"Bizz Solutions","twitter_card":"Home","twitter_title":"home","twitter_description":"We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal Hi there.","canonical":"https:\/\/bizzsol.com.bd\/"}},"team":{"meta":{"keywords":"Team","robots":"index, follow","description":"Description","og_type":"Team","og_title":"team","og_description":"Description","twitter_creator":"Bizz Solutions","twitter_card":"Team","twitter_title":"team","twitter_description":"Description","canonical":"#"}},"about":{"meta":{"keywords":"about, info, bizz","robots":"index, follow","description":"We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal.","og_type":"Artical","og_title":"about","og_description":"We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal.","twitter_creator":"Bizz Solutions","twitter_card":"Artical","twitter_title":"about","twitter_description":"We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal.","canonical":"\/about"}}}}
+{
+    "site": {
+        "settings": {
+            "general": {
+                "site_name": "Bizz Solutions PLC",
+                "slogan": "Technology Solution Company in BD.",
+                "site_logo": "uploads\/settings\/1693305624-logo.png",
+                "site_favicon": "uploads\/settings\/1693305624-icon.png",
+                "site_secondary_logo": "uploads\/settings\/1693475251-sec-logo.png",
+                "footer_detail": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal."
+            },
+            "contact_info": {
+                "phone": "+880 295 31087",
+                "whatsapp_number": "8801755597770",
+                "mail": "info@bizzsol.com.bd",
+                "address": "City centre 90\/1, Level-25 Type-D2, Motijheel C\/A, Dhaka-1000, Bangladesh.",
+                "sub_text": "LET'S TALK",
+                "title": "Speak With Expert Engineers.",
+                "contact_sub_text": "GET IN TOUCH",
+                "testi_title": "Fill The Form Below",
+                "map": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m14!1m8!1m3!1d14610.027870709226!2d90.4174443!3d23.7292944!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b95feee12d93%3A0x203b872aa0a6e9b4!2sBizz%20Solutions%20Ltd.!5e0!3m2!1sen!2sbd!4v1693712798187!5m2!1sen!2sbd\" width=\"100%\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>"
+            },
+            "newsletter": {
+                "title": "Subscribe To Our Newsletter",
+                "text": "Ready to elevate your knowledge and never miss a beat when it comes to the latest updates, insights, and exclusive content?"
+            },
+            "backlink": {
+                "qrcode": null,
+                "eshop": null,
+                "facebook": "https:\/\/www.facebook.com\/bizzsolutions",
+                "linkedin": "https:\/\/www.linkedin.com\/company\/bizz-solutions-ltd\/",
+                "youtube": "https:\/\/www.youtube.com\/@bizzsolutionsplc.007",
+                "instagram": "https:\/\/www.instagram.com\/bizzsolutionsplc\/"
+            }
+        },
+        "slider": {
+            "title": "We Are Digital Agency & Technology Solution",
+            "text": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal.",
+            "link": "hu9frpwmovM",
+            "btn_text": "Larn More",
+            "btn_link": "\/about",
+            "image_link": "uploads\/settings\/slider\/1693375780-slider.png"
+        },
+        "about": {
+            "title": "Bizz Solutions PLC. A Creative Fintech Solution Provider Located in Dhaka, Bangladesh",
+            "brief": "Over 5 years working in IT services developing software applications and mobile apps for clients all over the world. We are one of the leading software companies renowned for its expertise in crafting innovative digital solutions. Established in 2018, the company has consistently pushed the boundaries of technology to provide cutting-edge software and services to clients\u00a0worldwide.",
+            "clients": "50",
+            "project": "100",
+            "attributes": [
+                {
+                    "title": "high quality",
+                    "bg": null,
+                    "icon": "uploads\/sections\/images\/1693811768-sections-main.png",
+                    "hoverIcon": "uploads\/sections\/images\/1693811768-sections-hover.png",
+                    "brief": "We are ensuring the highest quality Software solutions."
+                },
+                {
+                    "title": "Innovation",
+                    "bg": "gold-bg",
+                    "icon": "uploads\/sections\/images\/1693811857-sections-main.png",
+                    "hoverIcon": "uploads\/sections\/images\/1693811857-sections-hover.png",
+                    "brief": "We embrace a culture of constant innovation"
+                },
+                {
+                    "title": "Customer-Centric",
+                    "bg": "cyan-bg",
+                    "icon": "uploads\/sections\/images\/1693811899-sections-main.png",
+                    "hoverIcon": "uploads\/sections\/images\/1693811899-sections-hover.png",
+                    "brief": "Our clients are at the center of everything we do."
+                },
+                {
+                    "title": "security",
+                    "bg": "blue-bg",
+                    "icon": "uploads\/sections\/images\/1693811957-sections-main.png",
+                    "hoverIcon": "uploads\/sections\/images\/1693811957-sections-hover.png",
+                    "brief": "Ensuring security is our fundamental responsibility."
+                }
+            ]
+        },
+        "industry": {
+            "title": "Best Solutions, For All Organizations",
+            "sub_text": "WORK FOR ANY INDUSTRY",
+            "limit": "12"
+        },
+        "technology": {
+            "title": "What Technology We Are Using For Our Valued Customers",
+            "sub_text": "TECHNOLOGY INDEX",
+            "limit": "12"
+        },
+        "service": {
+            "title": "Explore Our All Services We Offer to customers",
+            "sub_text": "SERVICES",
+            "limit": "3"
+        },
+        "case_study": {
+            "title": "Our Recent Launched Projects Available into Market",
+            "sub_text": "PROJECTS",
+            "limit": "9"
+        },
+        "blog": {
+            "title": "Latest Tips &Tricks",
+            "sub_text": "BLOGS",
+            "limit": "10",
+            "desc": "We've been building creative tools together for over a decade and have a deep appreciation for software applications"
+        },
+        "testimonial": {
+            "title": "What Customer Saying",
+            "sub_text": "TESTIMONIALS",
+            "limit": "10",
+            "desc": "Over 5 years working in IT services developing software applications and mobile apps for clients all over the world."
+        }
+    },
+    "seo": {
+        "home": {
+            "meta": {
+                "keywords": "Technology Solution Company in BD.",
+                "robots": "index, follow",
+                "description": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal Hi there.",
+                "og_type": "Home",
+                "og_title": "home",
+                "og_description": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal Hi there.",
+                "twitter_creator": "Bizz Solutions",
+                "twitter_card": "Home",
+                "twitter_title": "home",
+                "twitter_description": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal Hi there.",
+                "canonical": "https:\/\/bizzsol.com.bd\/"
+            }
+        },
+        "team": {
+            "meta": {
+                "keywords": "Team",
+                "robots": "index, follow",
+                "description": "Description",
+                "og_type": "Team",
+                "og_title": "team",
+                "og_description": "Description",
+                "twitter_creator": "Bizz Solutions",
+                "twitter_card": "Team",
+                "twitter_title": "team",
+                "twitter_description": "Description",
+                "canonical": "#"
+            }
+        },
+        "about": {
+            "meta": {
+                "keywords": "about, info, bizz",
+                "robots": "index, follow",
+                "description": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal.",
+                "og_type": "Artical",
+                "og_title": "about",
+                "og_description": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal.",
+                "twitter_creator": "Bizz Solutions",
+                "twitter_card": "Artical",
+                "twitter_title": "about",
+                "twitter_description": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal.",
+                "canonical": "\/about"
+            }
+        }
+    }
+}

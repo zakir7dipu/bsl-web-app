@@ -1,5 +1,6 @@
 import React from 'react';
 import {Container} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 function Index(props) {
     return (
@@ -9,10 +10,17 @@ function Index(props) {
                     <div className="schedule-content text-center">
                         <div className="col-md-12 col-sm-12">
                             <h3 className="schedule-title">Level Up Your Business With the Finest Solutions</h3>
-                            <button className="btn btn-primary schedule-text"><i className="fa fa-phone"></i> SCHEDULE A DEMO
-                            </button>
-                            <button className="btn schedule-text" style={{background:'#03228f', color:'white'}}><i className="fa fa-paperclip"></i> COMPANY PROFILE
-                            </button>
+                        </div>
+                        <div className="col-md-12">
+                            <div className="double-btn">
+                                <Link className="btn double-btn-one schedule-text col-md-6" to={`#`}><i
+                                    className="fa fa-phone"></i> SCHEDULE A DEMO
+                                </Link>
+                                <span className="schedule-middle-btn col-md-2">OR</span>
+                                <Link className="btn double-btn-two col-md-6" to={`#`}><i
+                                    className="fa fa-paperclip"></i> COMPANY PROFILE
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

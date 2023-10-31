@@ -34,6 +34,11 @@ function Top({loading, general}) {
         submenu.classList.toggle("visible")
     }
 
+    const handelMobileSubMenuService = (e) => {
+        let submenu = e.target.parentElement.parentElement.querySelector('ul.services-menu')
+        submenu.classList.toggle("visible")
+    }
+
     useEffect(() => {
         let navLinks = maiMenuRef.current.querySelectorAll("a")
         Array.from(navLinks).map(item => {
@@ -90,7 +95,7 @@ function Top({loading, general}) {
                                             </li>
                                             <li className="menu-item-has-children">
                                                 <Link to="#">About</Link>
-                                                <ul className="sub-menu">
+                                                <ul className="sub-menu about-menu">
                                                     <li>
                                                         <NavLink to="/about">Our Company</NavLink>
                                                     </li>
@@ -108,7 +113,7 @@ function Top({loading, general}) {
 
                                             <li className="menu-item-has-children">
                                                 <Link to="#">Services</Link>
-                                                <ul className="sub-menu">
+                                                <ul className="sub-menu services-menu">
                                                     {parentServices && parentServices.map(item =>
                                                         <li key={uid()}>
                                                             <NavLink
@@ -116,7 +121,7 @@ function Top({loading, general}) {
                                                         </li>
                                                     )}
                                                 </ul>
-                                                <span className="rs-menu-parent" onClick={handelMobileSubMenu}>
+                                                <span className="rs-menu-parent" onClick={handelMobileSubMenuService}>
                                                     <i className="fa fa-angle-down" aria-hidden="true"></i>
                                                 </span>
                                             </li>
