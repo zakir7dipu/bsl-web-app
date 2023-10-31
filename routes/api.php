@@ -20,6 +20,7 @@ use App\Http\Controllers\API\TeamsController;
 use App\Http\Controllers\API\TechnologyController;
 use App\Http\Controllers\API\TestimonialController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ScheduleController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(AuthController::class)->group(function () {
@@ -186,7 +187,7 @@ Route::controller(PagesController::class)->group(function () {
     Route::get("pages/{slug}/show", "show");
     Route::post("pages/{id}/update", "update");
     Route::delete("pages/{id}/destroy", "destroy");
-	Route::post("pages-search", "search");
+    Route::post("pages-search", "search");
 });
 
 Route::controller(MessageController::class)->group(function () {
@@ -194,6 +195,13 @@ Route::controller(MessageController::class)->group(function () {
     Route::post("messages-store", "store");
     Route::get("messages/{slug}/show", "show");
     Route::delete("messages/{id}/destroy", "destroy");
+});
+
+Route::controller(ScheduleController::class)->group(function () {
+    Route::get("schedules", "index");
+    Route::post("schedules-store", "store");
+    Route::get("schedules/{slug}/show", "show");
+    Route::delete("schedules/{id}/destroy", "destroy");
 });
 
 Route::controller(SubscriberController::class)->group(function () {

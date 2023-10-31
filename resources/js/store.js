@@ -22,6 +22,7 @@ import PagesFeature from "./featurs/Pages/PageSlice.js";
 import TestimonialFeature from "./featurs/Testimonial/TestimonialSlice.js";
 import MessageFeature from "./featurs/Messages/MessagesSlice.js";
 import SubscriberFeature from "./featurs/Subscribers/SubscribersSlice.js";
+import ScheduleFeature from "./featurs/Schedule/ScheduleSlice.js";
 
 
 const store = configureStore({
@@ -49,6 +50,7 @@ const store = configureStore({
         testimonialReducer: TestimonialFeature,
         messageReducer: MessageFeature,
         subscriberReducer: SubscriberFeature,
+        scheduleReducer: ScheduleFeature,
     }
 })
 

@@ -67,7 +67,6 @@ function MessageForm({contact}) {
                 <div className="sec-title2 mb-40">
                     <span className="sub-text contact mb-15">{contact?.contact_sub_text}</span>
                     <h2 className="title testi-title" style={{float: "none"}}>{contact?.testi_title}</h2>
-
                 </div>
                 <div id="form-messages"></div>
                 <form id="contact-form" onSubmit={requestHandler}>

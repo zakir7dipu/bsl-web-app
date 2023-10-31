@@ -2,24 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Schedules;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ScheduleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['index', 'store']]);
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
-    }
+        try {
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+            $schedules = Schedules::orderBy('id', 'desc')->get();
+
+            return response()->json($schedules);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), $th->getCode());
+        }
     }
 
     /**
@@ -27,7 +33,23 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name" => ["required", "string", "max:128"],
+            "email" => ["required", "email", "max:128"],
+            "phone" => ["required", "string", "max:15"],
+            "company_name" => ["required", "string", "max:128"],
+            "description" => ["required", "string"],
+        ]);
+
+        DB::beginTransaction();
+        try {
+            DB::commit();
+            $schedule = Schedules::create($request->all());
+            return response()->json($schedule);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return response()->json($th->getMessage(), $th->getCode());
+        }
     }
 
     /**
@@ -35,23 +57,12 @@ class ScheduleController extends Controller
      */
     public function show(string $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+        try {
+            $schedule = Schedules::where('id', $id)->first();
+            return response()->json($schedule);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), $th->getCode());
+        }
     }
 
     /**
@@ -59,6 +70,17 @@ class ScheduleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::beginTransaction();
+        try {
+
+            $schedule = Schedules::where('id', $id)->first();
+
+            $schedule->delete();
+            DB::commit();
+            return response()->json($schedule);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return response()->json($th->getMessage(), $th->getCode());
+        }
     }
 }

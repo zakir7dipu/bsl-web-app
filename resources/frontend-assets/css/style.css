@@ -12879,24 +12879,52 @@ body .search-modal .close:hover {
         line-height: 1.5em;
     }
 
-    .rs-schedule .content-wrapper .double-btn{
+    .rs-schedule .content-wrapper .double-btn {
         width: 100%;
         padding: 0px;
     }
-    .rs-schedule .content-wrapper .schedule-content .schedule-middle-btn{
+
+    .rs-schedule .content-wrapper .schedule-content .schedule-middle-btn {
         height: 35px;
         width: 35px;
     }
-    .rs-schedule .content-wrapper .double-btn .double-btn-one{
+
+    .rs-schedule .content-wrapper .double-btn .double-btn-one {
         font-size: 14px;
         margin-bottom: 15px;
     }
-    .rs-schedule .content-wrapper .double-btn .double-btn-two{
+
+    .rs-schedule .content-wrapper .double-btn .double-btn-two {
         font-size: 14px;
         margin-top: 15px;
     }
 }
 
+
+.form-profile {
+    background: #1d1d3e;
+    color: #ffffff;
+    height: 100%;
+    overflow: hidden;
+    padding: 30px;
+}
+.modal-body {
+    background: #1d1d3e;
+}
+
+.form-profile input, .form-profile textarea {
+    background-color: #ffffff00;
+    border-color: #555555;
+    border-radius: 25px 25px 25px 25px;
+    color: #ffffff;
+    border: 1px solid #69727d;
+    padding: 13px 15px;
+    outline: none;
+    line-height: 1;
+    width: 100%;
+    margin-bottom: 10px;
+    display: block;
+}
 
 /*.rs-schedule .content-wrapper .schedule-content .schedule-text {*/
 /*    font-weight: 600;*/
