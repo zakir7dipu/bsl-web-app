@@ -44,6 +44,7 @@ import Testimonial from "../backend/pages/Testimonial";
 import GeneralPages from "../backend/pages/GeneralPage";
 import Messages from "../backend/pages/Messages";
 import BackendSubscribers from "../backend/pages/Subscribers";
+import BackendSchedule from "../backend/pages/Schedule";
 
 import {checkAccess, refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
 import {useDispatch, useSelector} from "react-redux";
@@ -139,6 +140,7 @@ function Main() {
                     <Route path="case-study" element={<CaseStudy/>}/>
                     <Route path="testimonial" element={<Testimonial/>}/>
                     <Route path="pages" element={<GeneralPages/>}/>
+                    <Route path="schedule" element={<BackendSchedule/>}/>
                     <Route path="messages" element={<Messages/>}/>
                     <Route path="subscribers" element={<BackendSubscribers/>}/>
                 </Route>

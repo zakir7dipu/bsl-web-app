@@ -134,8 +134,16 @@ function Index(props) {
                         </li>
                         <li>
                             <NavBarLink
+                                link={'/bsl/admin/schedule'}
+                                linkName={'Get In Touch'}
+                                hasSubMenu={false}
+                                menuIcon={<i className="fa fa-forumbee menu-icon"></i>}
+                            />
+                        </li>
+                        <li>
+                            <NavBarLink
                                 link={'/bsl/admin/messages'}
-                                linkName={'Contact Messages'}
+                                linkName={'Messages'}
                                 hasSubMenu={false}
                                 menuIcon={<i className="fa fa-envelope menu-icon"></i>}
                             />

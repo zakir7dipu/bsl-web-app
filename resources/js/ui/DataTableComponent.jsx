@@ -13,9 +13,10 @@ function DataTableComponent({columns, data, isLoading, itemPerPage,handleSearchT
         },
         headCells: {
             style: {
-                fontSize: '16px', // Change the font size of header cells
+                fontSize: '14px', // Change the font size of header cells
                 fontWeight: 'bold', // Apply bold font weight to header cells
-                color: '#ffffff'
+                color: '#ffffff',
+                overflow:'auto'
             },
         },
     }

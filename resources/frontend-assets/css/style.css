@@ -12908,9 +12908,9 @@ body .search-modal .close:hover {
     overflow: hidden;
     padding: 30px;
 }
-.modal-body {
-    background: #1d1d3e;
-}
+/*.modal-body {*/
+/*    background: #1d1d3e;*/
+/*}*/
 
 .form-profile input, .form-profile textarea {
     background-color: #ffffff00;

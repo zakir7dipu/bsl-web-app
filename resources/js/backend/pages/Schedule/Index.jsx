@@ -3,17 +3,17 @@ import {useDispatch, useSelector} from "react-redux";
 import BizAlert from "../../../lib/BizAlert.js";
 import RowDropDown from "../../../ui/RowDropDown.jsx";
 import {Link} from "react-router-dom";
-import {deleteUserMessages, fetchAllUserMessages, showUserMessage} from "../../../featurs/Messages/MessagesSlice";
-import Preloader from "../../components/Preloader/Index.jsx";
 import HeaderMeta from "../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../components/Breadcrumb/Index.jsx";
 import DataTableComponent from "../../../ui/DataTableComponent.jsx";
 import BizModal from "../../../ui/BizzModal.jsx";
+import Preloader from "../../components/Preloader/Index.jsx";
+import {deleteSchedules, fetchAllSchedules, showScheduleMessage} from "../../../featurs/Schedule/ScheduleSlice";
 
 function Index(props) {
     const {
-        isLoading, userMessages, errorMess, metaInfo
-    } = useSelector((state) => state.messageReducer);
+        isLoading, schedules, errorMess, metaInfo
+    } = useSelector((state) => state.scheduleReducer);
 
     const dispatch = useDispatch();
 
@@ -21,7 +21,7 @@ function Index(props) {
     const breadcrumb = [{
         name: "Dashboard", url: "/bsl/admin"
     }, {
-        name: "Messages", url: null
+        name: "Get In Touch Messages", url: null
     }];
 
     const [isShow, setIsShow] = useState(false);
@@ -39,11 +39,11 @@ function Index(props) {
     }, {
         name: 'Phone', selector: row => row.phone, sortable: true,
     }, {
-        name: 'Subject', selector: row => row.subject, sortable: true,
+        name: 'Company', selector: row => row.company_name, sortable: true,
     }, {
         name: 'Actions', cell: (row) => (<RowDropDown>
-            <Link to="#" onClick={(e) => handelMessageShow(row?.id)} className="dropdown-item">Show</Link>
-            <Link to="#" onClick={(e) => messageDeleteHandler(row?.id)}
+            <Link to="#" onClick={(e) => handelScheduleShow(row?.id)} className="dropdown-item">Show</Link>
+            <Link to="#" onClick={(e) => scheduleDeleteHandler(row?.id)}
                   className="dropdown-item">Delete</Link>
         </RowDropDown>),
     },];
@@ -52,29 +52,29 @@ function Index(props) {
         setIsShow(!isShow);
     }
 
-    const handelMessageShow = (id) => {
+    const handelScheduleShow = (id) => {
         getMeta(id)
     }
 
     const getMeta = (id) => {
-        dispatch(showUserMessage(id))
+        dispatch(showScheduleMessage(id))
         setTitle(`Show ${metaInfo?.title || ''}`)
         setIsEdit(true)
         setIsShow(!isShow);
     }
 
-    const messageDeleteHandler = async (id) => {
+    const scheduleDeleteHandler = async (id) => {
         let {isConfirmed} = await bizAlert.confirmAlert(`Are you sure?`, `Once you delete this you can't able to recover this data`);
         if (isConfirmed) {
             let data = {
                 id: id
             }
-            dispatch(deleteUserMessages(data))
+            dispatch(deleteSchedules(data))
         }
     }
 
     useEffect(() => {
-        dispatch(fetchAllUserMessages());
+        dispatch(fetchAllSchedules());
     }, [dispatch]);
 
     if (!isLoading) {
@@ -82,7 +82,7 @@ function Index(props) {
             <>
                 <HeaderMeta
                     title="Messages"
-                    url="/bsl/admin/messages"
+                    url="/bsl/admin/schedule"
                 />
                 <Breadcrumb list={breadcrumb}/>
                 <div className="container-fluid">
@@ -90,12 +90,12 @@ function Index(props) {
                         <div className="col-lg-12 col-sm-12">
                             <div className="card">
                                 <div className="card-header">
-                                    <h4>Messages</h4>
+                                    <h4>Get In Touch</h4>
                                 </div>
                                 <div className="card-body">
                                     <DataTableComponent
                                         columns={columns}
-                                        data={userMessages}
+                                        data={schedules}
                                         isLoading={isLoading}
                                         itemPerPage={10}
                                     />
@@ -107,7 +107,7 @@ function Index(props) {
 
                 <BizModal isShow={isShow} title={`Show ${metaInfo?.name}`} handleClose={handleModalClose} large={'xl'}>
                     <div className="card-body">
-                        <table className="table table-responsive table-bordered" style={{width:"100%"}}>
+                        <table className="table table-responsive table-bordered" style={{width: "100%"}}>
                             <thead>
                             <tr>
                                 <th width={`20%`}>Title</th>
@@ -128,11 +128,11 @@ function Index(props) {
                                 <td>{metaInfo?.phone || ''}</td>
                             </tr>
                             <tr>
-                                <td>Subject</td>
-                                <td>{metaInfo?.subject || ''}</td>
+                                <td>Company Name</td>
+                                <td>{metaInfo?.company_name || ''}</td>
                             </tr>
                             <tr>
-                                <td>Message</td>
+                                <td>Requirements</td>
                                 <td>{metaInfo?.description || ''}</td>
                             </tr>
                             </tbody>

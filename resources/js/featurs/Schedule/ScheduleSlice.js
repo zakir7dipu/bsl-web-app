@@ -21,7 +21,7 @@ export const fetchAllSchedules = createAsyncThunk("scheduleData/fetchAllSchedule
         return rejectWithValue(error.response.data)
     }
 })
-export const showUserMessage = createAsyncThunk("scheduleData/showUserMessage", async (id, {rejectWithValue}) => {
+export const showScheduleMessage = createAsyncThunk("scheduleData/showScheduleMessage", async (id, {rejectWithValue}) => {
     try {
         const res = await apiAccess.get(`${initialData.apiUrl}/${id}/show`);
         return res.data
@@ -74,14 +74,14 @@ export const ScheduleSlice = createSlice({
             errorMessage(payload)
         },
 
-        [showUserMessage.pending]: (state) => {
+        [showScheduleMessage.pending]: (state) => {
             state.isLoading = false
         },
-        [showUserMessage.fulfilled]: (state, {payload}) => {
+        [showScheduleMessage.fulfilled]: (state, {payload}) => {
             state.isLoading = false;
             state.metaInfo = payload;
         },
-        [showUserMessage.rejected]: (state, {payload}) => {
+        [showScheduleMessage.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
         },
