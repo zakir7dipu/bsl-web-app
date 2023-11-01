@@ -105,11 +105,10 @@ function Index(props) {
             </Container>
 
             <BizModal isShow={isShow} title={`Get in Touch`} handleClose={handleModalClose} large={'lg'}>
-                <form className="form-profile" onSubmit={requestHandler} id="contact-form">
+                <form className="form-profile schedule-form" onSubmit={requestHandler} id="contact-form">
                     <fieldset>
                         <div className="row">
                             <div className="col-lg-6 mb-30 col-md-6 col-sm-6 form-group">
-
                                 <input
                                     className="from-control"
                                     type="text"

@@ -12901,18 +12901,15 @@ body .search-modal .close:hover {
 }
 
 
-.form-profile {
+.schedule-form {
     background: #1d1d3e;
     color: #ffffff;
     height: 100%;
     overflow: hidden;
     padding: 30px;
 }
-/*.modal-body {*/
-/*    background: #1d1d3e;*/
-/*}*/
 
-.form-profile input, .form-profile textarea {
+.schedule-form input, .schedule-form textarea {
     background-color: #ffffff00;
     border-color: #555555;
     border-radius: 25px 25px 25px 25px;
@@ -12925,11 +12922,6 @@ body .search-modal .close:hover {
     margin-bottom: 10px;
     display: block;
 }
-
-/*.rs-schedule .content-wrapper .schedule-content .schedule-text {*/
-/*    font-weight: 600;*/
-/*}*/
-
 
 @keyframes rain-line {
     0% {
