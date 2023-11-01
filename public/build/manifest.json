@@ -1121,7 +1121,7 @@
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10.eot": {
     "file": "assets/linea-ecommerce-10-d4e3c9f4.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10d41d.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10.eot"
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10.svg": {
     "file": "assets/linea-ecommerce-10-a94ee766.svg",
@@ -1137,11 +1137,11 @@
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10d41d.eot": {
     "file": "assets/linea-ecommerce-10-d4e3c9f4.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10d41d.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10.eot"
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.eot": {
     "file": "assets/linea-music-10-623ca9d9.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-music-10d41d.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.eot"
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.svg": {
     "file": "assets/linea-music-10-b0f18775.svg",
@@ -1157,7 +1157,7 @@
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-music-10d41d.eot": {
     "file": "assets/linea-music-10-623ca9d9.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-music-10d41d.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.eot"
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-software-10.eot": {
     "file": "assets/linea-software-10-fba5eb94.eot",
@@ -1269,7 +1269,7 @@
   },
   "resources/backend-assets/icons/themify-icons/fonts/themify9f24.eot": {
     "file": "assets/themify9f24-dff415da.eot",
-    "src": "resources/backend-assets/icons/themify-icons/fonts/themify9f24.eot"
+    "src": "resources/backend-assets/icons/themify-icons/fonts/themifyd41d.eot"
   },
   "resources/backend-assets/icons/themify-icons/fonts/themify9f24.svg": {
     "file": "assets/themify9f24-2e242102.svg",
@@ -1277,7 +1277,7 @@
   },
   "resources/backend-assets/icons/themify-icons/fonts/themifyd41d.eot": {
     "file": "assets/themify9f24-dff415da.eot",
-    "src": "resources/backend-assets/icons/themify-icons/fonts/themify9f24.eot"
+    "src": "resources/backend-assets/icons/themify-icons/fonts/themifyd41d.eot"
   },
   "resources/backend-assets/icons/weather-icons/fonts/weathericons-regular-webfont.eot": {
     "file": "assets/weathericons-regular-webfont-3afed4f7.eot",
@@ -1392,7 +1392,7 @@
     "src": "resources/image/default-avatar.png"
   },
   "resources/js/app.css": {
-    "file": "assets/app-9027c640.css",
+    "file": "assets/app-4c500bfa.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.jsx": {
@@ -1723,9 +1723,9 @@
       "assets/Flaticon-1b7b8142.svg"
     ],
     "css": [
-      "assets/app-9027c640.css"
+      "assets/app-4c500bfa.css"
     ],
-    "file": "assets/app-8278b490.js",
+    "file": "assets/app-31262afd.js",
     "isEntry": true,
     "src": "resources/js/app.jsx"
   }
