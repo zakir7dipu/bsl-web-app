@@ -3,9 +3,9 @@ import {Container} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchScheduleSettings} from "../../../featurs/Settings/SettingsSlice.js";
-import {infoMessage, useInternalLink, warningMessage} from "../../../lib/helper.js";
-import BizModal from "../../../ui/BizzModal.jsx";
+import {infoMessage, warningMessage} from "../../../lib/helper.js";
 import {createSchedules} from "../../../featurs/Schedule/ScheduleSlice.js";
+import BizModal from "../../../ui/BizzModal.jsx";
 
 function Index(props) {
 
@@ -94,10 +94,10 @@ function Index(props) {
                                     <i className="fa fa-phone"></i> {scheduleSetting?.btn_text_1}
                                 </Link>
                                 <span className="schedule-middle-btn col-md-2">OR</span>
-                                <Link download className="btn double-btn-two col-md-6"
-                                      to={useInternalLink(`/${scheduleSetting?.company_profile_link}`)}><i
+                                <a target="__blank" href={`/${scheduleSetting?.company_profile_link}`}
+                                   className="btn double-btn-two col-md-6"><i
                                     className="fa fa-paperclip"></i> {scheduleSetting?.btn_text_2}
-                                </Link>
+                                </a>
                             </div>
                         </div>
                     </div>
