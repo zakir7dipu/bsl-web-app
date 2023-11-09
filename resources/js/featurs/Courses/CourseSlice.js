@@ -165,6 +165,7 @@ export const CourseSlice = createSlice({
 
         [showCourseData.pending]: (state) => {
             state.isLoading = false
+            state.metaInfo = []
         },
         [showCourseData.fulfilled]: (state, {payload}) => {
             state.isLoading = false;

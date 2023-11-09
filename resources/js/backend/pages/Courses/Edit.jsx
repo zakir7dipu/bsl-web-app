@@ -21,6 +21,7 @@ function Edit(props) {
         errorMess,
         metaInfo
     } = useSelector((state) => state.coursesReducer);
+    console.log(metaInfo)
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const navGoBack = () => {
@@ -205,38 +206,36 @@ function Edit(props) {
     }
 
     useEffect(() => {
-        dispatch(showCourseData(id));
-    }, [dispatch])
-
-    useEffect(() => {
-        if (!isLoading) {
-            setTimeout(() => {
-                setSelectedId(metaInfo?.id || "");
-                setServiceId(metaInfo?.service_id || "");
-                setName(metaInfo?.name || "");
-                setVideoId(metaInfo?.video_id || "");
-                setDescription(metaInfo?.description || "");
-                setPrice(metaInfo?.price || "");
-                setDiscount(metaInfo?.discount || "");
-                setClassCount(metaInfo?.class_count || "");
-                setDuration(metaInfo?.duration || "");
-                setClassPerWeek(metaInfo?.class_per_week || "");
-                setClassDuration(metaInfo?.class_duration || "");
-                setLanguage(metaInfo?.language || "");
-                setDeliveryMood(metaInfo?.delivery_mode || "");
-                setCurriculumText(metaInfo?.curriculum_text || "");
-                // setThumbnail(metaInfo?.thumbnail || "");
-                // setBanner(metaInfo?.banner || "");
-                setCourseType(metaInfo?.course_type || "");
-                setStartDate(metaInfo?.start_date || "");
-                setEndDate(metaInfo?.end_date || "");
-            }, 500)
-        }
-    }, [isLoading])
-
-    useEffect(() => {
         dispatch(getServices());
     }, [dispatch]);
+
+    useEffect(() => {
+        setSelectedId(metaInfo?.id || "");
+        setServiceId(metaInfo?.service_id || "");
+        setName(metaInfo?.name || "");
+        setVideoId(metaInfo?.video_id || "");
+        setDescription(metaInfo?.description || "");
+        setPrice(metaInfo?.price || "");
+        setDiscount(metaInfo?.discount || "");
+        setClassCount(metaInfo?.class_count || "");
+        setDuration(metaInfo?.duration || "");
+        setClassPerWeek(metaInfo?.class_per_week || "");
+        setClassDuration(metaInfo?.class_duration || "");
+        setLanguage(metaInfo?.language || "");
+        setDeliveryMood(metaInfo?.delivery_mode || "");
+        setCurriculumText(metaInfo?.curriculum_text || "");
+        // setThumbnail(metaInfo?.thumbnail || "");
+        // setBanner(metaInfo?.banner || "");
+        setCourseType(metaInfo?.course_type || "");
+        setStartDate(metaInfo?.start_date || "");
+        setEndDate(metaInfo?.end_date || "");
+    }, [dispatch, metaInfo])
+
+    useEffect(() => {
+
+        dispatch(showCourseData(id));
+    }, [dispatch, id])
+
 
     if (!isLoading) {
         return (
