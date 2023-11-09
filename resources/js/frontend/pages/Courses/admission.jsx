@@ -42,15 +42,13 @@ function Admission({type}) {
 
     return (
         isLoading ? <BlogsSkel/> :
-            <div className="rs-inner-blog pt-50 pb-50 md-pt-50 md-pb-50">
+            <div className="rs-inner-blog pt-50 pb-50 md-pt-50 md-pb-50 mb-30">
                 <div className="container">
                     <div className="sec-title2 text-center mb-45">
                         <h2 className="title" style={{float: "none"}}>Admission Ongoing</h2>
                     </div>
                     <div className="row">
-                        {coursesAll?.map(item =>
-                            <Item info={item} key={uid()}/>
-                        )}
+                        {coursesAll?.map(item => <Item info={item} key={uid()}/>)}
                         <div className="col-md-12 mt-3 text-center">
                             <Pagination handlePageClick={pageChangeHandler} pageCount={lastPage} range={perPage}/>
                         </div>

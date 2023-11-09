@@ -62,7 +62,7 @@ function AllCourses() {
             />
 
             {isLoading ? <BlogsSkel/> :
-                <div className="rs-inner-blog pt-50 pb-50 md-pt-50 md-pb-50" style={{backgroundColor: "#e9ecef"}}>
+                <div className="rs-inner-blog pt-50 pb-50 md-pt-50 md-pb-50 mb-40" style={{backgroundColor: "#e9ecef"}}>
                     <div className="container">
 
                         <div className="row">
