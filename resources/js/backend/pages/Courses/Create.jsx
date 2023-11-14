@@ -81,15 +81,11 @@ function Create(props) {
             formData.append("service_id", cServiceId);
         }
 
-        if (!startDate) {
-            warningMessage("Start Date is required.")
-        } else {
+        if (startDate) {
             formData.append("start_date", startDate);
         }
 
-        if (!endDate) {
-            warningMessage("End Date is required.")
-        } else {
+        if (endDate) {
             formData.append("end_date", endDate);
         }
 
@@ -354,8 +350,7 @@ function Create(props) {
                                         </Col>
                                         <Col lg={4}>
                                             <div className="form-group">
-                                                <label htmlFor="start_date">Start Date <sup
-                                                    className="text-danger"><MdStar/></sup></label>
+                                                <label htmlFor="start_date">Start Date </label>
                                                 <input type="date" id="start_date" placeholder="Enter date"
                                                        value={startDate}
                                                        className="form-control"
@@ -366,8 +361,7 @@ function Create(props) {
                                         </Col>
                                         <Col lg={4}>
                                             <div className="form-group">
-                                                <label htmlFor="end_date">End Date <sup
-                                                    className="text-danger"><MdStar/></sup></label>
+                                                <label htmlFor="end_date">End Date </label>
                                                 <input type="date" id="end_date" placeholder="Enter date"
                                                        className="form-control"
                                                        value={endDate}
