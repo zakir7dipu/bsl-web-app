@@ -6,6 +6,8 @@ import {fetchAllCourseAll, fetchAllCourseAllByPage} from "../../../featurs/Cours
 import BlogsSkel from "../../components/Skeletons/BlogsSkel.jsx";
 import Pagination from "../../../ui/Pagination.jsx";
 import {Link} from "react-router-dom";
+import ReactPaginate from "react-paginate";
+import {PaginationContainer} from "../../../ui/VertualDataTable/PaginationStyles.jsx";
 
 function Admission({type}) {
     const {
