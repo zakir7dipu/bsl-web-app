@@ -9,8 +9,8 @@ import Preloader from "../../components/Preloader/Index.jsx";
 import HeaderMeta from "../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../components/Breadcrumb/Index.jsx";
 import {GrFormAdd} from "react-icons/gr";
-import DataTableComponent from "../../../ui/DataTableComponent.jsx";
 import BizModal from "../../../ui/BizzModal.jsx";
+import VirtualDataTable from "../../../ui/VertualDataTable/index.jsx";
 
 function Index(props) {
     const {
@@ -36,28 +36,36 @@ function Index(props) {
     const columns = [
         {
             name: 'SL',
-            cell: (row, index) => index + 1,
+            selector: (row, index) => index + 1,
             sortable: false,
         },
         {
             name: 'Services',
             selector: row => row?.service?.title || '',
-            sortable: true,
+            sortable: false,
+            sortableKey: "title",
+            searchableKey: 'title',
         },
         {
             name: 'Name',
             selector: row => row?.name,
             sortable: true,
+            sortableKey: "name",
+            searchableKey: 'name',
         },
         {
             name: 'Type',
             selector: row => row?.course_type,
             sortable: true,
+            sortableKey: "course_type",
+            searchableKey: 'course_type',
         },
         {
             name: 'Price',
             selector: row => row?.price,
             sortable: true,
+            sortableKey: "price",
+            searchableKey: 'price',
         },
         {
             name: 'Curricular',
@@ -65,16 +73,18 @@ function Index(props) {
                 <Link to={`${row?.id}/curricular`} className="btn btn-info btn-sm">Curricular</Link>
             ),
             sortable: false,
+
         },
         {
             name: 'Image',
-            cell: row => (
+            selector: row => (
                 <img style={{height: "60px", width: "60px"}} src={useInternalLink(row.thumbnail)}/>
-            )
+            ),
+            sortable: false
         },
         {
             name: 'Actions',
-            cell: (row) => (
+            selector: (row) => (
                 <RowDropDown>
                     <Link to="#" onClick={(e) => handelCourseShow(row?.id)} className="dropdown-item">Show</Link>
                     <Link to={`${row?.id}/edit`} className="dropdown-item">Edit</Link>
@@ -82,6 +92,7 @@ function Index(props) {
                           className="dropdown-item">Delete</Link>
                 </RowDropDown>
             ),
+            sortable: false
         },
     ];
 
@@ -130,16 +141,17 @@ function Index(props) {
                         <div className="col-lg-12 col-sm-12">
                             <div className="card">
                                 <div className="card-header">
-                                    <h4>Courses Lists</h4>
-                                    <Link className="btn btn-info btn-mini float-right" to={`create`} >
-                                        <GrFormAdd/>&nbsp;Add New
-                                    </Link>
+                                    <h4>Courses Lists
+                                        <Link className="btn btn-info btn-mini float-right" to={`create`}>
+                                            <GrFormAdd/>&nbsp;Add New
+                                        </Link></h4>
                                 </div>
                                 <div className="card-body">
-                                    <DataTableComponent
+                                    <VirtualDataTable
+                                        name="Course Data"
                                         columns={columns}
                                         data={courses}
-                                        isLoading={isLoading}
+                                        dataViewRangeArray={[10, 20, 30, 50, 100]}
                                         itemPerPage={10}
                                     />
                                 </div>

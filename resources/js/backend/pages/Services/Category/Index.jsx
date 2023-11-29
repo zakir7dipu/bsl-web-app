@@ -9,8 +9,8 @@ import Preloader from "../../../components/Preloader/Index.jsx";
 import HeaderMeta from "../../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
 import {GrFormAdd} from "react-icons/gr";
-import DataTableComponent from "../../../../ui/DataTableComponent.jsx";
 import BizModal from "../../../../ui/BizzModal.jsx";
+import VirtualDataTable from "../../../../ui/VertualDataTable/index.jsx";
 
 function Index(props) {
     const {
@@ -37,33 +37,40 @@ function Index(props) {
     const columns = [
         {
             name: 'SL',
-            cell: (row, index) => index + 1,
+            selector: (row, index) => index + 1,
             sortable: false,
         },
         {
             name: 'Parent Services',
             selector: row => row?.service?.title || '',
             sortable: true,
+            sortableKey: "title",
+            searchableKey: 'title',
         },
         {
             name: 'Title',
             selector: row => row?.title,
             sortable: true,
+            sortableKey: "title",
+            searchableKey: 'title',
         },
         {
             name: 'Type',
             selector: row => ucFirst(row?.type),
             sortable: true,
+            sortableKey: "type",
+            searchableKey: 'type',
         },
         {
             name: 'Image',
-            cell: row => (
+            selector: row => (
                 <img style={{height: "60px", width: "60px"}} src={useInternalLink(row.image_link)}/>
-            )
+            ),
+            sortable: false
         },
         {
             name: 'Actions',
-            cell: (row) => (
+            selector: (row) => (
                 <RowDropDown>
                     <Link to="#" onClick={(e) => handelServiceShow(row?.slug)} className="dropdown-item">Show</Link>
                     <Link to={`${row?.id}/edit`} className="dropdown-item">Edit</Link>
@@ -71,6 +78,7 @@ function Index(props) {
                           className="dropdown-item">Delete</Link>
                 </RowDropDown>
             ),
+            sortable: false
         },
     ];
 
@@ -122,16 +130,18 @@ function Index(props) {
                         <div className="col-lg-12 col-sm-12">
                             <div className="card">
                                 <div className="card-header">
-                                    <h4>Services Lists</h4>
-                                    <Link className="btn btn-info btn-mini float-right" to={`create`} >
+                                    <h4>Services Lists
+                                    <Link className="btn btn-info btn-mini float-right" to={`create`}>
                                         <GrFormAdd/>&nbsp;Add New
                                     </Link>
+                                    </h4>
                                 </div>
                                 <div className="card-body">
-                                    <DataTableComponent
+                                    <VirtualDataTable
+                                        name="Services Data"
                                         columns={columns}
                                         data={services}
-                                        isLoading={isLoading}
+                                        dataViewRangeArray={[10, 20, 30, 50, 100]}
                                         itemPerPage={10}
                                     />
                                 </div>

@@ -13,6 +13,7 @@ import BizModal from "../../../ui/BizzModal.jsx";
 import FileInput from "../../components/inputFile/Index.jsx";
 import {MdStar} from "react-icons/md";
 import {createTeamData, deleteTeamData, fetchAllTeams, updateTeamData} from "../../../featurs/Teams/TeamSlice.js";
+import VirtualDataTable from "../../../ui/VertualDataTable/index.jsx";
 
 function Index(props) {
     const {
@@ -37,44 +38,54 @@ function Index(props) {
     const columns = [
         {
             name: 'SL',
-            cell: (row, index) => index + 1,
+            selector: (row, index) => index + 1,
             sortable: false,
         },
         {
             name: 'Name',
             selector: row => row.name,
             sortable: true,
+            sortableKey: "name",
+            searchableKey: 'name',
         },
         {
             name: 'Email',
             selector: row => row.email,
             sortable: true,
+            sortableKey: "email",
+            searchableKey: 'email',
         },
         {
             name: 'Phone',
             selector: row => row.phone,
             sortable: true,
+            sortableKey: "phone",
+            searchableKey: 'phone',
         },
         {
             name: 'Designation',
             selector: row => ucFirst(row.designation),
             sortable: true,
+            sortableKey: "designation",
+            searchableKey: 'designation',
         },
         {
             name: 'Image',
-            cell: row => (
+            selector: row => (
                 <img style={{height: "60px", width: "60px"}} src={useInternalLink(row.avatar)}/>
-            )
+            ),
+            sortable: false,
         },
         {
             name: 'Actions',
-            cell: (row) => (
+            selector: (row) => (
                 <RowDropDown>
                     <Link to="#" onClick={(e) => handelTeamEdit(row?.slug)} className="dropdown-item">Edit</Link>
                     <Link to="#" onClick={(e) => deleteTeamHandler(row?.slug)}
                           className="dropdown-item">Delete</Link>
                 </RowDropDown>
             ),
+            sortable: false,
         },
     ];
 
@@ -221,20 +232,22 @@ function Index(props) {
                         <div className="col-lg-12 col-sm-12">
                             <div className="card">
                                 <div className="card-header">
-                                    <h4>Management Lists</h4>
+                                    <h4>Our Teams
                                     <button className="btn btn-info btn-mini float-right" onClick={() => {
                                         setIsShow(!isShow);
                                         setIsEdit(false)
                                         setTitle('Add New')
                                     }}>
                                         <GrFormAdd/>&nbsp;Add New
-                                    </button>
+                                    </button></h4>
                                 </div>
                                 <div className="card-body">
-                                    <DataTableComponent
+
+                                    <VirtualDataTable
+                                        name="Teams Data"
                                         columns={columns}
                                         data={teams}
-                                        isLoading={isLoading}
+                                        dataViewRangeArray={[10, 20, 30, 50, 100]}
                                         itemPerPage={10}
                                     />
                                 </div>

@@ -19,6 +19,7 @@ import {
     deleteTestimonial, fetchAllTestimonial, fetchSearchTestimonial,
     updateTestimonial
 } from "../../../featurs/Testimonial/TestimonialSlice.js";
+import VirtualDataTable from "../../../ui/VertualDataTable/index.jsx";
 
 function Index(props) {
     const {
@@ -46,34 +47,40 @@ function Index(props) {
     const columns = [
         {
             name: 'SL',
-            cell: (row, index) => index + 1,
+            selector: (row, index) => index + 1,
             sortable: false,
         },
         {
             name: 'Name',
             selector: row => row?.name,
             sortable: true,
+            sortableKey: "name",
+            searchableKey: 'name',
         },
         {
             name: 'Designation',
             selector: row => row?.designation,
             sortable: true,
+            sortableKey: "designation",
+            searchableKey: 'designation',
         },
         {
             name: 'Image',
-            cell: row => (
+            selector: row => (
                 <img style={{height: "40px", width: "40px"}} src={useInternalLink(row.image_link)}/>
-            )
+            ),
+            sortable: false
         },
         {
             name: 'Actions',
-            cell: (row) => (
+            selector: (row) => (
                 <RowDropDown>
                     <Link to="#" onClick={(e) => handelTestimonialEdit(row?.id)} className="dropdown-item">Edit</Link>
                     <Link to="#" onClick={(e) => testimonialDeleteHandler(row?.id)}
                           className="dropdown-item">Delete</Link>
                 </RowDropDown>
             ),
+            sortable: false
         },
     ];
 
@@ -209,12 +216,12 @@ function Index(props) {
                                 </button>
                             </div>
                             <div className="card-body">
-                                <DataTableComponent
+                                <VirtualDataTable
+                                    name="Testimonial Data"
                                     columns={columns}
                                     data={testimonials}
-                                    isLoading={isLoading}
+                                    dataViewRangeArray={[10, 20, 30, 50, 100]}
                                     itemPerPage={10}
-                                    handleSearchText={handleSearchText}
                                 />
                             </div>
                         </div>

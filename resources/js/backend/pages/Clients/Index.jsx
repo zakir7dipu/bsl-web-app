@@ -18,6 +18,7 @@ import DataTableComponent from "../../../ui/DataTableComponent.jsx";
 import {MdStar} from "react-icons/md";
 import FileInput from "../../components/inputFile/Index.jsx";
 import BizModal from "../../../ui/BizzModal.jsx";
+import VirtualDataTable from "../../../ui/VertualDataTable/index.jsx";
 
 function Index(props) {
     const {
@@ -42,18 +43,22 @@ function Index(props) {
     const columns = [
         {
             name: 'SL',
-            cell: (row, index) => index + 1,
+            selector: (row, index) => index + 1,
             sortable: false,
         },
         {
             name: 'Name',
             selector: row => row?.name,
             sortable: true,
+            sortableKey: "name",
+            searchableKey: 'name',
         },
         {
             name: 'Description',
             selector: row => row?.description,
             sortable: true,
+            sortableKey: "description",
+            searchableKey: 'description',
         },
         {
             name: 'Short Order',
@@ -62,19 +67,21 @@ function Index(props) {
         },
         {
             name: 'Image',
-            cell: row => (
+            selector: row => (
                 <img style={{height: "60px", width: "60px"}} src={useInternalLink(row.image_link)}/>
-            )
+            ),
+            sortable: false,
         },
         {
             name: 'Actions',
-            cell: (row) => (
+            selector: (row) => (
                 <RowDropDown>
                     <Link to="#" onClick={(e) => handelClientEdit(row?.id)} className="dropdown-item">Edit</Link>
                     <Link to="#" onClick={(e) => deleteClientHandler(row?.id)}
                           className="dropdown-item">Delete</Link>
                 </RowDropDown>
             ),
+            sortable: false,
         },
     ];
 
@@ -197,20 +204,22 @@ function Index(props) {
                         <div className="col-lg-12 col-sm-12">
                             <div className="card">
                                 <div className="card-header">
-                                    <h4>Client Lists</h4>
-                                    <button className="btn btn-info btn-mini float-right" onClick={() => {
-                                        setIsShow(!isShow);
-                                        setIsEdit(false)
-                                        setTitle('Add New')
-                                    }}>
-                                        <GrFormAdd/>&nbsp;Add New
-                                    </button>
+                                    <h4>Client Lists
+                                        <button className="btn btn-info btn-mini float-right" onClick={() => {
+                                            setIsShow(!isShow);
+                                            setIsEdit(false)
+                                            setTitle('Add New')
+                                        }}>
+                                            <GrFormAdd/>&nbsp;Add New
+                                        </button></h4>
                                 </div>
                                 <div className="card-body">
-                                    <DataTableComponent
+
+                                    <VirtualDataTable
+                                        name="Clients Data"
                                         columns={columns}
                                         data={clients}
-                                        isLoading={isLoading}
+                                        dataViewRangeArray={[10, 20, 30, 50, 100]}
                                         itemPerPage={10}
                                     />
                                 </div>

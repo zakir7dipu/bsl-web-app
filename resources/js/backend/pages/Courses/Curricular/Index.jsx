@@ -15,11 +15,11 @@ import Preloader from "../../../components/Preloader/Index.jsx";
 import HeaderMeta from "../../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
 import {GrFormAdd} from "react-icons/gr";
-import DataTableComponent from "../../../../ui/DataTableComponent.jsx";
 import {MdStar} from "react-icons/md";
 import {CKEditor} from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import BizModal from "../../../../ui/BizzModal.jsx";
+import VirtualDataTable from "../../../../ui/VertualDataTable/index.jsx";
 
 function Index() {
     const {id} = useParams();
@@ -49,23 +49,26 @@ function Index() {
     const columns = [
         {
             name: 'SL',
-            cell: (row, index) => index + 1,
+            selector: (row, index) => index + 1,
             sortable: false,
         },
         {
             name: 'Name',
             selector: row => row?.name,
             sortable: true,
+            sortableKey: "name",
+            searchableKey: 'name',
         },
         {
             name: 'Actions',
-            cell: (row) => (
+            selector: (row) => (
                 <RowDropDown>
                     <Link to="#" onClick={(e) => handelCurricularEdit(row?.id)} className="dropdown-item">Edit</Link>
                     <Link to="#" onClick={(e) => deleteCurricularHandler(row?.id)}
                           className="dropdown-item">Delete</Link>
                 </RowDropDown>
             ),
+            sortable: false
         },
     ];
 
@@ -187,10 +190,11 @@ function Index() {
                                     </button>
                                 </div>
                                 <div className="card-body">
-                                    <DataTableComponent
+                                    <VirtualDataTable
+                                        name="Curriculam Data"
                                         columns={columns}
                                         data={curriculars}
-                                        isLoading={isLoading}
+                                        dataViewRangeArray={[10, 20, 30, 50, 100]}
                                         itemPerPage={10}
                                     />
                                 </div>
