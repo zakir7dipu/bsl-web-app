@@ -9,6 +9,7 @@ import DataTableComponent from "../../../ui/DataTableComponent.jsx";
 import BizModal from "../../../ui/BizzModal.jsx";
 import Preloader from "../../components/Preloader/Index.jsx";
 import {deleteSchedules, fetchAllSchedules, showScheduleMessage} from "../../../featurs/Schedule/ScheduleSlice";
+import VirtualDataTable from "../../../ui/VertualDataTable/index.jsx";
 
 function Index(props) {
     const {
@@ -30,23 +31,41 @@ function Index(props) {
 
     const columns = [{
         name: 'SL',
-        cell: (row, index) => index + 1,
+        selector: (row, index) => index + 1,
         sortable: false,
     }, {
-        name: 'Name', selector: row => row.name, sortable: true,
+        name: 'Name',
+        selector: row => row.name,
+        sortable: true,
+        sortableKey: "name",
+        searchableKey: 'name',
     }, {
-        name: 'Email', selector: row => row.email, sortable: true,
+        name: 'Email',
+        selector: row => row.email,
+        sortable: true,
+        sortableKey: "email",
+        searchableKey: 'email',
     }, {
-        name: 'Phone', selector: row => row.phone, sortable: true,
+        name: 'Phone',
+        selector: row => row.phone,
+        sortable: true,
+        sortableKey: "phone",
+        searchableKey: 'phone',
     }, {
-        name: 'Company', selector: row => row.company_name, sortable: true,
+        name: 'Company',
+        selector: row => row.company_name,
+        sortable: true,
+        sortableKey: "company_name",
+        searchableKey: 'company_name',
     }, {
-        name: 'Actions', cell: (row) => (<RowDropDown>
+        name: 'Actions', selector: (row) => (<RowDropDown>
             <Link to="#" onClick={(e) => handelScheduleShow(row?.id)} className="dropdown-item">Show</Link>
             <Link to="#" onClick={(e) => scheduleDeleteHandler(row?.id)}
                   className="dropdown-item">Delete</Link>
         </RowDropDown>),
-    },];
+        sortable: false
+    }
+    ];
 
     const handleModalClose = () => {
         setIsShow(!isShow);
@@ -93,10 +112,13 @@ function Index(props) {
                                     <h4>Get In Touch</h4>
                                 </div>
                                 <div className="card-body">
-                                    <DataTableComponent
+
+
+                                    <VirtualDataTable
+                                        name=""
                                         columns={columns}
                                         data={schedules}
-                                        isLoading={isLoading}
+                                        dataViewRangeArray={[10, 20, 30, 50, 100]}
                                         itemPerPage={10}
                                     />
                                 </div>

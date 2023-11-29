@@ -7,7 +7,6 @@ import {Link} from "react-router-dom";
 import HeaderMeta from "../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../components/Breadcrumb/Index.jsx";
 import {GrFormAdd} from "react-icons/gr";
-import DataTableComponent from "../../../ui/DataTableComponent.jsx";
 import BizModal from "../../../ui/BizzModal.jsx";
 import {MdStar} from "react-icons/md";
 import FileInput from "../../components/inputFile/Index.jsx";
@@ -21,6 +20,7 @@ import {
     fetchSearchPageData,
     updatePageData
 } from "../../../featurs/Pages/PageSlice.js";
+import VirtualDataTable from "../../../ui/VertualDataTable/index.jsx";
 
 function Index(props) {
     const {
@@ -48,30 +48,34 @@ function Index(props) {
     const columns = [
         {
             name: 'SL',
-            cell: (row, index) => index + 1,
+            selector: (row, index) => index + 1,
             sortable: false,
         },
         {
             name: 'Page Name',
             selector: row => row?.title,
             sortable: true,
+            sortableKey: "title",
+            searchableKey: 'title',
         },
 
         {
             name: 'Image',
-            cell: row => (
+            selector: row => (
                 <img style={{height: "40px", width: "40px"}} src={useInternalLink(row.image_link)}/>
-            )
+            ),
+            sortable: false
         },
         {
             name: 'Actions',
-            cell: (row) => (
+            selector: (row) => (
                 <RowDropDown>
                     <Link to="#" onClick={(e) => handelPageEdit(row?.slug)} className="dropdown-item">Edit</Link>
                     <Link to="#" onClick={(e) => pageDeleteHandler(row?.id)}
                           className="dropdown-item">Delete</Link>
                 </RowDropDown>
             ),
+            sortable: false
         },
     ];
 
@@ -190,22 +194,22 @@ function Index(props) {
                     <div className="col-lg-12 col-sm-12">
                         <div className="card">
                             <div className="card-header">
-                                <h4>Pages</h4>
-                                <button className="btn btn-info btn-mini float-right" onClick={() => {
-                                    setIsShow(!isShow);
-                                    setIsEdit(false)
-                                    setTitle('Add New')
-                                }}>
-                                    <GrFormAdd/>&nbsp;Add New
-                                </button>
+                                <h4>Pages
+                                    <button className="btn btn-info btn-mini float-right" onClick={() => {
+                                        setIsShow(!isShow);
+                                        setIsEdit(false)
+                                        setTitle('Add New')
+                                    }}>
+                                        <GrFormAdd/>&nbsp;Add New
+                                    </button></h4>
                             </div>
                             <div className="card-body">
-                                <DataTableComponent
+                                <VirtualDataTable
+                                    name="General Page Data"
                                     columns={columns}
                                     data={pages}
-                                    isLoading={isLoading}
+                                    dataViewRangeArray={[10, 20, 30, 50, 100]}
                                     itemPerPage={10}
-                                    handleSearchText={handleSearchText}
                                 />
                             </div>
                         </div>
