@@ -31,7 +31,7 @@ class WorkshopSessions extends Model
 
     public function sessionHosts()
     {
-        return $this->belongsTo(SessionHosts::class);
+        return $this->hasMany(SessionHosts::class);
     }
 
     // TODO :: boot

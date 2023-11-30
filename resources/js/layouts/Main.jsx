@@ -48,6 +48,8 @@ import BackendSchedule from "../backend/pages/Schedule";
 
 import Hosts from "../backend/pages/Events/Hosts";
 import WorkshopSeminar from "../backend/pages/Events/WorkshopSeminar";
+import WorkshopCreate from "../backend/pages/Events/WorkshopSeminar/Create.jsx";
+import WorkshopEdit from "../backend/pages/Events/WorkshopSeminar/Edit.jsx";
 
 import {checkAccess, refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
 import {useDispatch, useSelector} from "react-redux";
@@ -147,7 +149,11 @@ function Main() {
                     <Route path="messages" element={<Messages/>}/>
                     <Route path="subscribers" element={<BackendSubscribers/>}/>
                     <Route path="hosts" element={<Hosts/>}/>
-                    <Route path="workshops" element={<WorkshopSeminar/>}/>
+                    <Route path="workshops">
+                        <Route index element={<WorkshopSeminar/>}/>
+                        <Route path="create" element={<WorkshopCreate/>}/>
+                        <Route path=":id/edit" element={<WorkshopEdit/>}/>
+                    </Route>
                 </Route>
                 {/*}*/}
             </Route>

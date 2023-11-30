@@ -24,6 +24,7 @@ import MessageFeature from "./featurs/Messages/MessagesSlice.js";
 import SubscriberFeature from "./featurs/Subscribers/SubscribersSlice.js";
 import ScheduleFeature from "./featurs/Schedule/ScheduleSlice.js";
 import HostFeature from "./featurs/Hosts/HostSlice.js";
+import WorkshopFeature from "./featurs/WorkshopSeminar/WorkshopSlice.js";
 
 
 const store = configureStore({
@@ -53,6 +54,7 @@ const store = configureStore({
         subscriberReducer: SubscriberFeature,
         scheduleReducer: ScheduleFeature,
         hostReducer: HostFeature,
+        workshopSeminarReducer: WorkshopFeature,
     }
 })
 
