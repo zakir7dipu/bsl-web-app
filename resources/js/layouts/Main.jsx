@@ -88,6 +88,7 @@ function Main() {
                 <Route path="/training/:slug/courses" element={<CategoryCourses/>}/>
                 <Route path="/courses/:slug">
                     <Route index element={<AllCourses/>}/>
+                    <Route path="/courses/:slug?pages=:page" element={<AllCourses/>}/>
                 </Route>
                 <Route path="/course/:slug" element={<CourseDetails/>}/>
                 <Route path="/blog">
@@ -97,6 +98,7 @@ function Main() {
                 <Route path="/contact" element={<Contact/>}/>
                 <Route path="/page/:slug" element={<Pages/>}/>
             </Route>
+
             <Route path="/bsl" element={<Backend/>}>
                 <Route path="login" element={<Login/>}/>
                 {/*{isAccess &&*/}

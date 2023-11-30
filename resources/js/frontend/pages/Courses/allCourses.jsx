@@ -7,6 +7,7 @@ import {uid} from "../../../lib/helper.js";
 import Pagination from "../../../ui/Pagination.jsx";
 import HeaderMeta from "../../../ui/HeaderMeta.jsx";
 import Breadcrumbs from "../../components/Breadcrumbs/index.jsx";
+import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 
 function AllCourses() {
     const {
@@ -20,6 +21,9 @@ function AllCourses() {
         metaInfo
     } = useSelector((state) => state.coursesReducer);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    console.log(searchParams.get("pages"))
 
     const breadcrumbs = [
         {
@@ -33,22 +37,27 @@ function AllCourses() {
     ];
 
     const pageChangeHandler = ({selected}) => {
-        let nextPage = selected + 1
-        const data = {
-            slug: 'all',
-            serviceId: 0,
-            page: nextPage
-        }
-        dispatch(fetchAllCourseAllByPage(data))
+        let nextPage = parseInt(selected) +1
+        navigate(`?pages=${nextPage}`)
     }
 
     useEffect(() => {
-        const data = {
-            slug: 'all',
-            serviceId: 0
+        let nextPage = searchParams.get("pages")
+        if(!nextPage) {
+            let data = {
+                slug: 'all',
+                serviceId: 0
+            }
+            dispatch(fetchAllCourseAll(data));
+        } else {
+            let data = {
+                slug: 'all',
+                serviceId: 0,
+                page: nextPage
+            }
+            dispatch(fetchAllCourseAllByPage(data))
         }
-        dispatch(fetchAllCourseAll(data));
-    }, [dispatch]);
+    }, [dispatch, searchParams]);
 
     return (
         <>
