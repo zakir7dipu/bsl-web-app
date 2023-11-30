@@ -23,7 +23,6 @@ function AllCourses() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
-    console.log(searchParams.get("pages"))
 
     const breadcrumbs = [
         {
@@ -36,8 +35,9 @@ function AllCourses() {
         },
     ];
 
-    const pageChangeHandler = ({selected}) => {
+    const pageChangeHandler = (selected) => {
         let nextPage = parseInt(selected) +1
+        console.log(selected)
         navigate(`?pages=${nextPage}`)
     }
 
@@ -79,7 +79,7 @@ function AllCourses() {
                                 <Item info={item} key={uid()}/>
                             )}
                             <div className="col-md-12 mt-3 text-center">
-                                <Pagination handlePageClick={pageChangeHandler} pageCount={lastPage} range={perPage}/>
+                                <Pagination handlePageClick={pageChangeHandler} total={total} range={perPage} curentPage={currentPage}/>
                             </div>
                         </div>
                     </div>
