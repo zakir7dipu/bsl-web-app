@@ -15,6 +15,7 @@ class WorkshopSeminars extends Model
 
     protected $fillable = [
         'name',
+        'slug',
         'form_date',
         'to_date',
         'type',

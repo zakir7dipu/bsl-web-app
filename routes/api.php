@@ -20,6 +20,7 @@ use App\Http\Controllers\API\SubscriberController;
 use App\Http\Controllers\API\TeamsController;
 use App\Http\Controllers\API\TechnologyController;
 use App\Http\Controllers\API\TestimonialController;
+use App\Http\Controllers\API\WorkshopController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ScheduleController;
 use Illuminate\Support\Facades\Route;
@@ -218,4 +219,12 @@ Route::controller(HostsController::class)->group(function () {
     Route::get("hosts/{id}/show", "show");
     Route::post("hosts/{id}/update", "update");
     Route::delete("hosts/{id}/destroy", "destroy");
+});
+
+Route::controller(WorkshopController::class)->group(function () {
+    Route::get('workshops', 'index');
+    Route::post("workshops-store", "store");
+    Route::get("workshops/{id}/show", "show");
+    Route::post("workshops/{id}/update", "update");
+    Route::delete("workshops/{id}/destroy", "destroy");
 });
