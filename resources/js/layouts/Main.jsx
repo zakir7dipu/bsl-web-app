@@ -46,6 +46,9 @@ import Messages from "../backend/pages/Messages";
 import BackendSubscribers from "../backend/pages/Subscribers";
 import BackendSchedule from "../backend/pages/Schedule";
 
+import Hosts from "../backend/pages/Events/Hosts";
+import WorkshopSeminar from "../backend/pages/Events/WorkshopSeminar";
+
 import {checkAccess, refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllSettings} from "../featurs/Settings/SettingsSlice.js";
@@ -143,6 +146,8 @@ function Main() {
                     <Route path="schedule" element={<BackendSchedule/>}/>
                     <Route path="messages" element={<Messages/>}/>
                     <Route path="subscribers" element={<BackendSubscribers/>}/>
+                    <Route path="hosts" element={<Hosts/>}/>
+                    <Route path="workshops" element={<WorkshopSeminar/>}/>
                 </Route>
                 {/*}*/}
             </Route>

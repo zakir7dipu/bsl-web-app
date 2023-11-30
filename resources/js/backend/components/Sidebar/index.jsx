@@ -99,6 +99,21 @@ function Index(props) {
                                 </ul>
                             </NavBarLink>
                         </li>
+
+                        <li>
+                            <NavBarLink
+                                link='#'
+                                linkName={'Events'}
+                                hasSubMenu={true}
+                                menuIcon={<i className="fa fa-calendar-check-o menu-icon"></i>}
+                            >
+                                <ul aria-expanded="false" className="collapse">
+                                    <li><Link to="hosts">Hosts</Link></li>
+                                    <li><Link to="workshops">Workshop/Seminar</Link></li>
+                                </ul>
+                            </NavBarLink>
+                        </li>
+
                         <li>
                             <NavBarLink
                                 link={'/bsl/admin/blogs'}

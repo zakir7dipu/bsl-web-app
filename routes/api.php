@@ -6,6 +6,7 @@ use App\Http\Controllers\API\CaseStudyController;
 use App\Http\Controllers\API\ClientsController;
 use App\Http\Controllers\API\CourseController;
 use App\Http\Controllers\API\CurricularController;
+use App\Http\Controllers\API\HostsController;
 use App\Http\Controllers\API\IndustriesController;
 use App\Http\Controllers\API\ManagementController;
 use App\Http\Controllers\API\MessageController;
@@ -209,4 +210,12 @@ Route::controller(SubscriberController::class)->group(function () {
     Route::post("subscribers-store", "store");
     Route::get("subscribers/{slug}/show", "show");
     Route::delete("subscribers/{id}/destroy", "destroy");
+});
+
+Route::controller(HostsController::class)->group(function () {
+    Route::get('hosts', 'index');
+    Route::post("hosts-store", "store");
+    Route::get("hosts/{slug}/show", "show");
+    Route::post("hosts/{slug}/update", "update");
+    Route::delete("hosts/{slug}/destroy", "destroy");
 });
