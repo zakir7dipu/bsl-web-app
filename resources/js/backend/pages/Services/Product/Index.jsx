@@ -13,12 +13,12 @@ import {
 import HeaderMeta from "../../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
 import {GrFormAdd} from "react-icons/gr";
-import DataTableComponent from "../../../../ui/DataTableComponent.jsx";
 import BizModal from "../../../../ui/BizzModal.jsx";
 import {MdStar} from "react-icons/md";
 import FileInput from "../../../components/inputFile/Index.jsx";
 import {CKEditor} from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import VirtualDataTable from "../../../../ui/VertualDataTable/index.jsx";
 
 function Index(props) {
 
@@ -45,34 +45,40 @@ function Index(props) {
     const columns = [
         {
             name: 'SL',
-            cell: (row, index) => index + 1,
+            selector: (row, index) => index + 1,
             sortable: false,
         },
         {
             name: 'Service',
             selector: row => row?.service?.title,
             sortable: true,
+            sortableKey: "title",
+            searchableKey: 'title',
         },
         {
             name: 'Product',
             selector: row => row?.title,
             sortable: true,
+            sortableKey: "title",
+            searchableKey: 'title',
         },
         {
             name: 'Image',
-            cell: row => (
+            selector: row => (
                 <img style={{height: "60px", width: "60px"}} src={useInternalLink(row.image_link)}/>
-            )
+            ),
+            sortable: false
         },
         {
             name: 'Actions',
-            cell: (row) => (
+            selector: (row) => (
                 <RowDropDown>
                     <Link to="#" onClick={(e) => handelProductEdit(row?.id)} className="dropdown-item">Edit</Link>
                     <Link to="#" onClick={(e) => deleteProductHandler(row?.id)}
                           className="dropdown-item">Delete</Link>
                 </RowDropDown>
             ),
+            sortable: false
         },
     ];
 
@@ -205,20 +211,22 @@ function Index(props) {
                     <div className="col-lg-12 col-sm-12">
                         <div className="card">
                             <div className="card-header">
-                                <h4>Products Lists</h4>
-                                <button className="btn btn-info btn-mini float-right" onClick={() => {
-                                    setIsShow(!isShow);
-                                    setIsEdit(false)
-                                    setTitle('Add New')
-                                }}>
-                                    <GrFormAdd/>&nbsp;Add New
-                                </button>
+                                <h4>Products Lists
+                                    <button className="btn btn-info btn-mini float-right" onClick={() => {
+                                        setIsShow(!isShow);
+                                        setIsEdit(false)
+                                        setTitle('Add New')
+                                    }}>
+                                        <GrFormAdd/>&nbsp;Add New
+                                    </button></h4>
                             </div>
                             <div className="card-body">
-                                <DataTableComponent
+
+                                <VirtualDataTable
+                                    name="Products Data"
                                     columns={columns}
                                     data={products}
-                                    isLoading={isLoading}
+                                    dataViewRangeArray={[10, 20, 30, 50, 100]}
                                     itemPerPage={10}
                                 />
                             </div>

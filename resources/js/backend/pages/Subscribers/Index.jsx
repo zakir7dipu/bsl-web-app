@@ -1,13 +1,12 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import BizAlert from "../../../lib/BizAlert.js";
-import RowDropDown from "../../../ui/RowDropDown.jsx";
 import {Link} from "react-router-dom";
 import {deleteSubscriber, fetchAllSubscriber} from "../../../featurs/Subscribers/SubscribersSlice";
 import Preloader from "../../components/Preloader/Index.jsx";
 import HeaderMeta from "../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../components/Breadcrumb/Index.jsx";
-import DataTableComponent from "../../../ui/DataTableComponent.jsx";
+import VirtualDataTable from "../../../ui/VertualDataTable/index.jsx";
 
 function Index(props) {
     const {
@@ -25,13 +24,19 @@ function Index(props) {
 
     const columns = [{
         name: 'SL',
-        cell: (row, index) => index + 1,
+        selector: (row, index) => index + 1,
         sortable: false,
     }, {
-        name: 'Email', selector: row => row.email, sortable: true,
+        name: 'Email',
+        selector: row => row.email,
+        sortable: true,
+        sortableKey: "email",
+        searchableKey: 'email',
     }, {
-        name: 'Actions', cell: (row) => (<Link to="#" onClick={(e) => subscriberDeleteHandler(row?.id)}
-                                               className="btn btn-danger btn-sm">Delete</Link>),
+        name: 'Actions',
+        selector: (row) => (<Link to="#" onClick={(e) => subscriberDeleteHandler(row?.id)}
+                                  className="btn btn-danger btn-sm">Delete</Link>),
+        sortable: false
     },];
 
     const subscriberDeleteHandler = async (id) => {
@@ -64,10 +69,12 @@ function Index(props) {
                                     <h4>Subscribers</h4>
                                 </div>
                                 <div className="card-body">
-                                    <DataTableComponent
+
+                                    <VirtualDataTable
+                                        name=""
                                         columns={columns}
                                         data={subscribers}
-                                        isLoading={isLoading}
+                                        dataViewRangeArray={[10, 20, 30, 50, 100]}
                                         itemPerPage={10}
                                     />
                                 </div>

@@ -7,8 +7,8 @@ import {deleteUserMessages, fetchAllUserMessages, showUserMessage} from "../../.
 import Preloader from "../../components/Preloader/Index.jsx";
 import HeaderMeta from "../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../components/Breadcrumb/Index.jsx";
-import DataTableComponent from "../../../ui/DataTableComponent.jsx";
 import BizModal from "../../../ui/BizzModal.jsx";
+import VirtualDataTable from "../../../ui/VertualDataTable/index.jsx";
 
 function Index(props) {
     const {
@@ -30,22 +30,39 @@ function Index(props) {
 
     const columns = [{
         name: 'SL',
-        cell: (row, index) => index + 1,
+        selector: (row, index) => index + 1,
         sortable: false,
     }, {
-        name: 'Name', selector: row => row.name, sortable: true,
+        name: 'Name',
+        selector: row => row.name,
+        sortable: true,
+        sortableKey: "name",
+        searchableKey: 'name',
     }, {
-        name: 'Email', selector: row => row.email, sortable: true,
+        name: 'Email',
+        selector: row => row.email,
+        sortable: true,
+        sortableKey: "email",
+        searchableKey: 'email',
     }, {
-        name: 'Phone', selector: row => row.phone, sortable: true,
+        name: 'Phone',
+        selector: row => row.phone,
+        sortable: true,
+        sortableKey: "phone",
+        searchableKey: 'phone',
     }, {
-        name: 'Subject', selector: row => row.subject, sortable: true,
+        name: 'Subject',
+        selector: row => row.subject,
+        sortable: true,
+        sortableKey: "subject",
+        searchableKey: 'subject',
     }, {
-        name: 'Actions', cell: (row) => (<RowDropDown>
+        name: 'Actions', selector: (row) => (<RowDropDown>
             <Link to="#" onClick={(e) => handelMessageShow(row?.id)} className="dropdown-item">Show</Link>
             <Link to="#" onClick={(e) => messageDeleteHandler(row?.id)}
                   className="dropdown-item">Delete</Link>
         </RowDropDown>),
+        sortable: false
     },];
 
     const handleModalClose = () => {
@@ -93,10 +110,12 @@ function Index(props) {
                                     <h4>Messages</h4>
                                 </div>
                                 <div className="card-body">
-                                    <DataTableComponent
+
+                                    <VirtualDataTable
+                                        name=""
                                         columns={columns}
                                         data={userMessages}
-                                        isLoading={isLoading}
+                                        dataViewRangeArray={[10, 20, 30, 50, 100]}
                                         itemPerPage={10}
                                     />
                                 </div>

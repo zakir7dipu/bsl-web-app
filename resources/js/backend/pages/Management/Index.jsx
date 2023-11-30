@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import BizAlert from "../../../lib/BizAlert.js";
-import {errorMessage, infoMessage, ucFirst, useInternalLink, warningMessage} from "../../../lib/helper.js";
+import {infoMessage, ucFirst, useInternalLink, warningMessage} from "../../../lib/helper.js";
 import RowDropDown from "../../../ui/RowDropDown.jsx";
 import {Link} from "react-router-dom";
 import {
@@ -13,11 +13,11 @@ import {
 import HeaderMeta from "../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../components/Breadcrumb/Index.jsx";
 import {GrFormAdd} from "react-icons/gr";
-import DataTableComponent from "../../../ui/DataTableComponent.jsx";
 import Preloader from "../../../backend/components/Preloader";
 import BizModal from "../../../ui/BizzModal.jsx";
 import FileInput from "../../components/inputFile/Index.jsx";
 import {MdStar} from "react-icons/md";
+import VirtualDataTable from "../../../ui/VertualDataTable/index.jsx";
 
 function Index(props) {
     const {
@@ -42,44 +42,54 @@ function Index(props) {
     const columns = [
         {
             name: 'SL',
-            cell: (row, index) => index + 1,
+            selector: (row, index) => index + 1,
             sortable: false,
         },
         {
             name: 'Name',
             selector: row => row.name,
             sortable: true,
+            sortableKey: "name",
+            searchableKey: 'name',
         },
         {
             name: 'Type',
             selector: row => ucFirst(row.type),
             sortable: true,
+            sortableKey: "type",
+            searchableKey: 'type',
         },
         {
             name: 'Designation',
             selector: row => ucFirst(row.designation),
             sortable: true,
+            sortableKey: "designation",
+            searchableKey: 'designation',
         },
         {
             name: 'Company',
             selector: row => ucFirst(row.company),
             sortable: true,
+            sortableKey: "company",
+            searchableKey: 'company',
         },
         {
             name: 'Image',
-            cell: row => (
+            selector: row => (
                 <img style={{height: "60px", width: "60px"}} src={useInternalLink(row.avatar)}/>
-            )
+            ),
+            sortable: false
         },
         {
             name: 'Actions',
-            cell: (row) => (
+            selector: (row) => (
                 <RowDropDown>
                     <Link to="#" onClick={(e) => handelEdit(row?.slug)} className="dropdown-item">Edit</Link>
                     <Link to="#" onClick={(e) => deleteHandler(row?.slug)}
                           className="dropdown-item">Delete</Link>
                 </RowDropDown>
             ),
+            sortable: false
         },
     ];
 
@@ -261,20 +271,22 @@ function Index(props) {
                         <div className="col-lg-12 col-sm-12">
                             <div className="card">
                                 <div className="card-header">
-                                    <h4>Management Lists</h4>
-                                    <button className="btn btn-info btn-mini float-right" onClick={() => {
-                                        setIsShow(!isShow);
-                                        setIsEdit(false)
-                                        setTitle('Add New Management')
-                                    }}>
-                                        <GrFormAdd/>&nbsp;Add New Management
-                                    </button>
+                                    <h4>Management Lists
+                                        <button className="btn btn-info btn-mini float-right" onClick={() => {
+                                            setIsShow(!isShow);
+                                            setIsEdit(false)
+                                            setTitle('Add New Management')
+                                        }}>
+                                            <GrFormAdd/>&nbsp;Add New Management
+                                        </button>
+                                    </h4>
                                 </div>
                                 <div className="card-body">
-                                    <DataTableComponent
+                                    <VirtualDataTable
+                                        name="Management Data"
                                         columns={columns}
                                         data={managements}
-                                        isLoading={isLoading}
+                                        dataViewRangeArray={[10, 20, 30, 50, 100]}
                                         itemPerPage={10}
                                     />
                                 </div>

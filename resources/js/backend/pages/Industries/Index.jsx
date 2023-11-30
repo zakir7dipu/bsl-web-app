@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import BizAlert from "../../../lib/BizAlert.js";
-import {errorMessage, infoMessage, useInternalLink, warningMessage} from "../../../lib/helper.js";
+import {infoMessage, useInternalLink, warningMessage} from "../../../lib/helper.js";
 import RowDropDown from "../../../ui/RowDropDown.jsx";
 import {Link} from "react-router-dom";
 import {
@@ -13,7 +13,7 @@ import {
 import HeaderMeta from "../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../components/Breadcrumb/Index.jsx";
 import {GrFormAdd} from "react-icons/gr";
-import DataTableComponent from "../../../ui/DataTableComponent.jsx";
+import VirtualDataTable from "../../../ui/VertualDataTable/index.jsx";
 import BizModal from "../../../ui/BizzModal.jsx";
 import FileInput from "../../components/inputFile/Index.jsx";
 import Preloader from "../../components/Preloader/index.jsx";
@@ -44,36 +44,40 @@ function Index(props) {
     const columns = [
         {
             name: 'SL',
-            cell: (row, index) => index + 1,
+            selector: (row, index) => index + 1,
             sortable: false,
         },
         {
             name: 'Name',
-            selector: row => row.name,
+            selector: row => row?.name,
             sortable: true,
+            sortableKey: "name",
+            searchableKey: 'name',
+            style: {textTransform: "capitalize"}
         },
         {
             name: 'Indexing',
-            selector: row => row.order_by,
+            selector: row => row?.order_by,
             sortable: true,
         },
         {
             name: 'Image',
-            cell: row => (
-                <img style={{height: "40px", width: "40px"}} src={useInternalLink(row.image_link)}/>
-            )
+            selector: row => <img style={{height: "40px", width: "40px"}} src={useInternalLink(row.image_link)}/>,
+            sortable: false,
         },
         {
             name: 'Actions',
-            cell: (row) => (
+            selector: (row) => (
                 <RowDropDown>
                     <Link to="#" onClick={(e) => handelEdit(row?.slug)} className="dropdown-item">Edit</Link>
                     <Link to="#" onClick={(e) => industriesDeleteHandler(row?.slug)}
                           className="dropdown-item">Delete</Link>
                 </RowDropDown>
             ),
+            sortable: false,
         },
     ];
+
 
     const [isShow, setIsShow] = useState(false);
     const [title, setTitle] = useState("Add New Technology");
@@ -179,20 +183,21 @@ function Index(props) {
                     <div className="col-lg-12 col-sm-12">
                         <div className="card">
                             <div className="card-header">
-                                <h4>Industries Lists</h4>
-                                <button className="btn btn-info btn-mini float-right" onClick={() => {
+                                <h4>Industries Lists <button className="btn btn-info btn-mini float-right" onClick={() => {
                                     setIsShow(!isShow);
                                     setIsEdit(false)
                                     setTitle('Add New Industries')
                                 }}>
                                     <GrFormAdd/>&nbsp;Add New Industries
-                                </button>
+                                </button></h4>
+
                             </div>
                             <div className="card-body">
-                                <DataTableComponent
+                                <VirtualDataTable
+                                    name="Industries List"
                                     columns={columns}
                                     data={industries}
-                                    isLoading={isLoading}
+                                    dataViewRangeArray={[10, 20, 30, 50, 100]}
                                     itemPerPage={10}
                                 />
                             </div>

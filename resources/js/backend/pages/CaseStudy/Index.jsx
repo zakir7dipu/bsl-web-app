@@ -14,12 +14,12 @@ import {
 } from "../../../featurs/CaseStudy/CaseStudySlice.js";
 import Preloader from "../../components/Preloader/Index.jsx";
 import {GrFormAdd} from "react-icons/gr";
-import DataTableComponent from "../../../ui/DataTableComponent.jsx";
 import {MdStar} from "react-icons/md";
 import {CKEditor} from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import FileInput from "../../components/inputFile/Index.jsx";
 import BizModal from "../../../ui/BizzModal.jsx";
+import VirtualDataTable from "../../../ui/VertualDataTable/index.jsx";
 
 function Index(props) {
     const {
@@ -46,60 +46,76 @@ function Index(props) {
     const columns = [
         {
             name: 'SL',
-            cell: (row, index) => index + 1,
+            selector: (row, index) => index + 1,
             sortable: false,
         },
         {
             name: 'Project Name',
             selector: row => row?.name,
             sortable: true,
+            sortableKey: "name",
+            searchableKey: 'name',
         },
         {
             name: 'Clients',
             selector: row => row?.clients,
             sortable: true,
+            sortableKey: "clients",
+            searchableKey: 'clients',
         },
         {
             name: 'Location',
             selector: row => row?.location,
             sortable: true,
+            sortableKey: "location",
+            searchableKey: 'location',
         },
         {
             name: 'Complete Date',
             selector: row => row?.complete_date,
             sortable: true,
+            sortableKey: "complete_date",
+            searchableKey: 'complete_date',
         },
         {
             name: 'Link',
             selector: row => row?.links,
             sortable: true,
+            sortableKey: "links",
+            searchableKey: 'links',
         },
         {
             name: 'Tags',
             selector: row => row?.tags,
             sortable: true,
+            sortableKey: "tags",
+            searchableKey: 'tags',
         },
         {
             name: 'Technologies',
             selector: row => row?.technologies,
             sortable: true,
+            sortableKey: "technologies",
+            searchableKey: 'technologies',
         },
 
         {
             name: 'Image',
-            cell: row => (
+            selector: row => (
                 <img style={{height: "40px", width: "40px"}} src={useInternalLink(row.image_link)}/>
-            )
+            ),
+            sortable: false
         },
         {
             name: 'Actions',
-            cell: (row) => (
+            selector: (row) => (
                 <RowDropDown>
                     <Link to="#" onClick={(e) => handelCaseEdit(row?.id)} className="dropdown-item">Edit</Link>
                     <Link to="#" onClick={(e) => caseDeleteHandler(row?.id)}
                           className="dropdown-item">Delete</Link>
                 </RowDropDown>
             ),
+            sortable: false
         },
     ];
 
@@ -253,20 +269,22 @@ function Index(props) {
                     <div className="col-lg-12 col-sm-12">
                         <div className="card">
                             <div className="card-header">
-                                <h4>Case Study Lists</h4>
-                                <button className="btn btn-info btn-mini float-right" onClick={() => {
-                                    setIsShow(!isShow);
-                                    setIsEdit(false)
-                                    setTitle('Add New Project')
-                                }}>
-                                    <GrFormAdd/>&nbsp;Add New Project
-                                </button>
+                                <h4>Case Study Lists
+                                    <button className="btn btn-info btn-mini float-right" onClick={() => {
+                                        setIsShow(!isShow);
+                                        setIsEdit(false)
+                                        setTitle('Add New Project')
+                                    }}>
+                                        <GrFormAdd/>&nbsp;Add New Project
+                                    </button>
+                                </h4>
                             </div>
                             <div className="card-body">
-                                <DataTableComponent
+                                <VirtualDataTable
+                                    name="Case Study Data"
                                     columns={columns}
                                     data={caseStudies}
-                                    isLoading={isLoading}
+                                    dataViewRangeArray={[10, 20, 30, 50, 100]}
                                     itemPerPage={10}
                                 />
                             </div>

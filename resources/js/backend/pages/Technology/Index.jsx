@@ -5,14 +5,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {createData, deleteData, fetchAllTechnology, updateData} from "../../../featurs/Technology/TechnologySlice.js";
 import RowDropDown from "../../../ui/RowDropDown.jsx";
 import {Link} from "react-router-dom";
-import {errorMessage, infoMessage, useInternalLink, warningMessage} from "../../../lib/helper.js";
-import DataTableComponent from "../../../ui/DataTableComponent.jsx";
+import {infoMessage, useInternalLink, warningMessage} from "../../../lib/helper.js";
 import {GrFormAdd} from "react-icons/gr";
 import BizAlert from "../../../lib/BizAlert.js";
 import BizModal from "../../../ui/BizzModal.jsx";
 import FileInput from "../../components/inputFile/Index.jsx";
 import Preloader from "../../components/Preloader/Index.jsx";
 import {MdStar} from "react-icons/md";
+import VirtualDataTable from "../../../ui/VertualDataTable/index.jsx";
 
 function Index() {
     const {
@@ -38,13 +38,15 @@ function Index() {
     const columns = [
         {
             name: 'SL',
-            cell: (row, index) => index + 1,
+            selector: (row, index) => index + 1,
             sortable: false,
         },
         {
             name: 'Name',
             selector: row => row.name,
             sortable: true,
+            sortableKey: "name",
+            searchableKey: 'name',
         },
         {
             name: 'Indexing',
@@ -53,19 +55,21 @@ function Index() {
         },
         {
             name: 'Image',
-            cell: row => (
+            selector: row => (
                 <img style={{height: "40px", width: "40px"}} src={useInternalLink(row.image_link)}/>
-            )
+            ),
+            sortable: false
         },
         {
             name: 'Actions',
-            cell: (row) => (
+            selector: (row) => (
                 <RowDropDown>
                     <Link to="#" onClick={(e) => handelEdit(row?.slug)} className="dropdown-item">Edit</Link>
                     <Link to="#" onClick={(e) => technologyDeleteHandler(row?.slug)}
                           className="dropdown-item">Delete</Link>
                 </RowDropDown>
             ),
+            sortable: false
         },
     ];
 
@@ -173,20 +177,23 @@ function Index() {
                         <div className="col-lg-12 col-sm-12">
                             <div className="card">
                                 <div className="card-header">
-                                    <h4>Technology Lists</h4>
-                                    <button className="btn btn-info btn-mini float-right" onClick={() => {
-                                        setIsShow(!isShow);
-                                        setIsEdit(false)
-                                        setTitle('Add New Technology')
-                                    }}>
-                                        <GrFormAdd/>&nbsp;Add New Technology
-                                    </button>
+                                    <h4>Technology Lists
+                                        <button className="btn btn-info btn-mini float-right" onClick={() => {
+                                            setIsShow(!isShow);
+                                            setIsEdit(false)
+                                            setTitle('Add New Technology')
+                                        }}>
+                                            <GrFormAdd/>&nbsp;Add New Technology
+                                        </button>
+                                    </h4>
+
                                 </div>
                                 <div className="card-body">
-                                    <DataTableComponent
+                                    <VirtualDataTable
+                                        name="Technology Data"
                                         columns={columns}
                                         data={technologies}
-                                        isLoading={isLoading}
+                                        dataViewRangeArray={[10, 20, 30, 50, 100]}
                                         itemPerPage={10}
                                     />
                                 </div>
