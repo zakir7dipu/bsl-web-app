@@ -215,7 +215,7 @@ Route::controller(SubscriberController::class)->group(function () {
 Route::controller(HostsController::class)->group(function () {
     Route::get('hosts', 'index');
     Route::post("hosts-store", "store");
-    Route::get("hosts/{slug}/show", "show");
-    Route::post("hosts/{slug}/update", "update");
-    Route::delete("hosts/{slug}/destroy", "destroy");
+    Route::get("hosts/{id}/show", "show");
+    Route::post("hosts/{id}/update", "update");
+    Route::delete("hosts/{id}/destroy", "destroy");
 });

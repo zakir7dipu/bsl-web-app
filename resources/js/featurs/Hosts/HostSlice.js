@@ -16,7 +16,6 @@ const initialData = {
     metaInfo: []
 }
 
-
 // all data get
 export const fetchAllHosts = createAsyncThunk("host/fetchAllHosts", async (arg, {rejectWithValue}) => {
     try {

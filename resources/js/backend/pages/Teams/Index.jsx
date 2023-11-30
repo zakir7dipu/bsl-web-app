@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import BizAlert from "../../../lib/BizAlert.js";
-import {errorMessage, infoMessage, ucFirst, useInternalLink, warningMessage} from "../../../lib/helper.js";
+import {infoMessage, ucFirst, useInternalLink, warningMessage} from "../../../lib/helper.js";
 import RowDropDown from "../../../ui/RowDropDown.jsx";
 import {Link} from "react-router-dom";
 import HeaderMeta from "../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../components/Breadcrumb/Index.jsx";
 import {GrFormAdd} from "react-icons/gr";
-import DataTableComponent from "../../../ui/DataTableComponent.jsx";
 import Preloader from "../../../backend/components/Preloader";
 import BizModal from "../../../ui/BizzModal.jsx";
 import FileInput from "../../components/inputFile/Index.jsx";
