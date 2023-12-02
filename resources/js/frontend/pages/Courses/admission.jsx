@@ -5,9 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchAllCourseAll, fetchAllCourseAllByPage} from "../../../featurs/Courses/CourseSlice.js";
 import BlogsSkel from "../../components/Skeletons/BlogsSkel.jsx";
 import Pagination from "../../../ui/Pagination.jsx";
-import {Link} from "react-router-dom";
-import ReactPaginate from "react-paginate";
-import {PaginationContainer} from "../../../ui/VertualDataTable/PaginationStyles.jsx";
+import {Link, useNavigate, useSearchParams} from "react-router-dom";
 
 function Admission({type}) {
     const {
@@ -21,26 +19,33 @@ function Admission({type}) {
         metaInfo
     } = useSelector((state) => state.coursesReducer);
     const dispatch = useDispatch();
+    const [searchParams] = useSearchParams();
+    const navigate = useNavigate();
 
     const pageChangeHandler = ({selected}) => {
-        let nextPage = selected + 1
-        const data = {
-            slug: type,
-            serviceId: 0,
-            page: nextPage
-        }
-        dispatch(fetchAllCourseAllByPage(data))
+        let current = selected +1
+        navigate(`?pages=${current}`)
     }
 
+
     useEffect(() => {
+        let nextPage = searchParams.get("pages")
+        if (!nextPage) {
+            const data = {
+                slug: type,
+                serviceId: 0
+            }
+            dispatch(fetchAllCourseAll(data));
 
-        const data = {
-            slug: type,
-            serviceId: 0
+        } else {
+            const data = {
+                slug: type,
+                serviceId: 0,
+                page: nextPage
+            }
+            dispatch(fetchAllCourseAllByPage(data))
         }
-
-        dispatch(fetchAllCourseAll(data));
-    }, [dispatch]);
+    }, [dispatch, searchParams]);
 
     return (
         isLoading ? <BlogsSkel/> :
@@ -52,7 +57,11 @@ function Admission({type}) {
                     <div className="row">
                         {coursesAll?.map(item => <Item info={item} key={uid()}/>)}
                         <div className="col-md-12 mt-3 text-center">
-                            <Pagination handlePageClick={pageChangeHandler} pageCount={lastPage} range={perPage}/>
+                            <Pagination
+                                handlePageClick={pageChangeHandler}
+                                total={total}
+                                range={perPage}
+                            />
                         </div>
                         <div className="col-md-12 pt-10 pb-10 text-center">
                             <Link to="/courses/all" className="btn btn-info">View All Courses

@@ -1,16 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import ReactPaginate from "react-paginate";
-import {useDispatch} from "react-redux";
-import {updateCurrentPage} from "../featurs/Pagination/PaginationSlice.js";
 import {useSearchParams} from "react-router-dom";
 
-function Pagination({total, range}) {
-    const dispatch = useDispatch();
+function Pagination({handlePageClick, total, range}) {
     const [searchParams] = useSearchParams();
-
-    const pageChangeHandler = ({selected}) => {
-        dispatch(updateCurrentPage(selected))
-    }
 
     return (
         <ReactPaginate
@@ -21,7 +14,7 @@ function Pagination({total, range}) {
             initialPage={(parseInt(searchParams.get("pages")) || 1) - 1}
             marginPagesDisplayed={2}
             pageRangeDisplayed={5}
-            onPageChange={pageChangeHandler}
+            onPageChange={handlePageClick}
             containerClassName={'pagination justify-content-center'}
             pageClassName={'page-item'}
             pageLinkClassName={'page-link'}

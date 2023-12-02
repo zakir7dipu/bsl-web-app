@@ -7,7 +7,7 @@ import {uid} from "../../../lib/helper.js";
 import Pagination from "../../../ui/Pagination.jsx";
 import HeaderMeta from "../../../ui/HeaderMeta.jsx";
 import Breadcrumbs from "../../components/Breadcrumbs/index.jsx";
-import {useNavigate, useParams, useSearchParams} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 
 function AllCourses() {
     const {
@@ -20,7 +20,6 @@ function AllCourses() {
         errorMess,
         metaInfo
     } = useSelector((state) => state.coursesReducer);
-    const {current} = useSelector((state) => state.paginate)
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
@@ -36,7 +35,8 @@ function AllCourses() {
         },
     ];
 
-    const pageChangeHandler = () => {
+    const pageChangeHandler = ({selected}) => {
+        let current = selected + 1
         navigate(`?pages=${current}`)
     }
 
@@ -58,10 +58,6 @@ function AllCourses() {
         }
     }, [dispatch, searchParams]);
 
-    useEffect(() => {
-        if (current) pageChangeHandler()
-    }, [current])
-
     return (
         <>
             <HeaderMeta
@@ -81,12 +77,12 @@ function AllCourses() {
                             {coursesAll?.map(item =>
                                 <Item info={item} key={uid()}/>
                             )}
-
                         </div>
                     </div>}
 
                 <div className="col-md-12 mt-3">
                     <Pagination
+                        handlePageClick={pageChangeHandler}
                         total={total}
                         range={perPage}
                     />

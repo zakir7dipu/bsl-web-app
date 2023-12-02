@@ -24,14 +24,12 @@ import MessageFeature from "./featurs/Messages/MessagesSlice.js";
 import SubscriberFeature from "./featurs/Subscribers/SubscribersSlice.js";
 import ScheduleFeature from "./featurs/Schedule/ScheduleSlice.js";
 import HostFeature from "./featurs/Hosts/HostSlice.js";
-import PaginationReducer from "./featurs/Pagination/PaginationSlice.js"
 
 
 const store = configureStore({
     reducer: {
         navAction: NavReducer,
         menuAction: MenuActionReducer,
-        paginate: PaginationReducer,
         authUser: AuthReducer,
         generalSettings: SettingReducer,
         SeoReducer: SeoFeatures,

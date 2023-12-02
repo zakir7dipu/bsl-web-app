@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {showServiceData} from "../../../featurs/Service/ServiceSlice";
 import HeaderMeta from "../../../ui/HeaderMeta.jsx";
@@ -26,6 +26,8 @@ function Index(props) {
         errorMess,
     } = useSelector((state) => state.coursesReducer);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
 
     const breadcrumbs = [
         {
@@ -41,25 +43,29 @@ function Index(props) {
             url: null
         },
     ];
-    //console.log(coursesAll)
 
     const pageChangeHandler = ({selected}) => {
-        let nextPage = selected + 1
-        const data = {
-            slug: 'category',
-            serviceId: `${metaInfo?.id}`,
-            page: nextPage
-        }
-        dispatch(fetchAllCourseAllByPage(data))
+        let current = selected + 1
+        navigate(`?pages=${current}`)
     }
 
     useEffect(() => {
-        const data = {
-            slug: 'category',
-            serviceId: `${metaInfo?.id}`
+        let nextPage = searchParams.get("pages")
+        if (!nextPage) {
+            const data = {
+                slug: 'category',
+                serviceId: `${metaInfo?.id}`
+            }
+            dispatch(fetchAllCourseAll(data));
+        } else {
+            const data = {
+                slug: 'category',
+                serviceId: `${metaInfo?.id}`,
+                page: nextPage
+            }
+            dispatch(fetchAllCourseAllByPage(data))
         }
-        dispatch(fetchAllCourseAll(data));
-    }, [metaInfo]);
+    }, [metaInfo, searchParams]);
 
     useEffect(() => {
         dispatch(showServiceData(slug));
@@ -76,21 +82,24 @@ function Index(props) {
                 page={metaInfo?.title}
                 breadcrumbs={breadcrumbs}
             />
-
-            {isLoading ? <BlogsSkel/> :
-                <div className="rs-inner-blog pt-50 pb-50 md-pt-50 md-pb-50" style={{backgroundColor: "#e9ecef"}}>
-                    <div className="container">
-
+            <div className="rs-inner-blog pt-50 pb-50 md-pt-50 md-pb-50" style={{backgroundColor: "#e9ecef"}}>
+                <div className="container">
+                    {isLoading ? <BlogsSkel/> :
                         <div className="row">
                             {coursesAll?.map(item =>
                                 <Item info={item} key={uid()}/>
                             )}
-                            <div className="col-md-12 mt-3 text-center">
-                                <Pagination handlePageClick={pageChangeHandler} pageCount={lastPage} range={perPage}/>
-                            </div>
                         </div>
+                    }
+                    <div className="col-md-12 mt-3 text-center">
+                        <Pagination
+                            handlePageClick={pageChangeHandler}
+                            total={total}
+                            range={perPage}
+                        />
                     </div>
-                </div>}
+                </div>
+            </div>
         </>
     );
 }
