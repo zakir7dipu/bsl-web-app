@@ -97,6 +97,7 @@ function Main() {
                 <Route path="/course/:slug" element={<CourseDetails/>}/>
                 <Route path="/blog">
                     <Route index element={<Blog/>}/>
+                    <Route path="/blog?pages=:page" element={<Blog/>}/>
                     <Route path=":slug/details" element={<BlogDetails/>}/>
                 </Route>
                 <Route path="/contact" element={<Contact/>}/>

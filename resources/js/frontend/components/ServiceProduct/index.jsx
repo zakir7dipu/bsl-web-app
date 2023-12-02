@@ -5,6 +5,7 @@ import ServiceItemSkel from "../Skeletons/ServiceItemSkel.jsx";
 import ServiceProductItem from "./ServiceProductItem.jsx";
 import {uid} from "../../../lib/helper.js";
 import Pagination from "../../../ui/Pagination.jsx";
+import {useNavigate, useSearchParams} from "react-router-dom";
 
 function Index({service}) {
     const {
@@ -18,19 +19,36 @@ function Index({service}) {
         errorMess
     } = useSelector((state) => state.productReducer);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
 
     const pageChangeHandler = ({selected}) => {
-        let nextPage = selected + 1
-        const data = {
-            id: service,
-            page: nextPage
-        }
-        dispatch(fetchAllProductsByPage(data))
+        let current = selected + 1
+        navigate(`?pages=${current}`)
     }
 
+    // const pageChangeHandler = ({selected}) => {
+    //     let nextPage = selected + 1
+    //     const data = {
+    //         id: service,
+    //         page: nextPage
+    //     }
+    //     dispatch(fetchAllProductsByPage(data))
+    // }
+
     useEffect(() => {
-        dispatch(fetchAllProductsData(service));
-    }, [service, dispatch]);
+        let nextPage = searchParams.get("pages")
+        if (!nextPage) {
+            dispatch(fetchAllProductsData(service));
+        } else {
+            const data = {
+                id: service,
+                page: nextPage
+            }
+            dispatch(fetchAllProductsByPage(data))
+        }
+
+    }, [service, dispatch, searchParams]);
 
 
     return (
@@ -49,7 +67,11 @@ function Index({service}) {
                     </div>
 
                     <div className="col-md-12 mt-3 text-center">
-                        <Pagination handlePageClick={pageChangeHandler} pageCount={lastPage} range={perPage}/>
+                        <Pagination
+                            handlePageClick={pageChangeHandler}
+                            total={total}
+                            range={perPage}
+                        />
                     </div>
                 </div>
             </div>
