@@ -41,7 +41,7 @@ class  CourseController extends Controller
             if ($slug == 'all') {
                 $courses = Courses::with(['service', 'curriculums'])
                     ->orderBy('id', 'asc')
-                    ->paginate(9);
+                    ->paginate(1);
             } elseif ($slug == 'category') {
                 $courses = Courses::with(['service', 'curriculums'])
                     ->when($service > 0, function ($query) use ($service) {

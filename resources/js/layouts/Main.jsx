@@ -84,8 +84,14 @@ function Main() {
                 <Route path="/about" element={<About/>}/>
                 <Route path="/management" element={<Management/>}/>
                 <Route path="/team" element={<Team/>}/>
-                <Route path="/service/:slug/details" element={<FrontendServiceCategory/>}/>
-                <Route path="/training/:slug/courses" element={<CategoryCourses/>}/>
+                <Route path="/service/:slug/details">
+                    <Route index element={<FrontendServiceCategory/>}></Route>
+                    <Route path="/service/:slug/details?pages=:page" element={<FrontendServiceCategory/>}/>
+                </Route>
+                <Route path="/training/:slug/courses">
+                    <Route index element={<CategoryCourses/>}></Route>
+                    <Route path="/training/:slug/courses?pages=:page" element={<CategoryCourses/>}></Route>
+                </Route>
                 <Route path="/courses/:slug">
                     <Route index element={<AllCourses/>}/>
                     <Route path="/courses/:slug?pages=:page" element={<AllCourses/>}/>
@@ -93,6 +99,7 @@ function Main() {
                 <Route path="/course/:slug" element={<CourseDetails/>}/>
                 <Route path="/blog">
                     <Route index element={<Blog/>}/>
+                    <Route path="/blog?pages=:page" element={<Blog/>}/>
                     <Route path=":slug/details" element={<BlogDetails/>}/>
                 </Route>
                 <Route path="/contact" element={<Contact/>}/>

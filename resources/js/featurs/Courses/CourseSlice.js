@@ -233,6 +233,7 @@ export const CourseSlice = createSlice({
         },
         [fetchAllCourseAllByPage.fulfilled]: (state, {payload}) => {
             const {data, last_page, current_page, per_page, path, total} = payload
+            console.log(payload)
             state.isLoading = false
             state.coursesAll = data
             state.lastPage = last_page>1?last_page:0

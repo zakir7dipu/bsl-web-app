@@ -7,7 +7,7 @@ import {uid} from "../../../lib/helper.js";
 import Pagination from "../../../ui/Pagination.jsx";
 import HeaderMeta from "../../../ui/HeaderMeta.jsx";
 import Breadcrumbs from "../../components/Breadcrumbs/index.jsx";
-import {useNavigate, useParams, useSearchParams} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 
 function AllCourses() {
     const {
@@ -23,7 +23,6 @@ function AllCourses() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
-    console.log(searchParams.get("pages"))
 
     const breadcrumbs = [
         {
@@ -37,13 +36,13 @@ function AllCourses() {
     ];
 
     const pageChangeHandler = ({selected}) => {
-        let nextPage = parseInt(selected) +1
-        navigate(`?pages=${nextPage}`)
+        let current = selected + 1
+        navigate(`?pages=${current}`)
     }
 
     useEffect(() => {
         let nextPage = searchParams.get("pages")
-        if(!nextPage) {
+        if (!nextPage) {
             let data = {
                 slug: 'all',
                 serviceId: 0
@@ -69,21 +68,27 @@ function AllCourses() {
                 page="All Courses"
                 breadcrumbs={breadcrumbs}
             />
+            <div className="rs-inner-blog pt-50 pb-50 md-pt-50 md-pb-50 mb-40" style={{backgroundColor: "#e9ecef"}}>
+                {isLoading ? <BlogsSkel/> :
 
-            {isLoading ? <BlogsSkel/> :
-                <div className="rs-inner-blog pt-50 pb-50 md-pt-50 md-pb-50 mb-40" style={{backgroundColor: "#e9ecef"}}>
                     <div className="container">
 
                         <div className="row">
                             {coursesAll?.map(item =>
                                 <Item info={item} key={uid()}/>
                             )}
-                            <div className="col-md-12 mt-3 text-center">
-                                <Pagination handlePageClick={pageChangeHandler} pageCount={lastPage} range={perPage}/>
-                            </div>
                         </div>
-                    </div>
-                </div>}
+                    </div>}
+
+                <div className="col-md-12 mt-3">
+                    <Pagination
+                        handlePageClick={pageChangeHandler}
+                        total={total}
+                        range={perPage}
+                    />
+                </div>
+            </div>
+
         </>
     );
 }

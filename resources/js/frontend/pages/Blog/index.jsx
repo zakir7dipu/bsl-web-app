@@ -5,7 +5,7 @@ import Breadcrumbs from "../../components/Breadcrumbs/index.jsx";
 import {fetchAllBlogsByPage, fetchAllBlogsData} from "../../../featurs/Blogs/BlogSlice.js";
 import {Container, Row} from "react-bootstrap";
 import ServiceItemSkel from "../../components/Skeletons/ServiceItemSkel.jsx";
-import {Link} from "react-router-dom";
+import {Link, useNavigate, useSearchParams} from "react-router-dom";
 import {uid, useInternalLink} from "../../../lib/helper.js";
 import moment from "moment";
 import Pagination from "../../../ui/Pagination.jsx";
@@ -32,16 +32,27 @@ function Index(props) {
         },
     ]
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
 
+    // const pageChangeHandler = (selected) => {
+    //     let page = selected+1
+    //     dispatch(fetchAllBlogsByPage({page: page}))
+    // }
     const pageChangeHandler = ({selected}) => {
-        let page = selected+1
-        dispatch(fetchAllBlogsByPage({page: page}))
+        let current = selected + 1
+        navigate(`?pages=${current}`)
     }
 
     useEffect(() => {
-        dispatch(fetchAllBlogsData())
+        let nextPage = searchParams.get("pages")
+        if (!nextPage) {
+            dispatch(fetchAllBlogsData())
+        } else {
+            dispatch(fetchAllBlogsByPage({page: nextPage}))
+        }
         window.scrollTo(0, 0);
-    }, [dispatch])
+    }, [dispatch, searchParams])
 
 
     return (
@@ -106,7 +117,11 @@ function Index(props) {
                         }
 
                         <div className="col-md-12 mt-3 text-center">
-                            <Pagination handlePageClick={pageChangeHandler} pageCount={lastPage} range={perPage}/>
+                            <Pagination
+                                handlePageClick={pageChangeHandler}
+                                total={total}
+                                range={perPage}
+                            />
                         </div>
                     </Row>
                 </Container>
