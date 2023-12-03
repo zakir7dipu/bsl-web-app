@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import HeaderMeta from "../../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
@@ -9,7 +9,7 @@ import {CKEditor} from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Sessions from "./Sessions.jsx";
 import {uid} from "../../../../lib/helper.js";
-import SlotCreate from "@/backend/pages/Events/WorkshopSeminar/SlotCreateModal.jsx";
+import SlotCreate from "./SlotCreateModal.jsx";
 
 function Create(props) {
     const navigate = useNavigate();
@@ -42,17 +42,13 @@ function Create(props) {
     const [description, setDescription] = useState("");
     const [imageLink, setImageLink] = useState("");
     const [showModal, setShowModal] = useState(false)
+    const [slots, setSlots] = useState([])
 
     //calculations
     const [totalDays, setTotalDay] = useState([]);
 
     const inputFileHandler = (file) => {
         setImageLink(file[0])
-    }
-
-    const requestHandler = (e) => {
-        e.preventDefault();
-        let formData = new FormData();
     }
 
     const calculateDate = (endDate) => {
@@ -81,11 +77,26 @@ function Create(props) {
     const handleModalClose = () => {
         setShowModal(!showModal);
         // resetHandler()
+        // let formData = new FormData()
     }
 
-    const resetHandler = () => {
-
+    const requestHandler = (e) => {
+        e.preventDefault()
     }
+
+    const resetHandler = (e) => {
+        e.preventDefault()
+    }
+
+    const slotHandler = (data) => {
+        setSlots(slots=>[...slots, data])
+    }
+
+    useEffect(()=>{
+        console.log(slots)
+    },[slots])
+
+    // setWorkshop(workshop =>[...workshop, {[e.target.id]:e.target.value}])
 
     return (
         <>
@@ -122,8 +133,10 @@ function Create(props) {
                                                 <label>Select Type <sup
                                                     className="text-danger"><MdStar/></sup></label>
 
-                                                <select className="form-control" name="type" value={type}
-                                                        onChange={event => setType(event.target.value)}>
+                                                <select className="form-control" id="type" value={type}
+                                                        onChange={e => {
+                                                            setType(e.target.value)
+                                                        }}>
                                                     <option value={null}>--Select One--</option>
                                                     <option value="workshop">Workshop</option>
                                                     <option value="seminar">Seminar</option>
@@ -181,7 +194,7 @@ function Create(props) {
                                                 <FileInput
                                                     label={"Thumbnail"}
                                                     file={imageLink}
-                                                    id={`siteLogo`}
+                                                    id={`image_file`}
                                                     handler={inputFileHandler}
                                                     required={`required`}
                                                 />
@@ -196,7 +209,8 @@ function Create(props) {
                                                 <CKEditor
                                                     editor={ClassicEditor}
                                                     data={objective}
-                                                    onChange={(event, editor) => {
+                                                    id="objective"
+                                                    onChange={(e, editor) => {
                                                         const data = editor.getData();
                                                         setObjective(data)
                                                     }}
@@ -213,7 +227,8 @@ function Create(props) {
                                                 <CKEditor
                                                     editor={ClassicEditor}
                                                     data={description}
-                                                    onChange={(event, editor) => {
+                                                    id="description"
+                                                    onChange={(e, editor) => {
                                                         const data = editor.getData();
                                                         setDescription(data)
                                                     }}
@@ -224,7 +239,8 @@ function Create(props) {
                                         <Col lg={12}>
                                             <div className="card">
                                                 <div className="card-body">
-                                                    <h4 className="card-title">Workshop/Seminar Wise Sessions Details</h4>
+                                                    <h4 className="card-title">Workshop/Seminar Wise Sessions
+                                                        Details</h4>
                                                     <p className="text-muted"><code></code>
                                                     </p>
                                                     {
@@ -233,7 +249,7 @@ function Create(props) {
                                                                 index={index + 1}
                                                                 day={day}
                                                                 key={uid()}
-                                                                // date={}
+                                                                slotsInfo={slots}
                                                             />
                                                         )
                                                     }
@@ -242,7 +258,8 @@ function Create(props) {
                                         </Col>
 
                                         <div className="col-md-12 mt-3">
-                                            <button className="btn btn-primary px-3 float-right" type={"submit"}>Save</button>
+                                            <button className="btn btn-primary px-3 float-right" type={"submit"}>Save
+                                            </button>
                                         </div>
                                     </Row>
                                 </form>
@@ -256,6 +273,7 @@ function Create(props) {
                 isShow={showModal}
                 title="Create New Slot"
                 handleModalAction={handleModalClose}
+                slotHandler={slotHandler}
             />
 
         </>

@@ -3,14 +3,16 @@ import {useDispatch, useSelector} from "react-redux";
 import {modalAction} from "@/featurs/SlotModal/SlotModalSlice.js";
 import {fetchAllHosts} from "@/featurs/Hosts/HostSlice.js";
 import {Button} from "react-bootstrap";
+import {uid} from "@/lib/helper.js";
 
-function Sessions({index, day}) {
+function Sessions({index, day, slotsInfo}) {
     const {
         isLoading,
         hosts,
     } = useSelector((state) => state.hostReducer);
     const dispatch = useDispatch();
     const [dayTitle, setDayTitle] = useState("");
+    const [slots, setSlots] = useState([])
 
     const callSlotModal = (e) => {
         e.preventDefault()
@@ -25,6 +27,11 @@ function Sessions({index, day}) {
     useEffect(() => {
         dispatch(fetchAllHosts());
     }, [dispatch]);
+
+    useEffect(()=>{
+        const thisSlots = slotsInfo.filter(slot => slot.index === index);
+        setSlots(thisSlots)
+    },[slotsInfo])
 
     return (
         <>
@@ -46,10 +53,9 @@ function Sessions({index, day}) {
                     </div>
                     <div id={`collapse${day}`} className="collapse show" data-parent={`#accordion-${day}`}>
                         <div className="card-body">
-                            {/*<SessionDetails*/}
-                            {/*    index={index}*/}
-                            {/*    day={day}*/}
-                            {/*/>*/}
+                            {slots.map(slot=>{
+                                return <div key={uid()}>{slot?.title}</div>
+                            })}
                         </div>
                     </div>
                 </div>

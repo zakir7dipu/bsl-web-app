@@ -5,13 +5,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchAllHosts} from "@/featurs/Hosts/HostSlice.js";
 import {uid} from "../../../../lib/helper.js";
 
-function SlotCreate(props) {
+function SlotCreate({dayTitle,setDayTitle,slotHost,setSlotHost,slotStart,setSlotStart,slotEnd,setEndStart}) {
     const {
         isLoading,
         hosts,
     } = useSelector((state) => state.hostReducer);
     const dispatch = useDispatch();
-    const [dayTitle, setDayTitle] = useState("")
+
 
     useEffect(() => {
         dispatch(fetchAllHosts());
@@ -37,7 +37,8 @@ function SlotCreate(props) {
                     <label>Select Host <sup
                         className="text-danger"><MdStar/></sup></label>
 
-                    <select className="form-control" name="type">
+                    <select className="form-control" name="type" value={slotHost}
+                            onChange={e => setSlotHost(e.target.value)}>
                         <option value={null}>--Select One--</option>
                         {!isLoading && hosts.map(host => {
                             return <option value={host?.id} key={uid()}>{host?.name}</option>;
@@ -50,9 +51,11 @@ function SlotCreate(props) {
                 <Row>
                     <Col lg={6}>
                         <div className="form-group">
-                            <label htmlFor="form_date">Start At </label>
-                            <input type="time" id="form_date" placeholder="Enter date"
+                            <label htmlFor="form_time">Start At </label>
+                            <input type="time" id="form_time" placeholder="Enter date"
                                    className="form-control"
+                                   value={slotStart}
+                                   onChange={e => setSlotStart(e.target.value)}
                             />
                         </div>
                     </Col>
@@ -61,6 +64,8 @@ function SlotCreate(props) {
                             <label htmlFor="to_date">End At </label>
                             <input type="time" id="to_date" placeholder="Enter date"
                                    className="form-control"
+                                   value={slotEnd}
+                                   onChange={e => setEndStart(e.target.value)}
                             />
                         </div>
                     </Col>
