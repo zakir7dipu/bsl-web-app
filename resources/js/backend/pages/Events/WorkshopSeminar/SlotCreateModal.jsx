@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
-import {MdStar} from "react-icons/md";
-import FileInput from "@/backend/components/inputFile/Index.jsx";
 import BizModal from "@/ui/BizzModal.jsx";
 import {useDispatch, useSelector} from "react-redux";
-import SlotModalReducer, {modalAction} from "../../../../featurs/SlotModal/SlotModalSlice.js";
+import {modalAction} from "../../../../featurs/SlotModal/SlotModalSlice.js";
 import SlotCreate from "../../../../backend/pages/Events/WorkshopSeminar/SlotCreate.jsx";
 import {Button, Col} from "react-bootstrap";
 
@@ -15,6 +13,7 @@ function SlotCreateModal({slotHandler}) {
     const [slotHost, setSlotHost] = useState("")
     const [slotStart, setSlotStart] = useState("")
     const [slotEnd, setEndStart] = useState("")
+    const [slotTopic, setSlotTopic] = useState("")
 
     const handleModalClose = () => {
         let data = {
@@ -34,6 +33,7 @@ function SlotCreateModal({slotHandler}) {
             "title": dayTitle,
             "from": slotStart,
             "to": slotEnd,
+            "topics": slotTopic,
             "mentors": slotHost
         }
         slotHandler(formData)
@@ -45,6 +45,7 @@ function SlotCreateModal({slotHandler}) {
         setSlotHost("")
         setSlotStart("")
         setEndStart("")
+        setSlotTopic("")
     }
 
     return (
@@ -59,6 +60,8 @@ function SlotCreateModal({slotHandler}) {
                     setSlotStart={setSlotStart}
                     slotEnd={slotEnd}
                     setEndStart={setEndStart}
+                    slotTopic={slotTopic}
+                    setSlotTopic={setSlotTopic}
                 />
                 <Col className="mt-3">
                     <Button

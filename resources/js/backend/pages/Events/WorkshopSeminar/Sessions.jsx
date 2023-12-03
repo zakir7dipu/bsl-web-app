@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {modalAction} from "@/featurs/SlotModal/SlotModalSlice.js";
 import {fetchAllHosts} from "@/featurs/Hosts/HostSlice.js";
 import {Button} from "react-bootstrap";
-import {uid} from "@/lib/helper.js";
+import {toStringTime, uid} from "@/lib/helper.js";
 
 function Sessions({index, day, slotsInfo}) {
     const {
@@ -28,7 +28,7 @@ function Sessions({index, day, slotsInfo}) {
         dispatch(fetchAllHosts());
     }, [dispatch]);
 
-    useEffect(()=>{
+    useEffect(() => {
         const thisSlots = slotsInfo.filter(slot => slot.index === index);
         setSlots(thisSlots)
         setEventDaysInfo({
@@ -59,9 +59,37 @@ function Sessions({index, day, slotsInfo}) {
                     </div>
                     <div id={`collapse${day}`} className="collapse show" data-parent={`#accordion-${day}`}>
                         <div className="card-body">
-                            {slots.map(slot=>{
-                                return <div key={uid()}>{slot?.title}</div>
-                            })}
+                            <table className="table table-responsive table-bordered" width="100%">
+                                <thead>
+                                <tr>
+                                    <th style={{width:"25%"}}>Title</th>
+                                    <th style={{width:"15%"}}>Host</th>
+                                    <th style={{width:"10%"}}>Start At</th>
+                                    <th style={{width:"10%"}}>End At</th>
+                                    <th style={{width:"30%"}}>Topics</th>
+                                    <th style={{width:"10%"}}>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {slots.map(slot => {
+                                    return <tr key={uid()}>
+                                        <td>{slot?.title}</td>
+                                        <td>{slot?.mentors}</td>
+                                        <td>{toStringTime(slot?.from)}</td>
+                                        <td>{toStringTime(slot?.to)}</td>
+                                        <td><p dangerouslySetInnerHTML={{__html: slot?.topics}}></p></td>
+                                        <td>
+                                            <Button
+                                                type="btn"
+                                                className="btn btn-danger btn-sm"
+                                            ><i className="fa fa-trash"></i>
+                                            </Button>
+                                        </td>
+                                    </tr>
+                                })}
+                                </tbody>
+                            </table>
+
                         </div>
                     </div>
                 </div>
