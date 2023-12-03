@@ -42,7 +42,7 @@ function SessionDetails(props) {
                         </select>
                     </div>
                 </div>
-                <Col lg={3}>
+                <Col lg={2}>
                     <div className="form-group">
                         <label htmlFor="form_date">Start At </label>
                         <input type="time" id="form_date" placeholder="Enter date"
@@ -50,12 +50,17 @@ function SessionDetails(props) {
                         />
                     </div>
                 </Col>
-                <Col lg={3}>
+                <Col lg={2}>
                     <div className="form-group">
                         <label htmlFor="to_date">End At </label>
                         <input type="time" id="to_date" placeholder="Enter date"
                                className="form-control"
                         />
+                    </div>
+                </Col>
+                <Col lg={2}>
+                    <div className="form-group">
+                        <button type="btn" style={{marginTop:'40px'}} className="btn btn-success btn-sm"><i className="fa fa-plus-square"></i></button>
                     </div>
                 </Col>
             </Row>
