@@ -161,7 +161,8 @@ function Index(props) {
 
                                             <div className="col-md-12">
                                                 <div className="form-group">
-                                                    <label>About Description <sup className="text-danger"><MdStar/></sup></label>
+                                                    <label>About Description <sup
+                                                        className="text-danger"><MdStar/></sup></label>
                                                     <CKEditor
                                                         editor={ClassicEditor}
                                                         data={description}

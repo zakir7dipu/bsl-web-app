@@ -1,5 +1,5 @@
 /*
-SQLyog Ultimate
+SQLyog Professional v13.1.1 (64 bit)
 MySQL - 5.7.33 : Database - bizztoxi_v2_db
 *********************************************************************
 */
@@ -12,6 +12,10 @@ MySQL - 5.7.33 : Database - bizztoxi_v2_db
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`bizztoxi_v2_db` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `bizztoxi_v2_db`;
+
 /*Table structure for table `abouts` */
 
 DROP TABLE IF EXISTS `abouts`;
@@ -311,9 +315,13 @@ CREATE TABLE `hosts` (
   KEY `hosts_updated_by_foreign` (`updated_by`),
   CONSTRAINT `hosts_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
   CONSTRAINT `hosts_updated_by_foreign` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `hosts` */
+
+insert  into `hosts`(`id`,`name`,`email`,`phone`,`about`,`qualification`,`thumbnail`,`created_by`,`updated_by`,`deleted_at`,`created_at`,`updated_at`) values 
+(1,'Md. Shafiqul Alam','shafiqur.rahman@ssgbd.com','+8801713378787','Md. Shafiqul Alam LLB, FCS, FCMA, FCA is an accomplished finance Professional with over 20+ years of experience in different industries in senior positions. Presently he is the Honorable Director of Bizz Solutions Ltd. and before that he was Group Chief Financial Officer (GCFO) and Company Secretary of Super Star Group, the leading electrical and electronics manufacturing company in the country.','Total Experience 20+ years. And He is a good speaker','/uploads/hosts/1701325000-host.png',2,2,NULL,'2023-11-30 06:01:32','2023-11-30 06:16:40'),
+(2,'Mohammad Harun Ar Rashid','harun.rashid@ssgbd.com','+8801687807834','Mohammad Harun Ar Rashid is another successful entrepreneur with more than 21+ years of contributing to the Energy sector of Bangladesh and developing and strengthening the electrical and electronics industry by offering innovative ideas, products, and services. Presently he is the Honorable Director of Bizz Solutions Ltd. and Managing Director of Super Star Group','20 Years Of Experience.','/uploads/hosts/1701324668-host.png',2,NULL,NULL,'2023-11-30 06:11:08','2023-11-30 06:11:08');
 
 /*Table structure for table `industries` */
 
@@ -356,7 +364,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
@@ -396,7 +404,8 @@ insert  into `migrations`(`id`,`migration`,`batch`) values
 (33,'2023_11_30_024217_create_workshop_seminar_table',15),
 (34,'2023_11_30_025142_create_workshop_days_table',15),
 (35,'2023_11_30_025143_create_workshop_session_table',15),
-(36,'2023_11_30_025200_create_session_hosts_table',15);
+(36,'2023_11_30_025200_create_session_hosts_table',15),
+(37,'2023_11_30_064655_add_slug_at_workshop_seminars',16);
 
 /*Table structure for table `model_has_permissions` */
 
@@ -981,6 +990,7 @@ DROP TABLE IF EXISTS `workshop_seminars`;
 CREATE TABLE `workshop_seminars` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `form_date` date DEFAULT NULL,
   `to_date` date DEFAULT NULL,
   `type` enum('workshop','seminar') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'workshop',
@@ -995,6 +1005,7 @@ CREATE TABLE `workshop_seminars` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `workshop_seminars_slug_unique` (`slug`),
   KEY `workshop_seminars_created_by_foreign` (`created_by`),
   KEY `workshop_seminars_updated_by_foreign` (`updated_by`),
   CONSTRAINT `workshop_seminars_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
