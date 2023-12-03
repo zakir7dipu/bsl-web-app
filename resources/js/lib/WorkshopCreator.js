@@ -11,20 +11,10 @@ export const workshopDetails = {
     days: []
 }
 
-export const dayInfo = () => {
+export const dayInfo = (data) => {
+
     return  {
         title: "",
         sessions: []
-    }
-}
-
-
-export const sessionsInfo = () => {
-    return  {
-        title: "",
-        from: "",
-        to: "",
-        topics: "",
-        mentors: []
     }
 }

@@ -43,6 +43,7 @@ function Create(props) {
     const [imageLink, setImageLink] = useState("");
     const [showModal, setShowModal] = useState(false)
     const [slots, setSlots] = useState([])
+    const [eventDays, setEventDays] = useState([])
 
     //calculations
     const [totalDays, setTotalDay] = useState([]);
@@ -89,14 +90,18 @@ function Create(props) {
     }
 
     const slotHandler = (data) => {
-        setSlots(slots=>[...slots, data])
+        setSlots(slots => [...slots, data])
     }
 
-    useEffect(()=>{
-        console.log(slots)
-    },[slots])
-
-    // setWorkshop(workshop =>[...workshop, {[e.target.id]:e.target.value}])
+    // const eventDaysHandler = (data) => {
+    //     setEventDays(eventDays => [...eventDays, data])
+    // }
+    //
+    // // setWorkshop(workshop =>[...workshop, {[e.target.id]:e.target.value}])
+    //
+    // useEffect(()=>{
+    //     console.log(eventDays)
+    // },[eventDays])
 
     return (
         <>

@@ -11,7 +11,7 @@ function Sessions({index, day, slotsInfo}) {
         hosts,
     } = useSelector((state) => state.hostReducer);
     const dispatch = useDispatch();
-    const [dayTitle, setDayTitle] = useState("");
+    const [eventDaysInfo, setEventDaysInfo] = useState({});
     const [slots, setSlots] = useState([])
 
     const callSlotModal = (e) => {
@@ -31,6 +31,12 @@ function Sessions({index, day, slotsInfo}) {
     useEffect(()=>{
         const thisSlots = slotsInfo.filter(slot => slot.index === index);
         setSlots(thisSlots)
+        setEventDaysInfo({
+            date: day,
+            index: index,
+            title: `Day # ${index}`,
+            slot: thisSlots
+        })
     },[slotsInfo])
 
     return (
