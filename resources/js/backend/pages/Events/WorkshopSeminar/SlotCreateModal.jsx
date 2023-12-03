@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {modalAction} from "../../../../featurs/SlotModal/SlotModalSlice.js";
 import SlotCreate from "../../../../backend/pages/Events/WorkshopSeminar/SlotCreate.jsx";
 import {Button, Col} from "react-bootstrap";
+import {uid} from "@/lib/helper.js";
 
 function SlotCreateModal({slotHandler}) {
     const {isModalShow, title, date, index} = useSelector(state => state.slotModalAction)
@@ -28,6 +29,7 @@ function SlotCreateModal({slotHandler}) {
     const requestHandler = (e) => {
         e.preventDefault()
         let formData = {
+            "tempId": uid(),
             "index": index,
             "date": date,
             "title": dayTitle,

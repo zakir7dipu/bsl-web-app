@@ -41,7 +41,6 @@ function Create(props) {
     const [objective, setObjective] = useState("");
     const [description, setDescription] = useState("");
     const [imageLink, setImageLink] = useState("");
-    const [showModal, setShowModal] = useState(false)
     const [slots, setSlots] = useState([])
     const [eventDays, setEventDays] = useState([])
 
@@ -83,25 +82,59 @@ function Create(props) {
 
     const requestHandler = (e) => {
         e.preventDefault()
+        slotDaysDifferentiator()
+        let formData = new FormData()
+
+        formData.append("name", cName)
+        formData.append("form_date", formDate)
+        formData.append("to_date", toDate)
+        formData.append("type", type)
+        formData.append("price", price)
+        formData.append("sponsors", sponsors)
+        formData.append("objective", objective)
+        formData.append("description", description)
+        formData.append("image_file", imageLink)
+        formData.append("days", eventDays)
+
     }
 
     const resetHandler = (e) => {
         e.preventDefault()
+        setName("")
+        setFormDate("")
+        setToDate("")
+        setType("")
+        setPrice("")
+        setSponsor("")
+        setObjective("")
+        setDescription("")
+        setImageLink("")
+        setEventDays([])
     }
 
     const slotHandler = (data) => {
         setSlots(slots => [...slots, data])
     }
 
-    // const eventDaysHandler = (data) => {
-    //     setEventDays(eventDays => [...eventDays, data])
-    // }
-    //
-    // // setWorkshop(workshop =>[...workshop, {[e.target.id]:e.target.value}])
-    //
-    // useEffect(()=>{
-    //     console.log(eventDays)
-    // },[eventDays])
+    const slotDeleteHandler = (data) => {
+        let newSlots = slots.filter(slot => slot.tempId !== data)
+        setSlots(newSlots)
+    }
+
+    const slotDaysDifferentiator = () => {
+        totalDays.map((dayItem, index)=>{
+            let indexIdentifire = index +1
+            let newDayItem = {
+                title: `Day #${indexIdentifire} (${dayItem})`,
+                sessions: slots.filter(slot => slot.index === indexIdentifire)
+            }
+            setEventDays(eventDays => [...eventDays, newDayItem])
+        })
+    }
+
+    useEffect(()=>{
+        console.log(eventDays)
+    },[eventDays])
 
     return (
         <>
@@ -255,6 +288,7 @@ function Create(props) {
                                                                 day={day}
                                                                 key={uid()}
                                                                 slotsInfo={slots}
+                                                                deleteHandler={slotDeleteHandler}
                                                             />
                                                         )
                                                     }

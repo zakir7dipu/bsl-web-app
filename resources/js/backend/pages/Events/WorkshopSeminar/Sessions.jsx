@@ -5,13 +5,12 @@ import {fetchAllHosts} from "@/featurs/Hosts/HostSlice.js";
 import {Button} from "react-bootstrap";
 import {toStringTime, uid} from "@/lib/helper.js";
 
-function Sessions({index, day, slotsInfo}) {
+function Sessions({index, day, slotsInfo, deleteHandler}) {
     const {
         isLoading,
         hosts,
     } = useSelector((state) => state.hostReducer);
     const dispatch = useDispatch();
-    const [eventDaysInfo, setEventDaysInfo] = useState({});
     const [slots, setSlots] = useState([])
 
     const callSlotModal = (e) => {
@@ -31,12 +30,6 @@ function Sessions({index, day, slotsInfo}) {
     useEffect(() => {
         const thisSlots = slotsInfo.filter(slot => slot.index === index);
         setSlots(thisSlots)
-        setEventDaysInfo({
-            date: day,
-            index: index,
-            title: `Day # ${index}`,
-            slot: thisSlots
-        })
     },[slotsInfo])
 
     return (
@@ -82,7 +75,9 @@ function Sessions({index, day, slotsInfo}) {
                                             <Button
                                                 type="btn"
                                                 className="btn btn-danger btn-sm"
-                                            ><i className="fa fa-trash"></i>
+                                                onClick={e=>deleteHandler(slot?.tempId)}
+                                            >
+                                                <i className="fa fa-trash"></i>
                                             </Button>
                                         </td>
                                     </tr>
