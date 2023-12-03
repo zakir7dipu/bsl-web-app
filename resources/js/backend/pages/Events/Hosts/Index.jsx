@@ -163,7 +163,6 @@ function Index(props) {
     }
 
     const handelHostEdit = (id) => {
-        console.log(id)
         getMeta(id)
     }
 

@@ -84,8 +84,8 @@ function Index(props) {
             name: 'Actions',
             selector: (row) => (
                 <RowDropDown>
-                    <Link to="#" onClick={(e) => handelHostEdit(row?.slug)} className="dropdown-item">Edit</Link>
-                    <Link to="#" onClick={(e) => deleteHostHandler(row?.slug)}
+                    <Link to="#" onClick={(e) => handleWorkshopEdit(row?.slug)} className="dropdown-item">Edit</Link>
+                    <Link to="#" onClick={(e) => deleteWorkshopData(row?.slug)}
                           className="dropdown-item">Delete</Link>
                 </RowDropDown>
             ),
@@ -96,6 +96,14 @@ function Index(props) {
     useEffect(() => {
         dispatch(fetchAllWorkshopSeminar());
     }, [dispatch]);
+
+    const handleWorkshopEdit = (id) => {
+
+    }
+
+    const deleteWorkshopData = async (id) => {
+
+    }
 
     if (!isLoading) {
         return (

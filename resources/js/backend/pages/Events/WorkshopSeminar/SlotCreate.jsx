@@ -1,11 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {MdStar} from "react-icons/md";
-import {Button, Col, Row} from "react-bootstrap";
+import {Col, Row} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllHosts} from "@/featurs/Hosts/HostSlice.js";
 import {uid} from "../../../../lib/helper.js";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import {CKEditor} from "@ckeditor/ckeditor5-react";
 
-function SlotCreate({dayTitle,setDayTitle,slotHost,setSlotHost,slotStart,setSlotStart,slotEnd,setEndStart}) {
+function SlotCreate({dayTitle,setDayTitle,slotHost,setSlotHost,slotStart,setSlotStart,slotEnd,setEndStart,slotTopic,setSlotTopic}) {
     const {
         isLoading,
         hosts,
@@ -67,6 +69,22 @@ function SlotCreate({dayTitle,setDayTitle,slotHost,setSlotHost,slotStart,setSlot
                                    value={slotEnd}
                                    onChange={e => setEndStart(e.target.value)}
                             />
+                        </div>
+                    </Col>
+                    <Col lg={12}>
+                        <div className="form-group">
+                            <label htmlFor="to_date">Topic</label>
+                            <CKEditor
+                                editor={ClassicEditor}
+                                data={slotTopic}
+                                id="topics"
+                                onChange={(e, editor) => {
+                                    const data = editor.getData();
+                                    setSlotTopic(data)
+                                }}
+
+                            />
+
                         </div>
                     </Col>
                 </Row>

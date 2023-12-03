@@ -72,6 +72,17 @@ export const ucFirst = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+export const toStringTime = (str) => {
+    let [hours, minutes] = str.split(':');
+    hours = parseInt(hours, 10);
+    minutes = parseInt(minutes, 10);
+    let meridiem = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12 || 12;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    let time12 = hours + ':' + minutes + ' ' + meridiem;
+    return time12;
+}
+
 export const createInputFileUrl = (file) => {
     return window.URL.createObjectURL(file)
 }
