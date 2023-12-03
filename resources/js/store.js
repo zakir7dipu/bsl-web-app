@@ -25,12 +25,14 @@ import SubscriberFeature from "./featurs/Subscribers/SubscribersSlice.js";
 import ScheduleFeature from "./featurs/Schedule/ScheduleSlice.js";
 import HostFeature from "./featurs/Hosts/HostSlice.js";
 import WorkshopFeature from "./featurs/WorkshopSeminar/WorkshopSlice.js";
+import SlotModalReducer from "./featurs/SlotModal/SlotModalSlice.js";
 
 
 const store = configureStore({
     reducer: {
         navAction: NavReducer,
         menuAction: MenuActionReducer,
+        slotModalAction: SlotModalReducer,
         authUser: AuthReducer,
         generalSettings: SettingReducer,
         SeoReducer: SeoFeatures,

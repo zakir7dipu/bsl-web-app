@@ -29,6 +29,11 @@ export const fetchAllWorkshopSeminar = createAsyncThunk("workshopSeminar/fetchAl
 export const WorkshopSlice = createSlice({
     name: 'workshopSeminar',
     initialState: initialData,
+    reducers: {
+        collectData: (state, {payload}) => {
+
+        }
+    },
     extraReducers: {
         [fetchAllWorkshopSeminar.pending]: (state) => {
             state.isLoading = true

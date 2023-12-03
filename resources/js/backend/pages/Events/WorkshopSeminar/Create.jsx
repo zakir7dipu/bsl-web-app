@@ -9,6 +9,7 @@ import {CKEditor} from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Sessions from "./Sessions.jsx";
 import {uid} from "../../../../lib/helper.js";
+import SlotCreate from "@/backend/pages/Events/WorkshopSeminar/SlotCreateModal.jsx";
 
 function Create(props) {
     const navigate = useNavigate();
@@ -40,9 +41,10 @@ function Create(props) {
     const [objective, setObjective] = useState("");
     const [description, setDescription] = useState("");
     const [imageLink, setImageLink] = useState("");
+    const [showModal, setShowModal] = useState(false)
 
     //calculations
-    const [totalDays, setTotalDay] = useState(0);
+    const [totalDays, setTotalDay] = useState([]);
 
     const inputFileHandler = (file) => {
         setImageLink(file[0])
@@ -58,12 +60,27 @@ function Create(props) {
         let date1 = new Date(formDate);
         let date2 = new Date(endDate);
         // To calculate the time difference of two dates
-        let Difference_In_Time = date2.getTime() - date1.getTime();
+        // let Difference_In_Time = date2.getTime() - date1.getTime();
         // To calculate the no. of days between two dates
-        let Difference_In_Days = (Difference_In_Time / (1000 * 3600 * 24)) + 1;
+        // let Difference_In_Days = (Difference_In_Time / (1000 * 3600 * 24)) + 1;
 
-        setTotalDay(Difference_In_Days)
-        console.log(totalDays)
+        const dateArray = [];
+
+        // Generate dates in the range and push them to the array
+        let currentDate = new Date(date1);
+        while (currentDate <= date2) {
+            dateArray.push(currentDate.toISOString().split('T')[0]);
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
+
+        setTotalDay(dateArray);
+
+        // setTotalDay(Difference_In_Days)
+    }
+
+    const handleModalClose = () => {
+        setShowModal(!showModal);
+        // resetHandler()
     }
 
     const resetHandler = () => {
@@ -211,13 +228,22 @@ function Create(props) {
                                                     <p className="text-muted"><code></code>
                                                     </p>
                                                     {
-                                                        Array(totalDays).fill(0).map((day, index) =>
-                                                            <Sessions day={index + 1} key={uid()}/>
+                                                        Array.from(totalDays).map((day, index) =>
+                                                            <Sessions
+                                                                index={index + 1}
+                                                                day={day}
+                                                                key={uid()}
+                                                                // date={}
+                                                            />
                                                         )
                                                     }
                                                 </div>
                                             </div>
                                         </Col>
+
+                                        <div className="col-md-12 mt-3">
+                                            <button className="btn btn-primary px-3 float-right" type={"submit"}>Save</button>
+                                        </div>
                                     </Row>
                                 </form>
                             </div>
@@ -225,6 +251,12 @@ function Create(props) {
                     </div>
                 </div>
             </div>
+
+            <SlotCreate
+                isShow={showModal}
+                title="Create New Slot"
+                handleModalAction={handleModalClose}
+            />
 
         </>
     );
