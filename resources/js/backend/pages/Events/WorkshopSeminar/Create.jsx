@@ -70,6 +70,11 @@ function Create(props) {
 
     const dataSubmit = () => {
         submitCount++
+        if(submitCount > 1){
+            resetHandler();
+            navGoBack();
+            return
+        }
 
         let formData = new FormData()
 
@@ -124,8 +129,8 @@ function Create(props) {
         if (cName && formDate && toDate && type && price && description && eventDays) {
             infoMessage("Please wait a while, We are processing your request.");
             dispatch(createWorkshopSeminarData(formData))
-            // resetHandler();
-            // navGoBack();
+            resetHandler();
+            navGoBack();
         }
     }
 
