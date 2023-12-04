@@ -4,12 +4,11 @@ namespace App\Models\Events;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 
 class WorkshopSessions extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $table = "workshop_sessions";
 
@@ -26,12 +25,12 @@ class WorkshopSessions extends Model
 
     public function workshopDay()
     {
-        return $this->belongsTo(WorkshopDays::class);
+        return $this->belongsTo(WorkshopDays::class,'workshop_day_id','id');
     }
 
     public function sessionHosts()
     {
-        return $this->hasMany(SessionHosts::class);
+        return $this->hasMany(SessionHosts::class,'workshop_session_id','id');
     }
 
     // TODO :: boot

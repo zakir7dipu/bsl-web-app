@@ -16,11 +16,8 @@ import Preloader from "../../../components/Preloader/Index.jsx";
 
 function Index(props) {
 
-    const {
-        isLoading,
-        hosts,
-        errorMess
-    } = useSelector((state) => state.hostReducer);
+    const {isLoading, hosts, errorMess} = useSelector((state) => state.hostReducer);
+
     const dispatch = useDispatch();
 
     const bizAlert = new BizAlert();

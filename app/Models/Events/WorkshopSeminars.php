@@ -30,7 +30,7 @@ class WorkshopSeminars extends Model
 
     public function workshopDays()
     {
-        return $this->hasMany(WorkshopDays::class);
+        return $this->hasMany(WorkshopDays::class,'workshop_seminar_id','id');
     }
 
     // TODO :: boot
@@ -42,6 +42,9 @@ class WorkshopSeminars extends Model
             if (Auth::check()) {
                 $query->created_by = Auth::user()->id;
             }
+
+            $bytes = random_bytes(8);
+            $query->slug = bin2hex($bytes);
         });
         static::updating(function ($query) {
             if (Auth::check()) {

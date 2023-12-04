@@ -161,7 +161,7 @@ function Main() {
                     <Route path="workshops">
                         <Route index element={<WorkshopSeminar/>}/>
                         <Route path="create" element={<WorkshopCreate/>}/>
-                        <Route path=":id/edit" element={<WorkshopEdit/>}/>
+                        <Route path=":slug/edit" element={<WorkshopEdit/>}/>
                     </Route>
                 </Route>
                 {/*}*/}

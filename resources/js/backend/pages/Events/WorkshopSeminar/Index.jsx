@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import BizAlert from "../../../../lib/BizAlert.js";
-import {useInternalLink} from "../../../../lib/helper.js";
+import {ucFirst, useInternalLink} from "../../../../lib/helper.js";
 import RowDropDown from "../../../../ui/RowDropDown.jsx";
 import {Link} from "react-router-dom";
 import {fetchAllWorkshopSeminar} from "../../../../featurs/WorkshopSeminar/WorkshopSlice.js";
@@ -47,10 +47,10 @@ function Index(props) {
         },
         {
             name: 'From',
-            selector: row => row.from_date,
+            selector: row => row.form_date,
             sortable: true,
-            sortableKey: "from_date",
-            searchableKey: 'from_date',
+            sortableKey: "form_date",
+            searchableKey: 'form_date',
         },
         {
             name: 'To',
@@ -61,7 +61,7 @@ function Index(props) {
         },
         {
             name: 'Type',
-            selector: row => row.type,
+            selector: row => ucFirst(row.type),
             sortable: true,
             sortableKey: "type",
             searchableKey: 'type',
@@ -84,7 +84,8 @@ function Index(props) {
             name: 'Actions',
             selector: (row) => (
                 <RowDropDown>
-                    <Link to="#" onClick={(e) => handleWorkshopEdit(row?.slug)} className="dropdown-item">Edit</Link>
+                    <Link to="#" onClick={(e) => handleWorkshopShow(row?.slug)} className="dropdown-item">Show</Link>
+                    <Link to={`${row?.slug}/edit`} className="dropdown-item">Edit</Link>
                     <Link to="#" onClick={(e) => deleteWorkshopData(row?.slug)}
                           className="dropdown-item">Delete</Link>
                 </RowDropDown>
@@ -97,11 +98,11 @@ function Index(props) {
         dispatch(fetchAllWorkshopSeminar());
     }, [dispatch]);
 
-    const handleWorkshopEdit = (id) => {
+    const handleWorkshopShow = (slug) => {
 
     }
 
-    const deleteWorkshopData = async (id) => {
+    const deleteWorkshopData = async (slug) => {
 
     }
 

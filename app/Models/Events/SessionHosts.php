@@ -4,11 +4,10 @@ namespace App\Models\Events;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SessionHosts extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $table = "session_hosts";
 
@@ -20,11 +19,11 @@ class SessionHosts extends Model
 
     public function workshopSession()
     {
-        return $this->belongsTo(WorkshopSessions::class);
+        return $this->belongsTo(WorkshopSessions::class, 'workshop_session_id', 'id');
     }
 
     public function host()
     {
-        return $this->belongsTo(Hosts::class);
+        return $this->belongsTo(Hosts::class, 'host_id', 'id');
     }
 }
