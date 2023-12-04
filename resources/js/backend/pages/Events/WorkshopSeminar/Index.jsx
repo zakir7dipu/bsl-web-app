@@ -76,7 +76,7 @@ function Index(props) {
         {
             name: 'Thumbnail',
             selector: row => (
-                <img style={{height: "60px", width: "60px"}} src={useInternalLink(row.image_link)}/>
+                row.image_link && <img style={{height: "60px", width: "60px"}} src={useInternalLink(row.image_link)}/>
             ),
             sortable: false,
         },
