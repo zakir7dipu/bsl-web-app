@@ -40,6 +40,7 @@ function Create(props) {
     const [imageLink, setImageLink] = useState("");
     const [slots, setSlots] = useState([])
     const [eventDays, setEventDays] = useState([])
+    let submitCount = 0;
 
     //calculations
     const [totalDays, setTotalDay] = useState([]);
@@ -52,32 +53,24 @@ function Create(props) {
 
         let date1 = new Date(formDate);
         let date2 = new Date(endDate);
-        // To calculate the time difference of two dates
-        // let Difference_In_Time = date2.getTime() - date1.getTime();
-        // To calculate the no. of days between two dates
-        // let Difference_In_Days = (Difference_In_Time / (1000 * 3600 * 24)) + 1;
-        // setTotalDay(Difference_In_Days)
 
         const dateArray = [];
-        // Generate dates in the range and push them to the array
         let currentDate = new Date(date1);
         while (currentDate <= date2) {
             dateArray.push(currentDate.toISOString().split('T')[0]);
             currentDate.setDate(currentDate.getDate() + 1);
         }
         setTotalDay(dateArray);
-
     }
 
     const requestHandler = (e) => {
         e.preventDefault()
         slotDaysDifferentiator()
-        setTimeout(() => {
-            dataSubmit()
-        },500)
     }
 
     const dataSubmit = () => {
+        submitCount++
+
         let formData = new FormData()
 
         if (!cName) {
@@ -170,7 +163,9 @@ function Create(props) {
     }
 
     useEffect(() => {
-        console.log(eventDays)
+        if(eventDays.length > 0 && submitCount === 0) {
+            dataSubmit()
+        }
     }, [eventDays])
 
     return (<>
