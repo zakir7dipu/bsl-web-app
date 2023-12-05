@@ -3,16 +3,30 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Events\SessionHosts;
+use App\Models\Events\WorkshopDays;
+use App\Models\Events\WorkshopSessions;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WorkshopDaysController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['index']]);
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $workshopDays = WorkshopDays::with('workshopSeminar')->where('workshop_seminar_id', $id)->get();
+        try {
+            return response()->json($workshopDays);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), $th->getCode());
+        }
     }
 
     /**
@@ -28,7 +42,22 @@ class WorkshopDaysController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "workshop_seminar_id" => ["required"],
+            "title" => ["required", "string"],
+            "date" => ["required"],
+        ]);
+
+        DB::beginTransaction();
+        try {
+            $model = WorkshopDays::create($request->all());
+
+            DB::commit();
+            return response()->json($model);
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return response()->json($th->getMessage(), $th->getCode());
+        }
     }
 
     /**
@@ -36,7 +65,13 @@ class WorkshopDaysController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $course = WorkshopDays::where('id', $id)
+            ->first();
+        try {
+            return response()->json($course);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), $th->getCode());
+        }
     }
 
     /**
@@ -52,7 +87,25 @@ class WorkshopDaysController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            "workshop_seminar_id" => ["required"],
+            "title" => ["required", "string"],
+            "date" => ["required"],
+        ]);
+
+
+        $model = WorkshopDays::findOrFail($id);
+
+        DB::beginTransaction();
+        try {
+            $model->update($request->all());
+
+            DB::commit();
+            return response()->json($model);
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return response()->json($th->getMessage(), $th->getCode());
+        }
     }
 
     /**
@@ -60,6 +113,25 @@ class WorkshopDaysController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+        try {
+
+            $day = WorkshopDays::where('id', $id)->first();
+
+            SessionHosts::whereHas('workshopSession.workshopDay', function ($query) use ($id) {
+                return $query->where('id', $id);
+            })->delete();
+
+            WorkshopSessions::whereHas('workshopDay', function ($query) use ($id) {
+                return $query->where('id', $id);
+            })->delete();
+
+            $day->delete();
+
+            return response()->json($day);
+
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), $th->getCode());
+        }
     }
 }

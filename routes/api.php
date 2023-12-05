@@ -227,6 +227,7 @@ Route::controller(WorkshopController::class)->group(function () {
     Route::get('workshops', 'index');
     Route::post("workshops-store", "store");
     Route::get("workshops/{id}/show", "show");
+    Route::get("workshops/{id}/edit", "edit");
     Route::post("workshops/{id}/update", "update");
     Route::delete("workshops/{id}/destroy", "destroy");
 });

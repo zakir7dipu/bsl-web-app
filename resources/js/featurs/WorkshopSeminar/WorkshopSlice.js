@@ -52,6 +52,15 @@ export const showWorkshopSeminar = createAsyncThunk("workshopSeminar/showWorksho
     }
 })
 
+export const showWorkshopSeminarById = createAsyncThunk("workshopSeminar/showWorkshopSeminarById", async (id, {rejectWithValue}) => {
+    try {
+        const res = await apiAccess.get(`${initialData.apiUrl}/${id}/edit`);
+        return res.data
+    } catch (error) {
+        return rejectWithValue(error.response.data)
+    }
+})
+
 export const updateWorkshopSeminarData = createAsyncThunk("workshopSeminar/updateWorkshopSeminarData", async (data, {rejectWithValue}) => {
     try {
         const config = {
@@ -123,6 +132,19 @@ export const WorkshopSlice = createSlice({
             state.metaInfo = payload;
         },
         [showWorkshopSeminar.rejected]: (state, {payload}) => {
+            state.isLoading = false;
+            state.message = payload;
+        },
+
+        [showWorkshopSeminarById.pending]: (state) => {
+            state.isLoading = false
+            state.metaInfo = []
+        },
+        [showWorkshopSeminarById.fulfilled]: (state, {payload}) => {
+            state.isLoading = false;
+            state.metaInfo = payload;
+        },
+        [showWorkshopSeminarById.rejected]: (state, {payload}) => {
             state.isLoading = false;
             state.message = payload;
         },

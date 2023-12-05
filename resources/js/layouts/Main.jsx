@@ -50,6 +50,8 @@ import Hosts from "../backend/pages/Events/Hosts";
 import WorkshopSeminar from "../backend/pages/Events/WorkshopSeminar";
 import WorkshopCreate from "../backend/pages/Events/WorkshopSeminar/Create.jsx";
 import WorkshopEdit from "../backend/pages/Events/WorkshopSeminar/Edit.jsx";
+import WorkshopDays from "../backend/pages/Events/WorkshopSeminar/SessionsDay/Index.jsx";
+import WorkshopDaysSession from "../backend/pages/Events/WorkshopSeminar/SessionsDay/Sessions/Index.jsx";
 
 import {checkAccess, refreshLoginData} from "../featurs/AuthAction/AuthSlice.js";
 import {useDispatch, useSelector} from "react-redux";
@@ -162,6 +164,12 @@ function Main() {
                         <Route index element={<WorkshopSeminar/>}/>
                         <Route path="create" element={<WorkshopCreate/>}/>
                         <Route path=":slug/edit" element={<WorkshopEdit/>}/>
+                        <Route path="days/:id">
+                            <Route index element={<WorkshopDays/>}/>
+                            <Route path="sessions/:id">
+                                <Route index element={<WorkshopDaysSession/>}/>
+                            </Route>
+                        </Route>
                     </Route>
                 </Route>
                 {/*}*/}

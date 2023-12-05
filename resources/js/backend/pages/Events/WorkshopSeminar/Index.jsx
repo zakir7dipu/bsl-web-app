@@ -81,6 +81,13 @@ function Index(props) {
             sortable: false,
         },
         {
+            name: 'Days Add',
+            selector: row => (
+                <Link to={`days/${row?.id}`} className="btn btn-info btn-sm">Add Days</Link>
+            ),
+            sortable: false,
+        },
+        {
             name: 'Actions',
             selector: (row) => (
                 <RowDropDown>
