@@ -209,15 +209,14 @@ class WorkshopController extends Controller
         DB::beginTransaction();
         try {
 
-            $host = WorkshopSeminars::where('id', $id)->first();
-            if ($host->thumbnail) {
-                fileDelete($host->image_link);
-            }
+        $workshop = WorkshopSeminars::where('id', $id)->first();
+        if ($workshop->image_link) {
+            fileDelete($workshop->image_link);
+        }
 
-            $host->delete();
-
-            DB::commit();
-            return response()->json($host);
+        $workshop->delete();
+        DB::commit();
+        return response()->json($workshop);
         } catch (\Throwable $th) {
             DB::rollBack();
             return response()->json($th->getMessage(), $th->getCode());

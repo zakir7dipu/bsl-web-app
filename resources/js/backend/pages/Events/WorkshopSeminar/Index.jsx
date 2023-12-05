@@ -4,7 +4,7 @@ import BizAlert from "../../../../lib/BizAlert.js";
 import {ucFirst, useInternalLink} from "../../../../lib/helper.js";
 import RowDropDown from "../../../../ui/RowDropDown.jsx";
 import {Link} from "react-router-dom";
-import {fetchAllWorkshopSeminar} from "../../../../featurs/WorkshopSeminar/WorkshopSlice.js";
+import {deleteWorkshopSeminar, fetchAllWorkshopSeminar} from "../../../../featurs/WorkshopSeminar/WorkshopSlice.js";
 import HeaderMeta from "../../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
 import {GrFormAdd} from "react-icons/gr";
@@ -86,7 +86,7 @@ function Index(props) {
                 <RowDropDown>
                     <Link to="#" onClick={(e) => handleWorkshopShow(row?.slug)} className="dropdown-item">Show</Link>
                     <Link to={`${row?.slug}/edit`} className="dropdown-item">Edit</Link>
-                    <Link to="#" onClick={(e) => deleteWorkshopData(row?.slug)}
+                    <Link to="#" onClick={(e) => deleteWorkshopData(row?.id)}
                           className="dropdown-item">Delete</Link>
                 </RowDropDown>
             ),
@@ -102,8 +102,14 @@ function Index(props) {
 
     }
 
-    const deleteWorkshopData = async (slug) => {
-
+    const deleteWorkshopData = async (id) => {
+        let {isConfirmed} = await bizAlert.confirmAlert(`Are you sure?`, `Once you delete this you can't able to recover this data`);
+        if (isConfirmed) {
+            let data = {
+                id: id
+            }
+            dispatch(deleteWorkshopSeminar(data))
+        }
     }
 
     if (!isLoading) {
