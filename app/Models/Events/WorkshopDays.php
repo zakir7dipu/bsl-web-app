@@ -14,6 +14,7 @@ class WorkshopDays extends Model
     protected $fillable = [
         'workshop_seminar_id',
         'title',
+        'date'
     ];
 
     public function workshopSeminar()

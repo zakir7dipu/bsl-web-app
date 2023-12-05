@@ -26,6 +26,8 @@ import ScheduleFeature from "./featurs/Schedule/ScheduleSlice.js";
 import HostFeature from "./featurs/Hosts/HostSlice.js";
 import WorkshopFeature from "./featurs/WorkshopSeminar/WorkshopSlice.js";
 import SlotModalReducer from "./featurs/SlotModal/SlotModalSlice.js";
+import WorkshopDaysFeature from "./featurs/WorkshopDays/WorkshopDaysSlice.js"
+import WorkshopSessionsFeature from "./featurs/WorkshopSessions/WorkshopSessionsSlice.js"
 
 
 const store = configureStore({
@@ -57,6 +59,8 @@ const store = configureStore({
         scheduleReducer: ScheduleFeature,
         hostReducer: HostFeature,
         workshopSeminarReducer: WorkshopFeature,
+        workshopDaysReducer: WorkshopDaysFeature,
+        workshopSessionsReducer: WorkshopSessionsFeature,
     }
 })
 

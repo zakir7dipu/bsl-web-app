@@ -74,6 +74,7 @@ class WorkshopController extends Controller
                     $workshopDay = WorkshopDays::create([
                         'workshop_seminar_id' => $workshop->id,
                         'title' => $day->title,
+                        'date' => $day->date,
                     ]);
 
                     if (count($day->sessions) > 0) {
@@ -166,13 +167,13 @@ class WorkshopController extends Controller
             }
 
             $workshop->update($request->all());
-
             $days = json_decode($request->days, false);
             if (isset($days)) {
                 foreach ($days as $day) {
                     $workshopDay = WorkshopDays::create([
                         'workshop_seminar_id' => $workshop->id,
                         'title' => $day->title,
+                        'date' => $day->date,
                     ]);
 
                     if (count($day->sessions) > 0) {
@@ -209,14 +210,26 @@ class WorkshopController extends Controller
         DB::beginTransaction();
         try {
 
-        $workshop = WorkshopSeminars::where('id', $id)->first();
-        if ($workshop->image_link) {
-            fileDelete($workshop->image_link);
-        }
+            $workshop = WorkshopSeminars::where('id', $id)->first();
 
-        $workshop->delete();
-        DB::commit();
-        return response()->json($workshop);
+            SessionHosts::whereHas('workshopSession.workshopDay', function ($query) use ($id) {
+                return $query->where('workshop_seminar_id', $id);
+            })->delete();
+
+            WorkshopSessions::whereHas('workshopDay', function ($query) use ($id) {
+                return $query->where('workshop_seminar_id', $id);
+            })->delete();
+
+            WorkshopDays::where('workshop_seminar_id', $id)->delete();
+
+            if ($workshop->image_link) {
+                fileDelete($workshop->image_link);
+            }
+
+            $workshop->delete();
+
+            DB::commit();
+            return response()->json($workshop);
         } catch (\Throwable $th) {
             DB::rollBack();
             return response()->json($th->getMessage(), $th->getCode());

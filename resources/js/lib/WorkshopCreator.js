@@ -14,6 +14,7 @@ export const workshopDetails = {
 export const dayInfo = () => {
     return  {
         title: "",
+        date: "",
         sessions: []
     }
 }

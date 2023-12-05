@@ -21,6 +21,8 @@ use App\Http\Controllers\API\TeamsController;
 use App\Http\Controllers\API\TechnologyController;
 use App\Http\Controllers\API\TestimonialController;
 use App\Http\Controllers\API\WorkshopController;
+use App\Http\Controllers\API\WorkshopDaysController;
+use App\Http\Controllers\API\WorkshopSessionsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ScheduleController;
 use Illuminate\Support\Facades\Route;
@@ -36,13 +38,13 @@ Route::controller(AuthController::class)->group(function () {
     Route::post("edit-user", "editUser");
 });
 
-Route::controller(SettingsController::class)->group(function (){
-    Route::get('all-settings','settings')->name('all.settings');
-    Route::get('about-settings','aboutSetting');
+Route::controller(SettingsController::class)->group(function () {
+    Route::get('all-settings', 'settings')->name('all.settings');
+    Route::get('about-settings', 'aboutSetting');
     //Route::post('store-about-settings','storeAboutSettings');
-    Route::get('slider-settings','sliderSetting');
+    Route::get('slider-settings', 'sliderSetting');
     Route::post('store-settings', 'storeSettings');
-    Route::get('technology-settings','technologySetting');
+    Route::get('technology-settings', 'technologySetting');
     Route::get('industry-settings', 'industrySettings');
     Route::get('service-settings', 'serviceSettings');
     Route::get('case-study-settings', 'caseStudySettings');
@@ -180,7 +182,7 @@ Route::controller(TestimonialController::class)->group(function () {
     Route::get("testimonial/{slug}/show", "show");
     Route::post("testimonial/{id}/update", "update");
     Route::delete("testimonial/{id}/destroy", "destroy");
-	Route::post("testimonial-search", "search");
+    Route::post("testimonial-search", "search");
 });
 
 Route::controller(PagesController::class)->group(function () {
@@ -227,4 +229,20 @@ Route::controller(WorkshopController::class)->group(function () {
     Route::get("workshops/{id}/show", "show");
     Route::post("workshops/{id}/update", "update");
     Route::delete("workshops/{id}/destroy", "destroy");
+});
+
+Route::controller(WorkshopDaysController::class)->group(function () {
+    Route::get("days/{workshop?}", "index");
+    Route::post("days", "store");
+    Route::get("days/{id}/show", "show");
+    Route::post("days/{id}/update", "update");
+    Route::delete("days/{id}/destroy", "destroy");
+});
+
+Route::controller(WorkshopSessionsController::class)->group(function () {
+    Route::get("sessions/{day?}", "index");
+    Route::post("sessions", "store");
+    Route::get("sessions/{id}/show", "show");
+    Route::post("sessions/{id}/update", "update");
+    Route::delete("sessions/{id}/destroy", "destroy");
 });

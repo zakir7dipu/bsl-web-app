@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import HeaderMeta from "../../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
@@ -7,9 +7,7 @@ import {Col, Row} from "react-bootstrap";
 import FileInput from "../../../components/inputFile/Index.jsx";
 import {CKEditor} from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import Sessions from "./Sessions.jsx";
-import {infoMessage, uid, warningMessage} from "../../../../lib/helper.js";
-import SlotCreate from "./SlotCreateModal.jsx";
+import {infoMessage, warningMessage} from "../../../../lib/helper.js";
 import {useDispatch} from "react-redux";
 import {createWorkshopSeminarData} from "@/featurs/WorkshopSeminar/WorkshopSlice.js";
 
@@ -49,32 +47,33 @@ function Create(props) {
         setImageLink(file[0])
     }
 
-    const calculateDate = (endDate) => {
-
-        let date1 = new Date(formDate);
-        let date2 = new Date(endDate);
-
-        const dateArray = [];
-        let currentDate = new Date(date1);
-        while (currentDate <= date2) {
-            dateArray.push(currentDate.toISOString().split('T')[0]);
-            currentDate.setDate(currentDate.getDate() + 1);
-        }
-        setTotalDay(dateArray);
-    }
+    // const calculateDate = (endDate) => {
+    //
+    //     let date1 = new Date(formDate);
+    //     let date2 = new Date(endDate);
+    //
+    //     const dateArray = [];
+    //     let currentDate = new Date(date1);
+    //     while (currentDate <= date2) {
+    //         dateArray.push(currentDate.toISOString().split('T')[0]);
+    //         currentDate.setDate(currentDate.getDate() + 1);
+    //     }
+    //     setTotalDay(dateArray);
+    // }
 
     const requestHandler = (e) => {
         e.preventDefault()
-        slotDaysDifferentiator()
+        // slotDaysDifferentiator()
+        dataSubmit()
     }
 
     const dataSubmit = () => {
-        submitCount++
-        if(submitCount > 1){
-            resetHandler();
-            navGoBack();
-            return
-        }
+        // submitCount++
+        // if (submitCount > 1) {
+        //     resetHandler();
+        //     navGoBack();
+        //     return
+        // }
 
         let formData = new FormData()
 
@@ -147,31 +146,34 @@ function Create(props) {
         setEventDays([])
     }
 
-    const slotHandler = (data) => {
-        setSlots(slots => [...slots, data])
-    }
+    // const slotHandler = (data) => {
+    //     setSlots(slots => [...slots, data])
+    // }
 
-    const slotDeleteHandler = (data) => {
-        let newSlots = slots.filter(slot => slot.tempId !== data)
-        setSlots(newSlots)
-    }
+    // const slotDeleteHandler = (data) => {
+    //     let newSlots = slots.filter(slot => slot.tempId !== data)
+    //     setSlots(newSlots)
+    // }
 
-    const slotDaysDifferentiator = () => {
-        totalDays.map((dayItem, index) => {
-            let indexIdentifire = index + 1
-            let newDayItem = {
-                title: `Day #${indexIdentifire} (${dayItem})`,
-                sessions: slots.filter(slot => slot.index === indexIdentifire)
-            }
-            setEventDays(eventDays => [...eventDays, newDayItem])
-        })
-    }
+    // const slotDaysDifferentiator = () => {
+    //     totalDays.map((dayItem, index) => {
+    //         console.log(dayItem)
+    //         let indexIdentifire = index + 1
+    //         let newDayItem = {
+    //             title: `Day #${indexIdentifire} (${dayItem})`,
+    //             date: dayItem,
+    //             sessions: slots.filter(slot => slot.index === indexIdentifire)
+    //         }
+    //         setEventDays(eventDays => [...eventDays, newDayItem])
+    //     })
+    // }
 
-    useEffect(() => {
-        if(eventDays.length > 0 && submitCount === 0) {
-            dataSubmit()
-        }
-    }, [eventDays])
+    // useEffect(() => {
+    //     if(eventDays.length > 0 && submitCount === 0) {
+    //         dataSubmit()
+    //     }
+    //     console.log(eventDays)
+    // }, [eventDays])
 
     return (<>
         <HeaderMeta
@@ -309,23 +311,23 @@ function Create(props) {
                                         </div>
                                     </Col>
 
-                                    <Col lg={12}>
-                                        <div className="card">
-                                            <div className="card-body">
-                                                <h4 className="card-title">Workshop/Seminar Wise Sessions
-                                                    Details</h4>
-                                                <p className="text-muted"><code></code>
-                                                </p>
-                                                {Array.from(totalDays).map((day, index) => <Sessions
-                                                    index={index + 1}
-                                                    day={day}
-                                                    key={uid()}
-                                                    slotsInfo={slots}
-                                                    deleteHandler={slotDeleteHandler}
-                                                />)}
-                                            </div>
-                                        </div>
-                                    </Col>
+                                    {/*<Col lg={12}>*/}
+                                    {/*    <div className="card">*/}
+                                    {/*        <div className="card-body">*/}
+                                    {/*            <h4 className="card-title">Workshop/Seminar Wise Sessions*/}
+                                    {/*                Details</h4>*/}
+                                    {/*            <p className="text-muted"><code></code>*/}
+                                    {/*            </p>*/}
+                                    {/*            {Array.from(totalDays).map((day, index) => <Sessions*/}
+                                    {/*                index={index + 1}*/}
+                                    {/*                day={day}*/}
+                                    {/*                key={uid()}*/}
+                                    {/*                slotsInfo={slots}*/}
+                                    {/*                deleteHandler={slotDeleteHandler}*/}
+                                    {/*            />)}*/}
+                                    {/*        </div>*/}
+                                    {/*    </div>*/}
+                                    {/*</Col>*/}
 
                                     <div className="col-md-12 mt-3">
                                         <button className="btn btn-primary px-3 float-right" type={"submit"}>Save
@@ -339,9 +341,9 @@ function Create(props) {
             </div>
         </div>
 
-        <SlotCreate
-            slotHandler={slotHandler}
-        />
+        {/*<SlotCreate*/}
+        {/*    slotHandler={slotHandler}*/}
+        {/*/>*/}
 
     </>);
 }

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {infoMessage, uid, warningMessage} from "@/lib/helper.js";
+import {infoMessage, warningMessage} from "@/lib/helper.js";
 import {showWorkshopSeminar, updateWorkshopSeminarData} from "@/featurs/WorkshopSeminar/WorkshopSlice.js";
 import HeaderMeta from "@/ui/HeaderMeta.jsx";
 import Breadcrumb from "@/backend/components/Breadcrumb/Index.jsx";
@@ -10,8 +10,6 @@ import {MdStar} from "react-icons/md";
 import FileInput from "@/backend/components/inputFile/Index.jsx";
 import {CKEditor} from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import Sessions from "@/backend/pages/Events/WorkshopSeminar/Sessions.jsx";
-import SlotCreate from "@/backend/pages/Events/WorkshopSeminar/SlotCreateModal.jsx";
 import Preloader from "@/backend/components/Preloader/Index.jsx";
 
 function Edit() {
@@ -24,7 +22,7 @@ function Edit() {
         metaInfo
     } = useSelector((state) => state.workshopSeminarReducer);
 
-    console.log(metaInfo)
+    console.log(metaInfo?.workshop_days)
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const navGoBack = () => {
@@ -51,6 +49,7 @@ function Edit() {
     const [imageLink, setImageLink] = useState("");
     const [slots, setSlots] = useState([])
     const [eventDays, setEventDays] = useState([])
+    let submitCount = 0;
 
     const [selectedId, setSelectedId] = useState("");
     //calculations
@@ -60,30 +59,35 @@ function Edit() {
         setImageLink(file[0])
     }
 
-    const calculateDate = (endDate) => {
+    /* const calculateDate = (endDate) => {
 
-        let date1 = new Date(formDate);
-        let date2 = new Date(endDate);
-        // To calculate the time difference of two dates
-        // let Difference_In_Time = date2.getTime() - date1.getTime();
-        // To calculate the no. of days between two dates
-        // let Difference_In_Days = (Difference_In_Time / (1000 * 3600 * 24)) + 1;
-        // setTotalDay(Difference_In_Days)
+         let date1 = new Date(formDate);
+         let date2 = new Date(endDate);
 
-        const dateArray = [];
-        // Generate dates in the range and push them to the array
-        let currentDate = new Date(date1);
-        while (currentDate <= date2) {
-            dateArray.push(currentDate.toISOString().split('T')[0]);
-            currentDate.setDate(currentDate.getDate() + 1);
-        }
-        setTotalDay(dateArray);
-
-    }
+         const dateArray = [];
+         let currentDate = new Date(date1);
+         while (currentDate <= date2) {
+             dateArray.push(currentDate.toISOString().split('T')[0]);
+             currentDate.setDate(currentDate.getDate() + 1);
+         }
+         setTotalDay(dateArray);
+     }*/
 
     const requestHandler = (e) => {
         e.preventDefault()
-        slotDaysDifferentiator()
+        //slotDaysDifferentiator()
+
+        dataSubmit()
+    }
+
+    const dataSubmit = () => {
+        // submitCount++
+        // if (submitCount > 1) {
+        //     resetHandler();
+        //     navGoBack();
+        //     return
+        // }
+
         let formData = new FormData()
 
         if (!cName) {
@@ -136,7 +140,6 @@ function Edit() {
 
         if (cName && formDate && toDate && type && price && description && eventDays) {
             infoMessage("Please wait a while, We are processing your request.");
-
             let data = {
                 dataset: formData,
                 id: selectedId
@@ -161,29 +164,31 @@ function Edit() {
         setEventDays([])
     }
 
-    const slotHandler = (data) => {
-        setSlots(slots => [...slots, data])
-    }
+    // const slotHandler = (data) => {
+    //     setSlots(slots => [...slots, data])
+    // }
 
-    const slotDeleteHandler = (data) => {
-        let newSlots = slots.filter(slot => slot.tempId !== data)
-        setSlots(newSlots)
-    }
+    // const slotDeleteHandler = (data) => {
+    //     let newSlots = slots.filter(slot => slot.tempId !== data)
+    //     setSlots(newSlots)
+    // }
 
-    const slotDaysDifferentiator = () => {
-        totalDays.map((dayItem, index) => {
-            let indexIdentifier = index + 1
-            let newDayItem = {
-                title: `Day #${indexIdentifier} (${dayItem})`,
-                sessions: slots.filter(slot => slot.index === indexIdentifier)
-            }
-            setEventDays(eventDays => [...eventDays, newDayItem])
-        })
-    }
-
-    useEffect(() => {
-        console.log(eventDays)
-    }, [eventDays])
+    // const slotDaysDifferentiator = () => {
+    //     totalDays.map((dayItem, index) => {
+    //         let indexIdentifire = index + 1
+    //         let newDayItem = {
+    //             title: `Day #${indexIdentifire} (${dayItem})`,
+    //             sessions: slots.filter(slot => slot.index === indexIdentifire)
+    //         }
+    //         setEventDays(eventDays => [...eventDays, newDayItem])
+    //     })
+    // }
+    //
+    // useEffect(() => {
+    //     if(eventDays.length > 0 && submitCount === 0) {
+    //         dataSubmit()
+    //     }
+    // }, [eventDays])
 
     useEffect(() => {
         setSelectedId(metaInfo?.id || '')
@@ -199,6 +204,10 @@ function Edit() {
         setEventDays([])
 
     }, [dispatch, metaInfo])
+
+    // useEffect(()=>{
+    //     calculateDate(toDate)
+    // },[toDate])
 
     useEffect(() => {
         dispatch(showWorkshopSeminar(slug));
@@ -342,23 +351,32 @@ function Edit() {
                                                 </div>
                                             </Col>
 
-                                            <Col lg={12}>
-                                                <div className="card">
-                                                    <div className="card-body">
-                                                        <h4 className="card-title">Workshop/Seminar Wise Sessions
-                                                            Details</h4>
-                                                        <p className="text-muted"><code></code>
-                                                        </p>
-                                                        {Array.from(totalDays).map((day, index) => <Sessions
-                                                            index={index + 1}
-                                                            day={day}
-                                                            key={uid()}
-                                                            slotsInfo={slots}
-                                                            deleteHandler={slotDeleteHandler}
-                                                        />)}
-                                                    </div>
-                                                </div>
-                                            </Col>
+                                            {/*<Col lg={12}>*/}
+                                            {/*    <div className="card">*/}
+                                            {/*        <div className="card-body">*/}
+                                            {/*            <h4 className="card-title">Workshop/Seminar Wise Sessions*/}
+                                            {/*                Details</h4>*/}
+                                            {/*            <p className="text-muted"><code></code>*/}
+                                            {/*            </p>*/}
+                                            {/*            {*/}
+                                            {/*                metaInfo?.workshop_days &&  metaInfo?.workshop_days.map((day, index) => <SessionsEdit*/}
+                                            {/*                    index={index + 1}*/}
+                                            {/*                    day={day}*/}
+                                            {/*                    key={uid()}*/}
+                                            {/*                    slotsInfo={day?.workshop_sessions}*/}
+                                            {/*                    deleteHandler={slotDeleteHandler}*/}
+                                            {/*                />)*/}
+                                            {/*            }*/}
+                                            {/*            {Array.from(totalDays).map((day, index) => <Sessions*/}
+                                            {/*                index={index + 1}*/}
+                                            {/*                day={day}*/}
+                                            {/*                key={uid()}*/}
+                                            {/*                slotsInfo={slots}*/}
+                                            {/*                deleteHandler={slotDeleteHandler}*/}
+                                            {/*            />)}*/}
+                                            {/*        </div>*/}
+                                            {/*    </div>*/}
+                                            {/*</Col>*/}
 
                                             <div className="col-md-12 mt-3">
                                                 <button className="btn btn-primary px-3 float-right"
@@ -372,10 +390,9 @@ function Edit() {
                         </div>
                     </div>
                 </div>
-
-                <SlotCreate
-                    slotHandler={slotHandler}
-                />
+                {/*<SlotCreate*/}
+                {/*    slotHandler={slotHandler}*/}
+                {/*/>*/}
             </>
         );
     } else {
