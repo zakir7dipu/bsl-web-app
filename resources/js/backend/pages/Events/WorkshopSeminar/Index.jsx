@@ -1,3 +1,4 @@
+import Style from "@/frontend/components/VideoModule/VideoModule.module.css";
 import BizModal from "@/ui/BizzModal.jsx";
 import React, {useEffect, useState} from 'react';
 import {GrFormAdd} from "react-icons/gr";
@@ -197,6 +198,22 @@ function Index(props) {
                                 <td>{metaInfo?.price || ''} BDT</td>
                             </tr>
                             <tr>
+                                <td>Location</td>
+                                <td>{metaInfo?.location}</td>
+                            </tr>
+                            <tr>
+                                <td>Subtext</td>
+                                <td>{metaInfo?.subtext}</td>
+                            </tr>
+                            <tr>
+                                <td>Promo Video</td>
+                                <td>{metaInfo?.promo_video !== "" ?
+                                    <iframe className={Style.videoFrame} src={`https://www.youtube.com/embed/${metaInfo?.promo_video}?autoplay=1`}
+                                            title="YouTube video player" frameBorder="0"
+                                            allow="accelerometer; encrypted-media"></iframe>
+                                    : ""}</td>
+                            </tr>
+                            <tr>
                                 <td>Objective</td>
                                 <td><p dangerouslySetInnerHTML={{__html: metaInfo?.objective}}></p></td>
                             </tr>
@@ -211,51 +228,55 @@ function Index(props) {
                             </tr>
                             </tbody>
                         </table>
-                           <div className="card">
-                                <div className="card-body">
-                                    <h4 className="card-title">Workshop/Seminar Wise Sessions
-                                        Details</h4>
-                                    <p className="text-muted"><code></code>
-                                    </p>
-                                    {metaInfo?.workshop_days && metaInfo?.workshop_days.map((day, index) =>  <div id={`accordion-${index}`} className="accordion">
-                                        <div className="card">
-                                            <div className="card-header">
-                                                <h5 className="mb-0" data-toggle="collapse" data-target={`#collapse${day?.id}`}
-                                                    aria-expanded="true" aria-controls={`collapse${day?.id}`}>
-                                                    <i className="fa" aria-hidden="true"></i> {day?.title}
-                                                </h5>
-                                            </div>
-                                            <div id={`collapse${day?.id}`} className="collapse show" data-parent={`#accordion-${day?.id}`}>
-                                                <div className="card-body">
-                                                    <table className="table table-responsive table-bordered" width="100%">
-                                                        <thead>
-                                                        <tr>
-                                                            <th style={{width:"25%"}}>Title</th>
-                                                            <th style={{width:"15%"}}>Host</th>
-                                                            <th style={{width:"10%"}}>Start At</th>
-                                                            <th style={{width:"10%"}}>End At</th>
-                                                            <th style={{width:"30%"}}>Topics</th>
+                        <div className="card">
+                            <div className="card-body">
+                                <h4 className="card-title">Workshop/Seminar Wise Sessions
+                                    Details</h4>
+                                <p className="text-muted"><code></code>
+                                </p>
+                                {metaInfo?.workshop_days && metaInfo?.workshop_days.map((day, index) => <div
+                                    id={`accordion-${index}`} className="accordion">
+                                    <div className="card">
+                                        <div className="card-header">
+                                            <h5 className="mb-0" data-toggle="collapse"
+                                                data-target={`#collapse${day?.id}`}
+                                                aria-expanded="true" aria-controls={`collapse${day?.id}`}>
+                                                <i className="fa" aria-hidden="true"></i> {day?.title}
+                                            </h5>
+                                        </div>
+                                        <div id={`collapse${day?.id}`} className="collapse show"
+                                             data-parent={`#accordion-${day?.id}`}>
+                                            <div className="card-body">
+                                                <table className="table table-responsive table-bordered" width="100%">
+                                                    <thead>
+                                                    <tr>
+                                                        <th style={{width: "25%"}}>Title</th>
+                                                        <th style={{width: "15%"}}>Host</th>
+                                                        <th style={{width: "10%"}}>Start At</th>
+                                                        <th style={{width: "10%"}}>End At</th>
+                                                        <th style={{width: "30%"}}>Topics</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {day?.workshop_sessions && day?.workshop_sessions.map(slot => {
+                                                        return <tr key={uid()}>
+                                                            <td>{slot?.title}</td>
+                                                            <td>{slot?.session_hosts?.host?.name}</td>
+                                                            <td>{toStringTime(slot?.from)}</td>
+                                                            <td>{toStringTime(slot?.to)}</td>
+                                                            <td><p dangerouslySetInnerHTML={{__html: slot?.topics}}></p>
+                                                            </td>
                                                         </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        { day?.workshop_sessions && day?.workshop_sessions.map(slot => {
-                                                            return <tr key={uid()}>
-                                                                <td>{slot?.title}</td>
-                                                                <td>{slot?.session_hosts?.host?.name}</td>
-                                                                <td>{toStringTime(slot?.from)}</td>
-                                                                <td>{toStringTime(slot?.to)}</td>
-                                                                <td><p dangerouslySetInnerHTML={{__html: slot?.topics}}></p></td>
-                                                            </tr>
-                                                        })}
-                                                        </tbody>
-                                                    </table>
+                                                    })}
+                                                    </tbody>
+                                                </table>
 
-                                                </div>
                                             </div>
                                         </div>
-                                    </div>)}
-                                </div>
+                                    </div>
+                                </div>)}
                             </div>
+                        </div>
                     </div>
                 </BizModal>
             </>
