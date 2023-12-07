@@ -1,10 +1,9 @@
 import React, {createRef, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Link, NavLink, useLocation} from "react-router-dom";
-import {uid, useInternalLink} from "../../../lib/helper.js";
 import {humburgerNavAction} from "../../../featurs/NavAction/NavSlice.js";
 import {fetchParentServices} from "../../../featurs/Service/ServiceSlice.js";
-import Skeletons from "../Skeletons/index.jsx";
+import {uid, useInternalLink} from "../../../lib/helper.js";
 import ImgSkel from "../Skeletons/ImgSkel.jsx";
 
 function Top({loading, general}) {
@@ -120,6 +119,7 @@ function Top({loading, general}) {
                                                                 to={`service/${item?.slug}/details`}>{item?.title}</NavLink>
                                                         </li>
                                                     )}
+                                                    <li><NavLink to="/events">Events</NavLink></li>
                                                 </ul>
                                                 <span className="rs-menu-parent" onClick={handelMobileSubMenuService}>
                                                     <i className="fa fa-angle-down" aria-hidden="true"></i>

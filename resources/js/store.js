@@ -1,33 +1,35 @@
 import {configureStore} from "@reduxjs/toolkit";
-import MenuActionReducer from "./featurs/MenuAction/MenuSlice.js";
-import AuthReducer from "./featurs/AuthAction/AuthSlice.js";
-import SettingReducer from "./featurs/Settings/SettingsSlice.js";
-import SeoFeatures from "./featurs/SEOSlice/SEOSlice.js";
-import TestFeatures from "./featurs/TestFeatures/TestFeatures.js";
-import TechnologyFeature from "./featurs/Technology/TechnologySlice.js";
-import IndustriesFeature from "./featurs/Industries/IndustriesSlice.js";
-import NavReducer from "./featurs/NavAction/NavSlice.js";
 import AboutsFeature from "./featurs/AboutUs/AboutUsSlice.js";
-import ManagementFeature from "./featurs/Management/ManagementSlice.js";
-import TeamsFeature from "./featurs/Teams/TeamSlice.js";
-import ClientFeature from "./featurs/Clients/ClientSlice.js";
-import PartnerFeature from "./featurs/Partner/PartnerSlice.js";
-import ServiceFeature from "./featurs/Service/ServiceSlice.js";
-import ProductFeature from "./featurs/Product/ProductSlice.js";
-import CoursesFeature from "./featurs/Courses/CourseSlice.js";
-import CurricularFeature from "./featurs/Curricular/CurricularSlice.js";
+import AuthReducer from "./featurs/AuthAction/AuthSlice.js";
 import BlogsFeature from "./featurs/Blogs/BlogSlice.js";
 import CaseStudyFeature from "./featurs/CaseStudy/CaseStudySlice.js";
-import PagesFeature from "./featurs/Pages/PageSlice.js";
-import TestimonialFeature from "./featurs/Testimonial/TestimonialSlice.js";
-import MessageFeature from "./featurs/Messages/MessagesSlice.js";
-import SubscriberFeature from "./featurs/Subscribers/SubscribersSlice.js";
-import ScheduleFeature from "./featurs/Schedule/ScheduleSlice.js";
+import ClientFeature from "./featurs/Clients/ClientSlice.js";
+import CoursesFeature from "./featurs/Courses/CourseSlice.js";
+import CurricularFeature from "./featurs/Curricular/CurricularSlice.js";
 import HostFeature from "./featurs/Hosts/HostSlice.js";
-import WorkshopFeature from "./featurs/WorkshopSeminar/WorkshopSlice.js";
+import IndustriesFeature from "./featurs/Industries/IndustriesSlice.js";
+import ManagementFeature from "./featurs/Management/ManagementSlice.js";
+import MenuActionReducer from "./featurs/MenuAction/MenuSlice.js";
+import MessageFeature from "./featurs/Messages/MessagesSlice.js";
+import NavReducer from "./featurs/NavAction/NavSlice.js";
+import PagesFeature from "./featurs/Pages/PageSlice.js";
+import PartnerFeature from "./featurs/Partner/PartnerSlice.js";
+import ProductFeature from "./featurs/Product/ProductSlice.js";
+import ScheduleFeature from "./featurs/Schedule/ScheduleSlice.js";
+import SeoFeatures from "./featurs/SEOSlice/SEOSlice.js";
+import ServiceFeature from "./featurs/Service/ServiceSlice.js";
+import SettingReducer from "./featurs/Settings/SettingsSlice.js";
 import SlotModalReducer from "./featurs/SlotModal/SlotModalSlice.js";
+import SubscriberFeature from "./featurs/Subscribers/SubscribersSlice.js";
+import TeamsFeature from "./featurs/Teams/TeamSlice.js";
+import TechnologyFeature from "./featurs/Technology/TechnologySlice.js";
+import TestFeatures from "./featurs/TestFeatures/TestFeatures.js";
+import TestimonialFeature from "./featurs/Testimonial/TestimonialSlice.js";
 import WorkshopDaysFeature from "./featurs/WorkshopDays/WorkshopDaysSlice.js"
+import WorkshopOrganizerFeature from "./featurs/WorkshopOrganizer/OrganizerSlice.js"
+import WorkshopFeature from "./featurs/WorkshopSeminar/WorkshopSlice.js";
 import WorkshopSessionsFeature from "./featurs/WorkshopSessions/WorkshopSessionsSlice.js"
+import WorkshopSponsorFeature from "./featurs/WorkshopSponsors/WorkshopSponsorSlice.js"
 
 
 const store = configureStore({
@@ -61,6 +63,8 @@ const store = configureStore({
         workshopSeminarReducer: WorkshopFeature,
         workshopDaysReducer: WorkshopDaysFeature,
         workshopSessionsReducer: WorkshopSessionsFeature,
+        WorkshopOrganizerReducer: WorkshopOrganizerFeature,
+        WorkshopSponsorReducer: WorkshopSponsorFeature,
     }
 })
 

@@ -1,14 +1,19 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import BizAlert from "../../../../lib/BizAlert.js";
-import {ucFirst, useInternalLink} from "../../../../lib/helper.js";
-import RowDropDown from "../../../../ui/RowDropDown.jsx";
-import {Link} from "react-router-dom";
-import {deleteWorkshopSeminar, fetchAllWorkshopSeminar} from "../../../../featurs/WorkshopSeminar/WorkshopSlice.js";
-import HeaderMeta from "../../../../ui/HeaderMeta.jsx";
-import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
+import BizModal from "@/ui/BizzModal.jsx";
+import React, {useEffect, useState} from 'react';
 import {GrFormAdd} from "react-icons/gr";
+import {useDispatch, useSelector} from "react-redux";
+import {Link} from "react-router-dom";
+import {
+    deleteWorkshopSeminar,
+    fetchAllWorkshopSeminar,
+    showWorkshopSeminar
+} from "../../../../featurs/WorkshopSeminar/WorkshopSlice.js";
+import BizAlert from "../../../../lib/BizAlert.js";
+import {toStringTime, ucFirst, uid, useInternalLink} from "../../../../lib/helper.js";
+import HeaderMeta from "../../../../ui/HeaderMeta.jsx";
+import RowDropDown from "../../../../ui/RowDropDown.jsx";
 import VirtualDataTable from "../../../../ui/VertualDataTable/index.jsx";
+import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
 import Preloader from "../../../components/Preloader/Index.jsx";
 
 function Index(props) {
@@ -16,9 +21,12 @@ function Index(props) {
     const {
         isLoading,
         workshops,
-        errorMess
+        errorMess,
+        metaInfo
     } = useSelector((state) => state.workshopSeminarReducer);
     const dispatch = useDispatch();
+
+    console.log(metaInfo)
 
     const bizAlert = new BizAlert();
     const breadcrumb = [
@@ -81,9 +89,9 @@ function Index(props) {
             sortable: false,
         },
         {
-            name: 'Days Add',
+            name: 'Config',
             selector: row => (
-                <Link to={`days/${row?.id}`} className="btn btn-info btn-sm">Add Days</Link>
+                <Link to={`config/${row?.id}`} className="btn btn-info btn-sm">Config</Link>
             ),
             sortable: false,
         },
@@ -105,8 +113,14 @@ function Index(props) {
         dispatch(fetchAllWorkshopSeminar());
     }, [dispatch]);
 
-    const handleWorkshopShow = (slug) => {
+    const [isShow, setIsShow] = useState(false);
+    const handleModalClose = () => {
+        setIsShow(!isShow);
 
+    }
+    const handleWorkshopShow = (slug) => {
+        dispatch(showWorkshopSeminar(slug))
+        setIsShow(!isShow);
     }
 
     const deleteWorkshopData = async (id) => {
@@ -151,6 +165,99 @@ function Index(props) {
                         </div>
                     </div>
                 </div>
+
+                <BizModal isShow={isShow} title={`Show ${metaInfo?.name}`} handleClose={handleModalClose} large={'xl'}>
+                    <div className="card-body">
+                        <table className="table table-responsive table-bordered table">
+                            <thead>
+                            <tr>
+                                <th width={`20%`}>Title</th>
+                                <th width={`80%`}>Description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Workshop/Seminar Name</td>
+                                <td>{metaInfo?.name || ''}</td>
+                            </tr>
+                            <tr>
+                                <td>Date</td>
+                                <td>{metaInfo?.form_date || ''} - {metaInfo?.to_date || ''}</td>
+                            </tr>
+                            <tr>
+                                <td>Type</td>
+                                <td>{metaInfo?.type || ''}</td>
+                            </tr>
+                            <tr>
+                                <td>Sponsors</td>
+                                <td>{metaInfo?.sponsors || ''}</td>
+                            </tr>
+                            <tr>
+                                <td>Registration Amount</td>
+                                <td>{metaInfo?.price || ''} BDT</td>
+                            </tr>
+                            <tr>
+                                <td>Objective</td>
+                                <td><p dangerouslySetInnerHTML={{__html: metaInfo?.objective}}></p></td>
+                            </tr>
+                            <tr>
+                                <td>Description</td>
+                                <td><p dangerouslySetInnerHTML={{__html: metaInfo?.description}}></p></td>
+                            </tr>
+                            <tr>
+                                <td>Thumbnail</td>
+                                <td><img style={{height: "300px", width: "100%"}}
+                                         src={useInternalLink(metaInfo?.image_link)}/></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                           <div className="card">
+                                <div className="card-body">
+                                    <h4 className="card-title">Workshop/Seminar Wise Sessions
+                                        Details</h4>
+                                    <p className="text-muted"><code></code>
+                                    </p>
+                                    {metaInfo?.workshop_days && metaInfo?.workshop_days.map((day, index) =>  <div id={`accordion-${index}`} className="accordion">
+                                        <div className="card">
+                                            <div className="card-header">
+                                                <h5 className="mb-0" data-toggle="collapse" data-target={`#collapse${day?.id}`}
+                                                    aria-expanded="true" aria-controls={`collapse${day?.id}`}>
+                                                    <i className="fa" aria-hidden="true"></i> {day?.title}
+                                                </h5>
+                                            </div>
+                                            <div id={`collapse${day?.id}`} className="collapse show" data-parent={`#accordion-${day?.id}`}>
+                                                <div className="card-body">
+                                                    <table className="table table-responsive table-bordered" width="100%">
+                                                        <thead>
+                                                        <tr>
+                                                            <th style={{width:"25%"}}>Title</th>
+                                                            <th style={{width:"15%"}}>Host</th>
+                                                            <th style={{width:"10%"}}>Start At</th>
+                                                            <th style={{width:"10%"}}>End At</th>
+                                                            <th style={{width:"30%"}}>Topics</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        { day?.workshop_sessions && day?.workshop_sessions.map(slot => {
+                                                            return <tr key={uid()}>
+                                                                <td>{slot?.title}</td>
+                                                                <td>{slot?.session_hosts?.host?.name}</td>
+                                                                <td>{toStringTime(slot?.from)}</td>
+                                                                <td>{toStringTime(slot?.to)}</td>
+                                                                <td><p dangerouslySetInnerHTML={{__html: slot?.topics}}></p></td>
+                                                            </tr>
+                                                        })}
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>)}
+                                </div>
+                            </div>
+                    </div>
+                </BizModal>
             </>
         );
     } else {

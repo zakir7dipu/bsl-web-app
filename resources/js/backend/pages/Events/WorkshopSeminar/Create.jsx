@@ -1,15 +1,15 @@
+import {createWorkshopSeminarData} from "@/featurs/WorkshopSeminar/WorkshopSlice.js";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import {CKEditor} from "@ckeditor/ckeditor5-react";
 import React, {useState} from 'react';
+import {Col, Row} from "react-bootstrap";
+import {MdStar} from "react-icons/md";
+import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
+import {infoMessage, warningMessage} from "../../../../lib/helper.js";
 import HeaderMeta from "../../../../ui/HeaderMeta.jsx";
 import Breadcrumb from "../../../components/Breadcrumb/Index.jsx";
-import {MdStar} from "react-icons/md";
-import {Col, Row} from "react-bootstrap";
 import FileInput from "../../../components/inputFile/Index.jsx";
-import {CKEditor} from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import {infoMessage, warningMessage} from "../../../../lib/helper.js";
-import {useDispatch} from "react-redux";
-import {createWorkshopSeminarData} from "@/featurs/WorkshopSeminar/WorkshopSlice.js";
 
 function Create(props) {
 
@@ -35,31 +35,19 @@ function Create(props) {
     const [sponsors, setSponsor] = useState("");
     const [objective, setObjective] = useState("");
     const [description, setDescription] = useState("");
+    const [location, setLocation] = useState("");
+    const [subtext, setSubtext] = useState("");
+    const [promo_video, setPromo] = useState("");
+
+
     const [imageLink, setImageLink] = useState("");
     const [slots, setSlots] = useState([])
     const [eventDays, setEventDays] = useState([])
-    let submitCount = 0;
-
-    //calculations
-    const [totalDays, setTotalDay] = useState([]);
 
     const inputFileHandler = (file) => {
         setImageLink(file[0])
     }
 
-    // const calculateDate = (endDate) => {
-    //
-    //     let date1 = new Date(formDate);
-    //     let date2 = new Date(endDate);
-    //
-    //     const dateArray = [];
-    //     let currentDate = new Date(date1);
-    //     while (currentDate <= date2) {
-    //         dateArray.push(currentDate.toISOString().split('T')[0]);
-    //         currentDate.setDate(currentDate.getDate() + 1);
-    //     }
-    //     setTotalDay(dateArray);
-    // }
 
     const requestHandler = (e) => {
         e.preventDefault()
@@ -68,12 +56,6 @@ function Create(props) {
     }
 
     const dataSubmit = () => {
-        // submitCount++
-        // if (submitCount > 1) {
-        //     resetHandler();
-        //     navGoBack();
-        //     return
-        // }
 
         let formData = new FormData()
 
@@ -116,6 +98,19 @@ function Create(props) {
             formData.append("description", description)
         }
 
+        if (!location) {
+            warningMessage("Location is required.")
+        } else {
+            formData.append("location", location)
+        }
+
+        if (subtext) {
+            formData.append("subtext", subtext)
+        }
+        if (promo_video) {
+            formData.append("promo_video", promo_video)
+        }
+
         if (imageLink) {
             formData.append("image_link", imageLink)
         }
@@ -142,38 +137,11 @@ function Create(props) {
         setSponsor("")
         setObjective("")
         setDescription("")
+        setLocation("")
+        setSubtext("")
+        setPromo("")
         setImageLink("")
-        setEventDays([])
     }
-
-    // const slotHandler = (data) => {
-    //     setSlots(slots => [...slots, data])
-    // }
-
-    // const slotDeleteHandler = (data) => {
-    //     let newSlots = slots.filter(slot => slot.tempId !== data)
-    //     setSlots(newSlots)
-    // }
-
-    // const slotDaysDifferentiator = () => {
-    //     totalDays.map((dayItem, index) => {
-    //         console.log(dayItem)
-    //         let indexIdentifire = index + 1
-    //         let newDayItem = {
-    //             title: `Day #${indexIdentifire} (${dayItem})`,
-    //             date: dayItem,
-    //             sessions: slots.filter(slot => slot.index === indexIdentifire)
-    //         }
-    //         setEventDays(eventDays => [...eventDays, newDayItem])
-    //     })
-    // }
-
-    // useEffect(() => {
-    //     if(eventDays.length > 0 && submitCount === 0) {
-    //         dataSubmit()
-    //     }
-    //     console.log(eventDays)
-    // }, [eventDays])
 
     return (<>
         <HeaderMeta
@@ -276,6 +244,40 @@ function Create(props) {
                                         </div>
                                     </Col>
 
+                                    <Col lg={4}>
+                                        <div className="form-group">
+                                            <label htmlFor="location">Location</label>
+                                            <input type="text" id="location" placeholder="Enter Location Name"
+                                                   className="form-control"
+                                                   value={location}
+                                                   onChange={(e) => {
+                                                       setLocation(e.target.value)
+                                                   }}/>
+                                        </div>
+                                    </Col>
+                                    <Col lg={4}>
+                                        <div className="form-group">
+                                            <label htmlFor="location">Subtext</label>
+                                            <input type="text" id="location" placeholder="Enter Subtext"
+                                                   className="form-control"
+                                                   value={subtext}
+                                                   onChange={(e) => {
+                                                       setSubtext(e.target.value)
+                                                   }}/>
+                                        </div>
+                                    </Col>
+                                    <Col lg={4}>
+                                        <div className="form-group">
+                                            <label htmlFor="location">Promo Video (Youtube video code)</label>
+                                            <input type="text" id="location" placeholder="Ex: 3ee35derwer34"
+                                                   className="form-control"
+                                                   value={promo_video}
+                                                   onChange={(e) => {
+                                                       setPromo(e.target.value)
+                                                   }}/>
+                                        </div>
+                                    </Col>
+
                                     <Col lg={12}>
                                         <div className="form-group">
                                             <label htmlFor="description">Object <sup
@@ -311,24 +313,6 @@ function Create(props) {
                                         </div>
                                     </Col>
 
-                                    {/*<Col lg={12}>*/}
-                                    {/*    <div className="card">*/}
-                                    {/*        <div className="card-body">*/}
-                                    {/*            <h4 className="card-title">Workshop/Seminar Wise Sessions*/}
-                                    {/*                Details</h4>*/}
-                                    {/*            <p className="text-muted"><code></code>*/}
-                                    {/*            </p>*/}
-                                    {/*            {Array.from(totalDays).map((day, index) => <Sessions*/}
-                                    {/*                index={index + 1}*/}
-                                    {/*                day={day}*/}
-                                    {/*                key={uid()}*/}
-                                    {/*                slotsInfo={slots}*/}
-                                    {/*                deleteHandler={slotDeleteHandler}*/}
-                                    {/*            />)}*/}
-                                    {/*        </div>*/}
-                                    {/*    </div>*/}
-                                    {/*</Col>*/}
-
                                     <div className="col-md-12 mt-3">
                                         <button className="btn btn-primary px-3 float-right" type={"submit"}>Save
                                         </button>
@@ -340,11 +324,6 @@ function Create(props) {
                 </div>
             </div>
         </div>
-
-        {/*<SlotCreate*/}
-        {/*    slotHandler={slotHandler}*/}
-        {/*/>*/}
-
     </>);
 }
 

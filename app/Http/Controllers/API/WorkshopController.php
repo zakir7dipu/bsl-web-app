@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Events\SessionHosts;
 use App\Models\Events\WorkshopDays;
+use App\Models\Events\WorkshopOrganizer;
+use App\Models\Events\WorkshopPartner;
 use App\Models\Events\WorkshopSeminars;
 use App\Models\Events\WorkshopSessions;
 use Illuminate\Http\Request;
@@ -21,7 +23,9 @@ class WorkshopController extends Controller
     {
         try {
 
-            $workshops = WorkshopSeminars::with(['workshopDays.workshopSessions.sessionHosts.host'])->orderBy('id', 'asc')->get();
+            $workshops = WorkshopSeminars::with(['workshopDays.workshopSessions.sessionHosts.host'])
+                ->orderBy('id', 'desc')
+                ->get();
 
             return response()->json($workshops);
 
@@ -49,7 +53,6 @@ class WorkshopController extends Controller
             "to_date" => ["required", "max:32"],
             "type" => ["required"],
             "description" => ["required"],
-            "days" => ["required"],
             'image_link' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']
         ]);
 
@@ -67,34 +70,6 @@ class WorkshopController extends Controller
             }
 
             $workshop = WorkshopSeminars::create($input);
-
-            $days = json_decode($request->days, false);
-            if (isset($days)) {
-                foreach ($days as $day) {
-                    $workshopDay = WorkshopDays::create([
-                        'workshop_seminar_id' => $workshop->id,
-                        'title' => $day->title,
-                        'date' => $day->date,
-                    ]);
-
-                    if (count($day->sessions) > 0) {
-                        foreach ($day->sessions as $session) {
-                            $daySession = WorkshopSessions::create([
-                                'workshop_day_id' => $workshopDay->id,
-                                'title' => $session->title,
-                                'from' => $session->from,
-                                'to' => $session->to,
-                                'topics' => $session->topics
-                            ]);
-                            SessionHosts::create([
-                                'workshop_session_id' => $daySession->id,
-                                'host_id' => $session->mentors
-                            ]);
-                        }
-                    }
-                }
-            }
-
             DB::commit();
             return response()->json($workshop);
         } catch (\Throwable $th) {
@@ -144,7 +119,6 @@ class WorkshopController extends Controller
             "to_date" => ["required", "max:32"],
             "type" => ["required"],
             "description" => ["required"],
-            "days" => ["required"],
         ]);
 
         if ($request->hasFile('image_link')) {
@@ -167,33 +141,6 @@ class WorkshopController extends Controller
             }
 
             $workshop->update($request->all());
-            $days = json_decode($request->days, false);
-            if (isset($days)) {
-                foreach ($days as $day) {
-                    $workshopDay = WorkshopDays::create([
-                        'workshop_seminar_id' => $workshop->id,
-                        'title' => $day->title,
-                        'date' => $day->date,
-                    ]);
-
-                    if (count($day->sessions) > 0) {
-                        foreach ($day->sessions as $session) {
-                            $daySession = WorkshopSessions::create([
-                                'workshop_day_id' => $workshopDay->id,
-                                'title' => $session->title,
-                                'from' => $session->from,
-                                'to' => $session->to,
-                                'topics' => $session->topics
-                            ]);
-                            SessionHosts::create([
-                                'workshop_session_id' => $daySession->id,
-                                'host_id' => $session->mentors
-                            ]);
-                        }
-                    }
-                }
-            }
-
             DB::commit();
             return response()->json($workshop);
         } catch (\Throwable $th) {
@@ -221,6 +168,8 @@ class WorkshopController extends Controller
             })->delete();
 
             WorkshopDays::where('workshop_seminar_id', $id)->delete();
+            WorkshopOrganizer::where('workshop_seminar_id', $id)->delete();
+            WorkshopPartner::where('workshop_seminar_id', $id)->delete();
 
             if ($workshop->image_link) {
                 fileDelete($workshop->image_link);

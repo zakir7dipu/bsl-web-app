@@ -1,14 +1,15 @@
 import Breadcrumb from "@/backend/components/Breadcrumb/Index.jsx";
-import Preloader from "@/backend/components/Preloader/Index.jsx";
+import FileInput from "@/backend/components/inputFile/Index.jsx";
 import {
-    createWorkshopDays,
-    deleteWorkshopDays,
-    fetchAllWorkshopDays,
-    updateWorkshopDays
-} from "@/featurs/WorkshopDays/WorkshopDaysSlice.js";
+    createOrganizer,
+    deleteOrganizer,
+    fetchAllOrganizers,
+    updateOrganizer
+} from "@/featurs/WorkshopOrganizer/OrganizerSlice.js";
 import {showWorkshopSeminarById} from "@/featurs/WorkshopSeminar/WorkshopSlice.js";
+import Preloader from "@/frontend/components/Preloader/index.jsx";
 import BizAlert from "@/lib/BizAlert.js";
-import {infoMessage, warningMessage} from "@/lib/helper.js";
+import {infoMessage, useInternalLink, warningMessage} from "@/lib/helper.js";
 import BizModal from "@/ui/BizzModal.jsx";
 import HeaderMeta from "@/ui/HeaderMeta.jsx";
 import RowDropDown from "@/ui/RowDropDown.jsx";
@@ -21,10 +22,10 @@ import {Link, useParams} from "react-router-dom";
 
 function Index(props) {
     const {id} = useParams();
-    const {isLoading, workshopdays} = useSelector((state) => state.workshopDaysReducer);
+    const {isLoading, organizers} = useSelector((state) => state.WorkshopOrganizerReducer);
     const {metaInfo} = useSelector((state) => state.workshopSeminarReducer);
-
     const dispatch = useDispatch();
+
     const bizAlert = new BizAlert();
     const [workshopName, setWorkshopName] = useState("");
     const breadcrumb = [
@@ -41,10 +42,11 @@ function Index(props) {
             url: `/bsl/admin/workshops/config/${id}`
         },
         {
-            name: "Days List",
+            name: "Organizers",
             url: null
         }
     ];
+
 
     const columns = [
         {
@@ -53,32 +55,25 @@ function Index(props) {
             sortable: false,
         },
         {
-            name: 'Title',
+            name: 'Name',
             selector: row => row?.title,
             sortable: true,
             sortableKey: "title",
             searchableKey: 'title',
         },
         {
-            name: 'Date',
-            selector: row => row?.date,
-            sortable: true,
-            sortableKey: "date",
-            searchableKey: 'date',
-        },
-        {
-            name: 'Session Add',
+            name: 'Thumbnail',
             selector: row => (
-                <Link to={`sessions/${row?.id}`} className="btn btn-info btn-sm">Add Session</Link>
+                row.thumbnail && <img style={{height: "60px", width: "60px"}} src={useInternalLink(row.thumbnail)}/>
             ),
-            sortable: true,
+            sortable: false,
         },
         {
             name: 'Actions',
             selector: (row) => (
                 <RowDropDown>
-                    <Link to="#" onClick={(e) => handelDayEdit(row?.id)} className="dropdown-item">Edit</Link>
-                    <Link to="#" onClick={(e) => deleteDayHandler(row?.id)}
+                    <Link to="#" onClick={(e) => handelOrganizerEdit(row?.id)} className="dropdown-item">Edit</Link>
+                    <Link to="#" onClick={(e) => deleteOrganizerHandler(row?.id)}
                           className="dropdown-item">Delete</Link>
                 </RowDropDown>
             ),
@@ -92,79 +87,73 @@ function Index(props) {
 
     const [selectedId, setSelectedId] = useState("");
     const [cName, setName] = useState("");
-    const [cDate, setDate] = useState("");
-
+    const [thumbnail, setThumbnail] = useState("");
     const [cWorkshopId, setWorkshopId] = useState("");
-
-    const handleModalClose = () => {
-        setIsShow(!isShow);
-        resetHandler()
+    const inputFileHandler = (file) => {
+        setThumbnail(file[0])
     }
 
     const requestHandler = (e) => {
         e.preventDefault();
+
         let formData = new FormData();
         if (!cName) {
             warningMessage("Name is required.")
         } else {
             formData.append("title", cName);
         }
-        if (!cDate) {
-            warningMessage("Date is required.")
-        } else {
-            formData.append("date", cDate);
+
+        if (thumbnail) {
+            formData.append("thumbnail", thumbnail);
         }
 
         formData.append("workshop_seminar_id", id);
 
-        if (cName && cDate) {
+        if (cName) {
             infoMessage("Please wait a while, We are processing your request.");
             if (!isEdit) {
-                dispatch(createWorkshopDays(formData))
+                dispatch(createOrganizer(formData))
             } else {
                 let data = {
                     dataset: formData,
                     item: selectedId
                 }
-                dispatch(updateWorkshopDays(data))
+                dispatch(updateOrganizer(data))
             }
         }
         handleModalClose()
     }
-
+    const handleModalClose = () => {
+        setIsShow(!isShow);
+        resetHandler()
+    }
     const resetHandler = () => {
         setName("");
-        setDate("");
+        setThumbnail("");
         setTitle("");
     }
 
-    const handelDayEdit = (id) => {
-        getMeta(id)
-    }
-
-    const getMeta = (id) => {
+    const handelOrganizerEdit = (id) => {
         setSelectedId(id)
-        let dayMeta = workshopdays.filter((days) => days.id === id)
+        let dayMeta = organizers.filter((organizer) => organizer.id === id)
         dayMeta = dayMeta[0]
         setTitle(`Edit ${dayMeta.title}`)
 
         setName(dayMeta?.title || '')
-        setDate(dayMeta?.date || '')
         setWorkshopId(dayMeta.workshop_seminar_id)
 
         setIsShow(!isShow);
         setIsEdit(!isEdit);
     }
 
-
-    const deleteDayHandler = async (id) => {
+    const deleteOrganizerHandler = async (id) => {
         setSelectedId(id)
         let {isConfirmed} = await bizAlert.confirmAlert(`Are you sure?`, `Once you delete this you can't able to recover this data`);
         if (isConfirmed) {
             let data = {
                 item: id
             }
-            dispatch(deleteWorkshopDays(data))
+            dispatch(deleteOrganizer(data))
         }
     }
 
@@ -178,17 +167,17 @@ function Index(props) {
 
     useEffect(() => {
         dispatch(showWorkshopSeminarById(id));
-    }, [dispatch,id])
+    }, [dispatch, id])
 
     useEffect(() => {
-        dispatch(fetchAllWorkshopDays(id));
+        dispatch(fetchAllOrganizers(id));
     }, [dispatch, id])
 
     if (!isLoading) {
         return (
             <>
                 <HeaderMeta
-                    title="Workshop Days List"
+                    title="Workshop Organizer"
                     url=""
                 />
                 <Breadcrumb list={breadcrumb}/>
@@ -198,7 +187,7 @@ function Index(props) {
                         <div className="col-lg-12 col-sm-12">
                             <div className="card">
                                 <div className="card-header">
-                                    <h4>Workshop Days Lists</h4>
+                                    <h4>Organizers Lists</h4>
                                     <button className="btn btn-info btn-mini float-right" onClick={() => {
                                         setIsShow(!isShow);
                                         setIsEdit(false)
@@ -209,9 +198,9 @@ function Index(props) {
                                 </div>
                                 <div className="card-body">
                                     <VirtualDataTable
-                                        name="Days Data"
+                                        name="Orgainzer Data"
                                         columns={columns}
-                                        data={workshopdays}
+                                        data={organizers}
                                         dataViewRangeArray={[10, 20, 30, 50, 100]}
                                         itemPerPage={10}
                                     />
@@ -220,6 +209,7 @@ function Index(props) {
                         </div>
                     </div>
                 </div>
+
                 <BizModal isShow={isShow} title={title} handleClose={handleModalClose} large={'lg'}>
                     <form className="form-profile" onSubmit={requestHandler}>
                         <div className="row">
@@ -236,15 +226,15 @@ function Index(props) {
                                     />
                                 </div>
                             </div>
+
                             <div className="col-md-12">
                                 <div className="form-group">
-                                    <label>Date <sup className="text-danger"><MdStar/></sup></label>
-                                    <input
-                                        type={`date`}
-                                        className={`form-control`}
-                                        value={cDate}
-                                        onChange={e => setDate(e.target.value)}
-                                        placeholder={`Date`}
+                                    <FileInput
+                                        label={"Thumbnail"}
+                                        file={thumbnail}
+                                        id={`thumbnail`}
+                                        handler={inputFileHandler}
+                                        required={`required`}
                                     />
                                 </div>
                             </div>

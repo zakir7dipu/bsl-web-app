@@ -1,16 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import {useNavigate, useParams} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {infoMessage, warningMessage} from "@/lib/helper.js";
-import {showWorkshopSeminar, updateWorkshopSeminarData} from "@/featurs/WorkshopSeminar/WorkshopSlice.js";
-import HeaderMeta from "@/ui/HeaderMeta.jsx";
 import Breadcrumb from "@/backend/components/Breadcrumb/Index.jsx";
+import FileInput from "@/backend/components/inputFile/Index.jsx";
+import Preloader from "@/backend/components/Preloader/Index.jsx";
+import {showWorkshopSeminar, updateWorkshopSeminarData} from "@/featurs/WorkshopSeminar/WorkshopSlice.js";
+import {infoMessage, warningMessage} from "@/lib/helper.js";
+import HeaderMeta from "@/ui/HeaderMeta.jsx";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import {CKEditor} from "@ckeditor/ckeditor5-react";
+import React, {useEffect, useState} from 'react';
 import {Col, Row} from "react-bootstrap";
 import {MdStar} from "react-icons/md";
-import FileInput from "@/backend/components/inputFile/Index.jsx";
-import {CKEditor} from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import Preloader from "@/backend/components/Preloader/Index.jsx";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate, useParams} from "react-router-dom";
 
 function Edit() {
     const {slug} = useParams();
@@ -47,46 +47,21 @@ function Edit() {
     const [objective, setObjective] = useState("");
     const [description, setDescription] = useState("");
     const [imageLink, setImageLink] = useState("");
-    const [slots, setSlots] = useState([])
-    const [eventDays, setEventDays] = useState([])
-    let submitCount = 0;
+    const [location, setLocation] = useState("");
+    const [subtext, setSubtext] = useState("");
+    const [promo_video, setPromo] = useState("");
 
     const [selectedId, setSelectedId] = useState("");
-    //calculations
-    const [totalDays, setTotalDay] = useState([]);
-
     const inputFileHandler = (file) => {
         setImageLink(file[0])
     }
 
-    /* const calculateDate = (endDate) => {
-
-         let date1 = new Date(formDate);
-         let date2 = new Date(endDate);
-
-         const dateArray = [];
-         let currentDate = new Date(date1);
-         while (currentDate <= date2) {
-             dateArray.push(currentDate.toISOString().split('T')[0]);
-             currentDate.setDate(currentDate.getDate() + 1);
-         }
-         setTotalDay(dateArray);
-     }*/
-
     const requestHandler = (e) => {
         e.preventDefault()
-        //slotDaysDifferentiator()
-
         dataSubmit()
     }
 
     const dataSubmit = () => {
-        // submitCount++
-        // if (submitCount > 1) {
-        //     resetHandler();
-        //     navGoBack();
-        //     return
-        // }
 
         let formData = new FormData()
 
@@ -132,13 +107,21 @@ function Edit() {
         if (imageLink) {
             formData.append("image_link", imageLink)
         }
-        if (!eventDays) {
-            warningMessage("Event days information is required.")
+
+        if (!location) {
+            warningMessage("Location is required.")
         } else {
-            formData.append("days", JSON.stringify(eventDays))
+            formData.append("location", location)
         }
 
-        if (cName && formDate && toDate && type && price && description && eventDays) {
+        if (subtext) {
+            formData.append("subtext", subtext)
+        }
+        if (promo_video) {
+            formData.append("promo_video", promo_video)
+        }
+
+        if (cName && formDate && toDate && type && price && description) {
             infoMessage("Please wait a while, We are processing your request.");
             let data = {
                 dataset: formData,
@@ -161,34 +144,10 @@ function Edit() {
         setObjective("")
         setDescription("")
         setImageLink("")
-        setEventDays([])
+        setLocation("")
+        setSubtext("")
+        setPromo("")
     }
-
-    // const slotHandler = (data) => {
-    //     setSlots(slots => [...slots, data])
-    // }
-
-    // const slotDeleteHandler = (data) => {
-    //     let newSlots = slots.filter(slot => slot.tempId !== data)
-    //     setSlots(newSlots)
-    // }
-
-    // const slotDaysDifferentiator = () => {
-    //     totalDays.map((dayItem, index) => {
-    //         let indexIdentifire = index + 1
-    //         let newDayItem = {
-    //             title: `Day #${indexIdentifire} (${dayItem})`,
-    //             sessions: slots.filter(slot => slot.index === indexIdentifire)
-    //         }
-    //         setEventDays(eventDays => [...eventDays, newDayItem])
-    //     })
-    // }
-    //
-    // useEffect(() => {
-    //     if(eventDays.length > 0 && submitCount === 0) {
-    //         dataSubmit()
-    //     }
-    // }, [eventDays])
 
     useEffect(() => {
         setSelectedId(metaInfo?.id || '')
@@ -200,14 +159,15 @@ function Edit() {
         setSponsor(metaInfo?.sponsors || "")
         setObjective(metaInfo?.objective || "")
         setDescription(metaInfo?.description || "")
+
+        setLocation(metaInfo?.location || "")
+        setSubtext(metaInfo?.subtext || "")
+        setPromo(metaInfo?.promo_video || "")
+
         setImageLink("")
-        setEventDays([])
 
     }, [dispatch, metaInfo])
 
-    // useEffect(()=>{
-    //     calculateDate(toDate)
-    // },[toDate])
 
     useEffect(() => {
         dispatch(showWorkshopSeminar(slug));
@@ -315,7 +275,40 @@ function Edit() {
                                                     />
                                                 </div>
                                             </Col>
-
+                                            <Col lg={4}>
+                                                <div className="form-group">
+                                                    <label htmlFor="location">Location</label>
+                                                    <input type="text" id="location" placeholder="Enter Location Name"
+                                                           className="form-control"
+                                                           value={location}
+                                                           onChange={(e) => {
+                                                               setLocation(e.target.value)
+                                                           }}/>
+                                                </div>
+                                            </Col>
+                                            <Col lg={4}>
+                                                <div className="form-group">
+                                                    <label htmlFor="subtext">Subtext</label>
+                                                    <input type="text" id="subtext" placeholder="Enter Subtext"
+                                                           className="form-control"
+                                                           value={subtext}
+                                                           onChange={(e) => {
+                                                               setSubtext(e.target.value)
+                                                           }}/>
+                                                </div>
+                                            </Col>
+                                            <Col lg={4}>
+                                                <div className="form-group">
+                                                    <label htmlFor="promo_video">Promo Video (Youtube video
+                                                        code)</label>
+                                                    <input type="text" id="promo_video" placeholder="Ex: 3ee35derwer34"
+                                                           className="form-control"
+                                                           value={promo_video}
+                                                           onChange={(e) => {
+                                                               setPromo(e.target.value)
+                                                           }}/>
+                                                </div>
+                                            </Col>
                                             <Col lg={12}>
                                                 <div className="form-group">
                                                     <label htmlFor="description">Object <sup
@@ -351,32 +344,6 @@ function Edit() {
                                                 </div>
                                             </Col>
 
-                                            {/*<Col lg={12}>*/}
-                                            {/*    <div className="card">*/}
-                                            {/*        <div className="card-body">*/}
-                                            {/*            <h4 className="card-title">Workshop/Seminar Wise Sessions*/}
-                                            {/*                Details</h4>*/}
-                                            {/*            <p className="text-muted"><code></code>*/}
-                                            {/*            </p>*/}
-                                            {/*            {*/}
-                                            {/*                metaInfo?.workshop_days &&  metaInfo?.workshop_days.map((day, index) => <SessionsEdit*/}
-                                            {/*                    index={index + 1}*/}
-                                            {/*                    day={day}*/}
-                                            {/*                    key={uid()}*/}
-                                            {/*                    slotsInfo={day?.workshop_sessions}*/}
-                                            {/*                    deleteHandler={slotDeleteHandler}*/}
-                                            {/*                />)*/}
-                                            {/*            }*/}
-                                            {/*            {Array.from(totalDays).map((day, index) => <Sessions*/}
-                                            {/*                index={index + 1}*/}
-                                            {/*                day={day}*/}
-                                            {/*                key={uid()}*/}
-                                            {/*                slotsInfo={slots}*/}
-                                            {/*                deleteHandler={slotDeleteHandler}*/}
-                                            {/*            />)}*/}
-                                            {/*        </div>*/}
-                                            {/*    </div>*/}
-                                            {/*</Col>*/}
 
                                             <div className="col-md-12 mt-3">
                                                 <button className="btn btn-primary px-3 float-right"
@@ -390,9 +357,6 @@ function Edit() {
                         </div>
                     </div>
                 </div>
-                {/*<SlotCreate*/}
-                {/*    slotHandler={slotHandler}*/}
-                {/*/>*/}
             </>
         );
     } else {

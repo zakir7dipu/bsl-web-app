@@ -30,7 +30,7 @@ class WorkshopSessions extends Model
 
     public function sessionHosts()
     {
-        return $this->hasMany(SessionHosts::class,'workshop_session_id','id');
+        return $this->hasOne(SessionHosts::class,'workshop_session_id','id');
     }
 
     // TODO :: boot

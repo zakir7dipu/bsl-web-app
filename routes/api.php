@@ -22,6 +22,8 @@ use App\Http\Controllers\API\TechnologyController;
 use App\Http\Controllers\API\TestimonialController;
 use App\Http\Controllers\API\WorkshopController;
 use App\Http\Controllers\API\WorkshopDaysController;
+use App\Http\Controllers\API\WorkshopOrganizerController;
+use App\Http\Controllers\API\WorkshopPartnerController;
 use App\Http\Controllers\API\WorkshopSessionsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ScheduleController;
@@ -230,6 +232,22 @@ Route::controller(WorkshopController::class)->group(function () {
     Route::get("workshops/{id}/edit", "edit");
     Route::post("workshops/{id}/update", "update");
     Route::delete("workshops/{id}/destroy", "destroy");
+});
+
+Route::controller(WorkshopOrganizerController::class)->group(function () {
+    Route::get("organizers/{workshop?}", "index");
+    Route::post("organizers", "store");
+    Route::get("organizers/{id}/show", "show");
+    Route::post("organizers/{id}/update", "update");
+    Route::delete("organizers/{id}/destroy", "destroy");
+});
+
+Route::controller(WorkshopPartnerController::class)->group(function () {
+    Route::get("sponsors/{workshop?}", "index");
+    Route::post("sponsors", "store");
+    Route::get("sponsors/{id}/show", "show");
+    Route::post("sponsors/{id}/update", "update");
+    Route::delete("sponsors/{id}/destroy", "destroy");
 });
 
 Route::controller(WorkshopDaysController::class)->group(function () {

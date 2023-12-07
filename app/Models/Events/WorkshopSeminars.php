@@ -23,13 +23,16 @@ class WorkshopSeminars extends Model
         'objective',
         'description',
         'image_link',
+        'location',
+        'subtext',
+        'promo_video',
         'created_by',
         'updated_by',
     ];
 
     public function workshopDays()
     {
-        return $this->hasMany(WorkshopDays::class,'workshop_seminar_id','id');
+        return $this->hasMany(WorkshopDays::class, 'workshop_seminar_id', 'id');
     }
 
     // TODO :: boot

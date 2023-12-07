@@ -65,7 +65,7 @@ class WorkshopDaysController extends Controller
      */
     public function show(string $id)
     {
-        $course = WorkshopDays::where('id', $id)
+        $course = WorkshopDays::with('workshopSeminar')->where('id', $id)
             ->first();
         try {
             return response()->json($course);
