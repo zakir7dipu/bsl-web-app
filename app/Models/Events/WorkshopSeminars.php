@@ -35,6 +35,16 @@ class WorkshopSeminars extends Model
         return $this->hasMany(WorkshopDays::class, 'workshop_seminar_id', 'id');
     }
 
+    public function organizers()
+    {
+        return $this->hasMany(WorkshopOrganizer::class, 'workshop_seminar_id', 'id');
+    }
+
+    public function sponsors()
+    {
+        return $this->hasMany(WorkshopPartner::class, 'workshop_seminar_id', 'id');
+    }
+
     // TODO :: boot
     // boot() function used to insert logged user_id at 'created_by' & 'updated_by'
     public static function boot()

@@ -23,7 +23,7 @@ class WorkshopController extends Controller
     {
         try {
 
-            $workshops = WorkshopSeminars::with(['workshopDays.workshopSessions.sessionHosts.host'])
+            $workshops = WorkshopSeminars::with(['workshopDays.workshopSessions.sessionHosts.host','organizers','sponsors'])
                 ->orderBy('id', 'desc')
                 ->get();
 
