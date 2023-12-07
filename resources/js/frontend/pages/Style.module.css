@@ -1,0 +1,24 @@
+.intro {
+    position: relative;
+    animation-name: fadeInn;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.introOverflow {
+    background-image: linear-gradient(to bottom, #35009b, #9c00a7);
+    background-size: cover;
+    opacity: .95;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.introVideoButton{
+    bottom: 20% !important;
+    left: 50% !important;
+}

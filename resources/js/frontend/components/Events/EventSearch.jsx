@@ -1,6 +1,6 @@
 import React from 'react';
 
-function EventSearch(props) {
+function EventSearch() {
     return (
         <>
             <div className="search-widget mb-50">
