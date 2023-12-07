@@ -1,4 +1,6 @@
 import {fetchAllWorkshopSeminar, showWorkshopSeminar} from "@/featurs/WorkshopSeminar/WorkshopSlice.js";
+import EventAbout from "@/frontend/components/Events/EventAbout.jsx";
+import EventHero from "@/frontend/components/Events/EventHero.jsx";
 import LatestPost from "@/frontend/components/Events/LatestPost.jsx";
 import Preloader from "@/frontend/components/Preloader/index.jsx";
 import {toStringTime, ucFirst, uid, useInternalLink} from "@/lib/helper.js";
@@ -7,10 +9,7 @@ import moment from "moment";
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Link, useParams} from "react-router-dom";
-import bannerImg from "../../../frontend-assets/images/banner/intro-bg.jpg";
 import EventSearch from "../../frontend/components/Events/EventSearch.jsx";
-import Style from "./Style.module.css"
-import {videoModuleAction} from "@/featurs/NavAction/NavSlice.js";
 
 function EventDetails() {
     const {slug} = useParams();
@@ -40,10 +39,7 @@ function EventDetails() {
         },
     ]
 
-    const handelVideoAction = (e) => {
-        e.preventDefault()
-        dispatch(videoModuleAction(metaInfo?.promo_video))
-    }
+
 
 
     useEffect(() => {
@@ -62,30 +58,9 @@ function EventDetails() {
                     page="Event Details"
                 />
 
-                <div className={`rs-banner style10 ${Style.intro}`}
-                     style={{background: `url('${bannerImg}')`}}>
-                    <div className={Style.introOverflow}>
-                        <div className={`container ${Style.introContainer}`}>
-                            <div className="banner-content text-center">
-                                <span className="sub-text">{moment(metaInfo?.form_date).format("LL")}</span>
-                                <h2 className="title" style={{float: 'none'}}>{metaInfo?.name}</h2>
+                <EventHero metaInfo={metaInfo}/>
+                <EventAbout metaInfo={metaInfo}/>
 
-                                {metaInfo?.promo_video && <div className={`rs-videos`}>
-                                    <div className="animate-border white-color style3">
-                                        <Link className={`popup-border popup-videos ${Style.introVideoButton}`}
-                                              to={metaInfo?.promo_video} onClick={handelVideoAction}>
-                                            <i className="fa fa-play"></i>
-                                        </Link>
-                                    </div>
-                                </div>
-                                }
-                                <h6 className="title" style={{float:'none'}}>Organize By <span>{metaInfo?.sponsors}</span></h6>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
 
                 <div className="rs-inner-blog pt-120 pb-120 md-pt-90 md-pb-90">
                     <div className="container">

@@ -22,3 +22,12 @@
     bottom: 20% !important;
     left: 50% !important;
 }
+
+.eventBox{
+    background: #fff;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 15px;
+    padding: 40px 30px;
+    transition: 0.3s;
+    height: 355px;
+}
