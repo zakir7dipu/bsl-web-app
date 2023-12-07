@@ -24,7 +24,12 @@ export const fetchAllSponsors = createAsyncThunk("sponsor/fetchAllSponsors", asy
 // create category
 export const createSponsors = createAsyncThunk("sponsor/createSponsors", async (data, {rejectWithValue}) => {
     try {
-        const res = await apiAccess.post(initialData.apiUrl, data)
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }
+        const res = await apiAccess.post(initialData.apiUrl, data, config)
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.message)
@@ -43,8 +48,13 @@ export const fetchSponsorById = createAsyncThunk("sponsor/fetchSponsorById", asy
 // update
 export const updateSponsor = createAsyncThunk("sponsor/updateSponsor", async (data, {rejectWithValue}) => {
     try {
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }
         const {item, dataset} = data
-        const res = await apiAccess.post(`${initialData.apiUrl}/${item}/update`, dataset)
+        const res = await apiAccess.post(`${initialData.apiUrl}/${item}/update`, dataset, config)
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.message)
