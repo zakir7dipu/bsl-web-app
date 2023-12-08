@@ -51,7 +51,8 @@ function Page() {
                         <div className="row">
                             <div className="col-lg-12 md-mb-50">
                                 <div className="services-img">
-                                    <img src={useInternalLink(metaInfo?.image_link)} alt="" style={{maxHeight:'500px',width:"100%"}}/>
+                                    <img src={useInternalLink(metaInfo?.image_link)} alt=""
+                                         style={{maxHeight: '500px', width: "100%"}}/>
                                 </div>
 
                                 <h2 className="mt-34">{metaInfo?.title}</h2>
