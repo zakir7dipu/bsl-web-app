@@ -299,10 +299,12 @@ DROP TABLE IF EXISTS `hosts`;
 CREATE TABLE `hosts` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `designation` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `about` text COLLATE utf8mb4_unicode_ci,
   `qualification` text COLLATE utf8mb4_unicode_ci,
+  `linkedin` text COLLATE utf8mb4_unicode_ci,
   `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_by` bigint(20) unsigned DEFAULT NULL,
   `updated_by` bigint(20) unsigned DEFAULT NULL,
@@ -319,9 +321,9 @@ CREATE TABLE `hosts` (
 
 /*Data for the table `hosts` */
 
-insert  into `hosts`(`id`,`name`,`email`,`phone`,`about`,`qualification`,`thumbnail`,`created_by`,`updated_by`,`deleted_at`,`created_at`,`updated_at`) values 
-(1,'Md. Shafiqul Alam','shafiqur.rahman@ssgbd.com','+8801713378787','Md. Shafiqul Alam LLB, FCS, FCMA, FCA is an accomplished finance Professional with over 20+ years of experience in different industries in senior positions. Presently he is the Honorable Director of Bizz Solutions Ltd. and before that he was Group Chief Financial Officer (GCFO) and Company Secretary of Super Star Group, the leading electrical and electronics manufacturing company in the country.','Total Experience 20+ years. And He is a good speaker','/uploads/hosts/1701325000-host.png',2,2,NULL,'2023-11-30 06:01:32','2023-11-30 06:16:40'),
-(2,'Mohammad Harun Ar Rashid','harun.rashid@ssgbd.com','+8801687807834','Mohammad Harun Ar Rashid is another successful entrepreneur with more than 21+ years of contributing to the Energy sector of Bangladesh and developing and strengthening the electrical and electronics industry by offering innovative ideas, products, and services. Presently he is the Honorable Director of Bizz Solutions Ltd. and Managing Director of Super Star Group','20 Years Of Experience.','/uploads/hosts/1701324668-host.png',2,NULL,NULL,'2023-11-30 06:11:08','2023-11-30 06:11:08');
+insert  into `hosts`(`id`,`name`,`designation`,`email`,`phone`,`about`,`qualification`,`linkedin`,`thumbnail`,`created_by`,`updated_by`,`deleted_at`,`created_at`,`updated_at`) values 
+(1,'Md. Shafiqul Alam','Chief Financial Officer (GCFO)','shafiqur.rahman@ssgbd.com','+8801713378787','Md. Shafiqul Alam LLB, FCS, FCMA, FCA is an accomplished finance Professional with over 20+ years of experience in different industries in senior positions. Presently he is the Honorable Director of Bizz Solutions Ltd. and before that he was Group Chief Financial Officer (GCFO) and Company Secretary of Super Star Group, the leading electrical and electronics manufacturing company in the country.','Total Experience 20+ years. And He is a good speaker',NULL,'/uploads/hosts/1701325000-host.png',2,2,NULL,'2023-11-30 06:01:32','2023-11-30 06:16:40'),
+(2,'Mohammad Harun Ar Rashid','Managing Director','harun.rashid@ssgbd.com','+8801687807834','Mohammad Harun Ar Rashid is another successful entrepreneur with more than 21+ years of contributing to the Energy sector of Bangladesh and developing and strengthening the electrical and electronics industry by offering innovative ideas, products, and services. Presently he is the Honorable Director of Bizz Solutions Ltd. and Managing Director of Super Star Group','20 Years Of Experience.',NULL,'/uploads/hosts/1701324668-host.png',2,NULL,NULL,'2023-11-30 06:11:08','2023-11-30 06:11:08');
 
 /*Table structure for table `industries` */
 
@@ -364,7 +366,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
@@ -405,7 +407,13 @@ insert  into `migrations`(`id`,`migration`,`batch`) values
 (34,'2023_11_30_025142_create_workshop_days_table',15),
 (35,'2023_11_30_025143_create_workshop_session_table',15),
 (36,'2023_11_30_025200_create_session_hosts_table',15),
-(37,'2023_11_30_064655_add_slug_at_workshop_seminars',16);
+(37,'2023_11_30_064655_add_slug_at_workshop_seminars',16),
+(38,'2023_12_05_050105_add_date_in_days_table',17),
+(39,'2023_12_07_025337_create_workshop_partner_table',18),
+(40,'2023_12_07_025558_create_workshop_organizeer_table',18),
+(41,'2023_12_07_025948_add_column_in_workshop_seminars_table',18),
+(42,'2023_12_10_092736_add_designation_hosts_table',19),
+(43,'2023_12_10_095626_create_workshop_registrations_table',20);
 
 /*Table structure for table `model_has_permissions` */
 
@@ -829,9 +837,17 @@ CREATE TABLE `session_hosts` (
   KEY `session_hosts_host_id_foreign` (`host_id`),
   CONSTRAINT `session_hosts_host_id_foreign` FOREIGN KEY (`host_id`) REFERENCES `hosts` (`id`),
   CONSTRAINT `session_hosts_workshop_session_id_foreign` FOREIGN KEY (`workshop_session_id`) REFERENCES `workshop_sessions` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `session_hosts` */
+
+insert  into `session_hosts`(`id`,`workshop_session_id`,`host_id`,`message`,`created_at`,`updated_at`) values 
+(13,13,2,NULL,'2023-12-05 05:16:04','2023-12-06 05:49:35'),
+(14,14,2,NULL,'2023-12-05 05:16:04','2023-12-06 06:20:33'),
+(18,18,2,NULL,'2023-12-05 05:33:02','2023-12-05 05:33:02'),
+(19,19,2,NULL,'2023-12-06 05:41:30','2023-12-06 05:52:44'),
+(21,21,1,NULL,'2023-12-06 05:59:52','2023-12-06 05:59:52'),
+(22,22,2,NULL,'2023-12-06 06:04:00','2023-12-06 06:05:04');
 
 /*Table structure for table `settings` */
 
@@ -973,15 +989,92 @@ CREATE TABLE `workshop_days` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `workshop_seminar_id` bigint(20) unsigned DEFAULT NULL,
   `title` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `workshop_days_workshop_seminar_id_foreign` (`workshop_seminar_id`),
   CONSTRAINT `workshop_days_workshop_seminar_id_foreign` FOREIGN KEY (`workshop_seminar_id`) REFERENCES `workshop_seminars` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `workshop_days` */
+
+insert  into `workshop_days`(`id`,`workshop_seminar_id`,`title`,`date`,`deleted_at`,`created_at`,`updated_at`) values 
+(11,7,'Day #1 (2023-12-05)','2023-12-06',NULL,'2023-12-05 05:16:04','2023-12-05 05:16:04'),
+(12,7,'Day #2 (2023-12-06)','2023-12-06',NULL,'2023-12-05 05:16:04','2023-12-05 05:16:04'),
+(17,11,'Day #1 (2023-12-06)','2023-12-06',NULL,'2023-12-05 05:33:02','2023-12-05 05:33:02');
+
+/*Table structure for table `workshop_organizer` */
+
+DROP TABLE IF EXISTS `workshop_organizer`;
+
+CREATE TABLE `workshop_organizer` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `workshop_seminar_id` bigint(20) unsigned DEFAULT NULL,
+  `title` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `thumbnail` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `workshop_organizer_workshop_seminar_id_foreign` (`workshop_seminar_id`),
+  CONSTRAINT `workshop_organizer_workshop_seminar_id_foreign` FOREIGN KEY (`workshop_seminar_id`) REFERENCES `workshop_seminars` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `workshop_organizer` */
+
+insert  into `workshop_organizer`(`id`,`workshop_seminar_id`,`title`,`thumbnail`,`created_at`,`updated_at`) values 
+(1,11,'Bizz Solutions','/uploads/organizer/1701925700-organizer.png','2023-12-07 05:08:20','2023-12-07 05:08:20'),
+(3,11,'Super Star Group','/uploads/organizer/1701925786-organizer.png','2023-12-07 05:09:46','2023-12-07 05:09:46'),
+(4,11,'a2i','/uploads/organizer/1701929247-organizer.png','2023-12-07 06:07:27','2023-12-07 06:07:27'),
+(5,7,'Basis','/uploads/organizer/1701929772-organizer.png','2023-12-07 06:16:12','2023-12-07 06:16:12'),
+(6,7,'SSL Warless','/uploads/organizer/1701929804-organizer.png','2023-12-07 06:16:44','2023-12-07 06:16:44');
+
+/*Table structure for table `workshop_partner` */
+
+DROP TABLE IF EXISTS `workshop_partner`;
+
+CREATE TABLE `workshop_partner` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `workshop_seminar_id` bigint(20) unsigned DEFAULT NULL,
+  `title` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `thumbnail` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `workshop_partner_workshop_seminar_id_foreign` (`workshop_seminar_id`),
+  CONSTRAINT `workshop_partner_workshop_seminar_id_foreign` FOREIGN KEY (`workshop_seminar_id`) REFERENCES `workshop_seminars` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `workshop_partner` */
+
+insert  into `workshop_partner`(`id`,`workshop_seminar_id`,`title`,`thumbnail`,`created_at`,`updated_at`) values 
+(1,11,'A2I','/uploads/sponsor/1701929469-sponsor.png','2023-12-07 06:11:09','2023-12-07 06:11:09'),
+(2,11,'Basis','/uploads/sponsor/1701929485-sponsor.png','2023-12-07 06:11:25','2023-12-07 06:11:25'),
+(3,11,'AWS Community Builder','/uploads/sponsor/1701929532-sponsor.png','2023-12-07 06:12:12','2023-12-07 06:12:12'),
+(4,11,'Women Ecommerce','/uploads/sponsor/1701929561-sponsor.png','2023-12-07 06:12:41','2023-12-07 06:12:41'),
+(5,7,'Women Entrepreneur','/uploads/sponsor/1701929863-sponsor.png','2023-12-07 06:17:43','2023-12-07 06:17:43');
+
+/*Table structure for table `workshop_registrations` */
+
+DROP TABLE IF EXISTS `workshop_registrations`;
+
+CREATE TABLE `workshop_registrations` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `workshop_seminar_id` bigint(20) unsigned DEFAULT NULL,
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `designation` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `linkedin` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `workshop_registrations_workshop_seminar_id_foreign` (`workshop_seminar_id`),
+  CONSTRAINT `workshop_registrations_workshop_seminar_id_foreign` FOREIGN KEY (`workshop_seminar_id`) REFERENCES `workshop_seminars` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `workshop_registrations` */
 
 /*Table structure for table `workshop_seminars` */
 
@@ -998,6 +1091,9 @@ CREATE TABLE `workshop_seminars` (
   `sponsors` text COLLATE utf8mb4_unicode_ci,
   `objective` text COLLATE utf8mb4_unicode_ci,
   `description` text COLLATE utf8mb4_unicode_ci,
+  `location` text COLLATE utf8mb4_unicode_ci,
+  `subtext` text COLLATE utf8mb4_unicode_ci,
+  `promo_video` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image_link` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_by` bigint(20) unsigned DEFAULT NULL,
   `updated_by` bigint(20) unsigned DEFAULT NULL,
@@ -1010,9 +1106,13 @@ CREATE TABLE `workshop_seminars` (
   KEY `workshop_seminars_updated_by_foreign` (`updated_by`),
   CONSTRAINT `workshop_seminars_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
   CONSTRAINT `workshop_seminars_updated_by_foreign` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `workshop_seminars` */
+
+insert  into `workshop_seminars`(`id`,`name`,`slug`,`form_date`,`to_date`,`type`,`price`,`sponsors`,`objective`,`description`,`location`,`subtext`,`promo_video`,`image_link`,`created_by`,`updated_by`,`deleted_at`,`created_at`,`updated_at`) values 
+(7,'Web design and development Workshops','a45fcabf3de8bd30','2023-12-05','2023-12-06','workshop',2000,'Bizz Solutions PLC','<p>Web design and development Workshops</p>','<p>Join us on June 17, 2023 at AWS Cloud Day Bangladesh 2023! This full day event will feature hands-on workshops on building cloud native applications and machine learning, as well as insights on the recipe for creating the next generation of unicorn startups. You\'ll also have the opportunity to learn about career programs offered by AWS and network with subject matter experts, national leaders, teachers, and cloud enthusiasts from all over Bangladesh. Hurry, as seats are limited - register now!</p>','City centre 90/1, Level-25 Type-D2, Motijheel C/A, Dhaka-1000, Bangladesh.','Web development! This full day event will feature hands-on workshops on building cloud native applications and machine learning','hu9frpwmovM','/uploads/workshop/1701753364-host.png',2,2,NULL,'2023-12-05 05:16:04','2023-12-10 09:50:58'),
+(11,'Web design and development Workshops','bfc2bfdeee799a4c','2023-12-06','2023-12-07','seminar',1200,'Bizz Solutions PLC','<p>Web design and development Workshops</p>','<p>Join us on June 17, 2023 at AWS Cloud Day Bangladesh 2023! This full day event will feature hands-on workshops on building cloud native applications and machine learning, as well as insights on the recipe for creating the next generation of unicorn startups. You\'ll also have the opportunity to learn about career programs offered by AWS and network with subject matter experts, national leaders, teachers, and cloud enthusiasts from all over Bangladesh. Hurry, as seats are limited - register now!</p>','City centre 90/1, Level-25 Type-D2, Motijheel C/A, Dhaka-1000, Bangladesh.','Web developments 2023! This full day event will feature hands-on workshops on building cloud native applications and machine learning','hu9frpwmovM','/uploads/workshop/1701754382-host.png',2,2,NULL,'2023-12-05 05:33:02','2023-12-10 09:50:42');
 
 /*Table structure for table `workshop_sessions` */
 
@@ -1038,9 +1138,17 @@ CREATE TABLE `workshop_sessions` (
   CONSTRAINT `workshop_sessions_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
   CONSTRAINT `workshop_sessions_updated_by_foreign` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`),
   CONSTRAINT `workshop_sessions_workshop_day_id_foreign` FOREIGN KEY (`workshop_day_id`) REFERENCES `workshop_days` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `workshop_sessions` */
+
+insert  into `workshop_sessions`(`id`,`workshop_day_id`,`title`,`from`,`to`,`topics`,`image_link`,`created_by`,`updated_by`,`deleted_at`,`created_at`,`updated_at`) values 
+(13,11,'Introduction','11:15:00','00:15:00','<p>Web design and development Workshops</p>',NULL,2,NULL,NULL,'2023-12-05 05:16:04','2023-12-05 05:16:04'),
+(14,12,'Introduction Day 2','11:15:00','00:15:00','<p>Web design and development Workshops</p>',NULL,2,NULL,NULL,'2023-12-05 05:16:04','2023-12-05 05:16:04'),
+(18,17,'Introduction','11:32:00','00:00:00','<p>Web design and development Workshops</p>',NULL,2,NULL,NULL,'2023-12-05 05:33:02','2023-12-05 05:33:02'),
+(19,11,'Web design and development Workshops','11:41:00','00:41:00','<p>Web design and development Workshops</p>',NULL,2,NULL,NULL,'2023-12-06 05:41:30','2023-12-06 05:41:30'),
+(21,12,'Session Two','11:59:00','23:59:00','<p>Session Two details</p>',NULL,2,NULL,NULL,'2023-12-06 05:59:52','2023-12-06 05:59:52'),
+(22,12,'Web design and development Workshops','12:03:00','00:03:00','<p>Web design and development Workshops</p>',NULL,2,NULL,NULL,'2023-12-06 06:04:00','2023-12-06 06:04:00');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
