@@ -15,9 +15,11 @@ class Hosts extends Model
     protected $fillable = [
         'name',
         'email',
+        'designation',
         'phone',
         'about',
         'qualification',
+        'linkedin',
         'thumbnail',
     ];
 

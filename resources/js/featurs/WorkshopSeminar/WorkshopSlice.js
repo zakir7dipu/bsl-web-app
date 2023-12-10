@@ -7,6 +7,7 @@ const {apiAccess} = new Api();
 const initialData = {
     isLoading: true,
     workshops: [],
+    hosts: [],
     lastPage: 0,
     currentPage: 1,
     perPage: 0,
@@ -46,6 +47,15 @@ export const createWorkshopSeminarData = createAsyncThunk("workshopSeminar/creat
 export const showWorkshopSeminar = createAsyncThunk("workshopSeminar/showWorkshopSeminar", async (slug, {rejectWithValue}) => {
     try {
         const res = await apiAccess.get(`${initialData.apiUrl}/${slug}/show`);
+        return res.data
+    } catch (error) {
+        return rejectWithValue(error.response.data)
+    }
+})
+
+export const getSeminarHosts = createAsyncThunk("workshopSeminar/getSeminarHosts", async (slug, {rejectWithValue}) => {
+    try {
+        const res = await apiAccess.get(`${initialData.apiUrl}/${slug}/hosts`);
         return res.data
     } catch (error) {
         return rejectWithValue(error.response.data)
@@ -136,9 +146,22 @@ export const WorkshopSlice = createSlice({
             state.message = payload;
         },
 
+
+        [getSeminarHosts.pending]: (state) => {
+            state.isLoading = true
+        },
+        [getSeminarHosts.fulfilled]: (state, {payload}) => {
+            state.isLoading = false;
+            state.hosts = payload;
+        },
+        [getSeminarHosts.rejected]: (state, {payload}) => {
+            state.isLoading = false;
+            state.hosts = payload;
+        },
+
         [showWorkshopSeminarById.pending]: (state) => {
-            state.isLoading = false
-            state.metaInfo = []
+           state.isLoading = false;
+            state.message = payload;
         },
         [showWorkshopSeminarById.fulfilled]: (state, {payload}) => {
             state.isLoading = false;

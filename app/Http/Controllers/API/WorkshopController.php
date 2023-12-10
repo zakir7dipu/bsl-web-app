@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Events\Hosts;
 use App\Models\Events\SessionHosts;
 use App\Models\Events\WorkshopDays;
 use App\Models\Events\WorkshopOrganizer;
@@ -16,14 +17,14 @@ class WorkshopController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['index', 'show']]);
+        $this->middleware('auth:api', ['except' => ['index', 'show', 'hosts']]);
     }
 
     public function index()
     {
         try {
 
-            $workshops = WorkshopSeminars::with(['workshopDays.workshopSessions.sessionHosts.host','organizers','partners'])
+            $workshops = WorkshopSeminars::with(['workshopDays.workshopSessions.sessionHosts.host', 'organizers', 'partners'])
                 ->orderBy('id', 'desc')
                 ->get();
 
@@ -84,10 +85,29 @@ class WorkshopController extends Controller
     public function show(string $slug)
     {
         try {
-            $host = WorkshopSeminars::with(['workshopDays.workshopSessions.sessionHosts.host'])
+            $host = WorkshopSeminars::with(['workshopDays.workshopSessions.sessionHosts.host', 'organizers', 'partners'])
                 ->where('slug', $slug)
                 ->first();
             return response()->json($host);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), $th->getCode());
+        }
+    }
+
+    public function hosts(string $slug)
+    {
+        try {
+            $seminar = WorkshopSeminars::where('slug', $slug)
+                ->first();
+
+            $sessionsHost = SessionHosts::whereHas('workshopSession.workshopDay', function ($query) use ($seminar) {
+                return $query->where('workshop_seminar_id', $seminar->id);
+            })->pluck('host_id')->all();
+
+            $uniqueIds = array_unique($sessionsHost);
+            $hosts = Hosts::whereIn('id', $uniqueIds)->get();
+
+            return response()->json($hosts);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), $th->getCode());
         }
@@ -99,7 +119,7 @@ class WorkshopController extends Controller
     public function edit(string $id)
     {
         try {
-            $host = WorkshopSeminars::with(['workshopDays.workshopSessions.sessionHosts.host'])
+            $host = WorkshopSeminars::with(['workshopDays.workshopSessions.sessionHosts.host', 'organizers', 'partners'])
                 ->where('id', $id)
                 ->first();
             return response()->json($host);

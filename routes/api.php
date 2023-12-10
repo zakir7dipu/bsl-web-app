@@ -232,6 +232,7 @@ Route::controller(WorkshopController::class)->group(function () {
     Route::get("workshops/{id}/edit", "edit");
     Route::post("workshops/{id}/update", "update");
     Route::delete("workshops/{id}/destroy", "destroy");
+    Route::get("workshops/{slug}/hosts", "hosts");
 });
 
 Route::controller(WorkshopOrganizerController::class)->group(function () {
