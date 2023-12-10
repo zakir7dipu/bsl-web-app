@@ -24,6 +24,7 @@ use App\Http\Controllers\API\WorkshopController;
 use App\Http\Controllers\API\WorkshopDaysController;
 use App\Http\Controllers\API\WorkshopOrganizerController;
 use App\Http\Controllers\API\WorkshopPartnerController;
+use App\Http\Controllers\API\WorkshopRegistrationController;
 use App\Http\Controllers\API\WorkshopSessionsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ScheduleController;
@@ -265,4 +266,12 @@ Route::controller(WorkshopSessionsController::class)->group(function () {
     Route::get("sessions/{id}/show", "show");
     Route::post("sessions/{id}/update", "update");
     Route::delete("sessions/{id}/destroy", "destroy");
+});
+
+Route::controller(WorkshopRegistrationController::class)->group(function () {
+    Route::get("event-users/{workshop?}", "index");
+    Route::post("event-users", "store");
+    Route::get("event-users/{id}/show", "show");
+    Route::post("event-users/{id}/update", "update");
+    Route::delete("event-users/{id}/destroy", "destroy");
 });

@@ -1,11 +1,6 @@
 import Breadcrumb from "@/backend/components/Breadcrumb/Index.jsx";
 import FileInput from "@/backend/components/inputFile/Index.jsx";
-import {
-    createOrganizer,
-    deleteOrganizer,
-    fetchAllOrganizers,
-    updateOrganizer
-} from "@/featurs/WorkshopOrganizer/OrganizerSlice.js";
+
 import {showWorkshopSeminarById} from "@/featurs/WorkshopSeminar/WorkshopSlice.js";
 import Preloader from "@/frontend/components/Preloader/index.jsx";
 import BizAlert from "@/lib/BizAlert.js";
@@ -19,6 +14,12 @@ import {GrFormAdd} from "react-icons/gr";
 import {MdStar} from "react-icons/md";
 import {useDispatch, useSelector} from "react-redux";
 import {Link, useParams} from "react-router-dom";
+import {
+    createOrganizer,
+    deleteOrganizer,
+    fetchAllOrganizers,
+    updateOrganizer
+} from "../../../../../featurs/WorkshopOrganizer/OrganizerSlice.js";
 
 function Index(props) {
     const {id} = useParams();

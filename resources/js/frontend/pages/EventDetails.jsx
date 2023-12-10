@@ -14,7 +14,7 @@ import {
 import EventOrganizers from "../components/Events/EventOrganizers.jsx";
 import EventPartners from "../components/Events/EventPartners.jsx";
 import EventSpekar from "../components/Events/EventSpekar.jsx";
-import Schedule from "../components/Schedule/Index.jsx";
+import EventContact from "../components/Events/EventContact.jsx";
 
 function EventDetails() {
     const {slug} = useParams();
@@ -73,7 +73,7 @@ function EventDetails() {
                 <EventSchedule eventSchedule={metaInfo?.workshop_days} metaInfo={metaInfo}/>
                 <EventOrganizers eventOrganizer={metaInfo?.organizers}/>
                 <EventPartners eventPartner={metaInfo?.partners}/>
-                <Schedule/>
+                <EventContact eventInfo={metaInfo}/>
             </>
         )
     } else {

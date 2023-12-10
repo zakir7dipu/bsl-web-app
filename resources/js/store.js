@@ -30,6 +30,7 @@ import WorkshopOrganizerFeature from "./featurs/WorkshopOrganizer/OrganizerSlice
 import WorkshopFeature from "./featurs/WorkshopSeminar/WorkshopSlice.js";
 import WorkshopSessionsFeature from "./featurs/WorkshopSessions/WorkshopSessionsSlice.js"
 import WorkshopSponsorFeature from "./featurs/WorkshopSponsors/WorkshopSponsorSlice.js"
+import WorkshopUserFeature from "./featurs/WorkshopUsers/WorkshopUsersSlice.js"
 
 
 const store = configureStore({
@@ -65,6 +66,7 @@ const store = configureStore({
         workshopSessionsReducer: WorkshopSessionsFeature,
         WorkshopOrganizerReducer: WorkshopOrganizerFeature,
         WorkshopSponsorReducer: WorkshopSponsorFeature,
+        WorkshopUsersReducer: WorkshopUserFeature,
     }
 })
 
