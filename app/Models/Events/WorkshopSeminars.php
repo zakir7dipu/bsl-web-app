@@ -40,7 +40,7 @@ class WorkshopSeminars extends Model
         return $this->hasMany(WorkshopOrganizer::class, 'workshop_seminar_id', 'id');
     }
 
-    public function sponsors()
+    public function partners()
     {
         return $this->hasMany(WorkshopPartner::class, 'workshop_seminar_id', 'id');
     }
