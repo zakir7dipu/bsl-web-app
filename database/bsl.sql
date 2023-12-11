@@ -366,7 +366,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
@@ -413,7 +413,8 @@ insert  into `migrations`(`id`,`migration`,`batch`) values
 (40,'2023_12_07_025558_create_workshop_organizeer_table',18),
 (41,'2023_12_07_025948_add_column_in_workshop_seminars_table',18),
 (42,'2023_12_10_092736_add_designation_hosts_table',19),
-(43,'2023_12_10_095626_create_workshop_registrations_table',20);
+(43,'2023_12_10_095626_create_workshop_registrations_table',20),
+(44,'2023_12_11_035459_add_bruiser_column_in_workshop_table',21);
 
 /*Table structure for table `model_has_permissions` */
 
@@ -1024,7 +1025,6 @@ CREATE TABLE `workshop_organizer` (
 /*Data for the table `workshop_organizer` */
 
 insert  into `workshop_organizer`(`id`,`workshop_seminar_id`,`title`,`thumbnail`,`created_at`,`updated_at`) values 
-(1,11,'Bizz Solutions','/uploads/organizer/1701925700-organizer.png','2023-12-07 05:08:20','2023-12-07 05:08:20'),
 (3,11,'Super Star Group','/uploads/organizer/1701925786-organizer.png','2023-12-07 05:09:46','2023-12-07 05:09:46'),
 (4,11,'a2i','/uploads/organizer/1701929247-organizer.png','2023-12-07 06:07:27','2023-12-07 06:07:27'),
 (5,7,'Basis','/uploads/organizer/1701929772-organizer.png','2023-12-07 06:16:12','2023-12-07 06:16:12'),
@@ -1072,9 +1072,16 @@ CREATE TABLE `workshop_registrations` (
   PRIMARY KEY (`id`),
   KEY `workshop_registrations_workshop_seminar_id_foreign` (`workshop_seminar_id`),
   CONSTRAINT `workshop_registrations_workshop_seminar_id_foreign` FOREIGN KEY (`workshop_seminar_id`) REFERENCES `workshop_seminars` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `workshop_registrations` */
+
+insert  into `workshop_registrations`(`id`,`workshop_seminar_id`,`name`,`email`,`phone`,`designation`,`linkedin`,`created_at`,`updated_at`) values 
+(2,7,'Omar Farook','gmfaruk2021@gmail.com','01822252198','Software Engineer','https://www.linkedin.com/','2023-12-11 04:43:55','2023-12-11 04:43:55'),
+(3,7,'Bizz Solutions','info@bizzsol.com.bd','01822252198','Software Engineer','https://www.linkedin.com/','2023-12-11 04:44:49','2023-12-11 04:44:49'),
+(4,7,'Zakir Hossain','zakir7dipu@bizzsol.com.bd','0120980492380','Software Engineer','N/Adfadfas','2023-12-11 04:47:20','2023-12-11 04:47:46'),
+(5,7,'Arafat','gmfaruk2021@gmail.com','01822252198','Software Enginner','https://www.linkedin.com/','2023-12-11 04:48:24','2023-12-11 04:48:24'),
+(6,11,'Rayhan chy','rayhan@gmail.com','98734208090','Enginner','N/A','2023-12-11 04:56:32','2023-12-11 04:56:32');
 
 /*Table structure for table `workshop_seminars` */
 
@@ -1100,6 +1107,7 @@ CREATE TABLE `workshop_seminars` (
   `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `bruiser_link` text COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `workshop_seminars_slug_unique` (`slug`),
   KEY `workshop_seminars_created_by_foreign` (`created_by`),
@@ -1110,9 +1118,9 @@ CREATE TABLE `workshop_seminars` (
 
 /*Data for the table `workshop_seminars` */
 
-insert  into `workshop_seminars`(`id`,`name`,`slug`,`form_date`,`to_date`,`type`,`price`,`sponsors`,`objective`,`description`,`location`,`subtext`,`promo_video`,`image_link`,`created_by`,`updated_by`,`deleted_at`,`created_at`,`updated_at`) values 
-(7,'Web design and development Workshops','a45fcabf3de8bd30','2023-12-05','2023-12-06','workshop',2000,'Bizz Solutions PLC','<p>Web design and development Workshops</p>','<p>Join us on June 17, 2023 at AWS Cloud Day Bangladesh 2023! This full day event will feature hands-on workshops on building cloud native applications and machine learning, as well as insights on the recipe for creating the next generation of unicorn startups. You\'ll also have the opportunity to learn about career programs offered by AWS and network with subject matter experts, national leaders, teachers, and cloud enthusiasts from all over Bangladesh. Hurry, as seats are limited - register now!</p>','City centre 90/1, Level-25 Type-D2, Motijheel C/A, Dhaka-1000, Bangladesh.','Web development! This full day event will feature hands-on workshops on building cloud native applications and machine learning','hu9frpwmovM','/uploads/workshop/1701753364-host.png',2,2,NULL,'2023-12-05 05:16:04','2023-12-10 09:50:58'),
-(11,'Web design and development Workshops','bfc2bfdeee799a4c','2023-12-06','2023-12-07','seminar',1200,'Bizz Solutions PLC','<p>Web design and development Workshops</p>','<p>Join us on June 17, 2023 at AWS Cloud Day Bangladesh 2023! This full day event will feature hands-on workshops on building cloud native applications and machine learning, as well as insights on the recipe for creating the next generation of unicorn startups. You\'ll also have the opportunity to learn about career programs offered by AWS and network with subject matter experts, national leaders, teachers, and cloud enthusiasts from all over Bangladesh. Hurry, as seats are limited - register now!</p>','City centre 90/1, Level-25 Type-D2, Motijheel C/A, Dhaka-1000, Bangladesh.','Web developments 2023! This full day event will feature hands-on workshops on building cloud native applications and machine learning','hu9frpwmovM','/uploads/workshop/1701754382-host.png',2,2,NULL,'2023-12-05 05:33:02','2023-12-10 09:50:42');
+insert  into `workshop_seminars`(`id`,`name`,`slug`,`form_date`,`to_date`,`type`,`price`,`sponsors`,`objective`,`description`,`location`,`subtext`,`promo_video`,`image_link`,`created_by`,`updated_by`,`deleted_at`,`created_at`,`updated_at`,`bruiser_link`) values 
+(7,'Web design and development Workshops','a45fcabf3de8bd30','2023-12-05','2023-12-06','workshop',2000,'Bizz Solutions PLC','<p>Web design and development Workshops</p>','<p>Join us on June 17, 2023 at AWS Cloud Day Bangladesh 2023! This full day event will feature hands-on workshops on building cloud native applications and machine learning, as well as insights on the recipe for creating the next generation of unicorn startups. You\'ll also have the opportunity to learn about career programs offered by AWS and network with subject matter experts, national leaders, teachers, and cloud enthusiasts from all over Bangladesh. Hurry, as seats are limited - register now!</p>','City centre 90/1, Level-25 Type-D2, Motijheel C/A, Dhaka-1000, Bangladesh.','Web development! This full day event will feature hands-on workshops on building cloud native applications and machine learning','hu9frpwmovM','/uploads/workshop/1701753364-host.png',2,2,NULL,'2023-12-05 05:16:04','2023-12-11 04:08:15','https://drive.google.com/file/d/1Vmo066u9bE2ZLF1jetf9Ospgv2KbDiIR/view?usp=drive_link'),
+(11,'Web design and development Workshops','bfc2bfdeee799a4c','2023-12-06','2023-12-07','seminar',1200,'Bizz Solutions PLC','<p>Web design and development Workshops</p>','<p>Join us on June 17, 2023 at AWS Cloud Day Bangladesh 2023! This full day event will feature hands-on workshops on building cloud native applications and machine learning, as well as insights on the recipe for creating the next generation of unicorn startups. You\'ll also have the opportunity to learn about career programs offered by AWS and network with subject matter experts, national leaders, teachers, and cloud enthusiasts from all over Bangladesh. Hurry, as seats are limited - register now!</p>','City centre 90/1, Level-25 Type-D2, Motijheel C/A, Dhaka-1000, Bangladesh.','Web developments 2023! This full day event will feature hands-on workshops on building cloud native applications and machine learning','hu9frpwmovM','/uploads/workshop/1701754382-host.png',2,2,NULL,'2023-12-05 05:33:02','2023-12-11 04:08:00','https://drive.google.com/file/d/1Vmo066u9bE2ZLF1jetf9Ospgv2KbDiIR/view?usp=drive_link');
 
 /*Table structure for table `workshop_sessions` */
 

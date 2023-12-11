@@ -7,7 +7,6 @@ import {uid} from "../../lib/helper.js";
 import HeaderMeta from "../../ui/HeaderMeta.jsx";
 import Preloader from "../components/Preloader";
 import EventPost from "../components/Events/EventPost.jsx";
-import EventSearch from "../components/Events/EventSearch.jsx";
 
 function Events() {
 
@@ -51,7 +50,6 @@ function Events() {
                         <div className="row">
                             <div className="col-lg-4 col-md-12 order-last">
                                 <div className="widget-area">
-                                    <EventSearch/>
                                     <div className="recent-posts mb-50">
                                         <div className="widget-title">
                                             <h3 className="title" style={{float: "none"}}>Latest Events</h3>

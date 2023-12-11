@@ -47,7 +47,7 @@ function Index(props) {
         },
         {
             name: `${metaInfo?.title}`,
-            url: `/bsl/admin/workshops/days/${metaInfo?.workshop_seminar_id}`
+            url: `/bsl/admin/workshops/config/${metaInfo?.workshop_seminar_id}/days/${metaInfo?.workshop_seminar_id}`
         },
         {
             name: "Sessions",

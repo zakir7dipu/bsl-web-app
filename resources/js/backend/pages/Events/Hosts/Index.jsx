@@ -60,6 +60,13 @@ function Index(props) {
             searchableKey: 'phone',
         },
         {
+            name: 'Designation',
+            selector: row => row.designation,
+            sortable: true,
+            sortableKey: "designation",
+            searchableKey: 'designation',
+        },
+        {
             name: 'Thumbnail',
             selector: row => (
                 <img style={{height: "60px", width: "60px"}} src={useInternalLink(row.thumbnail)}/>
@@ -88,6 +95,7 @@ function Index(props) {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
+    const [designation, setDesignation] = useState("");
     const [about, setAbout] = useState("");
     const [qualification, setQualification] = useState("");
     const [thumbnail, setImageFile] = useState("");
@@ -106,6 +114,7 @@ function Index(props) {
         setPhone("");
         setEmail("");
         setAbout("");
+        setDesignation("");
         setQualification("");
         setImageFile("");
     }
@@ -132,6 +141,12 @@ function Index(props) {
             formData.append("phone", phone);
         }
 
+        if (!designation) {
+            warningMessage("Designation is required.")
+        } else {
+            formData.append("designation", designation);
+        }
+
         if (about) {
             formData.append("about", about);
         }
@@ -144,7 +159,7 @@ function Index(props) {
             formData.append("thumbnail", thumbnail);
         }
 
-        if (name && email && phone) {
+        if (name && email && phone && designation) {
             infoMessage("Please wait a while, We are processing your request.");
             if (!isEdit) {
                 dispatch(createHostData(formData))
@@ -175,6 +190,7 @@ function Index(props) {
         setPhone(modal?.phone);
         setEmail(modal?.email);
         setAbout(modal?.about);
+        setDesignation(modal?.designation);
         setQualification(modal?.qualification);
     }
 
@@ -260,6 +276,25 @@ function Index(props) {
                                            }} placeholder="Email" type="text"/>
                                 </div>
                             </div>
+                            <div className="col-md-6">
+                                <div className="form-group">
+                                    <label>Designation <sup className="text-danger"><MdStar/></sup></label>
+                                    <input className="form-control" value={designation}
+                                           onChange={(e) => {
+                                               setDesignation(e.target.value)
+                                           }} placeholder="Designation" type="text"/>
+                                </div>
+                            </div>
+                            <div className="col-md-6">
+                                <div className="form-group">
+                                    <FileInput
+                                        label={"Thumbnail"}
+                                        file={thumbnail}
+                                        id={"imageFile"}
+                                        handler={inputFileHandler}
+                                    />
+                                </div>
+                            </div>
                             <div className="col-md-12">
                                 <div className="form-group">
                                     <label>About </label>
@@ -280,16 +315,7 @@ function Index(props) {
                                 </div>
                             </div>
 
-                            <div className="col-md-6">
-                                <div className="form-group">
-                                    <FileInput
-                                        label={"Thumbnail"}
-                                        file={thumbnail}
-                                        id={"imageFile"}
-                                        handler={inputFileHandler}
-                                    />
-                                </div>
-                            </div>
+
                             <hr/>
                             <div className="col-md-12 mt-3">
                                 <button className="btn btn-primary px-3 float-right" type={"submit"}>Save</button>

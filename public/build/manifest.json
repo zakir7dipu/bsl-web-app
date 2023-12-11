@@ -1061,7 +1061,7 @@
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-arrows-10.eot": {
     "file": "assets/linea-arrows-10-aa8e1eb6.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-arrows-10d41d.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-arrows-10.eot"
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-arrows-10.svg": {
     "file": "assets/linea-arrows-10-0220f0bf.svg",
@@ -1077,7 +1077,7 @@
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-arrows-10d41d.eot": {
     "file": "assets/linea-arrows-10-aa8e1eb6.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-arrows-10d41d.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-arrows-10.eot"
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-basic-10.eot": {
     "file": "assets/linea-basic-10-a4d53d08.eot",
@@ -1101,7 +1101,7 @@
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10.eot": {
     "file": "assets/linea-basic-elaboration-10-9984ab62.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10d41d.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10.eot"
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10.svg": {
     "file": "assets/linea-basic-elaboration-10-1bad7b04.svg",
@@ -1117,7 +1117,7 @@
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10d41d.eot": {
     "file": "assets/linea-basic-elaboration-10-9984ab62.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10d41d.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-basic-elaboration-10.eot"
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10.eot": {
     "file": "assets/linea-ecommerce-10-d4e3c9f4.eot",
@@ -1301,7 +1301,7 @@
   },
   "resources/frontend-assets/fonts/Flaticon.eot": {
     "file": "assets/Flaticon-65faddbc.eot",
-    "src": "resources/frontend-assets/fonts/Flaticon.eot"
+    "src": "resources/frontend-assets/fonts/Flaticond41d.eot"
   },
   "resources/frontend-assets/fonts/Flaticon.svg": {
     "file": "assets/Flaticon-1b7b8142.svg",
@@ -1321,7 +1321,7 @@
   },
   "resources/frontend-assets/fonts/Flaticond41d.eot": {
     "file": "assets/Flaticon-65faddbc.eot",
-    "src": "resources/frontend-assets/fonts/Flaticon.eot"
+    "src": "resources/frontend-assets/fonts/Flaticond41d.eot"
   },
   "resources/frontend-assets/fonts/fontawesome-webfont3e6e.eot": {
     "file": "assets/fontawesome-webfont3e6e-7bfcab6d.eot",
@@ -1354,6 +1354,10 @@
   "resources/frontend-assets/images/about/effect-1.png": {
     "file": "assets/effect-1-dc07c719.png",
     "src": "resources/frontend-assets/images/about/effect-1.png"
+  },
+  "resources/frontend-assets/images/banner/intro-bg.jpg": {
+    "file": "assets/intro-bg-49a8c9a3.jpg",
+    "src": "resources/frontend-assets/images/banner/intro-bg.jpg"
   },
   "resources/frontend-assets/images/bg/footer-bg.png": {
     "file": "assets/footer-bg-33deb978.png",
@@ -1392,21 +1396,22 @@
     "src": "resources/image/default-avatar.png"
   },
   "resources/js/app.css": {
-    "file": "assets/app-d9b177ca.css",
+    "file": "assets/app-e7d4e9f8.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.jsx": {
     "assets": [
-      "assets/testimonial-3-b26f2d0e.png",
-      "assets/quote2-4408a563.png",
+      "assets/intro-bg-49a8c9a3.jpg",
       "assets/bizz-logo-7e19d3af.png",
       "assets/bizz-icon-f4078adf.png",
       "assets/default-avatar-f2770b81.png",
-      "assets/footer-bg-33deb978.png",
       "assets/effect-1-dc07c719.png",
       "assets/dotted-3-0cb9b822.png",
+      "assets/testimonial-3-b26f2d0e.png",
+      "assets/quote2-4408a563.png",
       "assets/ngbng-21445970.png",
       "assets/courseIcon-c3429744.png",
+      "assets/footer-bg-33deb978.png",
       "assets/revicons-f7b9c306.woff",
       "assets/revicons-4ca02b8a.ttf",
       "assets/revicons-9e4d4c68.eot",
@@ -1723,9 +1728,9 @@
       "assets/Flaticon-1b7b8142.svg"
     ],
     "css": [
-      "assets/app-d9b177ca.css"
+      "assets/app-e7d4e9f8.css"
     ],
-    "file": "assets/app-0f0e87d2.js",
+    "file": "assets/app-c624e0b9.js",
     "isEntry": true,
     "src": "resources/js/app.jsx"
   }
