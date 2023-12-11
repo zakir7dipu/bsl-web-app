@@ -25,7 +25,7 @@ import WorkshopOrganizer from "../backend/pages/Events/WorkshopSeminar/Organizer
 import WorkshopDays from "../backend/pages/Events/WorkshopSeminar/SessionsDay/Index.jsx";
 import WorkshopDaysSession from "../backend/pages/Events/WorkshopSeminar/SessionsDay/Sessions/Index.jsx";
 import WorkshopSponsors from "../backend/pages/Events/WorkshopSeminar/Sponsors/Index.jsx";
-
+import WorkshopRegisteredUser from "../backend/pages/Events/WorkshopSeminar/RegistraedUsers/Index.jsx";
 
 import GeneralPages from "../backend/pages/GeneralPage";
 import Industries from "../backend/pages/Industries/Index.jsx";
@@ -177,6 +177,7 @@ function Main() {
                             <Route index element={<WorkshopPage/>}/>
                             <Route path="organizers/:id" element={<WorkshopOrganizer/>}/>
                             <Route path="sponsors/:id" element={<WorkshopSponsors/>}/>
+                            <Route path="registeredUsers/:id" element={<WorkshopRegisteredUser/>}/>
                             <Route path="days/:id">
                                 <Route index element={<WorkshopDays/>}/>
                                 <Route path="sessions/:id">

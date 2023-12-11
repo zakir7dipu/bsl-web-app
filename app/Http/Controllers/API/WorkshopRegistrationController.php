@@ -118,11 +118,9 @@ class WorkshopRegistrationController extends Controller
      */
     public function destroy(string $id)
     {
-
         try {
 
             $model = WorkshopRegistration::where('id', $id)->first();
-
             $model->delete();
 
             return response()->json($model);

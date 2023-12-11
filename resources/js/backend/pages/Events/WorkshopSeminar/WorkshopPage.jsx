@@ -47,6 +47,16 @@ function WorkshopPage(props) {
                             </div>
                         </Link>
                     </div>
+
+                    <div className="col-lg-3 col-sm-6">
+                        <Link to={`registeredUsers/${id}`} className="card gradient-1">
+                            <div className="card-body">
+                                <h3 className="card-title text-white">Registered Users</h3>
+                                <span className="float-right display-5 opacity-5"><i className="fa fa-users"></i></span>
+                            </div>
+                        </Link>
+                    </div>
+
                 </div>
             </div>
         </>
