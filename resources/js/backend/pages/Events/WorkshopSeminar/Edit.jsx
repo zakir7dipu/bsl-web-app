@@ -50,6 +50,7 @@ function Edit() {
     const [location, setLocation] = useState("");
     const [subtext, setSubtext] = useState("");
     const [promo_video, setPromo] = useState("");
+    const [bruiserLink, setBruiser] = useState("");
 
     const [selectedId, setSelectedId] = useState("");
     const inputFileHandler = (file) => {
@@ -121,6 +122,10 @@ function Edit() {
             formData.append("promo_video", promo_video)
         }
 
+        if (bruiserLink) {
+            formData.append("bruiser_link", bruiserLink)
+        }
+
         if (cName && formDate && toDate && type && price && description) {
             infoMessage("Please wait a while, We are processing your request.");
             let data = {
@@ -147,6 +152,7 @@ function Edit() {
         setLocation("")
         setSubtext("")
         setPromo("")
+        setBruiser("")
     }
 
     useEffect(() => {
@@ -163,7 +169,7 @@ function Edit() {
         setLocation(metaInfo?.location || "")
         setSubtext(metaInfo?.subtext || "")
         setPromo(metaInfo?.promo_video || "")
-
+        setBruiser(metaInfo?.bruiser_link || "")
         setImageLink("")
 
     }, [dispatch, metaInfo])
@@ -307,6 +313,19 @@ function Edit() {
                                                            onChange={(e) => {
                                                                setPromo(e.target.value)
                                                            }}/>
+                                                </div>
+                                            </Col>
+                                            <Col lg={12}>
+                                                <div className="form-group">
+                                                    <label htmlFor="bruiserLink">Bruiser Link (Google drive
+                                                        link)</label>
+                                                    <textarea id="bruiserLink"
+                                                              className="form-control"
+                                                              value={bruiserLink}
+                                                              onChange={(e) => {
+                                                                  setBruiser(e.target.value)
+                                                              }}
+                                                    />
                                                 </div>
                                             </Col>
                                             <Col lg={12}>

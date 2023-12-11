@@ -38,6 +38,7 @@ function Create(props) {
     const [location, setLocation] = useState("");
     const [subtext, setSubtext] = useState("");
     const [promo_video, setPromo] = useState("");
+    const [bruiserLink, setBruiser] = useState("");
 
 
     const [imageLink, setImageLink] = useState("");
@@ -111,6 +112,10 @@ function Create(props) {
             formData.append("promo_video", promo_video)
         }
 
+        if (bruiserLink) {
+            formData.append("bruiser_link", bruiserLink)
+        }
+
         if (imageLink) {
             formData.append("image_link", imageLink)
         }
@@ -140,6 +145,7 @@ function Create(props) {
         setLocation("")
         setSubtext("")
         setPromo("")
+        setBruiser("")
         setImageLink("")
     }
 
@@ -275,6 +281,19 @@ function Create(props) {
                                                    onChange={(e) => {
                                                        setPromo(e.target.value)
                                                    }}/>
+                                        </div>
+                                    </Col>
+
+                                    <Col lg={12}>
+                                        <div className="form-group">
+                                            <label htmlFor="bruiserLink">Bruiser Link (Google drive link)</label>
+                                            <textarea id="bruiserLink"
+                                                      className="form-control"
+                                                      value={bruiserLink}
+                                                      onChange={(e) => {
+                                                          setBruiser(e.target.value)
+                                                      }}
+                                            />
                                         </div>
                                     </Col>
 

@@ -61,7 +61,7 @@ function Login(props) {
             />
             <div style={{height: '100vh'}}>
                 <div className="h-100">
-                    <div className="login-form-bg h-100">
+                    <div className="login-form-bg h-100" style={{background:'#1e9b9b'}}>
                         <div className="container h-100">
                             <div className="row justify-content-center h-100">
                                 <div className="col-xl-6">

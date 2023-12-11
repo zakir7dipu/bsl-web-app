@@ -214,6 +214,10 @@ function Index(props) {
                                     : ""}</td>
                             </tr>
                             <tr>
+                                <td>Drive Link</td>
+                                <td><a target="__blank" href={metaInfo?.bruiser_link}>Drive Link</a></td>
+                            </tr>
+                            <tr>
                                 <td>Objective</td>
                                 <td><p dangerouslySetInnerHTML={{__html: metaInfo?.objective}}></p></td>
                             </tr>

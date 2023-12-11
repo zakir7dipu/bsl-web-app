@@ -25,6 +25,7 @@ class WorkshopSeminars extends Model
         'image_link',
         'location',
         'subtext',
+        'bruiser_link',
         'promo_video',
         'created_by',
         'updated_by',

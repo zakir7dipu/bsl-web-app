@@ -90,7 +90,7 @@ function EventContact({eventInfo}) {
                                     <i className="fa fa-phone"></i> Registration
                                 </Link>
                                 <span className="schedule-middle-btn col-md-2">OR</span>
-                                <a target="__blank" href={`/`}
+                                <a target="__blank" href={`${eventInfo?.bruiser_link}`}
                                    className="btn double-btn-two col-md-6"><i
                                     className="fa fa-paperclip"></i> Event Bruiser
                                 </a>
