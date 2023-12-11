@@ -13170,6 +13170,8 @@ body .search-modal .close:hover {
         width: 75%;
     }
 }
+
+
 #schedule .sub-heading {
     text-align: center;
     font-size: 18px;
@@ -13251,6 +13253,12 @@ body .search-modal .close:hover {
     height: 160px;
 }
 
+@media (max-width: 575px){
+    #strategics .supporter-logo{
+        padding: 30px;
+    }
+}
+
 #strategics img {
     transition: all 0.4s ease-in-out;
 }
@@ -13285,6 +13293,8 @@ body .search-modal .close:hover {
     background: rgba(255, 255, 255, 0.5);
     height: 160px;
 }
+
+
 #supporters img {
     transition: all 0.4s ease-in-out;
 }

@@ -949,11 +949,11 @@
   },
   "resources/backend-assets/icons/flag-icon-css/flags/um.svg": {
     "file": "assets/um-6c26a964.svg",
-    "src": "resources/backend-assets/icons/flag-icon-css/flags/us.svg"
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/um.svg"
   },
   "resources/backend-assets/icons/flag-icon-css/flags/us.svg": {
     "file": "assets/um-6c26a964.svg",
-    "src": "resources/backend-assets/icons/flag-icon-css/flags/us.svg"
+    "src": "resources/backend-assets/icons/flag-icon-css/flags/um.svg"
   },
   "resources/backend-assets/icons/flag-icon-css/flags/uy.svg": {
     "file": "assets/uy-2d5a9764.svg",
@@ -1021,7 +1021,7 @@
   },
   "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.eot": {
     "file": "assets/fontawesome-webfont3e6e-7bfcab6d.eot",
-    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfontd41d.eot"
+    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.eot"
   },
   "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.svg": {
     "file": "assets/fontawesome-webfont3e6e-fc378232.svg",
@@ -1041,7 +1041,7 @@
   },
   "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfontd41d.eot": {
     "file": "assets/fontawesome-webfont3e6e-7bfcab6d.eot",
-    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfontd41d.eot"
+    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.eot"
   },
   "resources/backend-assets/icons/ionicons/fonts/ionicons.eot": {
     "file": "assets/ionicons-a4803d7b.eot",
@@ -1121,7 +1121,7 @@
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10.eot": {
     "file": "assets/linea-ecommerce-10-d4e3c9f4.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10d41d.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10.eot"
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10.svg": {
     "file": "assets/linea-ecommerce-10-a94ee766.svg",
@@ -1137,11 +1137,11 @@
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10d41d.eot": {
     "file": "assets/linea-ecommerce-10-d4e3c9f4.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10d41d.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-ecommerce-10.eot"
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.eot": {
     "file": "assets/linea-music-10-623ca9d9.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-music-10d41d.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.eot"
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.svg": {
     "file": "assets/linea-music-10-b0f18775.svg",
@@ -1157,11 +1157,11 @@
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-music-10d41d.eot": {
     "file": "assets/linea-music-10-623ca9d9.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-music-10d41d.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-music-10.eot"
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-software-10.eot": {
     "file": "assets/linea-software-10-fba5eb94.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-software-10d41d.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-software-10.eot"
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-software-10.svg": {
     "file": "assets/linea-software-10-f0daa3ed.svg",
@@ -1177,11 +1177,11 @@
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-software-10d41d.eot": {
     "file": "assets/linea-software-10-fba5eb94.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-software-10d41d.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-software-10.eot"
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10.eot": {
     "file": "assets/linea-weather-10-5844acf7.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10d41d.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10.eot"
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10.svg": {
     "file": "assets/linea-weather-10-f409f6dd.svg",
@@ -1197,7 +1197,7 @@
   },
   "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10d41d.eot": {
     "file": "assets/linea-weather-10-5844acf7.eot",
-    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10d41d.eot"
+    "src": "resources/backend-assets/icons/linea-icons/fonts/linea-weather-10.eot"
   },
   "resources/backend-assets/icons/material-design-iconic-font/fonts/materialdesignicons-webfont.eot": {
     "file": "assets/materialdesignicons-webfont-c06cfca1.eot",
@@ -1237,7 +1237,7 @@
   },
   "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.eot": {
     "file": "assets/Simple-Line-Icons4c82-b76b3d1d.eot",
-    "src": "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Iconsd41d.eot"
+    "src": "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.eot"
   },
   "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.svg": {
     "file": "assets/Simple-Line-Icons4c82-ebd98fd1.svg",
@@ -1257,7 +1257,7 @@
   },
   "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Iconsd41d.eot": {
     "file": "assets/Simple-Line-Icons4c82-b76b3d1d.eot",
-    "src": "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Iconsd41d.eot"
+    "src": "resources/backend-assets/icons/simple-line-icons/fonts/Simple-Line-Icons4c82.eot"
   },
   "resources/backend-assets/icons/themify-icons/fonts/themify.ttf": {
     "file": "assets/themify-350663a4.ttf",
@@ -1325,7 +1325,7 @@
   },
   "resources/frontend-assets/fonts/fontawesome-webfont3e6e.eot": {
     "file": "assets/fontawesome-webfont3e6e-7bfcab6d.eot",
-    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfontd41d.eot"
+    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.eot"
   },
   "resources/frontend-assets/fonts/fontawesome-webfont3e6e.svg": {
     "file": "assets/fontawesome-webfont3e6e-fc378232.svg",
@@ -1345,7 +1345,7 @@
   },
   "resources/frontend-assets/fonts/fontawesome-webfontd41d.eot": {
     "file": "assets/fontawesome-webfont3e6e-7bfcab6d.eot",
-    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfontd41d.eot"
+    "src": "resources/backend-assets/icons/font-awesome/fonts/fontawesome-webfont3e6e.eot"
   },
   "resources/frontend-assets/images/about/dotted-3.png": {
     "file": "assets/dotted-3-0cb9b822.png",
@@ -1396,7 +1396,7 @@
     "src": "resources/image/default-avatar.png"
   },
   "resources/js/app.css": {
-    "file": "assets/app-e7d4e9f8.css",
+    "file": "assets/app-d55a0b4a.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.jsx": {
@@ -1728,9 +1728,9 @@
       "assets/Flaticon-1b7b8142.svg"
     ],
     "css": [
-      "assets/app-e7d4e9f8.css"
+      "assets/app-d55a0b4a.css"
     ],
-    "file": "assets/app-c624e0b9.js",
+    "file": "assets/app-96e49eeb.js",
     "isEntry": true,
     "src": "resources/js/app.jsx"
   }
