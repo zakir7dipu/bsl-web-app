@@ -69,6 +69,13 @@ function Index(props) {
             searchableKey: 'designation',
         },
         {
+            name: 'Index Of',
+            selector: row => row.index_of,
+            sortable: true,
+            sortableKey: "index_of",
+            searchableKey: 'index_of',
+        },
+        {
             name: 'Image',
             selector: row => (
                 <img style={{height: "60px", width: "60px"}} src={useInternalLink(row.avatar)}/>
@@ -98,7 +105,7 @@ function Index(props) {
     const [designation, setDesignation] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
-
+    const [index_of, setIndexOf] = useState("");
     const [linkedin, setLinkedin] = useState("");
     const [website, setWebsite] = useState("");
     const [twitter, setTwitter] = useState("");
@@ -122,6 +129,7 @@ function Index(props) {
         setWebsite("");
         setTwitter("");
         setImageFile("");
+        setIndexOf("");
     }
 
     const requestHandler = (e) => {
@@ -139,7 +147,11 @@ function Index(props) {
         } else {
             formData.append("email", email);
         }
-
+        if (!index_of) {
+            warningMessage("Index is required.")
+        } else {
+            formData.append("index_of", index_of);
+        }
         if (!phone) {
             warningMessage("Phone is required.")
         } else {
@@ -192,7 +204,7 @@ function Index(props) {
         setTitle(`Edit ${modal?.name}`)
         setIsEdit(true)
         setIsShow(!isShow);
-
+        setIndexOf(modal?.index_of);
         setName(modal?.name);
         setPhone(modal?.phone);
         setDesignation(modal?.designation);
@@ -232,13 +244,13 @@ function Index(props) {
                             <div className="card">
                                 <div className="card-header">
                                     <h4>Our Teams
-                                    <button className="btn btn-info btn-mini float-right" onClick={() => {
-                                        setIsShow(!isShow);
-                                        setIsEdit(false)
-                                        setTitle('Add New')
-                                    }}>
-                                        <GrFormAdd/>&nbsp;Add New
-                                    </button></h4>
+                                        <button className="btn btn-info btn-mini float-right" onClick={() => {
+                                            setIsShow(!isShow);
+                                            setIsEdit(false)
+                                            setTitle('Add New')
+                                        }}>
+                                            <GrFormAdd/>&nbsp;Add New
+                                        </button></h4>
                                 </div>
                                 <div className="card-body">
 
@@ -296,7 +308,15 @@ function Index(props) {
                                            }} placeholder="Enter designation" type="text"/>
                                 </div>
                             </div>
-
+                            <div className="col-md-6">
+                                <div className="form-group">
+                                    <label>Short Order <sup className="text-danger"><MdStar/></sup></label>
+                                    <input className="form-control" value={index_of}
+                                           onChange={(e) => {
+                                               setIndexOf(e.target.value)
+                                           }} placeholder="Short order" type="number"/>
+                                </div>
+                            </div>
 
                             <div className="col-md-6">
                                 <div className="form-group">

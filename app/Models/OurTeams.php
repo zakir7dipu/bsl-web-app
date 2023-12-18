@@ -21,6 +21,7 @@ class OurTeams extends Model
         'twitter',
         'website',
         'avatar',
+        'index_of',
         'slug'
     ];
 

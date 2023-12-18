@@ -131,6 +131,7 @@ export const TeamSlice = createSlice({
                 twitter,
                 slug,
                 avatar,
+                index_of,
                 id
             } = payload;
 
@@ -145,6 +146,7 @@ export const TeamSlice = createSlice({
                 updateData[0].twitter = twitter;
                 updateData[0].avatar = avatar;
                 updateData[0].slug = slug;
+                updateData[0].index_of = index_of;
             }
             state.errorMess = null
             successMessage("Data Updated Successfully")

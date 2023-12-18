@@ -11,7 +11,7 @@ class TeamsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['index','show']]);
+        $this->middleware('auth:api', ['except' => ['index', 'show']]);
     }
 
     /**
@@ -21,7 +21,7 @@ class TeamsController extends Controller
     {
         try {
 
-            $teams = OurTeams::orderBy('id', 'asc')->get();
+            $teams = OurTeams::orderBy('index_of', 'asc')->get();
             return response()->json($teams);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), $th->getCode());
@@ -45,6 +45,7 @@ class TeamsController extends Controller
             "name" => ["required", "string", "max:128"],
             "designation" => ["required", "string", "max:128"],
             "phone" => ["required", "max:15"],
+            "index_of" => ["required"],
             "email" => "required|string|email|max:64|unique:our_teams",
             'avatar' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ]);
@@ -60,6 +61,7 @@ class TeamsController extends Controller
             $team->website = $request->website;
             $team->twitter = $request->twitter;
             $team->linkedin = $request->linkedin;
+            $team->index_of = $request->index_of;
 
             if ($request->hasFile('avatar')) {
                 $filename = time() . '-' . 'avatar.' . fileInfo($request->avatar)['extension'];
@@ -114,6 +116,7 @@ class TeamsController extends Controller
             "name" => ["required", "string", "max:128"],
             "designation" => ["required", "string", "max:128"],
             "phone" => ["required", "max:15"],
+            "index_of" => ["required"],
             "email" => "required|string|email|max:64|unique:our_teams,id," . $team->id,
             'avatar' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ]);
@@ -128,6 +131,7 @@ class TeamsController extends Controller
             $team->website = $request->website;
             $team->twitter = $request->twitter;
             $team->linkedin = $request->linkedin;
+            $team->index_of = $request->index_of;
 
             if ($request->hasFile('avatar')) {
                 $filename = time() . '-' . 'avatar.' . fileInfo($request->avatar)['extension'];
