@@ -6,11 +6,8 @@ function Index(props) {
     return (
         <div className="header">
             <div className="header-content clearfix">
-
                 <NavControl/>
-
                 <div className="header-left"></div>
-
                 <HeaderRight/>
             </div>
         </div>
