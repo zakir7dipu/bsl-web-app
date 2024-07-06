@@ -74,7 +74,6 @@ class AuthController extends Controller
             ]);
         } catch (\Throwable $th) {
             return returnBack($th);
-        
         }
     }
 

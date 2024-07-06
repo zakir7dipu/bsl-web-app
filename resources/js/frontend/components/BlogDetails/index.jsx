@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 
 function Index({info}) {
     const {title, id, image_link, tag, created_at, description} = info;
+    moment.locale('en');
     return (
         <div className="row">
             <div className="col-lg-12">

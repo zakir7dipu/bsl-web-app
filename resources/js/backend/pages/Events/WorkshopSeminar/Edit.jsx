@@ -4,16 +4,95 @@ import Preloader from "@/backend/components/Preloader/Index.jsx";
 import {showWorkshopSeminar, updateWorkshopSeminarData} from "@/featurs/WorkshopSeminar/WorkshopSlice.js";
 import {infoMessage, warningMessage} from "@/lib/helper.js";
 import HeaderMeta from "@/ui/HeaderMeta.jsx";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import {CKEditor} from "@ckeditor/ckeditor5-react";
 import React, {useEffect, useState} from 'react';
 import {Col, Row} from "react-bootstrap";
 import {MdStar} from "react-icons/md";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate, useParams} from "react-router-dom";
+import {
+    ClassicEditor,
+    AccessibilityHelp,
+    Autoformat,
+    Autosave,
+    Bold,
+    Essentials,
+    FindAndReplace,
+    FullPage,
+    GeneralHtmlSupport,
+    Heading,
+    HtmlComment,
+    HtmlEmbed,
+    Italic,
+    List,
+    ListProperties,
+    Mention,
+    PageBreak,
+    Paragraph,
+    PasteFromOffice,
+    SelectAll,
+    ShowBlocks,
+    SourceEditing,
+    Table,
+    TableCaption,
+    TableCellProperties,
+    TableColumnResize,
+    TableProperties,
+    TableToolbar,
+    TextTransformation,
+    TodoList,
+    Undo
+} from 'ckeditor5';
+import 'ckeditor5/ckeditor5.css';
 
 function Edit() {
     const {slug} = useParams();
+    const editorConfig = {
+        toolbar: {
+            items: ['undo', 'redo', '|', 'sourceEditing', 'showBlocks', 'findAndReplace', 'selectAll', '|', 'heading', '|', 'bold', 'italic', '|', 'pageBreak', 'insertTable', 'htmlEmbed', '|', 'bulletedList', 'numberedList', 'multiLevelList', 'todoList', '|', 'accessibilityHelp'],
+            shouldNotGroupWhenFull: false
+        },
+        plugins: [AccessibilityHelp, Autoformat, Autosave, Bold, Essentials, FindAndReplace, FullPage, GeneralHtmlSupport, Heading, HtmlComment, HtmlEmbed, Italic, List, ListProperties, Mention, PageBreak, Paragraph, PasteFromOffice, SelectAll, ShowBlocks, SourceEditing, Table, TableCaption, TableCellProperties, TableColumnResize, TableProperties, TableToolbar, TextTransformation, TodoList, Undo],
+        heading: {
+            options: [{
+                model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph'
+            }, {
+                model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1'
+            }, {
+                model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2'
+            }, {
+                model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3'
+            }, {
+                model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4'
+            }, {
+                model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5'
+            }, {
+                model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6'
+            }]
+        },
+        htmlSupport: {
+            allow: [{
+                name: /^.*$/, styles: true, attributes: true, classes: true
+            }]
+        },
+        list: {
+            properties: {
+                styles: true, startIndex: true, reversed: true
+            }
+        },
+        mention: {
+            feeds: [{
+                marker: '@', feed: [/* See: https://ckeditor.com/docs/ckeditor5/latest/features/mentions.html */]
+            }]
+        },
+        menuBar: {
+            isVisible: true
+        },
+        placeholder: 'Type or paste your content here!',
+        table: {
+            contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties']
+        }
+    };
 
     const {
         isLoading,
@@ -336,6 +415,7 @@ function Edit() {
                                                     <CKEditor
                                                         editor={ClassicEditor}
                                                         data={objective}
+                                                        config={editorConfig}
                                                         id="objective"
                                                         onChange={(e, editor) => {
                                                             const data = editor.getData();
@@ -354,6 +434,7 @@ function Edit() {
                                                     <CKEditor
                                                         editor={ClassicEditor}
                                                         data={description}
+                                                        config={editorConfig}
                                                         id="description"
                                                         onChange={(e, editor) => {
                                                             const data = editor.getData();

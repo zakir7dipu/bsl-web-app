@@ -9902,6 +9902,8 @@ body .search-modal .close:hover {
 
 .rs-inner-blog .blog-item .blog-img a img {
     border-radius: 10px;
+    max-height: 220px;
+    width: 100%;
 }
 
 .rs-inner-blog .blog-item .blog-img .post-categories {
@@ -9909,7 +9911,6 @@ body .search-modal .close:hover {
     z-index: 11;
     bottom: 20px;
     right: 20px;
-    z-index: 10;
 }
 
 .rs-inner-blog .blog-item .blog-img .post-categories li {
@@ -9941,9 +9942,9 @@ body .search-modal .close:hover {
 }
 
 .rs-inner-blog .blog-item .blog-content .blog-title {
-    margin: 4px 0 10px;
-    font-size: 26px;
-    line-height: 35px;
+    margin: 4px 0 8px;
+    font-size: 18px;
+    line-height: 30px;
     font-weight: 700;
 }
 
@@ -10002,7 +10003,7 @@ body .search-modal .close:hover {
 }
 
 .rs-inner-blog .blog-item .blog-content .blog-desc {
-    font-size: 15px;
+    font-size: 14px;
     line-height: 27px;
     font-weight: 400;
     color: #454545;

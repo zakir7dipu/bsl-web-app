@@ -12,11 +12,93 @@ import {GrFormAdd} from "react-icons/gr";
 import BizModal from "../../../ui/BizzModal.jsx";
 import {MdStar} from "react-icons/md";
 import FileInput from "../../components/inputFile/Index.jsx";
-import {CKEditor} from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import VirtualDataTable from "../../../ui/VertualDataTable/index.jsx";
 
+import {CKEditor} from "@ckeditor/ckeditor5-react";
+import {
+    ClassicEditor,
+    AccessibilityHelp,
+    Autoformat,
+    Autosave,
+    Bold,
+    Essentials,
+    FindAndReplace,
+    FullPage,
+    GeneralHtmlSupport,
+    Heading,
+    HtmlComment,
+    HtmlEmbed,
+    Italic,
+    List,
+    ListProperties,
+    Mention,
+    PageBreak,
+    Paragraph,
+    PasteFromOffice,
+    SelectAll,
+    ShowBlocks,
+    SourceEditing,
+    Table,
+    TableCaption,
+    TableCellProperties,
+    TableColumnResize,
+    TableProperties,
+    TableToolbar,
+    TextTransformation,
+    TodoList,
+    Undo
+} from 'ckeditor5';
+import 'ckeditor5/ckeditor5.css';
+
 function Index(props) {
+
+    const editorConfig = {
+        toolbar: {
+            items: ['undo', 'redo', '|', 'sourceEditing', 'showBlocks', 'findAndReplace', 'selectAll', '|', 'heading', '|', 'bold', 'italic', '|', 'pageBreak', 'insertTable', 'htmlEmbed', '|', 'bulletedList', 'numberedList', 'multiLevelList', 'todoList', '|', 'accessibilityHelp'],
+            shouldNotGroupWhenFull: false
+        },
+        plugins: [AccessibilityHelp, Autoformat, Autosave, Bold, Essentials, FindAndReplace, FullPage, GeneralHtmlSupport, Heading, HtmlComment, HtmlEmbed, Italic, List, ListProperties, Mention, PageBreak, Paragraph, PasteFromOffice, SelectAll, ShowBlocks, SourceEditing, Table, TableCaption, TableCellProperties, TableColumnResize, TableProperties, TableToolbar, TextTransformation, TodoList, Undo],
+        heading: {
+            options: [{
+                model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph'
+            }, {
+                model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1'
+            }, {
+                model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2'
+            }, {
+                model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3'
+            }, {
+                model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4'
+            }, {
+                model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5'
+            }, {
+                model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6'
+            }]
+        },
+        htmlSupport: {
+            allow: [{
+                name: /^.*$/, styles: true, attributes: true, classes: true
+            }]
+        },
+        list: {
+            properties: {
+                styles: true, startIndex: true, reversed: true
+            }
+        },
+        mention: {
+            feeds: [{
+                marker: '@', feed: [/* See: https://ckeditor.com/docs/ckeditor5/latest/features/mentions.html */]
+            }]
+        },
+        menuBar: {
+            isVisible: true
+        },
+        placeholder: 'Type or paste your content here!',
+        table: {
+            contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties']
+        }
+    };
+
     const {
         isLoading,
         blogs,
@@ -33,7 +115,7 @@ function Index(props) {
             url: "/bsl/admin"
         },
         {
-            name: "Blogs",
+            name: "ERP News",
             url: null
         }
     ];
@@ -180,7 +262,7 @@ function Index(props) {
         setSelectedBlogs(id)
         let model = blogs.filter((blog) => blog.id === id)
         model = model[0]
-        setTitle(`Edit ${model?.title}`)
+        setTitle(`Edit: ${model?.title}`)
         setIsEdit(true)
         setName(model?.title)
         setIndexing(model?.short_order)
@@ -210,7 +292,7 @@ function Index(props) {
         return (
             <>
                 <HeaderMeta
-                    title="Blogs"
+                    title="ERP News"
                     url="/bsl/admin/blogs"
                 />
                 <Breadcrumb list={breadcrumb}/>
@@ -218,20 +300,20 @@ function Index(props) {
                     <div className="col-lg-12 col-sm-12">
                         <div className="card">
                             <div className="card-header">
-                                <h4>Blogs Lists
+                                <h4>ERP News Lists
                                     <button className="btn btn-info btn-mini float-right" onClick={() => {
                                         setIsShow(!isShow);
                                         setIsEdit(false)
-                                        setTitle('Add New BLogs')
+                                        setTitle('Add News')
                                     }}>
-                                        <GrFormAdd/>&nbsp;Add New Blogs
+                                        <GrFormAdd/>&nbsp;Add News
                                     </button>
                                 </h4>
                             </div>
                             <div className="card-body">
 
                                 <VirtualDataTable
-                                    name="Blogs Data"
+                                    name=""
                                     columns={columns}
                                     data={blogs}
                                     dataViewRangeArray={[10, 20, 30, 50, 100]}
@@ -250,7 +332,7 @@ function Index(props) {
                                     <input className="form-control" value={name}
                                            onChange={(e) => {
                                                setName(e.target.value)
-                                           }} placeholder="title" type="text"/>
+                                           }} placeholder="Title" type="text"/>
                                 </div>
                             </div>
                             <div className="col-md-2">
@@ -259,7 +341,7 @@ function Index(props) {
                                     <input className="form-control" value={indexing}
                                            onChange={(e) => {
                                                setIndexing(e.target.value)
-                                           }} placeholder="short order" type="number"/>
+                                           }} placeholder="Short order" type="number"/>
                                 </div>
                             </div>
                             <div className="col-md-4">
@@ -281,6 +363,7 @@ function Index(props) {
                                     <CKEditor
                                         editor={ClassicEditor}
                                         data={description}
+                                        config={editorConfig}
                                         onChange={(event, editor) => {
                                             const data = editor.getData();
                                             setDescription(data)

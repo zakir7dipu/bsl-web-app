@@ -23,13 +23,27 @@
             margin-top: 16px;
         }
     </style>
+    <!-- Google tag (gtag.js) Start --> 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-601C9X8NNW"></script> 
+    <script> 
+        window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-601C9X8NNW'); 
+    </script>
+    <!-- Google tag (gtag.js) End --> 
     @viteReactRefresh
     @vite('resources/js/app.jsx')
 </head>
 <body>
 <div id="app"></div>
 
-<a href="https://api.whatsapp.com/send?phone=01755597770&text=Hi, I want to know more about Bizz Solutions. Can you help me, please?"
+@php
+    //$json = \Storage::json('settings.json', JSON_THROW_ON_ERROR);
+   $json =  json_decode(\File::get(base_path('storage/settings.json')), true);
+   
+    $whatsAppNumber= $json['site']['settings']['contact_info']['whatsapp_number'];
+    
+@endphp
+
+<a href="https://api.whatsapp.com/send?phone={{$whatsAppNumber}}&text=Hi, I want to know more about Bizz Solutions. Can you help me, please?"
    class="float" target="_blank"> <i class="fa fa-whatsapp my-float"></i></a>
 
 <div id="fb-root"></div>

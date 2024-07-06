@@ -24,7 +24,7 @@ function BlogDetails(props) {
             url: "/"
         },
         {
-            name: "Blogs",
+            name: "ERP News",
             url: "/blog"
         },
         {
@@ -42,11 +42,11 @@ function BlogDetails(props) {
         <>
             {isLoading && <Preloader/>}
             <HeaderMeta
-                title="Blog Details"
-                page="Blog Details"
+                title="ERP News "
+                page="ERP News "
             />
             <Breadcrumbs
-                page="Blog Details"
+                page="ERP News "
                 breadcrumbs={breadcrumbs}
             />
             <div className="rs-inner-blog pt-120 pb-120 md-pt-90 md-pb-90">

@@ -117,7 +117,7 @@ function Index(props) {
                         <li>
                             <NavBarLink
                                 link={'/bsl/admin/blogs'}
-                                linkName={'Blogs'}
+                                linkName={'ERP News'}
                                 hasSubMenu={false}
                                 menuIcon={<i className="fa fa-list-alt menu-icon"></i>}
                             />

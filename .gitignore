@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
+/public/uploads
 /storage/*.key
 /vendor
 .env
@@ -15,6 +16,6 @@ yarn-error.log
 /.vscode
 /public/js
 /public/mix-manifest.json
-.*zip
+*.zip
 composer.lock
 package-lock.json

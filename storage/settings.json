@@ -3,15 +3,15 @@
         "settings": {
             "general": {
                 "site_name": "Bizz Solutions PLC",
-                "slogan": "Technology Solution Company in BD.",
+                "slogan": "ERP Software Solutions for Tomorrow.",
                 "site_logo": "uploads\/settings\/1699246870-logo.png",
                 "site_favicon": "uploads\/settings\/1699246870-icon.png",
                 "site_secondary_logo": "uploads\/settings\/1699246870-sec-logo.png",
                 "footer_detail": "We are Bizz Solutions PLC providing satisfiable software solutions for Web, PC, and Mobile. Developing a user-friendly & meaningful user interface and customer satisfaction is our main goal."
             },
             "contact_info": {
-                "phone": "+8801713378787",
-                "whatsapp_number": "8801755597770",
+                "phone": "01313476488 , (+880)1713378787",
+                "whatsapp_number": "+8801313476488",
                 "mail": "info@bizzsol.com.bd",
                 "address": "City centre 90\/1, Level-25 Type-D2, Motijheel C\/A, Dhaka-1000, Bangladesh.",
                 "sub_text": "LET'S TALK",
@@ -119,7 +119,7 @@
     "seo": {
         "home": {
             "meta": {
-                "keywords": "Technology Solution Company in BD.",
+                "keywords": "ERP Software Solutions for Tomorrow.",
                 "robots": "index, follow",
                 "description": "We are Bizz Solutions PLC providing satisfiable software solution for Web, PC and Mobile. Developing user friendly & meaningful user interface and customer satisfaction is our main goal Hi there.",
                 "og_type": "Home",

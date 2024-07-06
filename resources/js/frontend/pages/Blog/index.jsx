@@ -27,7 +27,7 @@ function Index(props) {
             url: "/"
         },
         {
-            name: "All Blog",
+            name: "ERP News",
             url: "/blog"
         },
     ]
@@ -58,11 +58,11 @@ function Index(props) {
     return (
         <>
             <HeaderMeta
-                title="Blog"
-                page="Blog"
+                title="ERP News"
+                page="ERP News"
             />
             <Breadcrumbs
-                page="All Blog"
+                page="ERP News"
                 breadcrumbs={breadcrumbs}
             />
 

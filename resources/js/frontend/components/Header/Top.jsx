@@ -127,7 +127,7 @@ function Top({loading, general}) {
                                             </li>
 
                                             <li>
-                                                <NavLink to="blog">Blog</NavLink>
+                                                <NavLink to="blog">ERP News</NavLink>
                                             </li>
                                             <li>
                                                 <NavLink to="contact">Contact</NavLink>

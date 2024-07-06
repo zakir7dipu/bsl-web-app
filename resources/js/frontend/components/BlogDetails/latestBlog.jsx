@@ -19,12 +19,14 @@ function LatestBlog({infoID}) {
         dispatch(fetchLatestBlogs(infoID))
     }, [infoID])
 
+    moment.locale('en');
+
     return (
         isLoading ? "" :
             <div className="widget-area">
                 <div className="recent-posts mb-50">
                     <div className="widget-title">
-                        <h3 className="title" style={{float: "none"}}>Latest Posts</h3>
+                        <h3 className="title" style={{float: "none"}}>Latest News</h3>
                     </div>
                     {latest?.map(item=>{
                         const {slug, title, image_link, created_at} = item
